@@ -3,31 +3,11 @@
 ;; Copyright (c) 2010-2020 Gökmen Görgen
 ;;
 ;; Author: Gökmen Görgen <gkmngrgn@gmail.com>
-;; URL: https://github.com/gkmngrgn/config
+;; URL: https://github.com/gkmngrgn/emacs.d/
 
 ;;; Commentary:
 
-;; OS:
-;; - silversearcher-ag: a code searching tool.
-;; - fonts-ibm-plex: my default font.
-;;
-;; Python:
-;; I recommend you to use pyenv for installing packages without root access.
-;;
-;; $ pyenv install 3.8.1
-;; $ pyenv global 3.8.1
-;; $ pip install -U pip
-;; $ pip install python-language-server[all]
-;;
-;; Rust:
-;; Install rust with "rustup".  Then type this command:
-;; $ rustup component add rls rust-analysis rust-src
-;;
-;; Dart:
-;; Install Dart SDK, it has a builtin analysis tool.  Then customize SDK path in your editor.
-;;
-;; Golang:
-;; $ go get -u golang.org/x/tools/cmd/gopls
+;; Take a look at README.md file for more information.
 
 ;;; Code:
 

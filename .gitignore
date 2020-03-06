@@ -1,4 +1,11 @@
-*
+# ignore all
+/*
+
+# exclude data folder
+!.github/
+!data/
+
+# exclude files
 !.gitignore
 !LICENSE
 !README.md
