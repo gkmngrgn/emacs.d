@@ -4,10 +4,11 @@ My accessibility-friendly Emacs configuration.
 
 ![](data/interface.png)
 
-Please **do not open** a pull-request for this repository. You can create your
-configuration from scratch or start using Emacs with
-[Spacemacs](https://www.spacemacs.org/) or [Doom
-Emacs](https://github.com/hlissner/doom-emacs)
+Please **do not open** a pull-request for this repository. You can configure
+your editor from scratch (Don't be afraid of LISP; it's effortless.) or give a
+try for [Spacemacs](https://www.spacemacs.org/) or [Doom
+Emacs](https://github.com/hlissner/doom-emacs). But first, get a new mechanical
+keyboard.
 
 ## Packages
 
