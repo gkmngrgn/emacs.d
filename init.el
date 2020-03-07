@@ -251,11 +251,6 @@
   (setq org-todo-keywords '((sequence "TODO" "INPROGRESS" "|" "DONE")))
   (setq org-log-done t))
 
-(use-package org-bullets
-  :defer t
-  :ensure t
-  :hook (org-mode . org-bullets-mode))
-
 (use-package prescient
   :commands (prescient-persist-mode)
   :config
