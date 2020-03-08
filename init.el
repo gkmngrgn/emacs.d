@@ -316,7 +316,8 @@
 (use-package which-key
   :config
   (which-key-mode)
-  :diminish)
+  :diminish
+  :ensure t)
 
 (use-package yasnippet
   :config
