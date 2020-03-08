@@ -68,7 +68,8 @@ Download rust-analyzer
 Clone the repository to your home folder:
 
 ```shell
-git clone git@github.com:gkmngrgn/emacs.d.git ~/.emacs.d
+cd ~
+git clone git@github.com:gkmngrgn/emacs.d.git .emacs.d
 ```
 
 If you are on Windows, don't forget to add a new environment variable named
