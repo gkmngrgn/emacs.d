@@ -28,6 +28,9 @@
       scroll-conservatively 100000
       scroll-preserve-screen-position 1)
 
+;; Performance
+(setq gc-cons-threshold 100000000)
+
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'text-mode-hook   'visual-line-mode)
 (add-hook 'prog-mode-hook   'display-line-numbers-mode)
@@ -212,16 +215,20 @@
   :ensure t)
 
 (use-package lsp-mode
-  :commands (lsp)
+  :commands (lsp lsp-deferred)
   :diminish (lsp-mode . "lsp")
   :ensure t
   :hook ((dart-mode   . lsp-deferred)
          (go-mode     . lsp-deferred)
          (python-mode . lsp-deferred)
-         (rust-mode   . lsp-deferred))
+         (rust-mode   . lsp-deferred)
+         (lsp-mode    . lsp-enable-which-key-integration))
   :init
-  (setq-default lsp-prefer-flymake nil   ; flycheck is better
-                lsp-enable-snippet nil)) ; company is better
+  (setq lsp-keymap-prefix "C-c l")
+  (setq-default read-process-output-max (* 1024 1024)    ; 1mb
+                lsp-rust-server         'rust-analyzer
+                lsp-prefer-flymake      nil              ; flycheck is better
+                lsp-enable-snippet      nil))            ; company is better
 
 (use-package lsp-treemacs
   :commands (lsp-treemacs-errors-list)
@@ -306,6 +313,11 @@
   :defer t
   :ensure t)
 
+(use-package which-key
+  :config
+  (which-key-mode)
+  :diminish)
+
 (use-package yasnippet
   :config
   (yas-global-mode 1)
@@ -317,6 +329,13 @@
   :ensure t)
 
 ;; File modes
+(use-package cargo
+  :after rust-mode
+  :defer t
+  :diminish (cargo-minor-mode . "crg")
+  :ensure t
+  :hook (rust-mode . cargo-minor-mode))
+
 (use-package dart-mode
   :defer t
   :ensure t)
@@ -360,12 +379,7 @@
 
 (use-package rust-mode
   :defer t
-  :ensure t
-  :config
-  (use-package cargo
-    :diminish (cargo-minor-mode . "crg")
-    :ensure t
-    :hook (rust-mode . cargo-minor-mode)))
+  :ensure t)
 
 (use-package scss-mode
   :defer t
@@ -399,7 +413,6 @@
 (use-package hydra
   :bind (("C-c e" . hydra-errors/body)
          ("C-c f" . hydra-focus/body)
-         ("C-c l" . hydra-lsp/body)
          ("C-c p" . hydra-project/body)
          ("C-c s" . hydra-yasnippet/body))
   :config
@@ -460,23 +473,6 @@
 
       ("z" yas-tryout-snippet                    "Tryout snippet")
       ("x" yas-describe-tables                   "Describe tables")
-      ("RET" nil                                 "Close" :color blue))
-
-    (defhydra hydra-lsp (:columns 4)
-      "LSP"
-      ("a"   lsp-find-declaration                "Find declaration")
-      ("s"   lsp-ivy-workspace-symbol            "Find symbol")
-      ("d"   lsp-ui-peek-find-references         "Find references")
-      ("f"   lsp-ui-peek-find-implementation     "Find implementation")
-
-      ("j"   lsp-ui-peek-find-definitions        "Find definitions")
-      ("k"   lsp-find-type-definition            "Find type")
-      ("l"   lsp-rename                          "Rename")
-      (";"   lsp-format-buffer                   "Format buffer")
-
-      ("z"   lsp-ui-imenu                        "Menu")
-      ("x"   lsp-ui-sideline-apply-code-actions  "Select action")
-      ("c"   lsp-describe-session                "Describe session")
       ("RET" nil                                 "Close" :color blue)))
   :ensure t)
 

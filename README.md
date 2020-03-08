@@ -60,12 +60,8 @@ pip install python-langauge-server[all]
 
 ### Rust
 
-Install Rust with [rustup](https://rustup.rs/). Then type this command to
-install dependencies:
-
-```shell
-rustup component add rls rust-analysis rust-src
-```
+Download rust-analyzer
+[here](https://github.com/rust-analyzer/rust-analyzer/releases).
 
 ## Installation
 
