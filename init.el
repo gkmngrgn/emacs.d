@@ -222,6 +222,7 @@
          (go-mode     . lsp-deferred)
          (python-mode . lsp-deferred)
          (rust-mode   . lsp-deferred)
+         (yaml-mode   . lsp-deferred)
          (lsp-mode    . lsp-enable-which-key-integration))
   :init
   (setq lsp-keymap-prefix "C-c l")

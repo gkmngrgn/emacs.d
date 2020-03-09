@@ -42,7 +42,7 @@ tutorial](http://ergoemacs.org/emacs/emacs_custom_system.html).
 
 Install [Go](https://go.dev/) first, then type this command for LSP support:
 
-```shell
+```
 go get -u golang.org/x/tools/cmd/gopls
 ```
 
@@ -51,7 +51,7 @@ go get -u golang.org/x/tools/cmd/gopls
 Install Python with [pyenv](https://github.com/pyenv/pyenv-installer)
 ([pyenv-win](https://github.com/pyenv-win/pyenv-win) for Windows):
 
-```shell
+```
 pyenv install 3.8.2
 pyenv global 3.8.2
 pip install -U pip
@@ -63,11 +63,21 @@ pip install python-langauge-server[all]
 Download rust-analyzer
 [here](https://github.com/rust-analyzer/rust-analyzer/releases).
 
+
+### YAML
+
+Install [yaml language
+server](https://github.com/redhat-developer/yaml-language-server) with npm:
+
+```
+npm install -g yaml-language-server
+```
+
 ## Installation
 
 Clone the repository to your home folder:
 
-```shell
+```
 cd ~
 git clone git@github.com:gkmngrgn/emacs.d.git .emacs.d
 ```
