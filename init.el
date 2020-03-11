@@ -97,29 +97,22 @@
   :ensure t)
 
 (use-package company
+  :bind ("C-<tab>" . company-complete-common)
   :config
-  (setq company-idle-delay nil
-        company-show-numbers nil
-        company-tooltip-limit 5
-        company-minimum-prefix-length 2
-        company-tooltip-align-annotations t
-        company-tooltip-flip-when-above nil)
+  (push 'company-capf company-backends)
   :diminish (company-mode . "cmp")
   :ensure t
+  :hook ((after-init . global-company-mode))
   :init
-  (global-company-mode 1))
-
-(use-package company-lsp
-  :after company
-  :bind ("C-<tab>" . company-complete-common)
-  :commands (company-lsp)
-  :config
-  (push 'company-lsp company-backends)
-  :ensure t
-  :init
-  (setq company-lsp-async t
-        company-lsp-enable-snippet t
-        company-lsp-cache-candidates 'auto))
+  (setq-default company-dabbrev-ignore-case t
+                company-dabbrev-code-ignore-case t)
+  (setq company-idle-delay nil
+        company-minimum-prefix-length 2
+        company-require-match 'never
+        company-show-numbers nil
+        company-tooltip-align-annotations t
+        company-tooltip-flip-when-above t
+        company-tooltip-limit 10))
 
 (use-package company-prescient
   :after company
@@ -130,6 +123,8 @@
 
 (use-package company-solidity
   :after solidity-mode
+  :config
+  (push 'company-solidity company-backends)
   :defer t
   :ensure t)
 
@@ -188,13 +183,6 @@
   :defer t
   :ensure t)
 
-(use-package indent-guide
-  :defer t
-  :ensure t
-  :init
-  (setq indent-guide-delay 0.2)
-  (indent-guide-global-mode))
-
 (use-package ivy
   :config
   (ivy-mode 1)
@@ -227,13 +215,16 @@
          (yaml-mode   . lsp-deferred)
          (lsp-mode    . lsp-enable-which-key-integration))
   :init
-  (setq lsp-keymap-prefix "C-c l")
+  (setq
+   lsp-keymap-prefix "C-c l"
+   lsp-prefer-capf t
+   lsp-idle-delay 0.500
+   lsp-enable-snippet nil                              ; company is better
+   lsp-signature-doc-lines 10
+   lsp-signature-auto-activate nil)
   (setq-default read-process-output-max (* 1024 1024)  ; 1mb
-                lsp-signature-doc-lines 10
-                lsp-signature-auto-activate nil
                 lsp-rust-server 'rust-analyzer
-                lsp-prefer-flymake nil                 ; flycheck is better
-                lsp-enable-snippet nil))               ; company is better
+                lsp-prefer-flymake nil))               ; flycheck is better
 
 (use-package lsp-treemacs
   :commands (lsp-treemacs-errors-list)
