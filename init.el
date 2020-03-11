@@ -89,6 +89,8 @@
 
 (use-package ace-window
   :bind ("M-o" . ace-window)
+  :defer t
+  :diminish
   :ensure t)
 
 (use-package ag
