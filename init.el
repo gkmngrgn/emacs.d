@@ -226,10 +226,12 @@
          (lsp-mode    . lsp-enable-which-key-integration))
   :init
   (setq lsp-keymap-prefix "C-c l")
-  (setq-default read-process-output-max (* 1024 1024)    ; 1mb
-                lsp-rust-server         'rust-analyzer
-                lsp-prefer-flymake      nil              ; flycheck is better
-                lsp-enable-snippet      nil))            ; company is better
+  (setq-default read-process-output-max (* 1024 1024)  ; 1mb
+                lsp-signature-doc-lines 10
+                lsp-signature-auto-activate nil
+                lsp-rust-server 'rust-analyzer
+                lsp-prefer-flymake nil                 ; flycheck is better
+                lsp-enable-snippet nil))               ; company is better
 
 (use-package lsp-treemacs
   :commands (lsp-treemacs-errors-list)
@@ -241,7 +243,8 @@
   :ensure t
   :commands (lsp-ui-mode)
   :init
-  (setq lsp-ui-doc-enable nil))
+  (setq lsp-ui-doc-max-width 120
+        lsp-ui-doc-max-height 15))
 
 (use-package magit
   :bind (("C-x g" . magit-status))
