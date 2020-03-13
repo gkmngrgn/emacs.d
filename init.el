@@ -36,6 +36,7 @@
 (add-hook 'prog-mode-hook   'display-line-numbers-mode)
 
 (menu-bar-mode -1)
+(delete-selection-mode 1)
 (global-hl-line-mode)
 (global-auto-revert-mode)
 (prefer-coding-system       'utf-8)
