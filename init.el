@@ -93,7 +93,7 @@
   :diminish
   :ensure t
   :init
-  (global-set-key (kbd "M-p") 'ace-window)
+  (global-set-key (kbd "M-o") 'ace-window)
   (setq aw-dispatch-always t))
 
 (use-package ag
