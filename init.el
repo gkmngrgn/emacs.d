@@ -89,10 +89,12 @@
   :ensure t)
 
 (use-package ace-window
-  :bind ("M-o" . ace-window)
   :defer t
   :diminish
-  :ensure t)
+  :ensure t
+  :init
+  (global-set-key (kbd "M-p") 'ace-window)
+  (setq aw-dispatch-always t))
 
 (use-package ag
   :ensure t)
