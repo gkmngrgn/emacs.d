@@ -243,8 +243,6 @@
         lsp-ui-doc-max-height 15))
 
 (use-package magit
-  :bind (("C-x g" . magit-status))
-  :defer t
   :ensure t)
 
 (use-package modus-operandi-theme
