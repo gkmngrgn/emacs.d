@@ -248,6 +248,7 @@
   :ensure t)
 
 (use-package modus-operandi-theme
+  :defer t
   :ensure t)
 
 (use-package modus-vivendi-theme
