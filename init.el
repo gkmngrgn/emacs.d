@@ -71,6 +71,8 @@
 
 (global-set-key (kbd "C-c SPC") 'comment-or-uncomment-region)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "M-p") 'backward-paragraph)
+(global-set-key (kbd "M-n") 'forward-paragraph)
 
 ;; GUI settings
 (if (display-graphic-p)
