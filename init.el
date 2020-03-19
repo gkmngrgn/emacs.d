@@ -311,6 +311,8 @@
   :ensure t)
 
 (use-package undo-fu
+  :bind (("C-_" . undo-fu-only-undo)
+         ("C-+" . undo-fu-only-redo))
   :defer t
   :ensure t)
 
@@ -438,10 +440,6 @@
       ("j"   diff-hl-previous-hunk               "Previous diff")
       ("k"   diff-hl-diff-goto-hunk              "Show diff")
       ("l"   diff-hl-next-hunk                   "Next diff")
-      (";"   diff-hl-revert-hunk                 "Revert changes")
-
-      ("z"   undo-fu-only-undo                   "Undo")
-      ("x"   undo-fu-only-redo                   "Redo")
       ("RET" nil                                 "Close" :color blue))
 
     (defhydra hydra-project (:columns 4)
