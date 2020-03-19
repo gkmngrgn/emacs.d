@@ -105,7 +105,7 @@
   :bind ("C-<tab>" . company-complete-common)
   :config
   (push 'company-capf company-backends)
-  :diminish (company-mode . "cmp")
+  :diminish
   :ensure t
   :hook ((after-init . global-company-mode))
   :init
@@ -152,7 +152,7 @@
 
 (use-package editorconfig
   :ensure t
-  :diminish (editorconfig-mode . "edc")
+  :diminish
   :config
   (setq editorconfig-exclude-modes
         '(common-lisp-mode
@@ -174,7 +174,7 @@
   :ensure t)
 
 (use-package flycheck
-  :diminish (flycheck-mode . "fly")
+  :diminish
   :ensure t
   :init
   (global-flycheck-mode))
@@ -211,7 +211,7 @@
 
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
-  :diminish (lsp-mode . "lsp")
+  :diminish
   :ensure t
   :hook ((dart-mode   . lsp-deferred)
          (go-mode     . lsp-deferred)
@@ -269,7 +269,7 @@
 (use-package projectile
   :defer t
   :ensure t
-  :diminish (projectile-mode . "prj")
+  :diminish
   :config
   (projectile-mode +1)
   :init
@@ -294,7 +294,7 @@
   :config
   (setq inferior-lisp-program "sbcl")
   (slime-setup '(slime-fancy slime-company))
-  :diminish (slime-mode . "slm")
+  :diminish
   :ensure t)
 
 (use-package solidity-mode
@@ -323,7 +323,7 @@
 (use-package yasnippet
   :config
   (yas-global-mode 1)
-  :diminish (yasnippet-mode . "yas")
+  :diminish (yas-minor-mode)
   :ensure t)
 
 (use-package yasnippet-snippets
@@ -334,7 +334,7 @@
 (use-package cargo
   :after rust-mode
   :defer t
-  :diminish (cargo-minor-mode . "crg")
+  :diminish (cargo-minor-mode)
   :ensure t
   :hook (rust-mode . cargo-minor-mode))
 
@@ -390,7 +390,7 @@
          ("\\.sass$" . scss-mode)))
 
 (use-package text-mode
-  :diminish (visual-line-mode . "wrp")
+  :diminish (visual-line-mode)
   :init
   (add-to-list 'auto-mode-alist '("\\`/tmp/neomutt-" . mail-mode)))
 
