@@ -316,6 +316,11 @@
   :defer t
   :ensure t)
 
+(use-package unfill
+  :bind (("C-M-q" . unfill-paragraph))
+  :defer t
+  :ensure t)
+
 (use-package which-key
   :config
   (which-key-mode)
