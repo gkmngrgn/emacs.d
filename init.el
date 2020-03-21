@@ -19,7 +19,7 @@
 
 (setq initial-scratch-message ""
       inhibit-splash-screen t
-      visible-bell t
+      ring-bell-function 'ignore
       require-final-newline t
       line-number-mode t
       column-number-mode t)
