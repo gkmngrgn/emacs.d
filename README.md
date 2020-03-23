@@ -43,7 +43,7 @@ tutorial](http://ergoemacs.org/emacs/emacs_custom_system.html).
 Install [Go](https://go.dev/) first, then type this command for LSP support:
 
 ```
-go get -u golang.org/x/tools/cmd/gopls
+go get -u golang.org/x/tools/gopls
 ```
 
 ### Python
