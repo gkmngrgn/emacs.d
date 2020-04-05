@@ -421,8 +421,7 @@
 ;; Hydra settings
 (use-package hydra
   :bind (("C-c e" . hydra-errors/body)
-         ("C-c f" . hydra-focus/body)
-         ("C-c s" . hydra-yasnippet/body))
+         ("C-c f" . hydra-focus/body))
   :config
   (with-no-warnings ;; to ignore the warning message "the following functions might not be defined..."
     (defhydra hydra-errors (:pre (flycheck-list-errors)
@@ -442,24 +441,13 @@
       ("r"   focus-read-only-mode                "Review")
 
       ("g"   diff-hl-diff-goto-hunk              "Show diff")
+      ("u"   diff-hl-revert-hunk                 "Revert diff")
       ("j"   diff-hl-previous-hunk               "Previous diff")
       ("k"   diff-hl-next-hunk                   "Next diff")
-      ("RET" nil                                 "Close" :color blue))
 
-    (defhydra hydra-yasnippet (:columns 4)
-      "Yasnippet"
-      ("a" yas-load-directory                    "Load directory")
-      ("s" yas-insert-snippet                    "Insert snippet")
-      ("d" yas-visit-snippet-file                "Visit snippet file")
-      ("f" yas-new-snippet                       "New snippet")
-
-      ("j" yas/global-mode                       "Global mode")
-      ("k" yas/minor-mode                        "Minor mode")
-      ("l" yas-activate-extra-mode               "Extra mode")
-      (";" yas-reload-all                        "Reload all")
-
-      ("z" yas-tryout-snippet                    "Tryout snippet")
-      ("x" yas-describe-tables                   "Describe tables")
+      ("s"   yas-insert-snippet                  "Insert snippet")
+      ("n"   yas-new-snippet                     "New snippet")
+      ("v"   yas-visit-snippet-file              "Visit snippet")
       ("RET" nil                                 "Close" :color blue)))
   :ensure t)
 
