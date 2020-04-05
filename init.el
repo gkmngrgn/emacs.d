@@ -267,10 +267,10 @@
   :ensure t)
 
 (use-package projectile
-  :defer t
   :ensure t
   :diminish
   :config
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   (projectile-mode +1)
   :init
   (setq projectile-completion-system 'ivy))
@@ -422,7 +422,6 @@
 (use-package hydra
   :bind (("C-c e" . hydra-errors/body)
          ("C-c f" . hydra-focus/body)
-         ("C-c p" . hydra-project/body)
          ("C-c s" . hydra-yasnippet/body))
   :config
   (with-no-warnings ;; to ignore the warning message "the following functions might not be defined..."
@@ -430,38 +429,21 @@
                                  :post (quit-windows-on "*Flycheck errors*")
                                  :hint nil)
       "Errors"
-      ("z"   flycheck-error-list-set-filter      "Filter")
-      ("x"   flycheck-next-error                 "Next")
-      ("c"   flycheck-previous-error             "Previous")
+      ("f"   flycheck-error-list-set-filter      "Filter")
+      ("j"   flycheck-next-error                 "Next")
+      ("k"   flycheck-previous-error             "Previous")
       ("RET" nil                                 "Close" :color blue))
 
     (defhydra hydra-focus (:columns 4)
       "Focus"
-      ("a"   text-scale-increase                 "Zoom in")
-      ("s"   text-scale-decrease                 "Zoom out")
-      ("d"   focus-mode                          "Focus")
-      ("f"   focus-read-only-mode                "Review")
+      ("+"   text-scale-increase                 "Zoom in")
+      ("-"   text-scale-decrease                 "Zoom out")
+      ("f"   focus-mode                          "Focus")
+      ("r"   focus-read-only-mode                "Review")
 
+      ("g"   diff-hl-diff-goto-hunk              "Show diff")
       ("j"   diff-hl-previous-hunk               "Previous diff")
-      ("k"   diff-hl-diff-goto-hunk              "Show diff")
-      ("l"   diff-hl-next-hunk                   "Next diff")
-      ("RET" nil                                 "Close" :color blue))
-
-    (defhydra hydra-project (:columns 4)
-      "Projectile"
-      ("a"   projectile-find-file                "Find file")
-      ("s"   projectile-recentf                  "Recent files")
-      ("d"   projectile-cache-current-file       "Cache current file")
-      ("f"   projectile-remove-known-project     "Remove known project")
-
-      ("j"   projectile-find-dir                 "Find directory")
-      ("k"   projectile-switch-to-buffer         "Switch to buffer")
-      ("l"   projectile-invalidate-cache         "Clear cache")
-      (";"   projectile-cleanup-known-projects   "Cleanup known projects")
-
-      ("z"   projectile-multi-occur              "Multi occur")
-      ("x"   projectile-switch-project           "Switch project")
-      ("c"   projectile-kill-buffers             "Kill buffers")
+      ("k"   diff-hl-next-hunk                   "Next diff")
       ("RET" nil                                 "Close" :color blue))
 
     (defhydra hydra-yasnippet (:columns 4)
