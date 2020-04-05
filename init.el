@@ -338,6 +338,10 @@
   :ensure t)
 
 ;; File modes
+(use-package bazel-mode
+  :defer t
+  :ensure t)
+
 (use-package cargo
   :after rust-mode
   :defer t
