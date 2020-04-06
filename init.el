@@ -446,8 +446,8 @@
 
       ("g"   diff-hl-diff-goto-hunk              "Show diff")
       ("u"   diff-hl-revert-hunk                 "Revert diff")
-      ("j"   diff-hl-previous-hunk               "Previous diff")
-      ("k"   diff-hl-next-hunk                   "Next diff")
+      ("j"   diff-hl-next-hunk                   "Next diff")
+      ("k"   diff-hl-previous-hunk               "Previous diff")
 
       ("s"   yas-insert-snippet                  "Insert snippet")
       ("n"   yas-new-snippet                     "New snippet")
