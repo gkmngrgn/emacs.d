@@ -337,6 +337,16 @@
   :after yasnippet
   :ensure t)
 
+(use-package zoom
+  :diminish
+  :ensure t
+  :config
+  (zoom-mode t)
+  (setq zoom-size '(0.618 . 0.618)
+	zoom-ignored-major-modes '(which-key-mode hydra-mode)
+	zoom-ignored-buffer-name-regexps '("\\*Help\\*" "\\*which-key\\*")
+	zoom-minibuffer-preserve-layout t))
+
 ;; File modes
 (use-package bazel-mode
   :defer t
