@@ -173,6 +173,11 @@
   :defer t
   :ensure t)
 
+(use-package eyebrowse
+  :ensure t
+  :init
+  (eyebrowse-mode t))
+
 (use-package flycheck
   :diminish
   :ensure t
