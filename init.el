@@ -39,6 +39,8 @@
 (delete-selection-mode 1)
 (global-hl-line-mode)
 (global-auto-revert-mode)
+(temp-buffer-resize-mode t)
+
 (prefer-coding-system       'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-language-environment   'utf-8)
@@ -348,9 +350,8 @@
   :config
   (zoom-mode t)
   (setq zoom-size '(0.618 . 0.618)
-	zoom-ignored-major-modes '(which-key-mode hydra-mode)
-	zoom-ignored-buffer-name-regexps '("\\*Help\\*" "\\*which-key\\*")
-	zoom-minibuffer-preserve-layout t))
+	zoom-ignored-major-modes '(which-key-mode
+                                   hydra-mode)))
 
 ;; File modes
 (use-package bazel-mode
