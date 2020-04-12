@@ -22,7 +22,8 @@
       ring-bell-function 'ignore
       require-final-newline t
       line-number-mode t
-      column-number-mode t)
+      column-number-mode t
+      auto-window-vscroll nil)
 
 (setq scroll-margin 0
       scroll-conservatively 100000
@@ -256,10 +257,16 @@
 
 (use-package modus-operandi-theme
   :defer t
-  :ensure t)
+  :ensure t
+  :config
+  (set-face-attribute 'mode-line nil
+                      :box nil))
 
 (use-package modus-vivendi-theme
-  :ensure t)
+  :ensure t
+  :config
+  (set-face-attribute 'mode-line nil
+                      :box nil))
 
 (use-package org
   :init
