@@ -105,7 +105,7 @@
   :ensure t)
 
 (use-package company
-  :bind ("C-<tab>" . company-complete-common)
+  :bind ("C-c TAB" . company-complete-common)
   :config
   (push 'company-capf company-backends)
   :diminish
@@ -114,7 +114,7 @@
   :init
   (setq-default company-dabbrev-ignore-case t
                 company-dabbrev-code-ignore-case t)
-  (setq company-idle-delay nil
+  (setq company-idle-delay 1
         company-minimum-prefix-length 2
         company-require-match 'never
         company-show-numbers nil
