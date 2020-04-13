@@ -325,8 +325,8 @@
   :ensure t)
 
 (use-package undo-fu
-  :bind (("C-_" . undo-fu-only-undo)
-         ("C-+" . undo-fu-only-redo))
+  :bind (("C-z" . undo-fu-only-undo)
+         ("C-M-z" . undo-fu-only-redo))
   :defer t
   :ensure t)
 
