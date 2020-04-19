@@ -72,8 +72,7 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-(global-set-key (kbd "M-/") 'comment-line)
+(global-set-key (kbd "C-/") 'comment-line)
 (global-set-key (kbd "M-p") 'backward-paragraph)
 (global-set-key (kbd "M-n") 'forward-paragraph)
 
@@ -94,11 +93,15 @@
   :ensure t)
 
 (use-package ace-window
+  :config
+  (custom-set-faces
+   '(aw-leading-char-face ((t (:height 1.0)))))
   :defer t
   :diminish
   :ensure t
   :init
   (global-set-key (kbd "M-o") 'ace-window)
+  (setq aw-background nil)
   (setq aw-dispatch-always t))
 
 (use-package ag
@@ -193,6 +196,11 @@
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 (use-package focus
+  :defer t
+  :ensure t)
+
+(use-package frog-jump-buffer
+  :bind (("C-x C-b" . frog-jump-buffer))
   :defer t
   :ensure t)
 
