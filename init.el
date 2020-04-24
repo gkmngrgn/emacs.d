@@ -236,6 +236,17 @@
          (yaml-mode   . lsp-deferred)
          (lsp-mode    . lsp-enable-which-key-integration))
   :init
+  (custom-set-variables
+   '(lsp-pyls-plugins-jedi-completion-enabled t)
+   '(lsp-pyls-plugins-pyflakes-enabled t)
+   '(lsp-pyls-plugins-mccabe-enabled nil)
+   '(lsp-pyls-plugins-pylint-enabled nil)
+   '(lsp-pyls-plugins-pycodestyle-enabled nil)
+   '(lsp-pyls-plugins-pydocstyle-enabled nil)
+   '(lsp-pyls-plugins-rope-completion-enabled nil)
+   '(lsp-pyls-plugins-autopep8-enabled nil)
+   '(lsp-pyls-plugins-yapf-enabled nil)
+   '(lsp-pyls-plugins-flake8-enabled nil))
   (setq
    lsp-keymap-prefix "C-c l"
    lsp-prefer-capf t
