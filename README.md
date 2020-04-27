@@ -50,7 +50,7 @@ Install Python with [pyenv][12] ([pyenv-win][13] for Windows):
 pyenv install 3.8.2
 pyenv global 3.8.2
 pip install -U pip
-pip install python-language-server pyls-mypy pyls-isort pyls-black pyflakes jedi
+pip install python-language-server pyls-mypy pyls-isort pyls-black pyflakes jedi==0.15.2
 ```
 
 ### Rust
