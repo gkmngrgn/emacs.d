@@ -41,7 +41,6 @@
 (global-hl-line-mode)
 (global-auto-revert-mode)
 (temp-buffer-resize-mode t)
-(electric-indent-mode -1)
 
 (prefer-coding-system       'utf-8)
 (set-default-coding-systems 'utf-8)
@@ -418,17 +417,6 @@
                       :foreground "dim gray")
   (add-hook 'markdown-mode-hook 'visual-line-mode))
 
-(use-package js2-mode
-  :defer t
-  :ensure t
-  :mode ("\\.js$" . js2-mode)
-  :config
-  (add-hook 'js2-mode-hook
-            '(lambda ()
-               (setq js2-pretty-multiline-decl-indentation-p t
-                     js2-consistent-level-indent-inner-bracket-p t
-                     js2-basic-offset 2))))
-
 (use-package powershell
   :defer t
   :ensure t)
@@ -447,6 +435,15 @@
   :diminish (visual-line-mode)
   :init
   (add-to-list 'auto-mode-alist '("\\`/tmp/neomutt-" . mail-mode)))
+
+(use-package vue-mode
+  :defer t
+  :ensure t
+  :init
+  (add-hook 'vue-mode-hook (lambda () (setq syntax-ppss-table nil)))
+  (add-hook 'mmm-mode-hook
+            (lambda ()
+              (set-face-background 'mmm-default-submode-face nil))))
 
 (use-package web-mode
   :defer t
