@@ -41,7 +41,7 @@
 (global-hl-line-mode)
 (global-auto-revert-mode)
 (temp-buffer-resize-mode t)
-(electric-indent-mode nil)
+(electric-indent-mode -1)
 
 (prefer-coding-system       'utf-8)
 (set-default-coding-systems 'utf-8)
