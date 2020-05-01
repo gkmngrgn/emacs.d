@@ -274,13 +274,6 @@
 (use-package magit
   :ensure t)
 
-(use-package modus-operandi-theme
-  :defer t
-  :ensure t
-  :config
-  (set-face-attribute 'mode-line nil
-                      :box nil))
-
 (use-package modus-vivendi-theme
   :ensure t
   :config
