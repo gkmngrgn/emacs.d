@@ -58,12 +58,17 @@ pip install python-language-server pyls-mypy pyls-isort pyls-black pyflakes jedi
 Download rust-analyzer [here][14].
 
 
-### YAML
+### CSS & HTML & JavaScript & JSON & TypeScript & YAML
 
-Install [yaml language server][15] with npm:
+Install all dependencies using npm:
 
 ```
-npm install -g yaml-language-server
+npm install -g javascript-typescript-langserver \
+               js-beautify \
+               vscode-css-languageserver-bin \
+               vscode-html-languageserver-bin \
+               vscode-json-languageserver \
+               yaml-language-server
 ```
 
 ## Installation

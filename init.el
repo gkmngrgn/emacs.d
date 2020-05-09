@@ -163,8 +163,7 @@
   (setq editorconfig-exclude-modes
         '(common-lisp-mode
           emacs-lisp-mode
-          lisp-mode
-          web-mode))
+          lisp-mode))
   (editorconfig-mode 1))
 
 (use-package exec-path-from-shell
@@ -229,12 +228,15 @@
   :commands (lsp lsp-deferred)
   :diminish
   :ensure t
-  :hook ((dart-mode   . lsp-deferred)
-         (go-mode     . lsp-deferred)
-         (python-mode . lsp-deferred)
-         (rust-mode   . lsp-deferred)
-         (yaml-mode   . lsp-deferred)
-         (lsp-mode    . lsp-enable-which-key-integration))
+  :hook ((css-mode        . lsp-deferred)
+         (dart-mode       . lsp-deferred)
+         (go-mode         . lsp-deferred)
+         (javascript-mode . lsp-deferred)
+         (python-mode     . lsp-deferred)
+         (rust-mode       . lsp-deferred)
+         (web-mode        . lsp-deferred)
+         (yaml-mode       . lsp-deferred)
+         (lsp-mode        . lsp-enable-which-key-integration))
   :init
   (custom-set-variables
    '(lsp-pyls-plugins-jedi-completion-enabled t)
@@ -437,6 +439,10 @@
   (add-hook 'mmm-mode-hook
             (lambda ()
               (set-face-background 'mmm-default-submode-face nil))))
+
+(use-package web-beautify
+  :defer t
+  :ensure t)
 
 (use-package web-mode
   :defer t
