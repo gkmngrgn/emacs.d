@@ -12,22 +12,33 @@
 ;;; Code:
 
 ;; Initial Setup
-(setq-default cursor-type 'box
-              fill-column 80
-              indent-tabs-mode nil
-              truncate-lines t)
+(setq-default cursor-type 'box)
+(setq-default fill-column 80)
+(setq-default indent-tabs-mode nil)
+(setq-default truncate-lines t)
+(setq-default line-spacing 0)
 
-(setq initial-scratch-message ""
-      inhibit-splash-screen t
-      ring-bell-function 'ignore
-      require-final-newline t
-      line-number-mode t
-      column-number-mode t
-      auto-window-vscroll nil)
+(setq ring-bell-function 'ignore)
+(setq require-final-newline t)
+(setq line-number-mode t)
+(setq column-number-mode t)
+(setq auto-window-vscroll nil)
 
-(setq scroll-margin 0
-      scroll-conservatively 100000
-      scroll-preserve-screen-position 1)
+;; Startup Settings
+(setq inhibit-splash-screen t)
+(setq inhibit-startup-screen t)
+(setq inhibit-startup-echo-area-message t)
+(setq inhibit-startup-message t)   ;; Show/hide startup page
+(setq initial-scratch-message nil) ;; Show/hide *scratch* buffer message
+(setq initial-major-mode 'text-mode)
+
+;; Scroll Settings
+(setq scroll-margin 0)
+(setq scroll-conservatively 100000)
+(setq scroll-preserve-screen-position 1)
+
+;; Mode Line Settings
+
 
 ;; Performance
 (setq gc-cons-threshold 100000000)
@@ -36,7 +47,7 @@
 (add-hook 'text-mode-hook   'visual-line-mode)
 (add-hook 'prog-mode-hook   'display-line-numbers-mode)
 
-(menu-bar-mode -1)
+(menu-bar-mode 0)
 (delete-selection-mode 1)
 (global-hl-line-mode)
 (global-auto-revert-mode)
@@ -79,8 +90,8 @@
 ;; GUI settings
 (if (display-graphic-p)
     (progn
-      (scroll-bar-mode -1)
-      (tool-bar-mode -1)
+      (scroll-bar-mode 0)
+      (tool-bar-mode 0)
       (set-frame-font "IBM Plex Mono Italic")
       (set-face-attribute 'default nil :height 130)))
 
@@ -280,7 +291,11 @@
   :ensure t
   :config
   (set-face-attribute 'mode-line nil
-                      :box nil))
+                      :box nil
+                      :height 110)
+  (set-face-attribute 'mode-line-inactive nil
+                      :box nil
+                      :inherit 'mode-line))
 
 (use-package org
   :init
