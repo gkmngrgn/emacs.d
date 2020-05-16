@@ -37,9 +37,6 @@
 (setq scroll-conservatively 100000)
 (setq scroll-preserve-screen-position 1)
 
-;; Mode Line Settings
-
-
 ;; Performance
 (setq gc-cons-threshold 100000000)
 
