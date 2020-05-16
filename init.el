@@ -83,6 +83,9 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
+
 (global-set-key (kbd "C-/") 'comment-line)
 (global-set-key (kbd "M-p") 'backward-paragraph)
 (global-set-key (kbd "M-n") 'forward-paragraph)
@@ -100,8 +103,7 @@
   :bind (("M-g g" . avy-goto-char-2)
          ("M-g f" . avy-goto-char))
   :config
-  (avy-setup-default)
-  :ensure t)
+  (avy-setup-default))
 
 (use-package ace-window
   :config
@@ -109,21 +111,18 @@
    '(aw-leading-char-face ((t (:height 1.0)))))
   :defer t
   :diminish
-  :ensure t
   :init
   (global-set-key (kbd "M-o") 'ace-window)
   (setq aw-background nil)
   (setq aw-dispatch-always t))
 
-(use-package ag
-  :ensure t)
+(use-package ag)
 
 (use-package company
   :bind ("C-c TAB" . company-complete-common)
   :config
   (push 'company-capf company-backends)
   :diminish
-  :ensure t
   :hook ((after-init . global-company-mode))
   :init
   (setq-default company-dabbrev-ignore-case t
@@ -140,35 +139,29 @@
   :after company
   :config
   (company-prescient-mode t)
-  :defer t
-  :ensure t)
+  :defer t)
 
 (use-package company-solidity
   :after solidity-mode
   :config
   (push 'company-solidity company-backends)
-  :defer t
-  :ensure t)
+  :defer t)
 
 (use-package counsel
   :bind (("M-x"     . counsel-M-x)
          ("C-r"     . counsel-git-grep)
          ("C-x C-f" . counsel-find-file)
-         ("C-x C-d" . counsel-git))
-  :ensure t)
+         ("C-x C-d" . counsel-git)))
 
 (use-package diff-hl
   :config
   (global-diff-hl-mode)
   (if (not (display-graphic-p))
-      (diff-hl-margin-mode))
-  :ensure t)
+      (diff-hl-margin-mode)))
 
-(use-package diminish
-  :ensure t)
+(use-package diminish)
 
 (use-package editorconfig
-  :ensure t
   :diminish
   :config
   (setq editorconfig-exclude-modes
@@ -178,7 +171,6 @@
   (editorconfig-mode 1))
 
 (use-package exec-path-from-shell
-  :ensure t
   :commands (exec-path-from-shell-initialize)
   :init
   (when (memq window-system '(mac ns x))
@@ -186,59 +178,49 @@
 
 (use-package expand-region
   :bind (("C-M-w" . er/expand-region))
-  :defer t
-  :ensure t)
+  :defer t)
 
 (use-package eyebrowse
-  :ensure t
   :init
   (eyebrowse-mode t))
 
 (use-package flycheck
   :diminish
-  :ensure t
   :init
   (global-flycheck-mode))
 
 (use-package flycheck-rust
-  :ensure t
   :config
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 (use-package focus
-  :defer t
-  :ensure t)
+  :defer t)
 
 (use-package frog-jump-buffer
   :bind (("C-x C-b" . frog-jump-buffer))
-  :defer t
-  :ensure t)
+  :defer t)
 
 (use-package ivy
   :config
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t)
   (setq enable-recursive-minibuffers t)
-  :diminish
-  :ensure t)
+  :diminish)
 
 (use-package ivy-prescient
   :after counsel
   :config
   (ivy-prescient-mode t)
-  :defer t
-  :ensure t)
+  :defer t)
 
 (use-package lsp-ivy
   :after counsel
   :commands (lsp-ivy-workspace-symbol)
-  :defer t
-  :ensure t)
+  :defer t)
 
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :diminish
-  :ensure t
   :hook ((css-mode        . lsp-deferred)
          (dart-mode       . lsp-deferred)
          (go-mode         . lsp-deferred)
@@ -273,22 +255,18 @@
 
 (use-package lsp-treemacs
   :commands (lsp-treemacs-errors-list)
-  :defer t
-  :ensure t)
+  :defer t)
 
 (use-package lsp-ui
   :defer t
-  :ensure t
   :commands (lsp-ui-mode)
   :init
   (setq lsp-ui-doc-max-width 120
         lsp-ui-doc-max-height 15))
 
-(use-package magit
-  :ensure t)
+(use-package magit)
 
 (use-package modus-vivendi-theme
-  :ensure t
   :config
   (set-face-attribute 'mode-line nil
                       :box nil
@@ -306,11 +284,9 @@
   :commands (prescient-persist-mode)
   :config
   (prescient-persist-mode t)
-  :defer t
-  :ensure t)
+  :defer t)
 
 (use-package projectile
-  :ensure t
   :diminish
   :config
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
@@ -327,62 +303,50 @@
   :config
   (require 'smartparens-config)
   (smartparens-global-mode t)
-  (show-smartparens-global-mode t)
-  :ensure t)
+  (show-smartparens-global-mode t))
 
-(use-package slime-company
-  :ensure t)
+(use-package slime-company)
 
 (use-package slime
   :config
   (setq inferior-lisp-program "sbcl")
   (slime-setup '(slime-fancy slime-company))
-  :diminish
-  :ensure t)
+  :diminish)
 
 (use-package solidity-mode
-  :defer t
-  :ensure t)
+  :defer t)
 
 (use-package solidity-flycheck
   :after solidity-mode
-  :defer t
-  :ensure t)
+  :defer t)
 
 (use-package swiper
-  :bind (("C-s" . swiper))
-  :ensure t)
+  :bind (("C-s" . swiper)))
 
 (use-package undo-fu
   :bind (("C-z" . undo-fu-only-undo)
          ("C-M-z" . undo-fu-only-redo))
-  :defer t
-  :ensure t)
+  :defer t)
 
 (use-package unfill
   :bind (("C-M-q" . unfill-paragraph))
-  :defer t
-  :ensure t)
+  :defer t)
 
 (use-package which-key
   :config
   (which-key-mode)
-  :diminish
-  :ensure t)
+  :diminish)
 
 (use-package yasnippet
   :config
   (yas-global-mode 1)
-  :diminish (yas-minor-mode)
-  :ensure t)
+  :diminish (yas-minor-mode))
 
 (use-package yasnippet-snippets
-  :after yasnippet
-  :ensure t)
+  :after yasnippet)
 
 (use-package zoom
   :diminish
-  :ensure t
   :config
   (zoom-mode t)
   (setq zoom-size '(0.618 . 0.618)
@@ -391,35 +355,30 @@
 
 ;; File modes
 (use-package bazel-mode
-  :defer t
-  :ensure t)
+  :defer t)
 
 (use-package cargo
   :after rust-mode
   :defer t
   :diminish (cargo-minor-mode)
-  :ensure t
   :hook (rust-mode . cargo-minor-mode))
 
 (use-package dart-mode
-  :defer t
-  :ensure t)
+  :defer t)
 
 (use-package dockerfile-mode
-  :defer t
-  :ensure t)
+  :defer t)
 
 (use-package go-mode
-  :defer t
-  :ensure t)
+  :defer t)
 
 (use-package lisp-mode
   :defer t
+  :ensure nil  ;; pre-installed package
   :diminish eldoc-mode)
 
 (use-package markdown-mode
   :defer t
-  :ensure t
   :mode (("\\.md$" . markdown-mode))
   :config
   (set-face-attribute 'markdown-code-face nil
@@ -428,27 +387,24 @@
   (add-hook 'markdown-mode-hook 'visual-line-mode))
 
 (use-package powershell
-  :defer t
-  :ensure t)
+  :defer t)
 
 (use-package rust-mode
-  :defer t
-  :ensure t)
+  :defer t)
 
 (use-package scss-mode
   :defer t
-  :ensure t
   :mode (("\\.scss$" . scss-mode)
          ("\\.sass$" . scss-mode)))
 
 (use-package text-mode
   :diminish (visual-line-mode)
+  :ensure nil  ;; pre-installed package
   :init
   (add-to-list 'auto-mode-alist '("\\`/tmp/neomutt-" . mail-mode)))
 
 (use-package vue-mode
   :defer t
-  :ensure t
   :init
   (add-hook 'vue-mode-hook (lambda () (setq syntax-ppss-table nil)))
   (add-hook 'mmm-mode-hook
@@ -456,12 +412,10 @@
               (set-face-background 'mmm-default-submode-face nil))))
 
 (use-package web-beautify
-  :defer t
-  :ensure t)
+  :defer t)
 
 (use-package web-mode
   :defer t
-  :ensure t
   :mode ("\\.html$" . web-mode)
   :config
   (setq web-mode-engines-alist '(("django" . "\\.html$"))
@@ -470,8 +424,7 @@
         web-mode-enable-auto-indentation nil))
 
 (use-package yaml-mode
-  :defer t
-  :ensure t)
+  :defer t)
 
 ;; Hydra settings
 (use-package hydra
@@ -503,8 +456,7 @@
       ("s"   yas-insert-snippet                  "Insert snippet")
       ("n"   yas-new-snippet                     "New snippet")
       ("v"   yas-visit-snippet-file              "Visit snippet")
-      ("RET" nil                                 "Close" :color blue)))
-  :ensure t)
+      ("RET" nil                                 "Close" :color blue))))
 
 ;;; init.el ends here
 
