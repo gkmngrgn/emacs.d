@@ -18,8 +18,8 @@ starting with `(use-package `.
 Some features need to the external dependencies. My font is **IBM Plex**, please
 get it from [this link][3] or choose another font.
 
-The other external dependency is [silversearch-ag][4] for searching and
-filtering. It supports Windows.
+The other external dependency is [ripgrep][4] for searching and filtering. It
+supports Windows.
 
 ## Programming Languages
 
@@ -92,7 +92,7 @@ That's all.
 [1]: https://www.spacemacs.org/
 [2]: https://github.com/hlissner/doom-emacs
 [3]: https://www.ibm.com/plex/
-[4]: https://geoff.greer.fm/ag/
+[4]: https://github.com/BurntSushi/ripgrep/
 [5]: https://common-lisp.net/project/slime/
 [6]: http://www.sbcl.org/
 [7]: http://ergoemacs.org/emacs/emacs_custom_system.html

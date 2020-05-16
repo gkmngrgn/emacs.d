@@ -116,8 +116,6 @@
   (setq aw-background nil)
   (setq aw-dispatch-always t))
 
-(use-package ag)
-
 (use-package company
   :bind ("C-c TAB" . company-complete-common)
   :config
@@ -149,7 +147,7 @@
 
 (use-package counsel
   :bind (("M-x"     . counsel-M-x)
-         ("C-r"     . counsel-git-grep)
+         ("C-r"     . counsel-rg)
          ("C-x C-f" . counsel-find-file)
          ("C-x C-d" . counsel-git)))
 
