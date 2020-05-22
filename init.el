@@ -83,7 +83,7 @@
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
-(global-set-key (kbd "C-/") 'comment-line)
+(global-set-key (kbd "C-c SPC") 'comment-line)
 (global-set-key (kbd "M-p") 'backward-paragraph)
 (global-set-key (kbd "M-n") 'forward-paragraph)
 
