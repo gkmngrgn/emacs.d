@@ -142,6 +142,11 @@
   (push 'company-solidity company-backends)
   :defer t)
 
+(use-package company-tabnine
+  :after company
+  :config
+  (push 'company-tabnine company-backends))
+
 (use-package counsel
   :bind (("M-x"     . counsel-M-x)
          ("C-r"     . counsel-rg)
