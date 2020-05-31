@@ -222,7 +222,6 @@
   :commands (lsp lsp-deferred)
   :diminish
   :hook ((css-mode        . lsp-deferred)
-         (dart-mode       . lsp-deferred)
          (go-mode         . lsp-deferred)
          (javascript-mode . lsp-deferred)
          (python-mode     . lsp-deferred)
@@ -252,6 +251,9 @@
   (setq-default read-process-output-max (* 1024 1024)  ; 1mb
                 lsp-rust-server 'rust-analyzer
                 lsp-prefer-flymake nil))               ; flycheck is better
+
+(use-package lsp-dart
+  :hook (dart-mode . lsp-deferred))
 
 (use-package lsp-treemacs
   :commands (lsp-treemacs-errors-list)
