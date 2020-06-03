@@ -322,6 +322,9 @@
   :after solidity-mode
   :defer t)
 
+(use-package sourcetrail
+  :diminish)
+
 (use-package swiper
   :bind (("C-s" . swiper)))
 
