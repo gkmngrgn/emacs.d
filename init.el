@@ -266,7 +266,11 @@
   (setq lsp-ui-doc-max-width 120
         lsp-ui-doc-max-height 15))
 
-(use-package magit)
+(use-package magit
+  :after diff-hl
+  :config
+  (add-hook 'magit-pre-refresh-hook  'diff-hl-magit-pre-refresh)
+  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
 
 (use-package modus-vivendi-theme
   :config
