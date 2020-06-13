@@ -221,7 +221,8 @@
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :diminish
-  :hook ((css-mode        . lsp-deferred)
+  :hook ((c++-mode        . lsp-deferred)
+         (css-mode        . lsp-deferred)
          (go-mode         . lsp-deferred)
          (javascript-mode . lsp-deferred)
          (python-mode     . lsp-deferred)

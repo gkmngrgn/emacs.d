@@ -23,16 +23,20 @@ supports Windows.
 
 ## Programming Languages
 
+### C++
+
+Just install [LLVM][5]. It comes with Clangd, a language server for C++.
+
 ### Common Lisp
 
-[SLIME][5] supports many CL implementations but I prefer to use [SBCL][6]. If
-your Emacs can't find your SBCL path, specify it [manually][7].
+[SLIME][6] supports many CL implementations but I prefer to use [SBCL][7]. If
+your Emacs can't find your SBCL path, specify it [manually][8].
 
 ### Dart
 
-Install [Dart SDK][8] or [Flutter][9], it has a builtin analysis tool. Then
+Install [Dart SDK][9] or [Flutter][10], it has a builtin analysis tool. Then
 customize SDK path in your editor. If you don't know how to customize, start
-with [this tutorial][10].
+with [this tutorial][11].
 
 ### Go
 
@@ -44,18 +48,18 @@ go get -u golang.org/x/tools/gopls
 
 ### Python
 
-Install Python with [pyenv][12] ([pyenv-win][13] for Windows):
+Install Python with [pyenv][13] ([pyenv-win][14] for Windows):
 
 ```
 pyenv install 3.8.2
 pyenv global 3.8.2
 pip install -U pip
-pip install python-language-server pyls-mypy pyls-isort pyls-black pyflakes jedi==0.15.2
+pip install -U python-language-server pyls-mypy pyls-isort pyls-black pyflakes jedi
 ```
 
 ### Rust
 
-Download rust-analyzer [here][14].
+Download rust-analyzer [here][15].
 
 
 ### CSS & HTML & JavaScript & JSON & TypeScript & YAML
@@ -93,14 +97,14 @@ That's all.
 [2]: https://github.com/hlissner/doom-emacs
 [3]: https://www.ibm.com/plex/
 [4]: https://github.com/BurntSushi/ripgrep/
-[5]: https://common-lisp.net/project/slime/
-[6]: http://www.sbcl.org/
-[7]: http://ergoemacs.org/emacs/emacs_custom_system.html
-[8]: https://dart.dev/
-[9]: https://flutter.dev/
-[10]: http://ergoemacs.org/emacs/emacs_custom_system.html
-[11]: https://go.dev/
-[12]: https://github.com/pyenv/pyenv-installer
-[13]: https://github.com/pyenv-win/pyenv-win
-[14]: https://github.com/rust-analyzer/rust-analyzer/releases
-[15]: https://github.com/redhat-developer/yaml-language-server
+[5]: https://clangd.llvm.org/
+[6]: https://common-lisp.net/project/slime/
+[7]: http://www.sbcl.org/
+[8]: http://ergoemacs.org/emacs/emacs_custom_system.html
+[9]: https://dart.dev/
+[10]: https://flutter.dev/
+[11]: http://ergoemacs.org/emacs/emacs_custom_system.html
+[12]: https://go.dev/
+[13]: https://github.com/pyenv/pyenv-installer
+[14]: https://github.com/pyenv-win/pyenv-win
+[15]: https://github.com/rust-analyzer/rust-analyzer/releases
