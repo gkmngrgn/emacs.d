@@ -113,6 +113,8 @@
   (setq aw-background nil)
   (setq aw-dispatch-always t))
 
+(use-package cmake-mode)
+
 (use-package company
   :bind ("C-c TAB" . company-complete-common)
   :config
@@ -222,6 +224,7 @@
   :commands (lsp lsp-deferred)
   :diminish
   :hook ((c++-mode        . lsp-deferred)
+         (cmake-mode      . lsp-deferred)
          (css-mode        . lsp-deferred)
          (go-mode         . lsp-deferred)
          (javascript-mode . lsp-deferred)
