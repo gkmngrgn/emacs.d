@@ -278,6 +278,9 @@
 
 (use-package modus-vivendi-theme
   :config
+  (if (> emacs-major-version 26)
+      (load-theme 'modus-vivendi t))
+
   (set-face-attribute 'mode-line nil
                       :box nil
                       :height 110)
