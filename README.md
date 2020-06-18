@@ -6,6 +6,23 @@ My accessibility-friendly Emacs configuration.
 
 Please **do not open** a pull-request for this repository. You can configure your editor from scratch (Don't be afraid of LISP; it's effortless.) or give a try for [Spacemacs][1] or [Doom Emacs][2]. But first, get a new mechanical keyboard.
 
+## Installation
+
+Clone the repository to your home folder:
+
+```
+cd ~
+git clone git@github.com:gkmngrgn/emacs.d.git .emacs.d
+```
+
+If you are on Windows, don't forget to add a new environment variable named "HOME":
+
+```
+HOME="%USERPROFILE%"
+```
+
+That's all.
+
 ## Packages
 
 I use **use-package** to install dependencies. If you want to see the list of packages that I use, just open **init.el** file and look at all the lines starting with `(use-package `.
@@ -64,23 +81,6 @@ npm install -g javascript-typescript-langserver \
                vscode-json-languageserver \
                yaml-language-server
 ```
-
-## Installation
-
-Clone the repository to your home folder:
-
-```
-cd ~
-git clone git@github.com:gkmngrgn/emacs.d.git .emacs.d
-```
-
-If you are on Windows, don't forget to add a new environment variable named "HOME":
-
-```
-HOME="%USERPROFILE%"
-```
-
-That's all.
 
 [1]: https://www.spacemacs.org/
 [2]: https://github.com/hlissner/doom-emacs
