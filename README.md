@@ -12,7 +12,7 @@ Clone the repository to your home folder:
 
 ```
 cd ~
-git clone git@github.com:gkmngrgn/emacs.d.git .emacs.d
+git clone https://github.com/gkmngrgn/emacs.d.git .emacs.d
 ```
 
 If you are on Windows, don't forget to add a new environment variable named "HOME":
