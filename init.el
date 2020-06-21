@@ -144,11 +144,6 @@
   (push 'company-solidity company-backends)
   :defer t)
 
-(use-package company-tabnine
-  :after company
-  :config
-  (push 'company-tabnine company-backends))
-
 (use-package counsel
   :bind (("M-x"     . counsel-M-x)
          ("C-r"     . counsel-rg)
@@ -332,9 +327,6 @@
 (use-package solidity-flycheck
   :after solidity-mode
   :defer t)
-
-(use-package sourcetrail
-  :diminish)
 
 (use-package swiper
   :bind (("C-s" . swiper)))
