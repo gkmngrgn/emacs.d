@@ -83,6 +83,7 @@
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
+;; Global keymap settings
 (global-set-key (kbd "C-c SPC") 'comment-line)
 (global-set-key (kbd "M-p") 'backward-paragraph)
 (global-set-key (kbd "M-n") 'forward-paragraph)
@@ -116,7 +117,7 @@
 (use-package cmake-mode)
 
 (use-package company
-  :bind ("C-c TAB" . company-complete-common)
+  :bind ("C-c TAB" . company-complete-common)  ;; C-i and TAB are the same characters!
   :config
   (push 'company-capf company-backends)
   :diminish
@@ -372,7 +373,8 @@
   :hook (rust-mode . cargo-minor-mode))
 
 (use-package dart-mode
-  :defer t)
+  :defer t
+  :hook (dart-mode . (lambda() (local-unset-key (kbd "C-c C-i")))))
 
 (use-package dockerfile-mode
   :defer t)
