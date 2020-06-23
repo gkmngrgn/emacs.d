@@ -295,14 +295,6 @@
   (prescient-persist-mode t)
   :defer t)
 
-(use-package projectile
-  :diminish
-  :config
-  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-  (projectile-mode +1)
-  :init
-  (setq projectile-completion-system 'ivy))
-
 (use-package rainbow-delimiters-mode
   :ensure rainbow-delimiters
   :hook prog-mode)
@@ -353,14 +345,6 @@
 
 (use-package yasnippet-snippets
   :after yasnippet)
-
-(use-package zoom
-  :diminish
-  :config
-  (zoom-mode t)
-  (setq zoom-size '(0.618 . 0.618)
-	zoom-ignored-major-modes '(which-key-mode
-                                   hydra-mode)))
 
 ;; File modes
 (use-package bazel-mode
