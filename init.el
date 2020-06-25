@@ -383,6 +383,9 @@
 (use-package powershell
   :defer t)
 
+(use-package protobuf-mode
+  :defer t)
+
 (use-package rust-mode
   :defer t)
 
