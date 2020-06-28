@@ -93,7 +93,7 @@
     (progn
       (scroll-bar-mode 0)
       (tool-bar-mode 0)
-      (set-frame-font "IBM Plex Mono Italic")
+      (set-frame-font "Fira Code")
       (set-face-attribute 'default nil :height 130)))
 
 ;; Package configurations
