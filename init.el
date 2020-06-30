@@ -165,7 +165,8 @@
   (setq editorconfig-exclude-modes
         '(common-lisp-mode
           emacs-lisp-mode
-          lisp-mode))
+          lisp-mode
+          web-mode))
   (editorconfig-mode 1))
 
 (use-package exec-path-from-shell
