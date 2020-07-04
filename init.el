@@ -116,6 +116,8 @@
 
 (use-package cmake-mode)
 
+(use-package all-the-icons)
+
 (use-package company
   :bind ("C-c TAB" . company-complete-common)  ;; C-i and TAB are the same characters!
   :config
@@ -279,8 +281,7 @@
       (load-theme 'modus-vivendi t))
 
   (set-face-attribute 'mode-line nil
-                      :box nil
-                      :height 110)
+                      :box nil)
   (set-face-attribute 'mode-line-inactive nil
                       :box nil
                       :inherit 'mode-line))
