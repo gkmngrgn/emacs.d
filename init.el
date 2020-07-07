@@ -197,10 +197,6 @@
 (use-package focus
   :defer t)
 
-(use-package frog-jump-buffer
-  :bind (("C-x C-b" . frog-jump-buffer))
-  :defer t)
-
 (use-package ivy
   :config
   (ivy-mode 1)
