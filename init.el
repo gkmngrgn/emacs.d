@@ -38,7 +38,8 @@
 (setq scroll-preserve-screen-position 1)
 
 ;; Performance
-(setq gc-cons-threshold 100000000)
+(setq gc-cons-threshold 600000000)
+(setq read-process-output-max (* 4096 1024))  ; 4mb
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'text-mode-hook   'visual-line-mode)
@@ -248,8 +249,7 @@
    lsp-enable-snippet nil                              ; company is better
    lsp-signature-doc-lines 10
    lsp-signature-auto-activate nil)
-  (setq-default read-process-output-max (* 1024 1024)  ; 1mb
-                lsp-rust-server 'rust-analyzer
+  (setq-default lsp-rust-server 'rust-analyzer
                 lsp-prefer-flymake nil))               ; flycheck is better
 
 (use-package lsp-dart
@@ -263,8 +263,7 @@
   :defer t
   :commands (lsp-ui-mode)
   :init
-  (setq lsp-ui-doc-max-width 120
-        lsp-ui-doc-max-height 15))
+  (setq lsp-ui-doc-enable nil))
 
 (use-package magit
   :after diff-hl
