@@ -434,8 +434,7 @@
       "Errors"
       ("f"   flycheck-error-list-set-filter      "Filter")
       ("j"   flycheck-next-error                 "Next")
-      ("k"   flycheck-previous-error             "Previous")
-      ("RET" nil                                 "Close" :color blue))
+      ("k"   flycheck-previous-error             "Previous"))
 
     (defhydra hydra-focus (:columns 4)
       "Focus"
@@ -451,8 +450,7 @@
 
       ("s"   yas-insert-snippet                  "Insert snippet")
       ("n"   yas-new-snippet                     "New snippet")
-      ("v"   yas-visit-snippet-file              "Visit snippet")
-      ("RET" nil                                 "Close" :color blue))))
+      ("v"   yas-visit-snippet-file              "Visit snippet"))))
 
 ;;; init.el ends here
 
