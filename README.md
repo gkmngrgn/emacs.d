@@ -27,7 +27,7 @@ That's all.
 
 I use **use-package** to install dependencies. If you want to see the list of packages that I use, just open **init.el** file and look at all the lines starting with `(use-package `.
 
-Some features need to the external dependencies. My font is **Fira Code**, please get it from [this link][3] or choose another font.
+Some features need to the external dependencies. My current font is **Iosevka**, please get it from [this link][3] or choose another font.
 
 The other external dependency is [ripgrep][4] for searching and filtering. It supports Windows.
 
@@ -84,7 +84,7 @@ npm install -g javascript-typescript-langserver \
 
 [1]: https://www.spacemacs.org/
 [2]: https://github.com/hlissner/doom-emacs
-[3]: https://github.com/tonsky/FiraCode
+[3]: https://typeof.net/Iosevka/
 [4]: https://github.com/BurntSushi/ripgrep/
 [5]: https://clangd.llvm.org/
 [6]: https://cmake.org/download/

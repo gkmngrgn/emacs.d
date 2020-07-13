@@ -95,7 +95,7 @@
     (progn
       (scroll-bar-mode 0)
       (tool-bar-mode 0)
-      (set-frame-font "Fira Code")
+      (set-frame-font "Iosevka")
       (set-face-attribute 'default nil :height 130)))
 
 ;; Package configurations
