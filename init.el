@@ -129,13 +129,16 @@
   :init
   (setq-default company-dabbrev-ignore-case t
                 company-dabbrev-code-ignore-case t)
-  (setq company-idle-delay 1
+  (setq company-idle-delay 0.5
         company-minimum-prefix-length 2
         company-require-match 'never
         company-show-numbers nil
         company-tooltip-align-annotations t
-        company-tooltip-flip-when-above t
+        company-tooltip-flip-when-above nil
         company-tooltip-limit 10))
+
+(use-package company-box
+  :hook (company-mode . company-box-mode))
 
 (use-package company-prescient
   :after company
