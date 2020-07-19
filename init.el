@@ -357,6 +357,8 @@
   :diminish (cargo-minor-mode)
   :hook (rust-mode . cargo-minor-mode))
 
+(use-package cython-mode)
+
 (use-package dart-mode
   :defer t
   :hook (dart-mode . (lambda() (local-unset-key (kbd "C-c C-i")))))
