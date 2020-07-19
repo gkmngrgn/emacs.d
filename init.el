@@ -138,7 +138,8 @@
         company-tooltip-limit 10))
 
 (use-package company-box
-  :hook (company-mode . company-box-mode))
+  :hook (company-mode . company-box-mode)
+  :diminish)
 
 (use-package company-prescient
   :after company
