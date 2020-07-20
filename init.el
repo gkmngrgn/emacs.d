@@ -139,6 +139,7 @@
 
 (use-package company-box
   :hook (company-mode . company-box-mode)
+  :defer t
   :diminish)
 
 (use-package company-prescient
@@ -200,7 +201,7 @@
   :config
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
-(use-package focus
+(use-package format-all
   :defer t)
 
 (use-package ivy
@@ -412,9 +413,6 @@
             (lambda ()
               (set-face-background 'mmm-default-submode-face nil))))
 
-(use-package web-beautify
-  :defer t)
-
 (use-package web-mode
   :defer t
   :mode ("\\.html$" . web-mode)
@@ -445,17 +443,11 @@
       "Focus"
       ("+"   text-scale-increase                 "Zoom in")
       ("-"   text-scale-decrease                 "Zoom out")
-      ("f"   focus-mode                          "Focus")
-      ("r"   focus-read-only-mode                "Review")
-
-      ("g"   diff-hl-diff-goto-hunk              "Show diff")
-      ("u"   diff-hl-revert-hunk                 "Revert diff")
       ("j"   diff-hl-next-hunk                   "Next diff")
       ("k"   diff-hl-previous-hunk               "Previous diff")
 
-      ("s"   yas-insert-snippet                  "Insert snippet")
-      ("n"   yas-new-snippet                     "New snippet")
-      ("v"   yas-visit-snippet-file              "Visit snippet"))))
+      ("f"   format-all-buffer                   "Format")
+      ("s"   yas-insert-snippet                  "Insert snippet"))))
 
 ;;; init.el ends here
 
