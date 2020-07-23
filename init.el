@@ -385,6 +385,9 @@
                       :foreground "dim gray")
   (add-hook 'markdown-mode-hook 'visual-line-mode))
 
+(use-package po-mode
+  :defer t)
+
 (use-package powershell
   :defer t)
 
