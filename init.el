@@ -371,6 +371,9 @@
 (use-package go-mode
   :defer t)
 
+(use-package json-mode
+  :defer t)
+
 (use-package lisp-mode
   :defer t
   :ensure nil  ;; pre-installed package
