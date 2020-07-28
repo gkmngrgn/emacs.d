@@ -63,6 +63,7 @@
       default-directory "~/")
 
 ;; Custom variables
+(defvar font-default "Iosevka")
 (defvar custom-file-path "~/.emacs.d/custom.el")
 (setq custom-file custom-file-path)
 (when (file-exists-p custom-file-path)
@@ -95,7 +96,7 @@
     (progn
       (scroll-bar-mode 0)
       (tool-bar-mode 0)
-      (set-frame-font "Iosevka")
+      (set-frame-font font-default)
       (set-face-attribute 'default nil :height 130)))
 
 ;; Package configurations
@@ -376,17 +377,18 @@
 
 (use-package lisp-mode
   :defer t
-  :ensure nil  ;; pre-installed package
-  :diminish eldoc-mode)
+  :diminish eldoc-mode
+  :ensure nil) ;; pre-installed package
 
 (use-package markdown-mode
-  :defer t
-  :mode (("\\.md$" . markdown-mode))
   :config
-  (set-face-attribute 'markdown-code-face nil
-                      :inherit nil
-                      :foreground "dim gray")
-  (add-hook 'markdown-mode-hook 'visual-line-mode))
+  (set-face-attribute 'markdown-table-face nil :font font-default)
+  (set-face-attribute 'markdown-pre-face nil :font font-default)
+  :init
+  (setq markdown-command "multimarkdown")
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'"       . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode)))
 
 (use-package po-mode
   :defer t)
