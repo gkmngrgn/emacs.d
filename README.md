@@ -55,18 +55,14 @@ go get -u golang.org/x/tools/gopls
 
 ### Python
 
-Install Python with [pyenv][14] ([pyenv-win][15] for Windows):
-
-```
-pyenv install 3.8.2
-pyenv global 3.8.2
-pip install -U pip
-pip install -U python-language-server cmake-language-server pyls-mypy pyls-isort pyls-black pyflakes jedi
+```shell
+pip install --user -U pip
+pip install --user -U python-language-server cmake-language-server pyls-mypy pyls-isort pyls-black pyflakes jedi
 ```
 
 ### Rust
 
-Download rust-analyzer [here][16].
+Download rust-analyzer [here][14].
 
 
 ### CSS & HTML & JavaScript & JSON & TypeScript & YAML
@@ -95,6 +91,4 @@ npm install -g javascript-typescript-langserver \
 [11]: https://flutter.dev/
 [12]: http://ergoemacs.org/emacs/emacs_custom_system.html
 [13]: https://go.dev/
-[14]: https://github.com/pyenv/pyenv-installer
-[15]: https://github.com/pyenv-win/pyenv-win
-[16]: https://github.com/rust-analyzer/rust-analyzer/releases
+[14]: https://github.com/rust-analyzer/rust-analyzer/releases
