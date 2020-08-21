@@ -97,7 +97,7 @@
       (scroll-bar-mode 0)
       (tool-bar-mode 0)
       (set-frame-font font-default)
-      (set-face-attribute 'default nil :height 130)))
+      (set-face-attribute 'default nil :height 140)))
 
 ;; Package configurations
 (use-package avy
@@ -188,10 +188,6 @@
 (use-package expand-region
   :bind (("C-M-w" . er/expand-region))
   :defer t)
-
-(use-package eyebrowse
-  :init
-  (eyebrowse-mode t))
 
 (use-package flycheck
   :diminish
