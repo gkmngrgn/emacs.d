@@ -273,11 +273,17 @@
   (add-hook 'magit-pre-refresh-hook  'diff-hl-magit-pre-refresh)
   (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
 
+(use-package modus-operandi-theme
+  :config
+  (load-theme 'modus-operandi t)
+  (set-face-attribute 'mode-line nil
+                      :box nil)
+  (set-face-attribute 'mode-line-inactive nil
+                      :box nil
+                      :inherit 'mode-line))
+
 (use-package modus-vivendi-theme
   :config
-  (if (> emacs-major-version 26)
-      (load-theme 'modus-vivendi t))
-
   (set-face-attribute 'mode-line nil
                       :box nil)
   (set-face-attribute 'mode-line-inactive nil
