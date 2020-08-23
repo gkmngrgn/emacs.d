@@ -138,10 +138,11 @@
         company-tooltip-flip-when-above nil
         company-tooltip-limit 10))
 
-(use-package company-box
-  :hook (company-mode . company-box-mode)
+(use-package company-posframe
+  :config
+  (company-posframe-mode)
   :defer t
-  :diminish)
+  :hook (company-mode . company-posframe-mode))
 
 (use-package company-prescient
   :after company
