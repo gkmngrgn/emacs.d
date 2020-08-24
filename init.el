@@ -142,6 +142,7 @@
   :config
   (company-posframe-mode)
   :defer t
+  :diminish
   :hook (company-mode . company-posframe-mode))
 
 (use-package company-prescient
