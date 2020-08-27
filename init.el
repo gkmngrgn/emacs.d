@@ -92,12 +92,25 @@
 (global-set-key (kbd "M-n")     'forward-paragraph)
 
 ;; GUI settings
+(defun hdpi? ()
+  "Check if you're using alienware or thinkpad."
+  (and (= 3840 (display-pixel-width))
+       (= 2160 (display-pixel-height))))
+
 (if (display-graphic-p)
     (progn
       (scroll-bar-mode 0)
       (tool-bar-mode 0)
       (set-frame-font font-default)
-      (set-face-attribute 'default nil :height 140)))
+
+      (if (hdpi?)
+          ;; HiDPI settings
+          (progn
+            (set-face-attribute 'default nil :height 140)
+            (fringe-mode 16))
+
+        ;; Default DPI settings
+        (set-face-attribute 'default nil :height 130))))
 
 ;; Package configurations
 (use-package avy
