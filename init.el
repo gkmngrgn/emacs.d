@@ -106,7 +106,7 @@
       (if (hdpi?)
           ;; HiDPI settings
           (progn
-            (set-face-attribute 'default nil :height 140)
+            (set-face-attribute 'default nil :height 150)
             (fringe-mode 16))
 
         ;; Default DPI settings
@@ -290,7 +290,7 @@
 
 (use-package modus-operandi-theme
   :config
-  (load-theme 'modus-operandi t)
+  ;; (load-theme 'modus-operandi t)
   (set-face-attribute 'mode-line nil
                       :box nil)
   (set-face-attribute 'mode-line-inactive nil
@@ -299,6 +299,7 @@
 
 (use-package modus-vivendi-theme
   :config
+  (load-theme 'modus-vivendi t)
   (set-face-attribute 'mode-line nil
                       :box nil)
   (set-face-attribute 'mode-line-inactive nil
