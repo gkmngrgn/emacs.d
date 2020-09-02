@@ -387,6 +387,10 @@
 (use-package dockerfile-mode
   :defer t)
 
+(use-package gdscript-mode
+  :defer t
+  :hook (gdscript-mode-hook . setup-gdscript))
+
 (use-package go-mode
   :defer t)
 
