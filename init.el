@@ -248,29 +248,22 @@
          (yaml-mode       . lsp-deferred)
          (lsp-mode        . lsp-enable-which-key-integration))
   :init
-  (custom-set-variables
-   '(lsp-pyls-plugins-jedi-completion-enabled t)
-   '(lsp-pyls-plugins-pyflakes-enabled t)
-   '(lsp-pyls-plugins-mccabe-enabled nil)
-   '(lsp-pyls-plugins-pylint-enabled nil)
-   '(lsp-pyls-plugins-pycodestyle-enabled nil)
-   '(lsp-pyls-plugins-pydocstyle-enabled nil)
-   '(lsp-pyls-plugins-rope-completion-enabled nil)
-   '(lsp-pyls-plugins-autopep8-enabled nil)
-   '(lsp-pyls-plugins-yapf-enabled nil)
-   '(lsp-pyls-plugins-flake8-enabled nil))
-  (setq
-   lsp-keymap-prefix "C-c l"
-   lsp-prefer-capf t
-   lsp-idle-delay 0.500
-   lsp-enable-snippet nil                              ; company is better
-   lsp-signature-doc-lines 10
-   lsp-signature-auto-activate nil)
-  (setq-default lsp-rust-server 'rust-analyzer
-                lsp-prefer-flymake nil))               ; flycheck is better
+  (setq-default lsp-completion-provider :capf)
+  (setq-default lsp-rust-server 'rust-analyzer)
+  (setq-default lsp-prefer-flymake nil)  ; flycheck is better
+
+  (setq lsp-keymap-prefix "C-c l")
+  (setq lsp-idle-delay 0.500)
+  (setq lsp-enable-snippet nil)  ; company is bettera
+  (setq lsp-signature-doc-lines 10)
+  (setq lsp-signature-auto-activate nil))
 
 (use-package lsp-dart
   :hook (dart-mode . lsp-deferred))
+
+(use-package lsp-origami
+  :after origami-mode
+  :hook((origami-mode . lsp-origami-mode)))
 
 (use-package lsp-treemacs
   :commands (lsp-treemacs-errors-list)
@@ -305,6 +298,11 @@
   (set-face-attribute 'mode-line-inactive nil
                       :box nil
                       :inherit 'mode-line))
+
+(use-package origami
+  :config
+  (global-origami-mode t)
+  :defer t)
 
 (use-package org
   :init
@@ -480,7 +478,8 @@
       ("k"   diff-hl-previous-hunk               "Previous diff")
 
       ("f"   format-all-buffer                   "Format")
-      ("s"   yas-insert-snippet                  "Insert snippet"))))
+      ("s"   yas-insert-snippet                  "Insert snippet")
+      ("o"   origami-toggle-node                 "Fold / Unfold"))))
 
 ;;; init.el ends here
 
