@@ -447,10 +447,13 @@
   :defer t
   :mode ("\\.html$" . web-mode)
   :config
-  (setq web-mode-engines-alist '(("django" . "\\.html$"))
-        web-mode-enable-auto-pairing nil
-        web-mode-block-padding 0
-        web-mode-enable-auto-indentation nil))
+  (setq web-mode-engines-alist '(("django" . "\\.html$")))
+  (setq web-mode-enable-auto-pairing nil)
+  (setq web-mode-block-padding 0)
+  (setq web-mode-enable-auto-indentation nil)
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2))
 
 (use-package yaml-mode
   :defer t)
