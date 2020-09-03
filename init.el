@@ -263,7 +263,7 @@
 
 (use-package lsp-origami
   :after origami-mode
-  :hook((origami-mode . lsp-origami-mode)))
+  :hook (lsp-after-open . lsp-origami-try-enable))
 
 (use-package lsp-treemacs
   :commands (lsp-treemacs-errors-list)
@@ -301,8 +301,7 @@
 
 (use-package origami
   :config
-  (global-origami-mode t)
-  :defer t)
+  (global-origami-mode t))
 
 (use-package org
   :init
@@ -479,7 +478,8 @@
 
       ("f"   format-all-buffer                   "Format")
       ("s"   yas-insert-snippet                  "Insert snippet")
-      ("o"   origami-toggle-node                 "Fold / Unfold"))))
+      ("o"   origami-toggle-node                 "Toggle node")
+      ("t"   origami-toggle-all-nodes            "Toggle all nodes"))))
 
 ;;; init.el ends here
 
