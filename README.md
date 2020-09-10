@@ -57,7 +57,7 @@ go get -u golang.org/x/tools/gopls
 
 ```shell
 pip install --user -U pip
-pip install --user -U python-language-server cmake-language-server pyls-mypy pyls-isort pyls-black pyflakes jedi
+pip install --user -U python-language-server[all] pyls-mypy pyls-isort pyls-black cmake-language-server
 ```
 
 ### Rust
