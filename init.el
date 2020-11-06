@@ -110,7 +110,7 @@
             (fringe-mode 16))
 
         ;; Default DPI settings
-        (set-face-attribute 'default nil :height 130))))
+        (set-face-attribute 'default nil :height 140))))
 
 ;; Package configurations
 (use-package avy
