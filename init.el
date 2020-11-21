@@ -132,8 +132,6 @@
 
 (use-package cmake-mode)
 
-(use-package all-the-icons)
-
 (use-package company
   :bind ("C-c TAB" . company-complete-common)  ;; C-i and TAB are the same characters!
   :config
@@ -251,6 +249,7 @@
   (setq-default lsp-completion-provider :capf)
   (setq-default lsp-rust-server 'rust-analyzer)
   (setq-default lsp-prefer-flymake nil)  ; flycheck is better
+  (setq-default lsp-modeline-code-actions-segments '(name))
 
   (setq lsp-keymap-prefix "C-c l")
   (setq lsp-idle-delay 0.500)
