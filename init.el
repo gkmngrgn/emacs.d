@@ -364,7 +364,9 @@
 (use-package yasnippet-snippets
   :after yasnippet)
 
-(use-package zoom-mode
+(use-package zoom
+  :config
+  (zoom-mode t)
   :diminish)
 
 ;; File modes
