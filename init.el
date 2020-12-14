@@ -364,6 +364,9 @@
 (use-package yasnippet-snippets
   :after yasnippet)
 
+(use-package zoom-mode
+  :diminish)
+
 ;; File modes
 (use-package bazel-mode
   :defer t)
