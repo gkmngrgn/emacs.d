@@ -238,6 +238,7 @@
   :hook ((c++-mode        . lsp-deferred)
          (cmake-mode      . lsp-deferred)
          (css-mode        . lsp-deferred)
+         (gdscript-mode   . lsp-deferred)
          (go-mode         . lsp-deferred)
          (javascript-mode . lsp-deferred)
          (python-mode     . lsp-deferred)
