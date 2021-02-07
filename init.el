@@ -106,11 +106,11 @@
       (if (hdpi?)
           ;; HiDPI settings
           (progn
-            (set-face-attribute 'default nil :height 150)
+            (set-face-attribute 'default nil :height 140)
             (fringe-mode 16))
 
         ;; Default DPI settings
-        (set-face-attribute 'default nil :height 140))))
+        (set-face-attribute 'default nil :height 130))))
 
 ;; Package configurations
 (use-package avy
