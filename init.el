@@ -106,6 +106,11 @@
   :hook
   (prog-mode . rainbow-delimiters-mode))
 
+(use-package zoom
+  :config
+  (zoom-mode t)
+  :diminish)
+
 ;; Hydra settings
 (use-package hydra
   :bind (("C-c e" . hydra-errors/body)
