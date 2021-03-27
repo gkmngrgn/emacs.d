@@ -59,6 +59,19 @@
   :bind (("C-M-w" . er/expand-region))
   :defer t)
 
+(use-package ivy
+  :config
+  (ivy-mode)
+  (setq ivy-use-virtual-buffers t)
+  (setq enable-recursive-minibuffers t)
+  :diminish)
+
+(use-package ivy-prescient
+  :after counsel
+  :config
+  (ivy-prescient-mode t)
+  :defer t)
+
 (use-package magit
   :after diff-hl
   :config
