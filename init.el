@@ -15,6 +15,14 @@
 (global-hl-line-mode)
 (delete-selection-mode 1)
 
+;; Global keymap settings
+(global-set-key (kbd "C-c SPC") 'comment-line)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "M-p")     'backward-paragraph)
+(global-set-key (kbd "M-n")     'forward-paragraph)
+
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 ;; Package Manager
 (defvar bootstrap-version)
 
@@ -45,6 +53,12 @@
   (if (not (display-graphic-p))
       (diff-hl-margin-mode)))
 
+(use-package diminish)
+
+(use-package expand-region
+  :bind (("C-M-w" . er/expand-region))
+  :defer t)
+
 (use-package magit
   :after diff-hl
   :config
@@ -61,6 +75,10 @@
   :config
   (modus-themes-load-vivendi)
   :bind ("<f5>" . modus-themes-toggle))
+
+(use-package rainbow-delimiters
+  :hook
+  (prog-mode . rainbow-delimiters-mode))
 
 ;; Hydra settings
 (use-package hydra

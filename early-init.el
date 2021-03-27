@@ -33,6 +33,11 @@
 (setq gc-cons-threshold 600000000)
 (setq read-process-output-max (* 4096 1024))  ; 4mb
 
+;; Backup
+(setq backup-directory-alist `((".*" . ,temporary-file-directory))
+      auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
+      default-directory "~/")
+
 ;;; early-init.el ends here
 
 ;; Local Variables:
