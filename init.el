@@ -41,6 +41,19 @@
 (straight-use-package 'use-package)
 
 ;; Packages
+(use-package avy
+  :bind (("M-g g" . avy-goto-char-2)
+         ("M-g f" . avy-goto-line))
+  :config
+  (avy-setup-default))
+
+(use-package ace-window
+  :defer t
+  :diminish
+  :init
+  (global-set-key (kbd "M-o") 'ace-window)
+  (setq aw-dispatch-always t))
+
 (use-package counsel
   :bind (("M-x"     . counsel-M-x)
 	 ("C-r"     . counsel-rg)
