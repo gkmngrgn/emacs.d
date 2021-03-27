@@ -82,6 +82,15 @@
   :bind (("C-M-w" . er/expand-region))
   :defer t)
 
+(use-package flycheck
+  :diminish
+  :init
+  (global-flycheck-mode))
+
+(use-package flycheck-rust
+  :config
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+
 (use-package ivy
   :config
   (ivy-mode)
@@ -116,23 +125,60 @@
   :hook
   (prog-mode . rainbow-delimiters-mode))
 
+(use-package smartparens
+  :diminish
+  :config
+  (require 'smartparens-config)
+  (smartparens-global-mode t)
+  (show-smartparens-global-mode t))
+
 (use-package zoom
   :config
   (zoom-mode t)
   :diminish)
+
+;; File Modes
+(use-package go-mode
+  :defer t)
+
+(use-package json-mode
+  :defer t)
+
+(use-package lisp-mode
+  :defer t
+  :diminish eldoc-mode
+  :ensure nil
+  :straight nil) ;; pre-installed package
+
+(use-package markdown-mode
+  :mode (("README\\.md\\'" . gfm-mode)
+	 ("\\.md\\'"       . markdown-mode)
+	 ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+
+(use-package rust-mode
+  :defer t)
+
+(use-package yaml-mode
+  :defer t)
 
 ;; Hydra settings
 (use-package hydra
   :bind (("C-c e" . hydra-errors/body)
          ("C-c f" . hydra-focus/body))
   :config
+  (defhydra hydra-errors (:pre (flycheck-list-errors)
+                               :post (quit-windows-on "*Flycheck errors*")
+                               :hint nil)
+    "Errors"
+    ("f"   flycheck-error-list-set-filter      "Filter")
+    ("j"   flycheck-next-error                 "Next")
+    ("k"   flycheck-previous-error             "Previous"))
+
   (defhydra hydra-focus (:columns 4)
     "Focus"
-    ("+"   text-scale-increase                 "Zoom in")
-    ("-"   text-scale-decrease                 "Zoom out")
     ("j"   diff-hl-next-hunk                   "Next diff")
     ("k"   diff-hl-previous-hunk               "Previous diff")))
-
 
 ;;; init.el ends here
 
