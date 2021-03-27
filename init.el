@@ -132,9 +132,16 @@
   (smartparens-global-mode t)
   (show-smartparens-global-mode t))
 
+(use-package which-key
+  :config
+  (which-key-mode)
+  :diminish)
+
 (use-package zoom
   :config
   (zoom-mode t)
+  (custom-set-variables
+   '(zoom-size '(0.618 . 0.618)))
   :diminish)
 
 ;; File Modes
