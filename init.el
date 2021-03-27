@@ -72,6 +72,12 @@
 
 (use-package diminish)
 
+(use-package exec-path-from-shell
+  :commands (exec-path-from-shell-initialize)
+  :init
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize)))
+
 (use-package expand-region
   :bind (("C-M-w" . er/expand-region))
   :defer t)
