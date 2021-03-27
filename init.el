@@ -15,13 +15,17 @@
 (global-hl-line-mode)
 (delete-selection-mode 1)
 
-;; Global keymap settings
+;; Global Keymap Settings
 (global-set-key (kbd "C-c SPC") 'comment-line)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "M-p")     'backward-paragraph)
 (global-set-key (kbd "M-n")     'forward-paragraph)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
+
+;; General Hooks
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'text-mode-hook   'visual-line-mode)
 
 ;; Package Manager
 (defvar bootstrap-version)
