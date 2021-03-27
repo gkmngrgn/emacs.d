@@ -10,3 +10,5 @@
 !LICENSE
 !README.md
 !init.el
+!init_gui.el
+!early-init.el
