@@ -201,6 +201,9 @@
   (smartparens-global-mode t)
   (show-smartparens-global-mode t))
 
+(use-package swiper
+  :bind (("C-s" . swiper)))
+
 (use-package which-key
   :config
   (which-key-mode)
