@@ -58,6 +58,36 @@
   (global-set-key (kbd "M-o") 'ace-window)
   (setq aw-dispatch-always t))
 
+(use-package company
+  :bind ("C-c TAB" . company-complete-common)  ;; C-i and TAB are the same characters!
+  :config
+  (push 'company-capf company-backends)
+  :diminish
+  :hook ((after-init . global-company-mode))
+  :init
+  (setq-default company-dabbrev-ignore-case t
+                company-dabbrev-code-ignore-case t)
+  (setq company-idle-delay 0.5
+        company-minimum-prefix-length 2
+        company-require-match 'never
+        company-show-numbers nil
+        company-tooltip-align-annotations t
+        company-tooltip-flip-when-above nil
+        company-tooltip-limit 10))
+
+(use-package company-posframe
+  :config
+  (company-posframe-mode)
+  :defer t
+  :diminish
+  :hook (company-mode . company-posframe-mode))
+
+(use-package company-prescient
+  :after company
+  :config
+  (company-prescient-mode t)
+  :defer t)
+
 (use-package counsel
   :bind (("M-x"     . counsel-M-x)
 	 ("C-r"     . counsel-rg)
@@ -103,6 +133,45 @@
   :config
   (ivy-prescient-mode t)
   :defer t)
+
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :diminish
+  :hook ((go-mode         . lsp-deferred)
+         (javascript-mode . lsp-deferred)
+         (python-mode     . lsp-deferred)
+         (rust-mode       . lsp-deferred)
+         (lsp-mode        . lsp-enable-which-key-integration))
+  :init
+  (setq-default lsp-completion-provider :capf)
+  (setq-default lsp-rust-server 'rust-analyzer)
+  (setq-default lsp-prefer-flymake nil)  ; flycheck is better
+  (setq-default lsp-modeline-code-actions-segments '(name))
+
+  (setq lsp-keymap-prefix "C-c l")
+  (setq lsp-idle-delay 0.500)
+  (setq lsp-enable-snippet nil)  ; company is bettera
+  (setq lsp-signature-doc-lines 10)
+  (setq lsp-signature-auto-activate nil))
+
+(use-package lsp-ivy
+  :after counsel
+  :commands (lsp-ivy-workspace-symbol)
+  :defer t)
+
+(use-package lsp-origami
+  :after origami-mode
+  :hook (lsp-after-open . lsp-origami-try-enable))
+
+(use-package lsp-treemacs
+  :commands (lsp-treemacs-errors-list)
+  :defer t)
+
+(use-package lsp-ui
+  :defer t
+  :commands (lsp-ui-mode)
+  :init
+  (setq lsp-ui-doc-enable nil))
 
 (use-package magit
   :after diff-hl
