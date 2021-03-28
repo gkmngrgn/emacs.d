@@ -227,6 +227,9 @@
   :diminish)
 
 ;; File Modes
+(use-package dockerfile-mode
+  :defer t)
+
 (use-package go-mode
   :defer t)
 
