@@ -209,6 +209,11 @@
 (use-package swiper
   :bind (("C-s" . swiper)))
 
+(use-package undo-fu
+  :bind (("C-z" . undo-fu-only-undo)
+         ("C-M-z" . undo-fu-only-redo))
+  :defer t)
+
 (use-package which-key
   :config
   (which-key-mode)
