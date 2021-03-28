@@ -15,6 +15,11 @@
 (global-hl-line-mode)
 (delete-selection-mode 1)
 
+;; UTF-8
+(prefer-coding-system       'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-language-environment   'utf-8)
+
 ;; Global Keymap Settings
 (global-set-key (kbd "C-c SPC") 'comment-line)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
