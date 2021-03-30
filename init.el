@@ -13,7 +13,9 @@
 
 (menu-bar-mode 0)
 (global-hl-line-mode)
+(global-auto-revert-mode)
 (delete-selection-mode 1)
+(temp-buffer-resize-mode t)
 
 ;; UTF-8
 (prefer-coding-system       'utf-8)
