@@ -257,24 +257,6 @@
 (use-package yaml-mode
   :defer t)
 
-;; Hydra settings
-(use-package hydra
-  :bind (("C-c e" . hydra-errors/body)
-         ("C-c f" . hydra-focus/body))
-  :config
-  (defhydra hydra-errors (:pre (flycheck-list-errors)
-                               :post (quit-windows-on "*Flycheck errors*")
-                               :hint nil)
-    "Errors"
-    ("f"   flycheck-error-list-set-filter      "Filter")
-    ("j"   flycheck-next-error                 "Next")
-    ("k"   flycheck-previous-error             "Previous"))
-
-  (defhydra hydra-focus (:columns 4)
-    "Focus"
-    ("j"   diff-hl-next-hunk                   "Next diff")
-    ("k"   diff-hl-previous-hunk               "Previous diff")))
-
 ;;; init.el ends here
 
 ;; Local Variables:

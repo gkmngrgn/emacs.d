@@ -65,17 +65,12 @@ pip install --user -U python-language-server[all] pyls-mypy pyls-isort pyls-blac
 Download rust-analyzer [here][14].
 
 
-### CSS & HTML & JavaScript & JSON & TypeScript & YAML
+### JavaScript & TypeScript
 
 Install all dependencies using npm:
 
 ```
-npm install -g javascript-typescript-langserver \
-               js-beautify \
-               vscode-css-languageserver-bin \
-               vscode-html-languageserver-bin \
-               vscode-json-languageserver \
-               yaml-language-server
+npm install -g javascript-typescript-langserver
 ```
 
 [1]: https://www.spacemacs.org/
