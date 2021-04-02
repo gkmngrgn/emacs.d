@@ -52,6 +52,8 @@
 (straight-use-package 'use-package)
 
 ;; Packages
+(use-package diminish)
+
 (use-package avy
   :bind
   (("M-g g" . 'avy-goto-char-2)
@@ -111,8 +113,6 @@
   (global-diff-hl-mode)
   (if (not (display-graphic-p))
       (diff-hl-margin-mode)))
-
-(use-package diminish)
 
 (use-package exec-path-from-shell
   :commands (exec-path-from-shell-initialize)
