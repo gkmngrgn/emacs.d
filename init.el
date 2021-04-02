@@ -131,8 +131,9 @@
   (global-flycheck-mode))
 
 (use-package flycheck-rust
+  :after flycheck
   :hook
-  (flycheck-mode . 'flycheck-rust-setup))
+  (flycheck-mode-hook . 'flycheck-rust-setup))
 
 (use-package ivy
   :config
@@ -149,13 +150,6 @@
 
 (use-package lsp-mode
   :diminish
-  :hook
-  (go-mode         . 'lsp-deferred)
-  (javascript-mode . 'lsp-deferred)
-  (python-mode     . 'lsp-deferred)
-  (rust-mode       . 'lsp-deferred)
-  (yaml-mode       . 'lsp-deferred)
-  (lsp-mode        . 'lsp-enable-which-key-integration)
   :init
   (setq lsp-completion-provider :capf)
   (setq lsp-rust-server 'rust-analyzer)
@@ -165,7 +159,14 @@
   (setq lsp-idle-delay 0.500)
   (setq lsp-enable-snippet nil)  ; company is bettera
   (setq lsp-signature-doc-lines 10)
-  (setq lsp-signature-auto-activate nil))
+  (setq lsp-signature-auto-activate nil)
+
+  (add-hook 'go-mode-hook         #'lsp-deferred)
+  (add-hook 'javascript-mode-hook #'lsp-deferred)
+  (add-hook 'python-mode-hook     #'lsp-deferred)
+  (add-hook 'rust-mode-hook       #'lsp-deferred)
+  (add-hook 'yaml-mode-hook       #'lsp-deferred)
+  (add-hook 'lsp-mode-hook        #'lsp-enable-which-key-integration))
 
 (use-package lsp-ivy
   :after lsp-mode ivy counsel
