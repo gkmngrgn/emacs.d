@@ -1,4 +1,4 @@
-;;; ~/.emacs.d/init.el --- GOEDEV personal emacs configuration file.
+;;; init.el --- GOEDEV personal emacs configuration file  -*- lexical-binding: t -*-
 
 ;; Copyright (c) 2010-2021 Gökmen Görgen
 ;;
@@ -42,9 +42,9 @@
       (bootstrap-version 5))
   (unless (file-exists-p bootstrap-file)
     (with-current-buffer
-	(url-retrieve-synchronously
-	 "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-	 'silent 'inhibit-cookies)
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
@@ -53,41 +53,45 @@
 
 ;; Packages
 (use-package avy
-  :bind (("M-g g" . avy-goto-char-2)
-         ("M-g f" . avy-goto-line))
-  :config
+  :bind
+  (("M-g g" . 'avy-goto-char-2)
+   ("M-g f" . 'avy-goto-line))
+  :init
   (avy-setup-default))
 
 (use-package ace-window
+  :bind
+  ("M-o" . 'ace-window)
   :defer t
   :diminish
   :init
-  (global-set-key (kbd "M-o") 'ace-window)
   (setq aw-dispatch-always t))
 
 (use-package company
-  :bind ("C-c TAB" . company-complete-common)  ;; C-i and TAB are the same characters!
+  :bind
+  ("C-c TAB" . 'company-complete-common) ;; C-i and TAB are the same characters!)
   :config
   (push 'company-capf company-backends)
   :diminish
-  :hook ((after-init . global-company-mode))
   :init
-  (setq-default company-dabbrev-ignore-case t
-                company-dabbrev-code-ignore-case t)
-  (setq company-idle-delay 0.5
-        company-minimum-prefix-length 2
-        company-require-match 'never
-        company-show-numbers nil
-        company-tooltip-align-annotations t
-        company-tooltip-flip-when-above nil
-        company-tooltip-limit 10))
+  (setq company-dabbrev-ignore-case t)
+  (setq company-dabbrev-code-ignore-case t)
+  (setq company-idle-delay 0.5)
+  (setq company-minimum-prefix-length 2)
+  (setq company-require-match 'never)
+  (setq company-show-numbers nil)
+  (setq company-tooltip-align-annotations t)
+  (setq company-tooltip-flip-when-above nil)
+  (setq company-tooltip-limit 10)
+
+  (global-company-mode))
 
 (use-package company-posframe
-  :config
-  (company-posframe-mode)
+  :after company posframe
   :defer t
   :diminish
-  :hook (company-mode . company-posframe-mode))
+  :init
+  (company-posframe-mode 1))
 
 (use-package company-prescient
   :after company
@@ -96,10 +100,11 @@
   :defer t)
 
 (use-package counsel
-  :bind (("M-x"     . counsel-M-x)
-	 ("C-r"     . counsel-rg)
-	 ("C-x C-f" . counsel-find-file)
-	 ("C-x C-d" . counsel-git)))
+  :bind
+  (("M-x"     . 'counsel-M-x)
+   ("C-r"     . 'counsel-rg)
+   ("C-x C-f" . 'counsel-find-file)
+   ("C-x C-d" . 'counsel-git)))
 
 (use-package diff-hl
   :config
@@ -116,7 +121,8 @@
     (exec-path-from-shell-initialize)))
 
 (use-package expand-region
-  :bind (("C-M-w" . er/expand-region))
+  :bind
+  ("C-M-w" . 'er/expand-region)
   :defer t)
 
 (use-package flycheck
@@ -125,8 +131,8 @@
   (global-flycheck-mode))
 
 (use-package flycheck-rust
-  :config
-  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+  :hook
+  (flycheck-mode . 'flycheck-rust-setup))
 
 (use-package ivy
   :config
@@ -142,20 +148,19 @@
   :defer t)
 
 (use-package lsp-mode
-  :commands (lsp lsp-deferred)
   :diminish
-  :hook ((go-mode         . lsp-deferred)
-         (javascript-mode . lsp-deferred)
-         (python-mode     . lsp-deferred)
-         (rust-mode       . lsp-deferred)
-	 (yaml-mode       . lsp-deferred)
-         (lsp-mode        . lsp-enable-which-key-integration))
+  :hook
+  (go-mode         . 'lsp-deferred)
+  (javascript-mode . 'lsp-deferred)
+  (python-mode     . 'lsp-deferred)
+  (rust-mode       . 'lsp-deferred)
+  (yaml-mode       . 'lsp-deferred)
+  (lsp-mode        . 'lsp-enable-which-key-integration)
   :init
-  (setq-default lsp-completion-provider :capf)
-  (setq-default lsp-rust-server 'rust-analyzer)
-  (setq-default lsp-prefer-flymake nil)  ; flycheck is better
-  (setq-default lsp-modeline-code-actions-segments '(name))
-
+  (setq lsp-completion-provider :capf)
+  (setq lsp-rust-server 'rust-analyzer)
+  (setq lsp-prefer-flymake nil)  ; flycheck is better
+  (setq lsp-modeline-code-actions-segments '(name))
   (setq lsp-keymap-prefix "C-c l")
   (setq lsp-idle-delay 0.500)
   (setq lsp-enable-snippet nil)  ; company is bettera
@@ -163,44 +168,39 @@
   (setq lsp-signature-auto-activate nil))
 
 (use-package lsp-ivy
-  :after counsel
-  :commands (lsp-ivy-workspace-symbol)
+  :after lsp-mode ivy counsel
+  :commands lsp-ivy-workspace-symbol
   :defer t)
 
-(use-package lsp-origami
-  :after origami-mode
-  :hook (lsp-after-open . lsp-origami-try-enable))
-
 (use-package lsp-treemacs
-  :commands (lsp-treemacs-errors-list)
+  :after lsp-mode treemacs
   :defer t)
 
 (use-package lsp-ui
+  :after lsp-mode
   :defer t
-  :commands (lsp-ui-mode)
   :init
   (setq lsp-ui-doc-enable nil))
 
 (use-package magit
   :after diff-hl
-  :config
-  (add-hook 'magit-pre-refresh-hook  'diff-hl-magit-pre-refresh)
-  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
+  :hook
+  (magit-pre-refresh-hook  . 'diff-hl-magit-pre-refresh)
+  (magit-post-refresh-hook . 'diff-hl-magit-post-refresh))
 
 (use-package modus-themes
-  :ensure
+  :bind
+  ("<f5>" . 'modus-themes-toggle)
   :init
-  (setq modus-themes-slanted-constructs t
-	modus-themes-bold-constructs nil)
-
+  (setq modus-themes-slanted-constructs t)
+  (setq modus-themes-bold-constructs nil)
   (modus-themes-load-themes)
   :config
-  (modus-themes-load-vivendi)
-  :bind ("<f5>" . modus-themes-toggle))
+  (modus-themes-load-vivendi))
 
 (use-package rainbow-delimiters
   :hook
-  (prog-mode . rainbow-delimiters-mode))
+  (prog-mode-hook . 'rainbow-delimiters-mode))
 
 (use-package smartparens
   :diminish
@@ -210,11 +210,13 @@
   (show-smartparens-global-mode t))
 
 (use-package swiper
-  :bind (("C-s" . swiper)))
+  :bind
+  ("C-s" . 'swiper))
 
 (use-package undo-fu
-  :bind (("C-z" . undo-fu-only-undo)
-         ("C-M-z" . undo-fu-only-redo))
+  :bind
+  (("C-z"   . 'undo-fu-only-undo)
+   ("C-M-z" . 'undo-fu-only-redo))
   :defer t)
 
 (use-package which-key
@@ -246,10 +248,12 @@
   :straight nil) ;; pre-installed package
 
 (use-package markdown-mode
-  :mode (("README\\.md\\'" . gfm-mode)
-	 ("\\.md\\'"       . markdown-mode)
-	 ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "multimarkdown"))
+  :mode
+  ("README\\.md\\'" . 'gfm-mode)
+  ("\\.md\\'"       . 'markdown-mode)
+  ("\\.markdown\\'" . 'markdown-mode)
+  :init
+  (setq markdown-command "multimarkdown"))
 
 (use-package rust-mode
   :defer t)
@@ -261,3 +265,5 @@
 
 ;; Local Variables:
 ;; coding: utf-8
+;; byte-compile-warnings: (not free-vars unresolved)
+;; End:
