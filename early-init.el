@@ -1,4 +1,4 @@
-;;; ~/.emacs.d/early-init.el --- GOEDEV personal emacs configuration file.
+;;; early-init.el --- GOEDEV personal emacs configuration file  -*- lexical-binding: t -*-
 
 ;; Copyright (c) 2021 Gökmen Görgen
 ;;
@@ -17,7 +17,9 @@
 (setq use-package-always-ensure t)
 
 ;; Interface Settings
-(setq truncate-lines t)
+(setq-default truncate-lines t)
+
+(setq indent-tabs-mode nil)
 (setq require-final-newline t)
 (setq line-number-mode t)
 (setq column-number-mode t)
@@ -42,3 +44,5 @@
 
 ;; Local Variables:
 ;; coding: utf-8
+;; byte-compile-warnings: (not free-vars unresolved)
+;; End:
