@@ -18,8 +18,8 @@
 
 ;; Interface Settings
 (setq-default truncate-lines t)
+(setq-default indent-tabs-mode nil)
 
-(setq indent-tabs-mode nil)
 (setq require-final-newline t)
 (setq line-number-mode t)
 (setq column-number-mode t)

@@ -259,6 +259,13 @@
 (use-package rust-mode
   :defer t)
 
+(use-package vue-mode
+  :defer t
+  :init
+  (add-hook 'vue-mode-hook (lambda () (setq syntax-ppss-table nil)))
+  :config
+  (setq mmm-submode-decoration-level 0))
+
 (use-package yaml-mode
   :defer t)
 
