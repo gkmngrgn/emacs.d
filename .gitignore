@@ -4,11 +4,11 @@
 # exclude data folder
 !.github/
 !data/
+!lisp/
 
 # exclude files
 !.gitignore
 !LICENSE
 !README.md
 !init.el
-!init_gui.el
 !early-init.el

@@ -20,6 +20,7 @@
 (setq-default truncate-lines t)
 (setq-default indent-tabs-mode nil)
 
+(setq ring-bell-function 'ignore)
 (setq require-final-newline t)
 (setq line-number-mode t)
 (setq column-number-mode t)
@@ -30,10 +31,14 @@
 (setq scroll-margin 0)
 (setq scroll-conservatively 100000)
 (setq scroll-preserve-screen-position 1)
+(setq auto-window-vscroll nil)
 
 ;; Performance
 (setq gc-cons-threshold 600000000)
 (setq read-process-output-max (* 4096 1024))  ; 4mb
+
+;; Add lisp folder to the load path.
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 ;; Backup
 (setq backup-directory-alist `((".*" . ,temporary-file-directory))

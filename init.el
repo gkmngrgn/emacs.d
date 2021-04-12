@@ -51,6 +51,10 @@
 
 (straight-use-package 'use-package)
 
+;; GUI Settings
+(if (display-graphic-p)
+    (require 'init-gui))
+
 ;; Packages
 (use-package diminish)
 
