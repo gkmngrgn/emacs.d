@@ -11,7 +11,7 @@
 
 ;;; Code:
 
-(defvar font-default "Iosevka")
+(defvar font-default "Iosevka Term")
 
 (defun hdpi? ()
   "Check if you're using alienware or thinkpad."
