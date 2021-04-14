@@ -165,6 +165,7 @@
   (setq lsp-signature-doc-lines 10)
   (setq lsp-signature-auto-activate nil)
 
+  (add-hook 'c-mode-hook          #'lsp-deferred)
   (add-hook 'go-mode-hook         #'lsp-deferred)
   (add-hook 'javascript-mode-hook #'lsp-deferred)
   (add-hook 'python-mode-hook     #'lsp-deferred)
