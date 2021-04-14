@@ -45,6 +45,11 @@
       auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
       default-directory "~/")
 
+(defvar custom-file-path "~/.emacs.d/custom.el")
+(setq custom-file custom-file-path)
+(when (file-exists-p custom-file-path)
+  (load custom-file))
+
 ;;; early-init.el ends here
 
 ;; Local Variables:
