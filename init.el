@@ -238,6 +238,9 @@
   :diminish)
 
 ;; File Modes
+(use-package csv-mode
+  :defer t)
+
 (use-package dockerfile-mode
   :defer t)
 
