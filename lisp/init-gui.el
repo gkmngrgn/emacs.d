@@ -25,11 +25,11 @@
 (if (hdpi?)
     ;; HiDPI settings
     (progn
-      (set-face-attribute 'default nil :height 140)
+      (set-face-attribute 'default nil :height 130)
       (fringe-mode 16))
 
   ;; Default DPI settings
-  (set-face-attribute 'default nil :height 130))
+  (set-face-attribute 'default nil :height 120))
 
 (provide 'init-gui)
 
