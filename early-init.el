@@ -34,8 +34,8 @@
 (setq auto-window-vscroll nil)
 
 ;; Performance
-(setq gc-cons-threshold 600000000)
-(setq read-process-output-max (* 4096 1024))  ; 4mb
+(setq gc-cons-threshold 100000000)
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
 
 ;; Add lisp folder to the load path.
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))

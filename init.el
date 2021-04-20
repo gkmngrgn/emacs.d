@@ -92,13 +92,6 @@
 
   (global-company-mode))
 
-(use-package company-posframe
-  :after company posframe
-  :defer t
-  :diminish
-  :init
-  (company-posframe-mode 1))
-
 (use-package company-prescient
   :after company
   :config
@@ -161,7 +154,8 @@
   (setq lsp-modeline-code-actions-segments '(name))
   (setq lsp-keymap-prefix "C-c l")
   (setq lsp-idle-delay 0.500)
-  (setq lsp-enable-snippet nil)  ; company is bettera
+  (setq lsp-enable-snippet nil)  ; company is better
+  (setq lsp-log-io nil)  ; if set to true can cause a performance hit
   (setq lsp-signature-doc-lines 10)
   (setq lsp-signature-auto-activate nil)
 
@@ -180,10 +174,12 @@
 
 (use-package lsp-treemacs
   :after lsp-mode treemacs
+  :commands lsp-treemacs-errors-list
   :defer t)
 
 (use-package lsp-ui
   :after lsp-mode
+  :commands lsp-ui-mode
   :defer t
   :init
   (setq lsp-ui-doc-enable nil))
