@@ -136,7 +136,6 @@
   :config
   (ivy-mode)
   (setq ivy-use-virtual-buffers t)
-  (setq enable-recursive-minibuffers t)
   :diminish)
 
 (use-package ivy-prescient
@@ -201,8 +200,8 @@
   (modus-themes-load-vivendi))
 
 (use-package rainbow-delimiters
-  :hook
-  (prog-mode-hook . 'rainbow-delimiters-mode))
+  :init
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 (use-package smartparens
   :diminish
