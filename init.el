@@ -171,14 +171,13 @@
   :commands lsp-ivy-workspace-symbol
   :defer t)
 
-(use-package lsp-treemacs
-  :after lsp-mode treemacs
-  :commands lsp-treemacs-errors-list
-  :defer t)
-
 (use-package lsp-ui
   :after lsp-mode
   :commands lsp-ui-mode
+  :config
+  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+  (define-key lsp-ui-mode-map [remap xref-find-references]  #'lsp-ui-peek-find-references)
+  (define-key lsp-ui-mode-map (kbd "C-c u")                 #'lsp-ui-imenu)
   :defer t
   :init
   (setq lsp-ui-doc-enable nil))
