@@ -258,6 +258,9 @@
   :init
   (setq markdown-command "multimarkdown"))
 
+(use-package powershell
+  :defer t)
+
 (use-package rust-mode
   :defer t)
 
