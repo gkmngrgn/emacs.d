@@ -108,8 +108,7 @@
 (use-package diff-hl
   :config
   (global-diff-hl-mode)
-  (if (not (display-graphic-p))
-      (diff-hl-margin-mode)))
+  (diff-hl-margin-mode))
 
 (use-package exec-path-from-shell
   :commands (exec-path-from-shell-initialize)
@@ -184,9 +183,9 @@
 
 (use-package magit
   :after diff-hl
-  :hook
-  (magit-pre-refresh-hook  . 'diff-hl-magit-pre-refresh)
-  (magit-post-refresh-hook . 'diff-hl-magit-post-refresh))
+  :init
+  (add-hook 'magit-pre-refresh-hook  'diff-hl-magit-pre-refresh)
+  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
 
 (use-package modus-themes
   :bind
@@ -257,6 +256,9 @@
   ("\\.markdown\\'" . 'markdown-mode)
   :init
   (setq markdown-command "multimarkdown"))
+
+(use-package po-mode
+  :defer t)
 
 (use-package powershell
   :defer t)

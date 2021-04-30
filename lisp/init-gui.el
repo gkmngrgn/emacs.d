@@ -18,18 +18,17 @@
   (and (= 3840 (display-pixel-width))
        (= 2160 (display-pixel-height))))
 
+(fringe-mode 0)
 (scroll-bar-mode 0)
 (tool-bar-mode 0)
 (set-frame-font font-default)
 
 (if (hdpi?)
     ;; HiDPI settings
-    (progn
-      (set-face-attribute 'default nil :height 130)
-      (fringe-mode 16))
+    (set-face-attribute 'default nil :height 120)
 
   ;; Default DPI settings
-  (set-face-attribute 'default nil :height 120))
+  (set-face-attribute 'default nil :height 110))
 
 (provide 'init-gui)
 
