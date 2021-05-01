@@ -234,6 +234,9 @@
 (use-package csv-mode
   :defer t)
 
+(use-package dart-mode
+  :defer t)
+
 (use-package dockerfile-mode
   :defer t)
 
