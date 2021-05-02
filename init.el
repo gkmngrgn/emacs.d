@@ -143,6 +143,12 @@
   (ivy-prescient-mode t)
   :defer t)
 
+(use-package lsp-dart
+  :after dart-mode lsp-mode
+  :defer t
+  :init
+  (add-hook 'dart-mode-hook #'lsp-deferred))
+
 (use-package lsp-mode
   :diminish
   :init
