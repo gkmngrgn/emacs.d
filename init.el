@@ -224,6 +224,11 @@
    ("C-M-z" . 'undo-fu-only-redo))
   :defer t)
 
+(use-package web-mode
+  :init
+  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+  (setq web-mode-markup-indent-offset 2))
+
 (use-package which-key
   :config
   (which-key-mode)
