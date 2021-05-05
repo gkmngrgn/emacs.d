@@ -266,9 +266,6 @@
   :init
   (setq markdown-command "multimarkdown"))
 
-(use-package po-mode
-  :defer t)
-
 (use-package powershell
   :defer t)
 
