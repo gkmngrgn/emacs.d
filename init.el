@@ -264,12 +264,15 @@
   :straight nil) ;; pre-installed package
 
 (use-package markdown-mode
+  :commands (markdown-mode gfm-mode)
   :mode
   ("README\\.md\\'" . 'gfm-mode)
   ("\\.md\\'"       . 'markdown-mode)
   ("\\.markdown\\'" . 'markdown-mode)
   :init
-  (setq markdown-command "multimarkdown"))
+  (setq markdown-command "multimarkdown")
+  (custom-set-faces
+   '(markdown-code-face ((t (:inherit default))))))
 
 (use-package powershell
   :defer t)
