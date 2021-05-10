@@ -35,7 +35,11 @@ The other external dependency is [ripgrep][4] for searching and filtering. It su
 
 ### C & C++ & CMake
 
-Install **LLVM**, it comes with a language server named [Clangd][5]. Install also [Cmake][6], you will need Python **PIP** to install the language server. Take a look at the Python topic.
+Install **LLVM**, it comes with a language server named [Clangd][5]. Install also [Cmake][6], you will need Python **PIP** to install the language server.
+
+```bash
+$ python -m pip cmake-language-server
+```
 
 ### Common Lisp
 
@@ -53,25 +57,9 @@ Install [Go][13] first, then type this command for LSP support:
 go get -u golang.org/x/tools/gopls
 ```
 
-### Python
-
-```shell
-pip install --user -U pip
-pip install --user -U python-language-server[all] pyls-mypy pyls-isort pyls-black cmake-language-server
-```
-
 ### Rust
 
 Download rust-analyzer [here][14].
-
-
-### JavaScript & TypeScript
-
-Install all dependencies using npm:
-
-```
-npm install -g javascript-typescript-langserver
-```
 
 [1]: https://www.spacemacs.org/
 [2]: https://github.com/hlissner/doom-emacs

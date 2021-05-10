@@ -166,7 +166,6 @@
   (add-hook 'c-mode-hook          #'lsp-deferred)
   (add-hook 'go-mode-hook         #'lsp-deferred)
   (add-hook 'javascript-mode-hook #'lsp-deferred)
-  (add-hook 'python-mode-hook     #'lsp-deferred)
   (add-hook 'rust-mode-hook       #'lsp-deferred)
   (add-hook 'yaml-mode-hook       #'lsp-deferred)
   (add-hook 'lsp-mode-hook        #'lsp-enable-which-key-integration))
@@ -175,6 +174,12 @@
   :after lsp-mode ivy counsel
   :commands lsp-ivy-workspace-symbol
   :defer t)
+
+(use-package lsp-pyright
+  :after lsp-mode
+  :hook (python-mode . (lambda ()
+                         (require 'lsp-pyright)
+                         (lsp-deferred))))
 
 (use-package lsp-ui
   :after lsp-mode
