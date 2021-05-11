@@ -27,6 +27,13 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "M-p")     'backward-paragraph)
 (global-set-key (kbd "M-n")     'forward-paragraph)
+(global-set-key (kbd "M-]")     'other-window)
+(global-set-key (kbd "M-[")     'prev-window)
+
+(defun prev-window ()
+  "Switch to previous window."
+  (interactive)
+  (other-window -1))
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -64,14 +71,6 @@
    ("M-g f" . 'avy-goto-line))
   :init
   (avy-setup-default))
-
-(use-package ace-window
-  :bind
-  ("M-o" . 'ace-window)
-  :defer t
-  :diminish
-  :init
-  (setq aw-dispatch-always t))
 
 (use-package company
   :bind
