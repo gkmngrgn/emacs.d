@@ -73,8 +73,6 @@
   (avy-setup-default))
 
 (use-package company
-  :bind
-  ("C-c TAB" . 'company-complete-common) ;; C-i and TAB are the same characters!)
   :config
   (push 'company-capf company-backends)
   :diminish
@@ -89,7 +87,8 @@
   (setq company-tooltip-flip-when-above nil)
   (setq company-tooltip-limit 10)
 
-  (global-company-mode))
+  (global-company-mode)
+  (global-set-key (kbd "TAB") #'company-indent-or-complete-common))
 
 (use-package company-prescient
   :after company
