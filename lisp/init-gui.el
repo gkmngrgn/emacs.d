@@ -30,6 +30,11 @@
   ;; Default DPI settings
   (set-face-attribute 'default nil :height 110))
 
+;; add missing paths before starting the emacs.
+(when (memq window-system '(mac ns x))
+  (straight-use-package 'exec-path-from-shell)
+  (exec-path-from-shell-initialize))
+
 (provide 'init-gui)
 
 ;;; init-gui.el ends here

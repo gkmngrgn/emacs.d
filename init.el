@@ -22,7 +22,7 @@
 (set-default-coding-systems 'utf-8)
 (set-language-environment   'utf-8)
 
-;; Global Keymap Settings
+;; KEYMAPS
 (global-set-key (kbd "C-c SPC") 'comment-line)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "M-p")     'backward-paragraph)
@@ -37,11 +37,11 @@
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; General Hooks
+;; HOOKS
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'text-mode-hook   'visual-line-mode)
 
-;; Package Manager
+;; PACKAGE MANAGER
 (defvar bootstrap-version)
 
 (let ((bootstrap-file
@@ -56,243 +56,176 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(straight-use-package 'use-package)
-
-;; GUI Settings
+;; GUI SETTINGS
 (if (display-graphic-p)
     (require 'init-gui))
 
-;; Packages
-(use-package diminish)
+;; PACKAGES
 
-(use-package avy
-  :bind
-  (("M-g g" . 'avy-goto-char-2)
-   ("M-g f" . 'avy-goto-line))
-  :init
-  (avy-setup-default))
+;; navigation
+(straight-use-package 'avy)
 
-(use-package company
-  :config
-  (push 'company-capf company-backends)
-  :diminish
-  :init
-  (setq company-dabbrev-ignore-case t)
-  (setq company-dabbrev-code-ignore-case t)
-  (setq company-idle-delay 0.5)
-  (setq company-minimum-prefix-length 2)
-  (setq company-require-match 'never)
-  (setq company-show-numbers nil)
-  (setq company-tooltip-align-annotations t)
-  (setq company-tooltip-flip-when-above nil)
-  (setq company-tooltip-limit 10)
+(avy-setup-default)
+(global-set-key (kbd "M-g g") 'avy-goto-char-2)
+(global-set-key (kbd "M-g f") 'avy-goto-line)
 
-  (global-company-mode)
-  (global-set-key (kbd "TAB") #'company-indent-or-complete-common))
+;; code auto-complete
+(straight-use-package 'company)
+(straight-use-package 'company-prescient)
 
-(use-package company-prescient
-  :after company
-  :config
-  (company-prescient-mode t)
-  :defer t)
+(setq company-dabbrev-ignore-case t)
+(setq company-dabbrev-code-ignore-case t)
+(setq company-idle-delay 0.5)
+(setq company-minimum-prefix-length 2)
+(setq company-require-match 'never)
+(setq company-show-numbers nil)
+(setq company-tooltip-align-annotations t)
+(setq company-tooltip-flip-when-above nil)
+(setq company-tooltip-limit 10)
 
-(use-package counsel
-  :bind
-  (("M-x"     . 'counsel-M-x)
-   ("C-r"     . 'counsel-rg)
-   ("C-x C-f" . 'counsel-find-file)
-   ("C-x C-d" . 'counsel-git)))
+(global-company-mode)
+(company-prescient-mode t)
 
-(use-package diff-hl
-  :config
-  (global-diff-hl-mode)
-  (diff-hl-margin-mode))
+(global-set-key (kbd "TAB") 'company-indent-or-complete-common)
 
-(use-package exec-path-from-shell
-  :commands (exec-path-from-shell-initialize)
-  :init
-  (when (memq window-system '(mac ns x))
-    (exec-path-from-shell-initialize)))
+(push 'company-capf company-backends)
 
-(use-package expand-region
-  :bind
-  ("C-M-w" . 'er/expand-region)
-  :defer t)
+;; flycheck
+(straight-use-package 'flycheck)
+(straight-use-package 'flycheck-rust)
 
-(use-package flycheck
-  :diminish
-  :init
-  (global-flycheck-mode))
+(global-flycheck-mode)
 
-(use-package flycheck-rust
-  :after flycheck
-  :hook
-  (flycheck-mode-hook . 'flycheck-rust-setup))
+(add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
 
-(use-package ivy
-  :config
-  (ivy-mode)
-  (setq ivy-use-virtual-buffers t)
-  :diminish)
+;; command completion
+(straight-use-package 'counsel)
+(straight-use-package 'ivy)
+(straight-use-package 'ivy-prescient)
+(straight-use-package 'swiper)
 
-(use-package ivy-prescient
-  :after counsel
-  :config
-  (ivy-prescient-mode t)
-  :defer t)
+(setq ivy-use-virtual-buffers t)
 
-(use-package lsp-dart
-  :after dart-mode lsp-mode
-  :defer t
-  :init
-  (add-hook 'dart-mode-hook #'lsp-deferred))
+(ivy-mode)
+(ivy-prescient-mode t)
 
-(use-package lsp-mode
-  :diminish
-  :init
-  (setq lsp-completion-provider :capf)
-  (setq lsp-rust-server 'rust-analyzer)
-  (setq lsp-prefer-flymake nil)  ; flycheck is better
-  (setq lsp-modeline-code-actions-segments '(name))
-  (setq lsp-keymap-prefix "C-c l")
-  (setq lsp-idle-delay 0.500)
-  (setq lsp-enable-snippet nil)  ; company is better
-  (setq lsp-log-io nil)  ; if set to true can cause a performance hit
-  (setq lsp-signature-doc-lines 10)
-  (setq lsp-signature-auto-activate nil)
+(global-set-key (kbd "M-x")     'counsel-M-x)
+(global-set-key (kbd "C-r")     'counsel-rg)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(global-set-key (kbd "C-x C-d") 'counsel-git)
+(global-set-key (kbd "C-s")     'swiper)
 
-  (add-hook 'c-mode-hook          #'lsp-deferred)
-  (add-hook 'go-mode-hook         #'lsp-deferred)
-  (add-hook 'javascript-mode-hook #'lsp-deferred)
-  (add-hook 'rust-mode-hook       #'lsp-deferred)
-  (add-hook 'yaml-mode-hook       #'lsp-deferred)
-  (add-hook 'lsp-mode-hook        #'lsp-enable-which-key-integration))
+(define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
 
-(use-package lsp-ivy
-  :after lsp-mode ivy counsel
-  :commands lsp-ivy-workspace-symbol
-  :defer t)
+;; lsp
+(straight-use-package 'lsp-mode)
+(straight-use-package 'lsp-ui)
+(straight-use-package 'lsp-dart)
+(straight-use-package 'lsp-ivy)
+(straight-use-package 'lsp-pyright)
 
-(use-package lsp-pyright
-  :after lsp-mode
-  :hook (python-mode . (lambda ()
-                         (require 'lsp-pyright)
-                         (lsp-deferred))))
+(setq lsp-completion-provider :capf)
+(setq lsp-rust-server 'rust-analyzer)
+(setq lsp-prefer-flymake nil)  ; flycheck is better
+(setq lsp-modeline-code-actions-segments '(name))
+(setq lsp-keymap-prefix "C-c l")
+(setq lsp-idle-delay 0.500)
+(setq lsp-enable-snippet nil)  ; company is better
+(setq lsp-log-io nil)  ; if set to true can cause a performance hit
+(setq lsp-signature-doc-lines 10)
+(setq lsp-signature-auto-activate nil)
+(setq lsp-ui-doc-enable nil)
 
-(use-package lsp-ui
-  :after lsp-mode
-  :commands lsp-ui-mode
-  :config
+(add-hook 'lsp-mode-hook        #'lsp-enable-which-key-integration)
+(add-hook 'c-mode-hook          #'lsp-deferred)
+(add-hook 'dart-mode-hook       #'lsp-deferred)
+(add-hook 'go-mode-hook         #'lsp-deferred)
+(add-hook 'javascript-mode-hook #'lsp-deferred)
+(add-hook 'python-mode-hook (lambda ()
+                              (require 'lsp-pyright)
+                              (lsp-deferred)))
+(add-hook 'rust-mode-hook       #'lsp-deferred)
+(add-hook 'yaml-mode-hook       #'lsp-deferred)
+
+(with-eval-after-load 'lsp-ui
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
   (define-key lsp-ui-mode-map [remap xref-find-references]  #'lsp-ui-peek-find-references)
-  (define-key lsp-ui-mode-map (kbd "C-c u")                 #'lsp-ui-imenu)
-  :defer t
-  :init
-  (setq lsp-ui-doc-enable nil))
+  (define-key lsp-ui-mode-map (kbd "C-c u")                 #'lsp-ui-imenu))
 
-(use-package magit
-  :after diff-hl
-  :init
-  (add-hook 'magit-pre-refresh-hook  'diff-hl-magit-pre-refresh)
-  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
+;; git
+(straight-use-package 'diff-hl)
+(straight-use-package 'magit)
 
-(use-package modus-themes
-  :bind
-  ("<f5>" . 'modus-themes-toggle)
-  :init
-  (setq modus-themes-slanted-constructs t)
-  (setq modus-themes-bold-constructs nil)
-  (modus-themes-load-themes)
-  :config
-  (modus-themes-load-vivendi))
+(global-diff-hl-mode)
+(diff-hl-margin-mode)
 
-(use-package rainbow-delimiters
-  :init
-  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+(add-hook 'magit-pre-refresh-hook  'diff-hl-magit-pre-refresh)
+(add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
-(use-package smartparens
-  :diminish
-  :config
-  (require 'smartparens-config)
-  (smartparens-global-mode t)
-  (show-smartparens-global-mode t)
-  (sp-local-pair 'web-mode "{" "}" :actions nil))
+;; theme
+(straight-use-package 'modus-themes)
+(setq modus-themes-slanted-constructs t)
+(setq modus-themes-bold-constructs nil)
 
-(use-package swiper
-  :bind
-  ("C-s" . 'swiper))
+(global-set-key (kbd "<f5>") 'modus-themes-toggle)
 
-(use-package undo-fu
-  :bind
-  (("C-z"   . 'undo-fu-only-undo)
-   ("C-M-z" . 'undo-fu-only-redo))
-  :defer t)
+(modus-themes-load-vivendi)
 
-(use-package web-mode
-  :init
-  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-  (setq web-mode-markup-indent-offset 2))
+;; editing
+(straight-use-package 'expand-region)
+(straight-use-package 'rainbow-delimiters)
+(straight-use-package 'smartparens)
+(straight-use-package 'undo-fu)
 
-(use-package which-key
-  :config
-  (which-key-mode)
-  :diminish)
+(with-eval-after-load
+    'smartparens-config)
 
-(use-package zoom
-  :config
-  (zoom-mode t)
-  (custom-set-variables
+(smartparens-global-mode t)
+(show-smartparens-global-mode t)
+(sp-local-pair 'web-mode "{" "}" :actions nil)
+
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+(global-set-key (kbd "C-z")   'undo-fu-only-undo)
+(global-set-key (kbd "C-M-z") 'undo-fu-only-redo)
+(global-set-key (kbd "C-M-w") 'er/expand-region)
+
+;; package: web-mode
+(straight-use-package 'web-mode)
+(setq web-mode-markup-indent-offset 2)
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+;; package: which-key
+(straight-use-package 'which-key)
+
+;; package: zoom
+(straight-use-package 'zoom)
+(zoom-mode t)
+(custom-set-variables
    '(zoom-size '(0.618 . 0.618)))
-  :diminish)
 
-;; File Modes
-(use-package csv-mode
-  :defer t)
+;; FILE MODES
+(straight-use-package 'csv-mode)
+(straight-use-package 'dart-mode)
+(straight-use-package 'dockerfile-mode)
+(straight-use-package 'go-mode)
+(straight-use-package 'json-mode)
+(straight-use-package 'markdown-mode)
+(straight-use-package 'powershell)
+(straight-use-package 'rust-mode)
+(straight-use-package 'vue-mode)
+(straight-use-package 'yaml-mode)
 
-(use-package dart-mode
-  :defer t)
+(setq markdown-command "multimarkdown")
+(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'"       . markdown-mode))
 
-(use-package dockerfile-mode
-  :defer t)
+(custom-set-faces
+ '(markdown-code-face ((t (:inherit default)))))
 
-(use-package go-mode
-  :defer t)
 
-(use-package json-mode
-  :defer t)
-
-(use-package lisp-mode
-  :defer t
-  :diminish eldoc-mode
-  :ensure nil
-  :straight nil) ;; pre-installed package
-
-(use-package markdown-mode
-  :commands (markdown-mode gfm-mode)
-  :mode
-  ("README\\.md\\'" . 'gfm-mode)
-  ("\\.md\\'"       . 'markdown-mode)
-  ("\\.markdown\\'" . 'markdown-mode)
-  :init
-  (setq markdown-command "multimarkdown")
-  (custom-set-faces
-   '(markdown-code-face ((t (:inherit default))))))
-
-(use-package powershell
-  :defer t)
-
-(use-package rust-mode
-  :defer t)
-
-(use-package vue-mode
-  :defer t
-  :init
-  (add-hook 'vue-mode-hook (lambda () (setq syntax-ppss-table nil)))
-  :config
-  (setq mmm-submode-decoration-level 0))
-
-(use-package yaml-mode
-  :defer t)
+(setq mmm-submode-decoration-level 0)
+(add-hook 'vue-mode-hook (lambda () (setq syntax-ppss-table nil)))
 
 ;;; init.el ends here
 
