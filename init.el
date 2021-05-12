@@ -62,6 +62,15 @@
 
 ;; PACKAGES
 
+;; theme
+(straight-use-package 'modus-themes)
+(setq modus-themes-slanted-constructs t)
+(setq modus-themes-bold-constructs nil)
+
+(global-set-key (kbd "<f5>") 'modus-themes-toggle)
+
+(modus-themes-load-vivendi)
+
 ;; navigation
 (straight-use-package 'avy)
 
@@ -161,15 +170,6 @@
 
 (add-hook 'magit-pre-refresh-hook  'diff-hl-magit-pre-refresh)
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
-
-;; theme
-(straight-use-package 'modus-themes)
-(setq modus-themes-slanted-constructs t)
-(setq modus-themes-bold-constructs nil)
-
-(global-set-key (kbd "<f5>") 'modus-themes-toggle)
-
-(modus-themes-load-vivendi)
 
 ;; editing
 (straight-use-package 'expand-region)
