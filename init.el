@@ -108,21 +108,23 @@
 (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
 
 ;; command completion
-(straight-use-package 'counsel)
 (straight-use-package 'ivy)
-(straight-use-package 'ivy-prescient)
+(straight-use-package 'counsel)
 (straight-use-package 'swiper)
-
-(setq ivy-use-virtual-buffers t)
+(straight-use-package 'which-key)
 
 (ivy-mode)
-(ivy-prescient-mode t)
 
-(global-set-key (kbd "M-x")     'counsel-M-x)
-(global-set-key (kbd "C-r")     'counsel-rg)
-(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-(global-set-key (kbd "C-x C-d") 'counsel-git)
+(setq ivy-use-virtual-buffers t)
+(setq enable-recursive-minibuffers nil)
+(setq search-default-mode #'char-fold-to-regexp)
+
 (global-set-key (kbd "C-s")     'swiper)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(global-set-key (kbd "M-x")     'counsel-M-x)
+(global-set-key (kbd "C-c g")   'counsel-git)
+(global-set-key (kbd "C-c j")   'counsel-git-grep)
+(global-set-key (kbd "C-c k")   'counsel-rg)
 
 (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
 
@@ -190,19 +192,20 @@
 (global-set-key (kbd "C-M-z") 'undo-fu-only-redo)
 (global-set-key (kbd "C-M-w") 'er/expand-region)
 
-;; package: web-mode
+;; web
 (straight-use-package 'web-mode)
 (setq web-mode-markup-indent-offset 2)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
-;; package: which-key
-(straight-use-package 'which-key)
-
-;; package: zoom
+;; zoom
 (straight-use-package 'zoom)
+
 (zoom-mode t)
 (custom-set-variables
    '(zoom-size '(0.618 . 0.618)))
+
+;; python
+(straight-use-package 'poetry)
 
 ;; FILE MODES
 (straight-use-package 'csv-mode)
