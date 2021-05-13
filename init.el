@@ -80,7 +80,6 @@
 
 ;; code auto-complete
 (straight-use-package 'company)
-(straight-use-package 'company-prescient)
 
 (setq company-dabbrev-ignore-case t)
 (setq company-dabbrev-code-ignore-case t)
@@ -93,7 +92,6 @@
 (setq company-tooltip-limit 10)
 
 (global-company-mode)
-(company-prescient-mode t)
 
 (global-set-key (kbd "TAB") 'company-indent-or-complete-common)
 
