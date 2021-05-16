@@ -195,12 +195,10 @@
 (setq web-mode-markup-indent-offset 2)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
-;; zoom
-(straight-use-package 'zoom)
+;; window auto-resize
+(straight-use-package 'golden-ratio)
 
-(zoom-mode t)
-(custom-set-variables
-   '(zoom-size '(0.618 . 0.618)))
+(global-set-key (kbd "C-c f") 'golden-ratio)
 
 ;; python
 (straight-use-package 'poetry)
