@@ -12,6 +12,7 @@
 ;;; Code:
 
 ;; Package Manager Settings
+(setq comp-deferred-compilation-deny-list ())
 (setq package-enable-at-startup nil)
 (setq straight-use-package-by-default t)
 (setq use-package-always-ensure t)
