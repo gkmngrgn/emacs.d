@@ -11,24 +11,32 @@
 
 ;;; Code:
 
-(defvar font-default "Iosevka Term")
-
 (defun hdpi? ()
   "Check if you're using alienware or thinkpad."
   (and (= 3840 (display-pixel-width))
        (= 2160 (display-pixel-height))))
 
-(fringe-mode 0)
-(scroll-bar-mode 0)
-(tool-bar-mode 0)
-(set-frame-font font-default)
+(defvar my-font "Iosevka Term")
 
 (if (hdpi?)
     ;; HiDPI settings
-    (set-face-attribute 'default nil :height 120)
+    (defvar my-font-size 120)
 
   ;; Default DPI settings
-  (set-face-attribute 'default nil :height 110))
+  (defvar my-font-size 100))
+
+(fringe-mode 0)
+(scroll-bar-mode 0)
+(tool-bar-mode 0)
+
+;; avoid tiny font sizes
+(set-frame-font my-font)
+(set-face-attribute 'default nil
+                    :height my-font-size
+                    :font my-font)
+(set-face-attribute 'fixed-pitch nil
+                    :height my-font-size
+                    :font my-font)
 
 ;; add missing paths before starting the emacs.
 (when (memq window-system '(mac ns x))

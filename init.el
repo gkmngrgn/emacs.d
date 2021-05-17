@@ -223,10 +223,6 @@
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'"       . markdown-mode))
 
-(custom-set-faces
- '(markdown-code-face ((t (:inherit default)))))
-
-
 (setq mmm-submode-decoration-level 0)
 (add-hook 'vue-mode-hook (lambda () (setq syntax-ppss-table nil)))
 
