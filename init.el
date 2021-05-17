@@ -212,6 +212,7 @@
 (straight-use-package 'dockerfile-mode)
 (straight-use-package 'go-mode)
 (straight-use-package 'json-mode)
+(straight-use-package 'kotlin-mode)
 (straight-use-package 'markdown-mode)
 (straight-use-package 'powershell)
 (straight-use-package 'rust-mode)
