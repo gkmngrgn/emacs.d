@@ -20,7 +20,7 @@
 
 (if (hdpi?)
     ;; HiDPI settings
-    (defvar my-font-size 120)
+    (defvar my-font-size 130)
 
   ;; Default DPI settings
   (defvar my-font-size 100))
