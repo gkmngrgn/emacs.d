@@ -24,7 +24,7 @@
 
 ;; KEYMAPS
 (global-set-key (kbd "C-c SPC") 'comment-line)
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-c t")   'tab-bar-new-tab)
 (global-set-key (kbd "M-p")     'backward-paragraph)
 (global-set-key (kbd "M-n")     'forward-paragraph)
 (global-set-key (kbd "M-]")     'other-window)
