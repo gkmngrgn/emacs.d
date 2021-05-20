@@ -11,11 +11,6 @@
 
 ;;; Code:
 
-(defun hdpi? ()
-  "Check if you're using alienware or thinkpad."
-  (and (= 3840 (display-pixel-width))
-       (= 2160 (display-pixel-height))))
-
 (defun my-gui-change ()
   "Load my gui change."
   (set-frame-font my-font)
@@ -33,13 +28,7 @@
                       :box nil))
 
 (defvar my-font "Iosevka Term")
-
-(if (hdpi?)
-    ;; HiDPI settings
-    (defvar my-font-size 130)
-
-  ;; Default DPI settings
-  (defvar my-font-size 120))
+(defvar my-font-size 130)
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
