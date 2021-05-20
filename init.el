@@ -53,10 +53,6 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-;; GUI SETTINGS
-(if (display-graphic-p)
-    (require 'init-gui))
-
 ;; PACKAGES
 
 ;; theme
@@ -64,9 +60,17 @@
 (setq modus-themes-slanted-constructs t)
 (setq modus-themes-bold-constructs nil)
 
-(global-set-key (kbd "<f5>") 'modus-themes-toggle)
-
 (modus-themes-load-vivendi)
+
+(if (display-graphic-p)
+    (require 'init-gui))
+
+;; make gui look like in the terminal.
+(global-set-key (kbd "<f5>")
+                (lambda ()
+                  (interactive)
+                  (modus-themes-toggle)
+                  (if (display-graphic-p) (my-gui-change))))
 
 ;; navigation
 (straight-use-package 'avy)

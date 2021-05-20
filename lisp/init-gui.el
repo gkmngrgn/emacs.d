@@ -16,6 +16,22 @@
   (and (= 3840 (display-pixel-width))
        (= 2160 (display-pixel-height))))
 
+(defun my-gui-change ()
+  "Load my gui change."
+  (set-frame-font my-font)
+
+  (set-face-attribute 'default nil
+                      :height my-font-size
+                      :font my-font)
+  (set-face-attribute 'fixed-pitch nil
+                      :height my-font-size
+                      :font my-font)
+
+  (set-face-attribute 'mode-line nil
+                      :box nil)
+  (set-face-attribute 'mode-line-inactive nil
+                      :box nil))
+
 (defvar my-font "Iosevka Term")
 
 (if (hdpi?)
@@ -23,20 +39,14 @@
     (defvar my-font-size 130)
 
   ;; Default DPI settings
-  (defvar my-font-size 100))
+  (defvar my-font-size 120))
 
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+(my-gui-change)
 (fringe-mode 0)
 (scroll-bar-mode 0)
 (tool-bar-mode 0)
-
-;; avoid tiny font sizes
-(set-frame-font my-font)
-(set-face-attribute 'default nil
-                    :height my-font-size
-                    :font my-font)
-(set-face-attribute 'fixed-pitch nil
-                    :height my-font-size
-                    :font my-font)
 
 ;; add missing paths before starting the emacs.
 (when (memq window-system '(mac ns x))
