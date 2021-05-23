@@ -72,6 +72,8 @@
                   (modus-themes-toggle)
                   (if (display-graphic-p) (my-gui-change))))
 
+(straight-use-package 'all-the-icons)
+
 ;; navigation
 (straight-use-package 'avy)
 
