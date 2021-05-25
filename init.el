@@ -183,9 +183,9 @@
 (straight-use-package 'rainbow-delimiters)
 (straight-use-package 'smartparens)
 (straight-use-package 'undo-fu)
+(straight-use-package 'multiple-cursors)
 
-(with-eval-after-load
-    'smartparens-config)
+(with-eval-after-load (require 'smartparens-config))
 
 (smartparens-global-mode t)
 (show-smartparens-global-mode t)
@@ -193,9 +193,13 @@
 
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
-(global-set-key (kbd "C-z")   'undo-fu-only-undo)
-(global-set-key (kbd "C-M-z") 'undo-fu-only-redo)
-(global-set-key (kbd "C-M-w") 'er/expand-region)
+(global-set-key (kbd "C-z")         'undo-fu-only-undo)
+(global-set-key (kbd "C-M-z")       'undo-fu-only-redo)
+(global-set-key (kbd "C-M-w")       'er/expand-region)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->")         'mc/mark-next-like-this)
+(global-set-key (kbd "C-<")         'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<")     'mc/mark-all-like-this)
 
 ;; web
 (straight-use-package 'web-mode)
