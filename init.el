@@ -178,6 +178,27 @@
 (add-hook 'magit-pre-refresh-hook  'diff-hl-magit-pre-refresh)
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
+;; org-mode customizations
+(straight-use-package 'org-present)
+
+(setq org-todo-keywords '((sequence "TODO" "INPROGRESS" "|" "DONE")))
+(setq org-log-done t)
+
+(eval-after-load "org-present"
+  '(progn
+     (add-hook 'org-present-mode-hook
+               (lambda ()
+                 (org-present-big)
+                 (org-display-inline-images)
+                 (org-present-hide-cursor)
+                 (org-present-read-only)))
+     (add-hook 'org-present-mode-quit-hook
+               (lambda ()
+                 (org-present-small)
+                 (org-remove-inline-images)
+                 (org-present-show-cursor)
+                 (org-present-read-write)))))
+
 ;; editing
 (straight-use-package 'expand-region)
 (straight-use-package 'rainbow-delimiters)
