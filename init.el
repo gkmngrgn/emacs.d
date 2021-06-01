@@ -24,8 +24,6 @@
 
 ;; KEYMAPS
 (global-set-key (kbd "C-c SPC") 'comment-line)
-(global-set-key (kbd "M-]")     'other-window)
-(global-set-key (kbd "M-[")     'prev-window)
 
 (defun prev-window ()
   "Switch to previous window."
