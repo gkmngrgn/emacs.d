@@ -238,6 +238,8 @@
 (setq mmm-submode-decoration-level 0)
 (add-hook 'vue-mode-hook (lambda () (setq syntax-ppss-table nil)))
 
+(setq js-indent-level 2)
+
 ;;; init.el ends here
 
 ;; Local Variables:
