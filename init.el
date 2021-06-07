@@ -228,6 +228,7 @@
 (straight-use-package 'markdown-mode)
 (straight-use-package 'powershell)
 (straight-use-package 'rust-mode)
+(straight-use-package 'typescript-mode)
 (straight-use-package 'vue-mode)
 (straight-use-package 'yaml-mode)
 
