@@ -217,6 +217,7 @@
 (straight-use-package 'poetry)
 
 ;; FILE MODES
+(straight-use-package 'bazel)
 (straight-use-package 'csv-mode)
 (straight-use-package 'dart-mode)
 (straight-use-package 'dockerfile-mode)
