@@ -9,9 +9,29 @@ Please **do not open** a pull-request for this repository. You can configure you
 ## My Emacs Build Configuration
 
 ```
+sudo apt install
+sudo add-apt-repository -y ppa:ubuntu-toolchain-r/ppa
+sudo apt install -y autoconf \
+                    make \
+                    checkinstall \
+                    pkg-config \
+                    texinfo \
+                    libgnutls28-dev \
+                    libncurses5-dev \
+                    libjansson-dev \
+                    libgccjit-9-dev \
+                    gcc-10 \
+                    g++-10 \
+                    zlib1g-dev
+
+git clone -b master --single-branch --depth=1 https://git.savannah.gnu.org/git/emacs.git
+cd emacs
+
 ./autogen.sh
-./configure --with-native-compilation
-make
+./configure --prefix=$HOME/.local \
+            --with-native-compilation
+
+make -j$(nproc)
 make install
 ```
 
