@@ -196,14 +196,17 @@
 
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
-(global-set-key (kbd "C-z")         'undo-fu-only-undo)
-(global-set-key (kbd "C-M-z")       'undo-fu-only-redo)
-(global-set-key (kbd "C-M-q")       'unfill-paragraph)
-(global-set-key (kbd "C-M-w")       'er/expand-region)
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->")         'mc/mark-next-like-this)
-(global-set-key (kbd "C-<")         'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<")     'mc/mark-all-like-this)
+(global-unset-key (kbd "C-z"))
+(global-unset-key (kbd "C-_"))
+(global-set-key   (kbd "C-z")         'undo-fu-only-undo)
+(global-set-key   (kbd "C-M-z")       'undo-fu-only-redo)
+
+(global-set-key   (kbd "C-M-q")       'unfill-paragraph)
+(global-set-key   (kbd "C-M-w")       'er/expand-region)
+(global-set-key   (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key   (kbd "C->")         'mc/mark-next-like-this)
+(global-set-key   (kbd "C-<")         'mc/mark-previous-like-this)
+(global-set-key   (kbd "C-c C-<")     'mc/mark-all-like-this)
 
 ;; web
 (straight-use-package 'web-mode)
