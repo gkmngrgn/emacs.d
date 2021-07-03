@@ -9,8 +9,8 @@ Please **do not open** a pull-request for this repository. You can configure you
 ## My Emacs Build Configuration
 
 ```
-sudo apt install
 sudo add-apt-repository -y ppa:ubuntu-toolchain-r/ppa
+sudo apt update
 sudo apt install -y autoconf \
                     make \
                     checkinstall \
