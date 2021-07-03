@@ -121,10 +121,10 @@
 
 (global-set-key (kbd "C-s")     'swiper)
 (global-set-key (kbd "C-x C-b") 'counsel-ibuffer)
+(global-set-key (kbd "C-x C-d") 'counsel-git)
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
 (global-set-key (kbd "M-x")     'counsel-M-x)
 (global-set-key (kbd "C-c e")   'counsel-flycheck)
-(global-set-key (kbd "C-c g")   'counsel-git)
 (global-set-key (kbd "C-c j")   'counsel-git-grep)
 (global-set-key (kbd "C-c k")   'counsel-rg)
 
