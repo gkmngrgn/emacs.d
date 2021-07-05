@@ -210,8 +210,23 @@
 
 ;; web
 (straight-use-package 'web-mode)
+(straight-use-package 'tide)
+
 (setq web-mode-markup-indent-offset 2)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+(defun setup-tide-mode ()
+  "My custom tide setup."
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  (company-mode +1))
+
+(add-hook 'before-save-hook     'tide-format-before-save)
+(add-hook 'typescript-mode-hook 'setup-tide-mode)
 
 ;; window auto-resize
 (straight-use-package 'golden-ratio)
