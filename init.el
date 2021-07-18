@@ -151,6 +151,7 @@
 
 (add-hook 'lsp-mode-hook        #'lsp-enable-which-key-integration)
 (add-hook 'c-mode-hook          #'lsp-deferred)
+(add-hook 'csharp-mode-hook     #'lsp-deferred)
 (add-hook 'dart-mode-hook       #'lsp-deferred)
 (add-hook 'gdscript-mode-hook   #'lsp-deferred)
 (add-hook 'go-mode-hook         #'lsp-deferred)
@@ -238,6 +239,7 @@
 
 ;; FILE MODES
 (straight-use-package 'bazel)
+(straight-use-package 'csharp-mode)
 (straight-use-package 'csv-mode)
 (straight-use-package 'dart-mode)
 (straight-use-package 'dockerfile-mode)
