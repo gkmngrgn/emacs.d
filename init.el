@@ -214,7 +214,11 @@
 (straight-use-package 'tide)
 
 (setq web-mode-markup-indent-offset 2)
+(setq web-mode-code-indent-offset   2)
+(setq web-mode-css-indent-offset    2)
+(setq web-mode-script-padding       0)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.vue?\\'"  . web-mode))
 
 (defun setup-tide-mode ()
   "My custom tide setup."
@@ -251,7 +255,6 @@
 (straight-use-package 'powershell)
 (straight-use-package 'rust-mode)
 (straight-use-package 'typescript-mode)
-(straight-use-package 'vue-mode)
 (straight-use-package 'yaml-mode)
 
 (setq markdown-command "multimarkdown")
@@ -259,7 +262,6 @@
 (add-to-list 'auto-mode-alist '("\\.md\\'"       . markdown-mode))
 
 (setq mmm-submode-decoration-level 0)
-(add-hook 'vue-mode-hook (lambda () (setq syntax-ppss-table nil)))
 
 (setq js-indent-level 2)
 (setq typescript-indent-level 2)
