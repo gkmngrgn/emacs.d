@@ -188,12 +188,14 @@
 (straight-use-package 'undo-fu)
 (straight-use-package 'unfill)
 (straight-use-package 'multiple-cursors)
+(straight-use-package 'origami)
 
 (with-eval-after-load (require 'smartparens-config))
 
 (smartparens-global-mode t)
 (show-smartparens-global-mode t)
 (sp-local-pair 'web-mode "{" "}" :actions nil)
+(global-origami-mode)
 
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
@@ -202,6 +204,7 @@
 (global-set-key   (kbd "C-z")         'undo-fu-only-undo)
 (global-set-key   (kbd "C-M-z")       'undo-fu-only-redo)
 
+(global-set-key   (kbd "C-M-o")       'origami-toggle-node)
 (global-set-key   (kbd "C-M-q")       'unfill-paragraph)
 (global-set-key   (kbd "C-M-w")       'er/expand-region)
 (global-set-key   (kbd "C-S-c C-S-c") 'mc/edit-lines)
