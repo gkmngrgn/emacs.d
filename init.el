@@ -182,6 +182,8 @@
 (setq org-log-done t)
 
 ;; editing
+(straight-use-package 'tree-sitter)
+(straight-use-package 'tree-sitter-langs)
 (straight-use-package 'expand-region)
 (straight-use-package 'rainbow-delimiters)
 (straight-use-package 'smartparens)
@@ -194,9 +196,12 @@
 (smartparens-global-mode t)
 (show-smartparens-global-mode t)
 (sp-local-pair 'web-mode "{" "}" :actions nil)
+
+(global-tree-sitter-mode)
 (global-origami-mode)
 
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'prog-mode-hook            #'rainbow-delimiters-mode)
+(add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
 
 (global-unset-key (kbd "C-z"))
 (global-unset-key (kbd "C-_"))
