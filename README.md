@@ -24,12 +24,18 @@ sudo apt install -y autoconf \
                     g++-10 \
                     zlib1g-dev
 
-git clone -b master --single-branch --depth=1 https://git.savannah.gnu.org/git/emacs.git
+git clone -b emacs-28 --single-branch --depth=1 https://git.savannah.gnu.org/git/emacs.git
 cd emacs
 
 ./autogen.sh
 ./configure --prefix=$HOME/.local \
-            --with-native-compilation
+            --with-native-compilation \
+            --with-x-toolkit=no \
+            --with-xpm=ifavailable \
+            --with-jpeg=ifavailable \
+            --with-gif=ifavailable \
+            --with-tiff=ifavailable \
+            --without-xft
 
 make -j$(nproc)
 make install
