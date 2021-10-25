@@ -43,9 +43,10 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 ;; Backup
-(setq backup-directory-alist `((".*" . ,temporary-file-directory))
-      auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
-      default-directory "~/")
+(setq backup-directory-alist         `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+(setq default-directory              "~/")
+(setq create-lockfiles               nil)
 
 (defvar custom-file-path "~/.emacs.d/custom.el")
 (setq custom-file custom-file-path)
