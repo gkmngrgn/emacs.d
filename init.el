@@ -25,11 +25,6 @@
 ;; KEYMAPS
 (global-set-key (kbd "C-c SPC") 'comment-line)
 
-(defun prev-window ()
-  "Switch to previous window."
-  (interactive)
-  (other-window -1))
-
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; HOOKS
@@ -236,10 +231,16 @@
 (add-hook 'before-save-hook     'tide-format-before-save)
 (add-hook 'typescript-mode-hook 'setup-tide-mode)
 
-;; window auto-resize
+;; window management
 (straight-use-package 'golden-ratio)
 
-(global-set-key (kbd "C-c f") 'golden-ratio)
+(defun prev-window ()
+  "Switch to previous window."
+  (interactive)
+  (other-window -1))
+
+(global-set-key (kbd "C-c f")   'golden-ratio)
+(global-set-key (kbd "C-x x o") 'prev-window)
 
 ;; python
 (straight-use-package 'poetry)
