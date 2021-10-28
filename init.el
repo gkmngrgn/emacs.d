@@ -233,6 +233,8 @@
 
 ;; window management
 (straight-use-package 'golden-ratio)
+(straight-use-package 'eyebrowse)
+(eyebrowse-mode t)
 
 (defun prev-window ()
   "Switch to previous window."
