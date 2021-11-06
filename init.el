@@ -176,6 +176,10 @@
 (setq org-todo-keywords '((sequence "TODO" "INPROGRESS" "|" "DONE")))
 (setq org-log-done t)
 
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)))
+
 ;; editing
 (straight-use-package 'tree-sitter)
 (straight-use-package 'tree-sitter-langs)
@@ -246,6 +250,9 @@
 
 ;; python
 (straight-use-package 'poetry)
+(straight-use-package 'pyenv-mode)
+
+(pyenv-mode)
 
 ;; FILE MODES
 (straight-use-package 'bazel)
