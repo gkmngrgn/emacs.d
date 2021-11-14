@@ -48,6 +48,11 @@
 
 ;; PACKAGES
 
+;; diminish support
+(straight-use-package 'diminish)
+
+(eval-after-load "eldoc" '(diminish 'eldoc-mode))
+
 ;; theme
 (straight-use-package 'modus-themes)
 (setq modus-themes-slanted-constructs t)
@@ -93,6 +98,8 @@
 
 (push 'company-capf company-backends)
 
+(eval-after-load "company" '(diminish 'company-mode))
+
 ;; flycheck
 (straight-use-package 'flycheck)
 (straight-use-package 'flycheck-rust)
@@ -100,6 +107,8 @@
 (global-flycheck-mode)
 
 (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+
+(eval-after-load "flycheck" '(diminish 'flycheck-mode))
 
 ;; command completion
 (straight-use-package 'ivy)
@@ -124,6 +133,8 @@
 (global-set-key (kbd "C-c k")   'counsel-rg)
 
 (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
+
+(eval-after-load "ivy" '(diminish 'ivy-mode))
 
 ;; lsp
 (straight-use-package 'lsp-mode)
@@ -201,6 +212,8 @@
 
 (add-hook 'prog-mode-hook            #'rainbow-delimiters-mode)
 (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
+
+(eval-after-load "tree-sitter" '(diminish 'tree-sitter-mode))
 
 (global-unset-key (kbd "C-z"))
 (global-unset-key (kbd "C-_"))
