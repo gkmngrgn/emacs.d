@@ -8,63 +8,58 @@ Please **do not open** a pull-request for this repository. You can configure you
 
 ## My Emacs Build Configuration
 
-```
-sudo add-apt-repository -y ppa:ubuntu-toolchain-r/ppa
-sudo apt update
-sudo apt install -y autoconf \
-                    make \
-                    checkinstall \
-                    pkg-config \
-                    texinfo \
-                    libgnutls28-dev \
-                    libncurses5-dev \
-                    libjansson-dev \
-                    libgccjit-9-dev \
-                    gcc-10 \
-                    g++-10 \
-                    zlib1g-dev
+    sudo add-apt-repository -y ppa:ubuntu-toolchain-r/ppa
+    sudo apt update
+    sudo apt install -y autoconf \
+                        make \
+                        checkinstall \
+                        pkg-config \
+                        texinfo \
+                        libgnutls28-dev \
+                        libncurses5-dev \
+                        libjansson-dev \
+                        libgccjit-9-dev \
+                        gcc-10 \
+                        g++-10 \
+                        zlib1g-dev
 
-git clone -b emacs-28 --single-branch --depth=1 https://git.savannah.gnu.org/git/emacs.git
-cd emacs
+    git clone -b emacs-28 --single-branch --depth=1 https://git.savannah.gnu.org/git/emacs.git
+    cd emacs
 
-./autogen.sh
-./configure --prefix=$HOME/.local \
-            --with-native-compilation \
-            --with-x-toolkit=no \
-            --with-xpm=ifavailable \
-            --with-jpeg=ifavailable \
-            --with-gif=ifavailable \
-            --with-tiff=ifavailable \
-            --without-xft
+    ./autogen.sh
+    ./configure --prefix=$HOME/.local \
+                --with-native-compilation \
+                --with-x-toolkit=no \
+                --with-xpm=ifavailable \
+                --with-jpeg=ifavailable \
+                --with-gif=ifavailable \
+                --with-tiff=ifavailable \
+                --without-xft
 
-make -j$(nproc)
-make install
-```
+    make -j$(nproc)
+    make install
+
 
 ## Installation
 
 Clone the repository to your home folder:
 
-```
-cd ~
-git clone https://github.com/gkmngrgn/emacs.d.git .emacs.d
-```
+    cd ~
+    git clone https://github.com/gkmngrgn/emacs.d.git .emacs.d
 
 If you are on Windows, don't forget to add a new environment variable named "HOME":
 
-```
-HOME="%USERPROFILE%"
-```
+    HOME="%USERPROFILE%"
 
-That's all.
 
 ## Packages
 
-I use **use-package** to install dependencies. If you want to see the list of packages that I use, just open **init.el** file and look at all the lines starting with `(use-package `.
+I use **use-package** to install dependencies. If you want to see the list of packages that I use, just open **init.el** file and look at all the lines starting with `straight-use-package `.
 
 Some features need to the external dependencies. My current font is **Iosevka**, please get it from [this link][3] or choose another font.
 
 The other external dependency is [ripgrep][4] for searching and filtering. It supports Windows.
+
 
 ## Programming Languages
 
@@ -72,9 +67,9 @@ The other external dependency is [ripgrep][4] for searching and filtering. It su
 
 Install **LLVM**, it comes with a language server named [Clangd][5]. Install also [Cmake][6], you will need Python **PIP** to install the language server.
 
-```bash
-$ python -m pip cmake-language-server
-```
+
+    python -m pip cmake-language-server
+
 
 ### Common Lisp
 
@@ -84,13 +79,18 @@ $ python -m pip cmake-language-server
 
 Install [Dart SDK][10] or [Flutter][11], it has a builtin analysis tool. Then customize SDK path in your editor. If you don't know how to customize, start with [this tutorial][12].
 
+
 ### Go
 
 Install [Go][13] first, then type this command for LSP support:
 
-```
-go get -u golang.org/x/tools/gopls
-```
+    go get -u golang.org/x/tools/gopls
+
+
+### Python
+
+    python -m pip install python-lsp-server
+
 
 ### Rust
 

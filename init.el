@@ -141,7 +141,6 @@
 (straight-use-package 'lsp-ui)
 (straight-use-package 'lsp-dart)
 (straight-use-package 'lsp-ivy)
-(straight-use-package 'lsp-pyright)
 
 (setq lsp-completion-provider :capf)
 (setq lsp-rust-server 'rust-analyzer)
@@ -155,6 +154,22 @@
 (setq lsp-signature-auto-activate nil)
 (setq lsp-ui-doc-enable nil)
 
+(setq lsp-pylsp-plugins-autopep8-enabled nil)
+(setq lsp-pylsp-plugins-flake8-enabled nil)
+(setq lsp-pylsp-plugins-mccabe-enabled nil)
+(setq lsp-pylsp-plugins-pycodestyle-enabled nil)
+(setq lsp-pylsp-plugins-pylint-enabled nil)
+(setq lsp-pylsp-plugins-rope-completion-enabled nil)
+(setq lsp-pylsp-plugins-yapf-enabled nil)
+
+(with-eval-after-load 'lsp-ui
+  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+  (define-key lsp-ui-mode-map [remap xref-find-references]  #'lsp-ui-peek-find-references)
+  (define-key lsp-ui-mode-map (kbd "C-c u")                 #'lsp-ui-imenu))
+
+(with-eval-after-load 'lsp-mode
+  (add-to-list 'lsp-disabled-clients 'pyls))
+
 (add-hook 'lsp-mode-hook        #'lsp-enable-which-key-integration)
 (add-hook 'c-mode-hook          #'lsp-deferred)
 (add-hook 'csharp-mode-hook     #'lsp-deferred)
@@ -162,16 +177,9 @@
 (add-hook 'gdscript-mode-hook   #'lsp-deferred)
 (add-hook 'go-mode-hook         #'lsp-deferred)
 (add-hook 'javascript-mode-hook #'lsp-deferred)
-(add-hook 'python-mode-hook (lambda ()
-                              (require 'lsp-pyright)
-                              (lsp-deferred)))
+(add-hook 'python-mode-hook     #'lsp-deferred)
 (add-hook 'rust-mode-hook       #'lsp-deferred)
 (add-hook 'yaml-mode-hook       #'lsp-deferred)
-
-(with-eval-after-load 'lsp-ui
-  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
-  (define-key lsp-ui-mode-map [remap xref-find-references]  #'lsp-ui-peek-find-references)
-  (define-key lsp-ui-mode-map (kbd "C-c u")                 #'lsp-ui-imenu))
 
 ;; git
 (straight-use-package 'diff-hl)
