@@ -48,11 +48,6 @@
 
 ;; PACKAGES
 
-;; diminish support
-(straight-use-package 'diminish)
-
-(eval-after-load "eldoc" '(diminish 'eldoc-mode))
-
 ;; theme
 (straight-use-package 'modus-themes)
 (setq modus-themes-slanted-constructs t)
@@ -79,6 +74,17 @@
 (global-set-key (kbd "M-g g") 'avy-goto-char-2)
 (global-set-key (kbd "M-g f") 'avy-goto-line)
 
+;; mode-line
+(straight-use-package 'smart-mode-line)
+
+(setq sml/theme 'respectful)
+(setq sml/shorten-modes t)
+(setq sml/shorten-directory t)
+(setq sml/name-width 20)
+(setq sml/mode-width 'right)
+
+(sml/setup)
+
 ;; code auto-complete
 (straight-use-package 'company)
 
@@ -98,8 +104,6 @@
 
 (push 'company-capf company-backends)
 
-(eval-after-load "company" '(diminish 'company-mode))
-
 ;; flycheck
 (straight-use-package 'flycheck)
 (straight-use-package 'flycheck-rust)
@@ -107,8 +111,6 @@
 (global-flycheck-mode)
 
 (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
-
-(eval-after-load "flycheck" '(diminish 'flycheck-mode))
 
 ;; command completion
 (straight-use-package 'ivy)
@@ -133,8 +135,6 @@
 (global-set-key (kbd "C-c k")   'counsel-rg)
 
 (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
-
-(eval-after-load "ivy" '(diminish 'ivy-mode))
 
 ;; lsp
 (straight-use-package 'lsp-mode)
@@ -220,8 +220,6 @@
 
 (add-hook 'prog-mode-hook            #'rainbow-delimiters-mode)
 (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
-
-(eval-after-load "tree-sitter" '(diminish 'tree-sitter-mode))
 
 (global-unset-key (kbd "C-z"))
 (global-unset-key (kbd "C-_"))
