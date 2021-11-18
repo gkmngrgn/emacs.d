@@ -79,11 +79,16 @@
 
 (setq sml/theme 'respectful)
 (setq sml/shorten-modes t)
-(setq sml/shorten-directory t)
 (setq sml/name-width 20)
 (setq sml/mode-width 'right)
 
 (sml/setup)
+
+(add-to-list 'sml/hidden-modes " ElDoc")
+(add-to-list 'sml/hidden-modes " company")
+(add-to-list 'sml/hidden-modes " ivy")
+(add-to-list 'sml/hidden-modes " tree-sitter")
+(add-to-list 'sml/replacer-regexp-list '("^~/Workspace/" ":WS:") t)
 
 ;; code auto-complete
 (straight-use-package 'company)
