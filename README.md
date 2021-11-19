@@ -34,7 +34,8 @@ Please **do not open** a pull-request for this repository. You can configure you
                 --with-jpeg=ifavailable \
                 --with-gif=ifavailable \
                 --with-tiff=ifavailable \
-                --without-xft
+                --without-xft \
+                --without-x
 
     make -j$(nproc)
     make install
