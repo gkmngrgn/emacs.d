@@ -29,6 +29,9 @@
 (setq inhibit-splash-screen t)
 (setq initial-scratch-message nil)
 
+(setq select-enable-primary t)
+(setq select-enable-clipboard t)
+
 ;; Scroll Settings
 (setq scroll-margin 0)
 (setq scroll-conservatively 100000)

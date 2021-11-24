@@ -53,11 +53,30 @@ If you are on Windows, don't forget to add a new environment variable named "HOM
     HOME="%USERPROFILE%"
 
 
+## Copy & Paste Problem
+
+For Linux, install `xsel` and after you select your text, type `M-|`,
+then run the command `xsel -bi`.
+
+For MacOS, you can use `pbcopy`.
+
+
+## Emacs as a Daemon
+
+If you want to run Emacs as a Daemon on system startup:
+
+    mkdir -p ~/.config/systemd/user/
+    cp ~/.emacs.d/emacs.service ~/.config/systemd/user/emacs.service
+    systemctl --user enable --now emacs
+
+To restart it:
+
+    systemctl --user restart emacs
+
+
 ## Packages
 
 I use **use-package** to install dependencies. If you want to see the list of packages that I use, just open **init.el** file and look at all the lines starting with `straight-use-package `.
-
-Some features need to the external dependencies. My current font is **Iosevka**, please get it from [this link][3] or choose another font.
 
 The other external dependency is [ripgrep][4] for searching and filtering. It supports Windows.
 
@@ -99,7 +118,6 @@ Download rust-analyzer [here][14].
 
 [1]: https://www.spacemacs.org/
 [2]: https://github.com/hlissner/doom-emacs
-[3]: https://typeof.net/Iosevka/
 [4]: https://github.com/BurntSushi/ripgrep/
 [5]: https://clangd.llvm.org/
 [6]: https://cmake.org/download/
