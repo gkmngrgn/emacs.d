@@ -5,6 +5,7 @@
 !.github/
 !data/
 !lisp/
+!emacs.service
 
 # exclude files
 !.gitignore
