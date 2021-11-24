@@ -4,7 +4,7 @@ Documentation=info:emacs man:emacs(1) https://gnu.org/software/emacs/
 
 [Service]
 Type=simple
-ExecStart=%h/bin/emacs --fg-daemon
+ExecStart=/bin/bash -ac '. %h/.goedev-env.sh; exec %h/bin/emacs --fg-daemon'
 ExecStop=%h/bin/emacsclient --eval "(kill-emacs)"
 Restart=on-failure
 
