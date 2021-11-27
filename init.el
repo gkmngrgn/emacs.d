@@ -262,9 +262,9 @@
 ;; window management
 (straight-use-package 'golden-ratio)
 
-(tab-bar-close-button-show nil)
-(tab-bar-mode t)
-(tab-bar-show t)
+(setq tab-bar-close-button-show nil)
+(setq tab-bar-mode t)
+(setq tab-bar-show t)
 
 (defun prev-window ()
   "Switch to previous window."
