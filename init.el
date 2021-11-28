@@ -271,8 +271,10 @@
   (interactive)
   (other-window -1))
 
-(global-set-key (kbd "C-c f")   'golden-ratio)
-(global-set-key (kbd "C-x x o") 'prev-window)
+(global-set-key (kbd "C-c f")     'golden-ratio)
+(global-set-key (kbd "C-x O")     'prev-window)
+(global-set-key (kbd "C-<left>")  'tab-bar-switch-to-prev-tab)
+(global-set-key (kbd "C-<right>") 'tab-bar-switch-to-next-tab)
 
 ;; python
 (straight-use-package 'poetry)
