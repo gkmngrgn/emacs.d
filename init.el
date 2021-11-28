@@ -262,6 +262,10 @@
 ;; window management
 (straight-use-package 'golden-ratio)
 
+(golden-ratio-mode 1)
+
+(setq golden-ratio-auto-scale t)
+(setq golden-ratio-max-width 72)
 (setq tab-bar-close-button-show nil)
 (setq tab-bar-mode t)
 (setq tab-bar-show t)
@@ -271,7 +275,6 @@
   (interactive)
   (other-window -1))
 
-(global-set-key (kbd "C-c f")     'golden-ratio)
 (global-set-key (kbd "C-x O")     'prev-window)
 (global-set-key (kbd "C-<left>")  'tab-bar-switch-to-prev-tab)
 (global-set-key (kbd "C-<right>") 'tab-bar-switch-to-next-tab)
