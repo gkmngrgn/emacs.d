@@ -85,6 +85,7 @@
 (sml/setup)
 
 (add-to-list 'sml/hidden-modes " ElDoc")
+(add-to-list 'sml/hidden-modes " Golden")
 (add-to-list 'sml/hidden-modes " company")
 (add-to-list 'sml/hidden-modes " ivy")
 (add-to-list 'sml/hidden-modes " tree-sitter")
