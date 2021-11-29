@@ -288,6 +288,7 @@
 
 ;; FILE MODES
 (straight-use-package 'bazel)
+(straight-use-package 'cmake-mode)
 (straight-use-package 'csharp-mode)
 (straight-use-package 'csv-mode)
 (straight-use-package 'dart-mode)
