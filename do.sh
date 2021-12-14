@@ -33,18 +33,21 @@ check_prerequisites() {
 }
 
 build_and_install_emacs() {
-    params="
-        --prefix=$HOME/.local \
-        --with-native-compilation \
-        --with-xpm=ifavailable \
-        --with-jpeg=ifavailable \
-        --with-gif=ifavailable \
-        --with-tiff=ifavailable
-    "
+    params="--prefix=$HOME/.local --with-native-compilation"
     if [[ ${1} == '--enable-x' ]]; then
-        params="$params --with-x-toolkit=gtk3"
+        params="
+            $params                 \
+            --with-x-toolkit=gtk3   \
+            --with-xpm=ifavailable  \
+            --with-jpeg=ifavailable \
+            --with-gif=ifavailable  \
+            --with-tiff=ifavailable "
     else
-        params="$params --without-x-toolkit"
+        params="
+            $params             \
+            --without-x-toolkit \
+            --without-xft       \
+            --without-x         "
     fi
 
     cd emacs
