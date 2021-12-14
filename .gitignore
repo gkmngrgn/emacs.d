@@ -6,6 +6,7 @@
 !data/
 !lisp/
 !emacs.service
+!do.sh
 
 # exclude files
 !.gitignore
