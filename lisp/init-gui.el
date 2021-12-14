@@ -11,24 +11,15 @@
 
 ;;; Code:
 
-;; (defvar my-font "Iosevka Term")
-(defvar my-font-size 130)
+(defvar my-font "Iosevka Term")
+(defvar my-font-size 150)
 
 (defun my-gui-change ()
   "Load my gui change."
   (set-frame-font my-font)
-
   (set-face-attribute 'default nil
-                      :height my-font-size)
-                      ;; :font my-font)
-  (set-face-attribute 'fixed-pitch nil
-                      :height my-font-size)
-                      ;; :font my-font)
-
-  (set-face-attribute 'mode-line nil
-                      :box nil)
-  (set-face-attribute 'mode-line-inactive nil
-                      :box nil))
+                      :height my-font-size
+                      :font my-font))
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 

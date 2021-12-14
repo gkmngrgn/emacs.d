@@ -51,7 +51,8 @@
 ;; theme
 (straight-use-package 'modus-themes)
 (setq modus-themes-slanted-constructs t)
-(setq modus-themes-bold-constructs nil)
+(setq modus-themes-mode-line '(accented borderless))
+(setq modus-themes-syntax '(faint yellow-comments green-strings alt-syntax))
 
 (modus-themes-load-vivendi)
 
