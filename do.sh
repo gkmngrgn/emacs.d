@@ -9,17 +9,17 @@ print_help() {
 check_prerequisites() {
     sudo add-apt-repository -y ppa:ubuntu-toolchain-r/ppa
     sudo apt update -y
-    sudo apt install -y autoconf \
-                        make \
-                        checkinstall \
-                        pkg-config \
-                        texinfo \
-                        libgnutls28-dev \
-                        libncurses5-dev \
-                        libjansson-dev \
-                        libgccjit-9-dev \
-                        gcc-10 \
-                        g++-10 \
+    sudo apt install -y autoconf         \
+                        make             \
+                        checkinstall     \
+                        pkg-config       \
+                        texinfo          \
+                        libgnutls28-dev  \
+                        libncurses5-dev  \
+                        libjansson-dev   \
+                        libgccjit-10-dev \
+                        gcc-10           \
+                        g++-10           \
                         zlib1g-dev
 
     if [ ! -d "emacs" ]; then
