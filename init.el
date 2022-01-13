@@ -212,7 +212,6 @@
 (straight-use-package 'expand-region)
 (straight-use-package 'rainbow-delimiters)
 (straight-use-package 'smartparens)
-(straight-use-package 'undo-fu)
 (straight-use-package 'unfill)
 (straight-use-package 'origami)
 
@@ -228,14 +227,11 @@
 (add-hook 'prog-mode-hook            #'rainbow-delimiters-mode)
 (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
 
-(global-unset-key (kbd "C-z"))
-(global-unset-key (kbd "C-_"))
-(global-set-key   (kbd "C-z")         'undo-fu-only-undo)
-(global-set-key   (kbd "C-M-z")       'undo-fu-only-redo)
-
-(global-set-key   (kbd "C-M-o")       'origami-toggle-node)
-(global-set-key   (kbd "C-M-q")       'unfill-paragraph)
-(global-set-key   (kbd "C-M-w")       'er/expand-region)
+(global-set-key   (kbd "C-_")     'undo-only)
+(global-set-key   (kbd "C-M-_")   'undo-redo)
+(global-set-key   (kbd "C-M-o")   'origami-toggle-node)
+(global-set-key   (kbd "C-M-q")   'unfill-paragraph)
+(global-set-key   (kbd "C-M-w")   'er/expand-region)
 
 ;; web
 (straight-use-package 'web-mode)
