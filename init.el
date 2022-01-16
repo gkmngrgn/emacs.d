@@ -213,7 +213,9 @@
 (straight-use-package 'rainbow-delimiters)
 (straight-use-package 'smartparens)
 (straight-use-package 'unfill)
-(straight-use-package 'origami)
+
+(global-set-key (kbd "C-c w") 'er/expand-region)
+(global-set-key (kbd "C-c q") 'unfill-paragraph)
 
 (with-eval-after-load (require 'smartparens-config))
 
@@ -222,16 +224,9 @@
 (sp-local-pair 'web-mode "{" "}" :actions nil)
 
 (global-tree-sitter-mode)
-(global-origami-mode)
 
 (add-hook 'prog-mode-hook            #'rainbow-delimiters-mode)
 (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
-
-(global-set-key   (kbd "C-_")     'undo-only)
-(global-set-key   (kbd "C-M-_")   'undo-redo)
-(global-set-key   (kbd "C-M-o")   'origami-toggle-node)
-(global-set-key   (kbd "C-M-q")   'unfill-paragraph)
-(global-set-key   (kbd "C-M-w")   'er/expand-region)
 
 ;; web
 (straight-use-package 'web-mode)
