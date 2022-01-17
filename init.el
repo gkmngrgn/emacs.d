@@ -214,19 +214,19 @@
 (straight-use-package 'smartparens)
 (straight-use-package 'unfill)
 
-(global-set-key (kbd "C-c w") 'er/expand-region)
-(global-set-key (kbd "C-c q") 'unfill-paragraph)
-
 (with-eval-after-load (require 'smartparens-config))
 
 (smartparens-global-mode t)
 (show-smartparens-global-mode t)
 (sp-local-pair 'web-mode "{" "}" :actions nil)
 
-(global-tree-sitter-mode)
+;; (global-tree-sitter-mode)
 
 (add-hook 'prog-mode-hook            #'rainbow-delimiters-mode)
 (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
+
+(global-set-key (kbd "C-c w") 'er/expand-region)
+(global-set-key (kbd "C-c q") 'unfill-paragraph)
 
 ;; web
 (straight-use-package 'web-mode)
