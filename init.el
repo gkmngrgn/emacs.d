@@ -258,7 +258,6 @@
 (golden-ratio-mode 1)
 
 (setq golden-ratio-auto-scale t)
-(setq golden-ratio-max-width 72)
 (setq tab-bar-close-button-show nil)
 (setq tab-bar-mode t)
 (setq tab-bar-show t)
