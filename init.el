@@ -81,7 +81,6 @@
 (setq sml/theme 'respectful)
 (setq sml/shorten-modes t)
 (setq sml/name-width 20)
-(setq sml/mode-width 'right)
 
 (sml/setup)
 
