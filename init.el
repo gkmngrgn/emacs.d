@@ -220,7 +220,7 @@
 (show-smartparens-global-mode t)
 (sp-local-pair 'web-mode "{" "}" :actions nil)
 
-;; (global-tree-sitter-mode)
+(global-tree-sitter-mode)
 
 (add-hook 'prog-mode-hook            #'rainbow-delimiters-mode)
 (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
