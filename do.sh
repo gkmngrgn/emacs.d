@@ -3,7 +3,6 @@
 print_help() {
     echo "Subcommands:"
     echo "  > install       Install Emacs with default parameters."
-    echo "  > install_nox   Install Emacs without GUI support."
 }
 
 check_prerequisites() {
@@ -14,63 +13,42 @@ check_prerequisites() {
                         checkinstall     \
                         pkg-config       \
                         texinfo          \
+                        libgif-dev       \
+                        libgtk-3-dev     \
                         libgnutls28-dev  \
                         libncurses5-dev  \
                         libjansson-dev   \
                         libgccjit-10-dev \
+                        libxpm-dev       \
                         gcc-10           \
                         g++-10           \
                         zlib1g-dev
 
+    branch="master"
     if [ ! -d "emacs" ]; then
-        git clone -b emacs-28 --single-branch --depth=1 https://git.savannah.gnu.org/git/emacs.git emacs
+        git clone -b $branch --single-branch --depth=1 https://git.savannah.gnu.org/git/emacs.git emacs
     else
         cd emacs
         git fetch --all
-        git merge origin/emacs-28
+        git merge origin/$branch
         cd ..
     fi
 }
 
 build_and_install_emacs() {
-    params="--prefix=$HOME/.local --with-native-compilation"
-    if [[ ${1} == '--enable-x' ]]; then
-        params="
-            $params                 \
-            --with-x-toolkit=gtk3   \
-            --with-xpm=ifavailable  \
-            --with-jpeg=ifavailable \
-            --with-gif=ifavailable  \
-            --with-tiff=ifavailable "
-    else
-        params="
-            $params             \
-            --without-x-toolkit \
-            --without-xft       \
-            --without-x         "
-    fi
-
     cd emacs
     ./autogen.sh
-    ./configure $params
+    ./configure --with-native-compilation --with-x-toolkit=gtk3
     make -j$(nproc)
-    make install
+    sudo make install
     cd ..
 }
 
 
 install() {
     check_prerequisites
-    sudo apt install -y libgtk-3-dev
-    build_and_install_emacs --enable-x
-}
-
-
-install_nox() {
-    check_prerequisites
     build_and_install_emacs
 }
-
 
 if [ -z ${1} ]
 then
