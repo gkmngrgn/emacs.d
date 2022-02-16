@@ -257,9 +257,6 @@
 (golden-ratio-mode 1)
 
 (setq golden-ratio-auto-scale t)
-(setq tab-bar-close-button-show nil)
-(setq tab-bar-mode t)
-(setq tab-bar-show t)
 
 (defun prev-window ()
   "Switch to previous window."

@@ -32,6 +32,10 @@
 (setq select-enable-primary t)
 (setq select-enable-clipboard t)
 
+(setq tab-bar-close-button-show nil)
+(setq tab-bar-mode t)
+(setq tab-bar-show t)
+
 ;; Scroll Settings
 (setq scroll-margin 0)
 (setq scroll-conservatively 100000)
