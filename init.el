@@ -178,11 +178,13 @@
 
 (add-hook 'lsp-mode-hook        #'lsp-enable-which-key-integration)
 (add-hook 'c-mode-hook          #'lsp-deferred)
+(add-hook 'c++-mode-hook        #'lsp-deferred)
 (add-hook 'csharp-mode-hook     #'lsp-deferred)
 (add-hook 'dart-mode-hook       #'lsp-deferred)
 (add-hook 'gdscript-mode-hook   #'lsp-deferred)
 (add-hook 'go-mode-hook         #'lsp-deferred)
 (add-hook 'javascript-mode-hook #'lsp-deferred)
+(add-hook 'lua-mode-hook        #'lsp-deferred)
 (add-hook 'python-mode-hook     #'lsp-deferred)
 (add-hook 'rust-mode-hook       #'lsp-deferred)
 (add-hook 'yaml-mode-hook       #'lsp-deferred)
