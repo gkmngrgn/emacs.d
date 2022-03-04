@@ -11,8 +11,8 @@
 
 ;;; Code:
 
-(defvar my-font "Iosevka Term")
-(defvar my-font-size 150)
+(defvar my-font "IBM Plex Mono")
+(defvar my-font-size 160)
 
 (defun my-gui-change ()
   "Load my gui change."
