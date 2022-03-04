@@ -184,7 +184,6 @@
 (add-hook 'gdscript-mode-hook   #'lsp-deferred)
 (add-hook 'go-mode-hook         #'lsp-deferred)
 (add-hook 'javascript-mode-hook #'lsp-deferred)
-(add-hook 'lua-mode-hook        #'lsp-deferred)
 (add-hook 'python-mode-hook     #'lsp-deferred)
 (add-hook 'rust-mode-hook       #'lsp-deferred)
 (add-hook 'yaml-mode-hook       #'lsp-deferred)
