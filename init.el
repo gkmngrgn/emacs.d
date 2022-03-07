@@ -268,6 +268,11 @@
 (global-set-key (kbd "C-<left>")  'tab-bar-switch-to-prev-tab)
 (global-set-key (kbd "C-<right>") 'tab-bar-switch-to-next-tab)
 
+;; focusing
+(straight-use-package 'focus)
+
+(global-set-key (kbd "C-c f") 'focus-mode)
+
 ;; python
 (straight-use-package 'poetry)
 (straight-use-package 'pyenv-mode)
