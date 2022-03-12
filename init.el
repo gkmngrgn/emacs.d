@@ -78,7 +78,6 @@
 ;; mode-line
 (straight-use-package 'smart-mode-line)
 
-(setq sml/theme 'respectful)
 (setq sml/shorten-modes t)
 (setq sml/name-width 20)
 
