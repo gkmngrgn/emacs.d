@@ -212,6 +212,7 @@
 (straight-use-package 'rainbow-delimiters)
 (straight-use-package 'smartparens)
 (straight-use-package 'unfill)
+(straight-use-package 'hl-todo)
 
 (with-eval-after-load (require 'smartparens-config))
 
@@ -226,6 +227,8 @@
 
 (global-set-key (kbd "C-c w") 'er/expand-region)
 (global-set-key (kbd "C-c q") 'unfill-paragraph)
+
+(global-hl-todo-mode)
 
 ;; web
 (straight-use-package 'web-mode)
