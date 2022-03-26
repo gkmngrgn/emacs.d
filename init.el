@@ -120,6 +120,7 @@
 ;; command completion
 (straight-use-package 'ivy)
 (straight-use-package 'counsel)
+(straight-use-package 'counsel-tramp)
 (straight-use-package 'swiper)
 (straight-use-package 'which-key)
 

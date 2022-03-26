@@ -11,13 +11,13 @@
 
 ;;; Code:
 
-;; Package Manager Settings
+;; PACKAGE MANAGER
 (setq comp-deferred-compilation-deny-list ())
 (setq package-enable-at-startup nil)
 (setq straight-use-package-by-default t)
 (setq use-package-always-ensure t)
 
-;; Interface Settings
+;; INTERFACE
 (setq-default truncate-lines t)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
@@ -36,20 +36,20 @@
 (setq tab-bar-mode t)
 (setq tab-bar-show t)
 
-;; Scroll Settings
+;; SCROLLING
 (setq scroll-margin 0)
 (setq scroll-conservatively 100000)
 (setq scroll-preserve-screen-position 1)
 (setq auto-window-vscroll nil)
 
-;; Performance
+;; PERFORMANCE
 (setq gc-cons-threshold 100000000)
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 
-;; Add lisp folder to the load path.
+;; MODULES
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
-;; Backup
+;; BACKUP
 (setq backup-directory-alist         `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 (setq default-directory              "~/")
@@ -59,6 +59,14 @@
 (setq custom-file custom-file-path)
 (when (file-exists-p custom-file-path)
   (load custom-file))
+
+;; TRAMP
+(setq tramp-debug-buffer           t)
+(setq tramp-verbose                9)
+(setq tramp-default-method         "ssh")
+(setq tramp-password-prompt-regexp ".*[Pp]assword: *$")
+(setq tramp-shell-prompt-pattern   "^[^;$#>]*[;$#>] *")
+(setq password-cache-expiry        nil)
 
 ;;; early-init.el ends here
 
