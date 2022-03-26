@@ -155,12 +155,6 @@
 (straight-use-package 'lsp-dart)
 (straight-use-package 'lsp-ivy)
 
-;; (lsp-register-client
-;;  (make-lsp-client :new-connection (lsp-tramp-connection "pylsp")
-;;                   :major-modes '(python-mode)
-;;                   :remote? t
-;;                   :server-id 'pylsp))
-
 (setq lsp-completion-provider :capf)
 (setq lsp-rust-server 'rust-analyzer)
 (setq lsp-prefer-flymake nil)  ; flycheck is better
