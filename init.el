@@ -111,11 +111,8 @@
 
 ;; flycheck
 (straight-use-package 'flycheck)
-(straight-use-package 'flycheck-rust)
 
 (global-flycheck-mode)
-
-(add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
 
 ;; command completion
 (straight-use-package 'ivy)
