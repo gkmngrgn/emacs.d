@@ -127,16 +127,23 @@
 (ivy-mode)
 (which-key-mode)
 
-(setq ivy-use-virtual-buffers t)
+(setq ivy-use-virtual-buffers      t)
 (setq enable-recursive-minibuffers nil)
-(setq search-default-mode #'char-fold-to-regexp)
+(setq search-default-mode          #'char-fold-to-regexp)
 
-(global-set-key (kbd "C-s")     'swiper)
-(global-set-key (kbd "C-x C-b") 'counsel-ibuffer)
-(global-set-key (kbd "C-x C-d") 'counsel-git)
-(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(global-set-key "\C-s"          'swiper)
+(global-set-key (kbd "C-c C-r") 'ivy-resume)
+(global-set-key (kbd "<f6>")    'ivy-resume)
 (global-set-key (kbd "M-x")     'counsel-M-x)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(global-set-key (kbd "<f1> f")  'counsel-describe-function)
+(global-set-key (kbd "<f1> v")  'counsel-describe-variable)
+(global-set-key (kbd "<f1> o")  'counsel-describe-symbol)
+(global-set-key (kbd "<f1> l")  'counsel-find-library)
+(global-set-key (kbd "<f2> i")  'counsel-info-lookup-symbol)
+(global-set-key (kbd "<f2> u")  'counsel-unicode-char)
 (global-set-key (kbd "C-c e")   'counsel-flycheck)
+(global-set-key (kbd "C-c g")   'counsel-git)
 (global-set-key (kbd "C-c j")   'counsel-git-grep)
 (global-set-key (kbd "C-c k")   'counsel-rg)
 
@@ -147,6 +154,12 @@
 (straight-use-package 'lsp-ui)
 (straight-use-package 'lsp-dart)
 (straight-use-package 'lsp-ivy)
+
+;; (lsp-register-client
+;;  (make-lsp-client :new-connection (lsp-tramp-connection "pylsp")
+;;                   :major-modes '(python-mode)
+;;                   :remote? t
+;;                   :server-id 'pylsp))
 
 (setq lsp-completion-provider :capf)
 (setq lsp-rust-server 'rust-analyzer)
@@ -174,7 +187,7 @@
   (define-key lsp-ui-mode-map (kbd "C-c u")                 #'lsp-ui-imenu))
 
 (with-eval-after-load 'lsp-mode
-  (add-to-list 'lsp-disabled-clients 'pyls))
+  (add-to-list 'lsp-disabled-clients '(pyls rls)))
 
 (add-hook 'lsp-mode-hook        #'lsp-enable-which-key-integration)
 (add-hook 'c-mode-hook          #'lsp-deferred)

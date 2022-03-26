@@ -60,14 +60,6 @@
 (when (file-exists-p custom-file-path)
   (load custom-file))
 
-;; TRAMP
-(setq tramp-debug-buffer           t)
-(setq tramp-verbose                9)
-(setq tramp-default-method         "ssh")
-(setq tramp-password-prompt-regexp ".*[Pp]assword: *$")
-(setq tramp-shell-prompt-pattern   "^[^;$#>]*[;$#>] *")
-(setq password-cache-expiry        nil)
-
 ;;; early-init.el ends here
 
 ;; Local Variables:
