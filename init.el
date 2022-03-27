@@ -92,22 +92,23 @@
 
 ;; code auto-complete
 (straight-use-package 'company)
+(straight-use-package 'company-tabnine)
 
-(setq company-dabbrev-ignore-case t)
-(setq company-dabbrev-code-ignore-case t)
-(setq company-idle-delay 0.5)
-(setq company-minimum-prefix-length 2)
-(setq company-require-match 'never)
-(setq company-show-numbers nil)
+(setq company-dabbrev-ignore-case       t)
+(setq company-dabbrev-code-ignore-case  t)
+(setq company-idle-delay                0.5)
+(setq company-minimum-prefix-length     2)
+(setq company-require-match             'never)
+(setq company-show-numbers              t)
 (setq company-tooltip-align-annotations t)
-(setq company-tooltip-flip-when-above nil)
-(setq company-tooltip-limit 10)
+(setq company-tooltip-flip-when-above   nil)
+(setq company-tooltip-limit             10)
 
 (global-company-mode)
 
 (global-set-key (kbd "TAB") 'company-indent-or-complete-common)
 
-(push 'company-capf company-backends)
+(add-to-list 'company-backends #'(company-capf company-tabnine))
 
 ;; flycheck
 (straight-use-package 'flycheck)
