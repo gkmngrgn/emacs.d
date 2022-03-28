@@ -72,8 +72,9 @@
 (straight-use-package 'avy)
 
 (avy-setup-default)
-(global-set-key (kbd "M-g g") 'avy-goto-char-2)
-(global-set-key (kbd "M-g f") 'avy-goto-line)
+(global-set-key (kbd "M-g g")   'avy-goto-char-2)
+(global-set-key (kbd "M-g f")   'avy-goto-line)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; mode-line
 (straight-use-package 'smart-mode-line)
@@ -133,6 +134,7 @@
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
 (global-set-key (kbd "<f6>")    'ivy-resume)
 (global-set-key (kbd "M-x")     'counsel-M-x)
+(global-set-key (kbd "C-x b")   'counsel-ibuffer)
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
 (global-set-key (kbd "<f1> f")  'counsel-describe-function)
 (global-set-key (kbd "<f1> v")  'counsel-describe-variable)
