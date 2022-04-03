@@ -157,6 +157,7 @@
 (straight-use-package 'lsp-ui)
 (straight-use-package 'lsp-dart)
 (straight-use-package 'lsp-ivy)
+(straight-use-package 'dap-mode)
 
 (setq lsp-completion-provider :capf)
 (setq lsp-rust-server 'rust-analyzer)
