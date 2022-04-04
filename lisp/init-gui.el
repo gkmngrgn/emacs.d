@@ -21,8 +21,10 @@
                       :height my-font-size
                       :font my-font))
 
-(setq initial-frame-alist '((top    . 60) (left  . 10)
-                            (height . 40) (width . 120)))
+(setq initial-frame-alist    '((top    . 60) (left  . 15)
+                               (height . 42) (width . 120)))
+(setq mouse-drag-copy-region nil)
+(setq select-enable-primary  nil)
 
 (my-gui-change)
 (fringe-mode 0)
