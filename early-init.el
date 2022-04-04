@@ -1,6 +1,6 @@
 ;;; early-init.el --- GOEDEV personal emacs configuration file  -*- lexical-binding: t -*-
 
-;; Copyright (c) 2021 Gökmen Görgen
+;; Copyright (c) 2010-2022 Gökmen Görgen
 ;;
 ;; Author: Gökmen Görgen <gkmngrgn@gmail.com>
 ;; URL: https://github.com/gkmngrgn/emacs.d/

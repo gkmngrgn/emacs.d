@@ -1,6 +1,6 @@
 ;;; init.el --- GOEDEV personal emacs configuration file  -*- lexical-binding: t -*-
 
-;; Copyright (c) 2010-2021 Gökmen Görgen
+;; Copyright (c) 2010-2022 Gökmen Görgen
 ;;
 ;; Author: Gökmen Görgen <gkmngrgn@gmail.com>
 ;; URL: https://github.com/gkmngrgn/emacs.d/
@@ -46,35 +46,58 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-;; PACKAGES
 
-;; mouse
-(unless (display-graphic-p)
-  (xterm-mouse-mode 1)
-  (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
-  (global-set-key (kbd "<mouse-5>") 'scroll-up-line))
+;; INIT
+(if (display-graphic-p)
+    (require 'init-gui)
+  (require 'init-tui))
 
-;; theme
+
+;; THEME
 (straight-use-package 'modus-themes)
-(setq modus-themes-slanted-constructs t)
-(setq modus-themes-mode-line '(borderless))
-(setq modus-themes-syntax '(faint yellow-comments green-strings alt-syntax))
+(straight-use-package 'all-the-icons)
+
+(setq modus-themes-italic-constructs   t
+      modus-themes-bold-constructs     nil
+      modus-themes-mixed-fonts         nil
+      modus-themes-subtle-line-numbers nil
+      modus-themes-intense-mouseovers  nil
+      modus-themes-deuteranopia        t
+      modus-themes-tabs-accented       t
+      modus-themes-variable-pitch-ui   nil
+      modus-themes-inhibit-reload      t
+      modus-themes-fringes             nil
+      modus-themes-lang-checkers       '(straight-underline intense)
+      modus-themes-mode-line           '(accented borderless (padding . 4) (height . 0.9))
+      modus-themes-markup              '(background italic)
+      modus-themes-syntax              '(faint yellow-comments green-strings alt-syntax)
+      modus-themes-hl-line             '(accented)
+      modus-themes-paren-match         '(bold intense)
+      modus-themes-links               '(neutral-underline background)
+      modus-themes-box-buttons         '(variable-pitch flat faint 0.9)
+      modus-themes-prompts             '(intense bold)
+      modus-themes-completions         '((matches   . (extrabold))
+                                         (selection . (semibold accented))
+                                         (popup     . (accented intense)))
+      modus-themes-mail-citations      nil
+      modus-themes-region              '(bg-only no-extend)
+      modus-themes-diffs               'desaturated
+      modus-themes-org-blocks          'gray-background
+      modus-themes-headings            '((1 . (overline background variable-pitch 1.3))
+                                         (2 . (rainbow overline 1.1))
+                                         (t . (semibold))))
 
 (modus-themes-load-vivendi)
 
-(if (display-graphic-p)
-    (require 'init-gui))
-
-;; make gui look like in the terminal.
+;; switch theme easily.
 (global-set-key (kbd "<f5>")
                 (lambda ()
                   (interactive)
                   (modus-themes-toggle)
                   (if (display-graphic-p) (my-gui-change))))
 
-(straight-use-package 'all-the-icons)
 
-;; navigation
+;; NAVIGATION
 (straight-use-package 'avy)
 (straight-use-package 'ibuffer-vc)
 
