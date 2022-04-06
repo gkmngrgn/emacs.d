@@ -189,16 +189,16 @@
 (straight-use-package 'dap-mode)
 
 (setq lsp-completion-provider :capf)
-(setq lsp-rust-server 'rust-analyzer)
-(setq lsp-prefer-flymake nil)  ; flycheck is better
-(setq lsp-modeline-code-actions-segments '(name))
-(setq lsp-keymap-prefix "C-c l")
-(setq lsp-idle-delay 0.500)
 (setq lsp-enable-snippet nil)  ; company is better
+(setq lsp-headerline-breadcrumb-icons-enable nil)
+(setq lsp-idle-delay 0.500)
+(setq lsp-keymap-prefix "C-c l")
 (setq lsp-log-io nil)  ; if set to true can cause a performance hit
+(setq lsp-modeline-code-actions-segments '(name))
+(setq lsp-prefer-flymake nil)  ; flycheck is better
+(setq lsp-rust-server 'rust-analyzer)
 (setq lsp-signature-doc-lines 10)
 (setq lsp-signature-auto-activate nil)
-(setq lsp-ui-doc-enable nil)
 
 (setq lsp-pylsp-plugins-autopep8-enabled nil)
 (setq lsp-pylsp-plugins-flake8-enabled nil)
