@@ -55,7 +55,6 @@
 
 ;; THEME
 (straight-use-package 'modus-themes)
-(straight-use-package 'all-the-icons)
 
 (setq modus-themes-italic-constructs   t
       modus-themes-bold-constructs     nil
