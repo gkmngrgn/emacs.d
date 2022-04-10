@@ -317,10 +317,7 @@
 
 ;; python
 (straight-use-package 'poetry)
-(straight-use-package 'pyenv-mode)
 (straight-use-package 'conda)
-
-(pyenv-mode)
 
 ;; FILE MODES
 (straight-use-package 'bazel)
