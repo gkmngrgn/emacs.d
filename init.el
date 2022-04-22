@@ -99,6 +99,7 @@
 ;; NAVIGATION
 (straight-use-package 'avy)
 (straight-use-package 'ibuffer-vc)
+(straight-use-package 'dirvish)
 
 (avy-setup-default)
 (global-set-key (kbd "M-g g")   'avy-goto-char-2)
