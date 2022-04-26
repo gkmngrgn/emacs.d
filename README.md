@@ -89,7 +89,8 @@ Install [Go][13] first, then type this command for LSP support:
 
 ### Python
 
-    python -m pip install python-lsp-server
+    mamba create -n lsp python=3.10.4
+    mamba install -n lsp python-lsp-server
 
 
 ### Rust
