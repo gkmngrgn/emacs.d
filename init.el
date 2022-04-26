@@ -105,6 +105,7 @@
 (global-set-key (kbd "M-g g")   'avy-goto-char-2)
 (global-set-key (kbd "M-g f")   'avy-goto-line)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-x C-d") 'dirvish)
 
 (add-hook 'ibuffer-hook 'ibuffer-vc-set-filter-groups-by-vc-root)
 
