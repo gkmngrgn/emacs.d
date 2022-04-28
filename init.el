@@ -227,6 +227,7 @@
 (add-hook 'javascript-mode-hook #'lsp-deferred)
 (add-hook 'python-mode-hook     #'lsp-deferred)
 (add-hook 'rust-mode-hook       #'lsp-deferred)
+(add-hook 'sh-mode-hook         #'lsp-deferred)
 (add-hook 'yaml-mode-hook       #'lsp-deferred)
 
 ;; git
