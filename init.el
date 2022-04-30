@@ -220,8 +220,6 @@
 (add-hook 'lsp-mode-hook        #'lsp-enable-which-key-integration)
 (add-hook 'c-mode-hook          #'lsp-deferred)
 (add-hook 'c++-mode-hook        #'lsp-deferred)
-(add-hook 'csharp-mode-hook     #'lsp-deferred)
-(add-hook 'dart-mode-hook       #'lsp-deferred)
 (add-hook 'gdscript-mode-hook   #'lsp-deferred)
 (add-hook 'go-mode-hook         #'lsp-deferred)
 (add-hook 'javascript-mode-hook #'lsp-deferred)
@@ -273,15 +271,6 @@
 
 (global-hl-todo-mode)
 
-;; web
-(straight-use-package 'web-mode)
-
-(setq web-mode-markup-indent-offset 2)
-(setq web-mode-code-indent-offset   2)
-(setq web-mode-css-indent-offset    2)
-(setq web-mode-script-padding       0)
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-
 ;; window management
 (straight-use-package 'golden-ratio)
 
@@ -310,29 +299,31 @@
 ;; FILE MODES
 (straight-use-package 'bazel)
 (straight-use-package 'cmake-mode)
-(straight-use-package 'csharp-mode)
 (straight-use-package 'csv-mode)
-(straight-use-package 'dart-mode)
 (straight-use-package 'dockerfile-mode)
 (straight-use-package 'gdscript-mode)
 (straight-use-package 'go-mode)
 (straight-use-package 'json-mode)
-(straight-use-package 'kotlin-mode)
 (straight-use-package 'lua-mode)
 (straight-use-package 'markdown-mode)
-(straight-use-package 'powershell)
 (straight-use-package 'rust-mode)
-(straight-use-package 'typescript-mode)
+(straight-use-package 'web-mode)
 (straight-use-package 'yaml-mode)
 
+;; markdown
 (setq markdown-command "multimarkdown")
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'"       . markdown-mode))
 
-(setq mmm-submode-decoration-level 0)
+;; web
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-code-indent-offset   2)
+(setq web-mode-css-indent-offset    2)
+(setq web-mode-script-padding       0)
+(setq mmm-submode-decoration-level  0)
+(setq js-indent-level               2)
 
-(setq js-indent-level 2)
-(setq typescript-indent-level 2)
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
 ;;; init.el ends here
 
