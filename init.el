@@ -126,7 +126,8 @@
 
 ;; code auto-complete
 (straight-use-package 'company)
-(straight-use-package 'company-tabnine)
+(straight-use-package 'company-jedi)
+(straight-use-package 'company-lua)
 
 (setq company-dabbrev-ignore-case       t)
 (setq company-dabbrev-code-ignore-case  t)
@@ -142,7 +143,9 @@
 
 (global-set-key (kbd "TAB") 'company-indent-or-complete-common)
 
-(add-to-list 'company-backends #'(company-capf company-tabnine))
+(add-to-list 'company-backends #'(company-capf
+                                  company-jedi
+                                  company-lua))
 
 ;; flycheck
 (straight-use-package 'flycheck)

@@ -1,22 +1,22 @@
-# GOEDEV's Emacs Config
+# GOEDEV's EMACS CONFIG
 
-My accessibility-friendly Emacs configuration.
+My accessibility-first Emacs configuration.
 
 ![](data/interface.png)
 
 Please **do not open** a pull-request for this repository. You can
-configure your editor from scratch (Don't be afraid of LISP; it's
-effortless.) or give a try for [Spacemacs][1] or [Doom Emacs][2]. But
-first, get a new mechanical keyboard.
-
-
-## My Emacs Build Configuration
-
-    dosh install_nox  # without x
-    dosh install      # with x
+configure your editor from scratch, or give a try for Emacs
+distributions like [Spacemacs][https://www.spacemacs.org/], [Doom
+Emacs][https://github.com/hlissner/doom-emacs].
 
 
 ## INSTALLATION
+
+Consider installing the minimum version 28.1 of Emacs. Native
+compilation is significant in increasing performance. For MacOS:
+
+    brew install --cask emacs
+
 
 Clone the repository to your home folder:
 
@@ -32,8 +32,8 @@ named "HOME":
 
 ## COPY & PASTE PROBLEM
 
-For Linux, install `xsel` and after you select your text, type `M-|`,
-then run the command `xsel -bi`.
+For Linux and WSL2, install `xsel` and after you select your text,
+type `M-|`, then run the command `xsel -bi`.
 
 For MacOS, you can use `pbcopy`.
 
@@ -53,60 +53,21 @@ To restart it:
 
 ## PACKAGES
 
-I use **use-package** to install dependencies. If you want to see the
-list of packages that I use, just open **init.el** file and look at
-all the lines starting with `straight-use-package `.
-
-The other external dependency is [ripgrep][4] for searching and
-filtering. It supports Windows.
+My preferred package manager is
+[straight](https://github.com/raxod502/straight.el). If you want to
+see the list of packages that I use, just open **init.el** file and
+look at all the lines starting with `straight-use-package `.
 
 
-## Programming Languages
+## SYSTEM DEPENDENCIES
 
-### C & C++ & CMake
+I install all my CLI dependencies using my do.sh script [here](https://git.gokmengorgen.net/goedev/config/src/branch/main/do.sh).
 
-Install **LLVM**, it comes with a language server named [Clangd][5]. Install also [Cmake][6], you will need Python **PIP** to install the language server.
-
-
-    python -m pip cmake-language-server
-
-
-### Common Lisp
-
-[SLIME][7] supports many CL implementations but I prefer to use [SBCL][8]. If your Emacs can't find your SBCL path, specify it [manually][9].
-
-### Dart
-
-Install [Dart SDK][10] or [Flutter][11], it has a builtin analysis tool. Then customize SDK path in your editor. If you don't know how to customize, start with [this tutorial][12].
-
-
-### Go
-
-Install [Go][13] first, then type this command for LSP support:
-
-    go get -u golang.org/x/tools/gopls
-
-
-### Python
+    brew install gopls         \
+                 llvm          \
+                 rust-analyzer
 
     mamba create -n lsp python=3.10.4
-    mamba install -n lsp python-lsp-server
-
-
-### Rust
-
-Download rust-analyzer [here][14].
-
-[1]: https://www.spacemacs.org/
-[2]: https://github.com/hlissner/doom-emacs
-[4]: https://github.com/BurntSushi/ripgrep/
-[5]: https://clangd.llvm.org/
-[6]: https://cmake.org/download/
-[7]: https://common-lisp.net/project/slime/
-[8]: http://www.sbcl.org/
-[9]: http://ergoemacs.org/emacs/emacs_custom_system.html
-[10]: https://dart.dev/
-[11]: https://flutter.dev/
-[12]: http://ergoemacs.org/emacs/emacs_custom_system.html
-[13]: https://go.dev/
-[14]: https://github.com/rust-analyzer/rust-analyzer/releases
+    mamba install -n lsp cmake-language-server \
+                         python-lsp-server     \
+                         virtualenv
