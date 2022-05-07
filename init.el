@@ -188,8 +188,8 @@
 ;; lsp
 (straight-use-package 'lsp-mode)
 (straight-use-package 'lsp-ui)
-(straight-use-package 'lsp-dart)
 (straight-use-package 'lsp-ivy)
+(straight-use-package 'lsp-treemacs)
 (straight-use-package 'dap-mode)
 
 (setq lsp-completion-provider :capf)
@@ -207,8 +207,8 @@
 (setq lsp-pylsp-plugins-autopep8-enabled nil)
 (setq lsp-pylsp-plugins-flake8-enabled nil)
 (setq lsp-pylsp-plugins-mccabe-enabled nil)
-(setq lsp-pylsp-plugins-pycodestyle-enabled nil)
-(setq lsp-pylsp-plugins-pylint-enabled nil)
+;; (setq lsp-pylsp-plugins-pycodestyle-enabled nil)
+;; (setq lsp-pylsp-plugins-pylint-enabled nil)
 (setq lsp-pylsp-plugins-rope-completion-enabled nil)
 (setq lsp-pylsp-plugins-yapf-enabled nil)
 
@@ -218,7 +218,8 @@
   (define-key lsp-ui-mode-map (kbd "C-c u")                 #'lsp-ui-imenu))
 
 (with-eval-after-load 'lsp-mode
-  (add-to-list 'lsp-disabled-clients '(pyls rls)))
+  (add-to-list 'lsp-disabled-clients '(pyls rls))
+  (lsp-treemacs-sync-mode 1))
 
 (add-hook 'lsp-mode-hook        #'lsp-enable-which-key-integration)
 (add-hook 'c-mode-hook          #'lsp-deferred)
@@ -293,6 +294,9 @@
 
 ;; focusing
 (straight-use-package 'focus)
+(straight-use-package 'lsp-focus)
+
+(add-hook 'focus-mode-hook #'lsp-focus-mode)
 
 (global-set-key (kbd "C-c f") 'focus-mode)
 
