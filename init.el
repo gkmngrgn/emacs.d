@@ -215,7 +215,10 @@
   (add-to-list 'lsp-disabled-clients 'pylsp)
   (add-to-list 'lsp-disabled-clients 'jedi)
   (add-to-list 'lsp-disabled-clients 'rls)
+
   (add-to-list 'lsp-enabled-clients 'pyright)
+  (add-to-list 'lsp-enabled-clients 'json-ls)
+
   (lsp-treemacs-sync-mode 1))
 
 (add-hook 'lsp-mode-hook        #'lsp-enable-which-key-integration)
