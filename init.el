@@ -189,6 +189,7 @@
 (straight-use-package 'lsp-mode)
 (straight-use-package 'lsp-ui)
 (straight-use-package 'lsp-ivy)
+(straight-use-package 'lsp-pyright)
 (straight-use-package 'lsp-treemacs)
 (straight-use-package 'dap-mode)
 
@@ -204,21 +205,17 @@
 (setq lsp-signature-doc-lines 10)
 (setq lsp-signature-auto-activate nil)
 
-(setq lsp-pylsp-plugins-autopep8-enabled nil)
-(setq lsp-pylsp-plugins-flake8-enabled nil)
-(setq lsp-pylsp-plugins-mccabe-enabled nil)
-;; (setq lsp-pylsp-plugins-pycodestyle-enabled nil)
-;; (setq lsp-pylsp-plugins-pylint-enabled nil)
-(setq lsp-pylsp-plugins-rope-completion-enabled nil)
-(setq lsp-pylsp-plugins-yapf-enabled nil)
-
 (with-eval-after-load 'lsp-ui
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
   (define-key lsp-ui-mode-map [remap xref-find-references]  #'lsp-ui-peek-find-references)
   (define-key lsp-ui-mode-map (kbd "C-c u")                 #'lsp-ui-imenu))
 
 (with-eval-after-load 'lsp-mode
-  (add-to-list 'lsp-disabled-clients '(pyls rls))
+  (add-to-list 'lsp-disabled-clients 'pyls)
+  (add-to-list 'lsp-disabled-clients 'pylsp)
+  (add-to-list 'lsp-disabled-clients 'jedi)
+  (add-to-list 'lsp-disabled-clients 'rls)
+  (add-to-list 'lsp-enabled-clients 'pyright)
   (lsp-treemacs-sync-mode 1))
 
 (add-hook 'lsp-mode-hook        #'lsp-enable-which-key-integration)
@@ -228,7 +225,7 @@
 (add-hook 'go-mode-hook         #'lsp-deferred)
 (add-hook 'javascript-mode-hook #'lsp-deferred)
 (add-hook 'json-mode-hook       #'lsp-deferred)
-(add-hook 'python-mode-hook     #'lsp-deferred)
+(add-hook 'python-mode-hook     (lambda () (require 'lsp-pyright) (lsp)))
 (add-hook 'rust-mode-hook       #'lsp-deferred)
 (add-hook 'sh-mode-hook         #'lsp-deferred)
 (add-hook 'yaml-mode-hook       #'lsp-deferred)
