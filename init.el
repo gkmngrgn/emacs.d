@@ -57,8 +57,8 @@
 (straight-use-package 'modus-themes)
 
 (setq modus-themes-italic-constructs   t
-      modus-themes-bold-constructs     nil
-      modus-themes-mixed-fonts         nil
+      modus-themes-bold-constructs     t
+      modus-themes-mixed-fonts         t
       modus-themes-subtle-line-numbers nil
       modus-themes-intense-mouseovers  nil
       modus-themes-deuteranopia        t
@@ -67,7 +67,7 @@
       modus-themes-inhibit-reload      t
       modus-themes-fringes             nil
       modus-themes-lang-checkers       '(straight-underline intense)
-      modus-themes-mode-line           '(accented borderless (padding . 4) (height . 0.9))
+      modus-themes-mode-line           '(accented borderless)
       modus-themes-markup              '(background italic)
       modus-themes-syntax              '(faint yellow-comments green-strings alt-syntax)
       modus-themes-hl-line             '(accented)
