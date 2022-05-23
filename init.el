@@ -298,12 +298,16 @@
 (global-set-key (kbd "C-<left>")  'tab-bar-switch-to-prev-tab)
 (global-set-key (kbd "C-<right>") 'tab-bar-switch-to-next-tab)
 
+;; clojure
+(straight-use-package 'cider)
+
 ;; python
 (straight-use-package 'poetry)
 (straight-use-package 'conda)
 
 ;; FILE MODES
 (straight-use-package 'bazel)
+(straight-use-package 'clojure-mode)
 (straight-use-package 'cmake-mode)
 (straight-use-package 'csv-mode)
 (straight-use-package 'dockerfile-mode)
