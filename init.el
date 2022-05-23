@@ -155,7 +155,6 @@
 ;; command completion
 (straight-use-package 'ivy)
 (straight-use-package 'counsel)
-(straight-use-package 'counsel-tramp)
 (straight-use-package 'swiper)
 (straight-use-package 'which-key)
 
@@ -298,14 +297,6 @@
 (global-set-key (kbd "C-x O")     'prev-window)
 (global-set-key (kbd "C-<left>")  'tab-bar-switch-to-prev-tab)
 (global-set-key (kbd "C-<right>") 'tab-bar-switch-to-next-tab)
-
-;; focusing
-(straight-use-package 'focus)
-(straight-use-package 'lsp-focus)
-
-(add-hook 'focus-mode-hook #'lsp-focus-mode)
-
-(global-set-key (kbd "C-c f") 'focus-mode)
 
 ;; python
 (straight-use-package 'poetry)
