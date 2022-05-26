@@ -217,6 +217,7 @@
 
   (add-to-list 'lsp-enabled-clients 'bash-ls)
   (add-to-list 'lsp-enabled-clients 'clangd)
+  (add-to-list 'lsp-enabled-clients 'clojure-lsp)
   (add-to-list 'lsp-enabled-clients 'css-ls)
   (add-to-list 'lsp-enabled-clients 'dockerfile-ls)
   (add-to-list 'lsp-enabled-clients 'html-ls)
@@ -230,6 +231,7 @@
 (add-hook 'lsp-mode-hook        #'lsp-enable-which-key-integration)
 (add-hook 'c-mode-hook          #'lsp-deferred)
 (add-hook 'c++-mode-hook        #'lsp-deferred)
+(add-hook 'clojure-mode-hook    #'lsp-deferred)
 (add-hook 'gdscript-mode-hook   #'lsp-deferred)
 (add-hook 'go-mode-hook         #'lsp-deferred)
 (add-hook 'javascript-mode-hook #'lsp-deferred)
