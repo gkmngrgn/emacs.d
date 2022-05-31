@@ -99,13 +99,11 @@
 ;; NAVIGATION
 (straight-use-package 'avy)
 (straight-use-package 'ibuffer-vc)
-(straight-use-package 'dirvish)
 
 (avy-setup-default)
 (global-set-key (kbd "M-g g")   'avy-goto-char-2)
 (global-set-key (kbd "M-g f")   'avy-goto-line)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-(global-set-key (kbd "C-x C-d") 'dirvish)
 
 (add-hook 'ibuffer-hook 'ibuffer-vc-set-filter-groups-by-vc-root)
 
@@ -152,13 +150,24 @@
 (global-flycheck-mode)
 
 ;; search & find
-(straight-use-package 'which-key)
 (straight-use-package 'ctrlf)
+(straight-use-package 'find-file-in-project)
 (straight-use-package 'rg)
+(straight-use-package 'selectrum)
+(straight-use-package 'selectrum-prescient)
+(straight-use-package 'which-key)
 
 (which-key-mode)
 (ctrlf-mode +1)
 (rg-enable-default-bindings)
+
+(selectrum-mode +1)
+(selectrum-prescient-mode +1)
+(prescient-persist-mode +1)
+
+(setq ffip-use-rust-fd t)
+
+(global-set-key (kbd "C-x C-d") 'ffip)
 
 ;; lsp
 (straight-use-package 'lsp-mode)

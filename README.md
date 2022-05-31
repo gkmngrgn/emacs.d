@@ -65,7 +65,9 @@ I install all my CLI dependencies using my do.sh script [here](https://git.gokme
 
     brew install gopls         \
                  llvm          \
-                 rust-analyzer
+                 rust-analyzer \
+                 fd            \
+                 ripgrep
 
     mamba create -n lsp python=3.10.4
     mamba install -n lsp cmake-language-server \
