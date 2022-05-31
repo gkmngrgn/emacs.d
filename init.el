@@ -151,25 +151,14 @@
 
 (global-flycheck-mode)
 
-;; command completion
-(straight-use-package 'counsel)
+;; search & find
 (straight-use-package 'which-key)
 (straight-use-package 'ctrlf)
+(straight-use-package 'rg)
 
 (which-key-mode)
 (ctrlf-mode +1)
-
-(setq enable-recursive-minibuffers nil)
-
-(global-set-key (kbd "M-x")     'counsel-M-x)
-(global-set-key (kbd "C-x b")   'counsel-switch-buffer)
-(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-(global-set-key (kbd "C-c e")   'counsel-flycheck)
-(global-set-key (kbd "C-c g")   'counsel-git)
-(global-set-key (kbd "C-c j")   'counsel-git-grep)
-(global-set-key (kbd "C-c k")   'counsel-rg)
-
-(define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
+(rg-enable-default-bindings)
 
 ;; lsp
 (straight-use-package 'lsp-mode)
