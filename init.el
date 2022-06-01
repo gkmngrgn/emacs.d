@@ -152,6 +152,7 @@
 ;; search & find
 (straight-use-package 'ctrlf)
 (straight-use-package 'find-file-in-project)
+(straight-use-package 'origami)
 (straight-use-package 'rg)
 (straight-use-package 'selectrum)
 (straight-use-package 'selectrum-prescient)
@@ -159,6 +160,7 @@
 
 (which-key-mode)
 (ctrlf-mode +1)
+(global-origami-mode)
 (rg-enable-default-bindings)
 
 (selectrum-mode +1)
@@ -168,10 +170,12 @@
 (setq ffip-use-rust-fd t)
 
 (global-set-key (kbd "C-x C-d") 'ffip)
+(global-set-key (kbd "C-c l f") 'origami-toggle-node)
 
 ;; lsp
 (straight-use-package 'lsp-mode)
 (straight-use-package 'lsp-ui)
+(straight-use-package 'lsp-origami)
 (straight-use-package 'lsp-pyright)
 (straight-use-package 'lsp-treemacs)
 (straight-use-package 'dap-mode)
@@ -210,7 +214,9 @@
   (add-to-list 'lsp-enabled-clients 'rust-analyzer)
   (add-to-list 'lsp-enabled-clients 'yamlls)
 
-  (lsp-treemacs-sync-mode 1))
+  (lsp-treemacs-sync-mode 1)
+
+  (add-hook 'lsp-after-open-hook #'lsp-origami-try-enable))
 
 (add-hook 'lsp-mode-hook        #'lsp-enable-which-key-integration)
 (add-hook 'c-mode-hook          #'lsp-deferred)
