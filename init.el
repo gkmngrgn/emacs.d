@@ -12,11 +12,6 @@
 ;;; Code:
 
 ;; GLOBAL SETTINGS
-(menu-bar-mode 0)
-(global-hl-line-mode)
-(global-auto-revert-mode)
-(delete-selection-mode 1)
-(temp-buffer-resize-mode t)
 
 ;; unicode
 (prefer-coding-system       'utf-8)
@@ -117,6 +112,11 @@
 (global-set-key (kbd "C-x O")   'prev-window)
 (global-set-key (kbd "C-z")     'undo-only)
 
+(with-eval-after-load 'lsp-ui
+  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+  (define-key lsp-ui-mode-map [remap xref-find-references]  #'lsp-ui-peek-find-references)
+  (define-key lsp-ui-mode-map (kbd "C-c u")                 #'lsp-ui-imenu))
+
 ;; HOOKS
 (defun lsp-for-python ()
   "Activate pyright in Python files."
@@ -187,19 +187,19 @@
 ;; NAVIGATION
 (avy-setup-default)
 
-;; mode-line
+;; MODE-LINE
 (setq sml/shorten-modes t)
 (setq sml/name-width 20)
 
 (sml/setup)
 
-(add-to-list 'sml/hidden-modes " ElDoc")
-(add-to-list 'sml/hidden-modes " Golden")
-(add-to-list 'sml/hidden-modes " company")
-(add-to-list 'sml/hidden-modes " tree-sitter")
+(add-to-list 'sml/hidden-modes         " ElDoc")
+(add-to-list 'sml/hidden-modes         " Golden")
+(add-to-list 'sml/hidden-modes         " company")
+(add-to-list 'sml/hidden-modes         " tree-sitter")
 (add-to-list 'sml/replacer-regexp-list '("^~/Workspace/" ":WS:") t)
 
-;; code auto-complete
+;; AUTO-COMPLETE
 (setq company-dabbrev-ignore-case       t)
 (setq company-dabbrev-code-ignore-case  t)
 (setq company-idle-delay                0.5)
@@ -216,38 +216,49 @@
                                   company-jedi
                                   company-lua))
 
-;; flycheck
-(global-flycheck-mode)
+;; EDITOR EXTENSIONS
+(setq ffip-use-rust-fd t)
+(setq golden-ratio-auto-scale t)
 
-;; search & find
+(with-eval-after-load (require 'smartparens-config))
+
 (which-key-mode)
+(golden-ratio-mode 1)
 (ctrlf-mode +1)
-(global-origami-mode)
 (rg-enable-default-bindings)
+
+(menu-bar-mode 0)
+
+(delete-selection-mode 1)
+(temp-buffer-resize-mode t)
+
+(global-auto-revert-mode)
+(global-flycheck-mode)
+(global-hl-line-mode)
+(global-hl-todo-mode)
+(global-origami-mode)
+(global-tree-sitter-mode)
+
+(smartparens-global-mode t)
+(show-smartparens-global-mode t)
+(sp-local-pair 'web-mode "{" "}" :actions nil)
 
 (selectrum-mode +1)
 (selectrum-prescient-mode +1)
 (prescient-persist-mode +1)
 
-(setq ffip-use-rust-fd t)
-
-;; lsp
+;; LSP
 (setq lsp-completion-provider :capf)
-(setq lsp-enable-snippet nil)  ; company is better
+(setq lsp-enable-snippet nil)                     ; company is better
 (setq lsp-headerline-breadcrumb-icons-enable nil)
 (setq lsp-idle-delay 0.500)
 (setq lsp-keymap-prefix "C-c l")
-(setq lsp-log-io nil)  ; if set to true can cause a performance hit
+(setq lsp-log-io nil)                             ; if set to true can cause a performance hit
 (setq lsp-modeline-code-actions-segments '(name))
-(setq lsp-prefer-flymake nil)  ; flycheck is better
+(setq lsp-prefer-flymake nil)                     ; flycheck is better
 (setq lsp-rust-server 'rust-analyzer)
 (setq lsp-signature-doc-lines 10)
 (setq lsp-signature-auto-activate nil)
-
-(with-eval-after-load 'lsp-ui
-  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
-  (define-key lsp-ui-mode-map [remap xref-find-references]  #'lsp-ui-peek-find-references)
-  (define-key lsp-ui-mode-map (kbd "C-c u")                 #'lsp-ui-imenu))
 
 (with-eval-after-load 'lsp-mode
   (add-to-list 'lsp-disabled-clients 'pyls)
@@ -268,11 +279,11 @@
 
   (lsp-treemacs-sync-mode 1))
 
-;; git
+;; GIT
 (global-diff-hl-mode)
 (diff-hl-margin-mode)
 
-;; org-mode customizations
+;; ORG-MODE
 (setq org-todo-keywords '((sequence "TODO" "INPROGRESS" "|" "DONE")))
 (setq org-log-done t)
 
@@ -280,29 +291,13 @@
  'org-babel-load-languages
  '((python . t)))
 
-;; editing
-(with-eval-after-load (require 'smartparens-config))
-
-(smartparens-global-mode t)
-(show-smartparens-global-mode t)
-(sp-local-pair 'web-mode "{" "}" :actions nil)
-
-(global-tree-sitter-mode)
-(global-hl-todo-mode)
-
-;; window management
-(golden-ratio-mode 1)
-
-(setq golden-ratio-auto-scale t)
-
-;; FILE MODES
-
-;; markdown
+;; MARKDOWN
 (setq markdown-command "multimarkdown")
+
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'"       . markdown-mode))
 
-;; web
+;; WEB
 (setq web-mode-markup-indent-offset 2)
 (setq web-mode-code-indent-offset   2)
 (setq web-mode-css-indent-offset    2)
