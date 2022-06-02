@@ -26,10 +26,6 @@
 ;; aliases
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; hooks
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-(add-hook 'text-mode-hook   'visual-line-mode)
-
 ;; PACKAGE MANAGER
 (defvar bootstrap-version)
 
@@ -96,15 +92,58 @@
 (straight-use-package 'yaml-mode)
 
 ;; KEYMAPS
-(global-set-key (kbd "C-c SPC") 'comment-line)            ;; comment/uncomment line.
-(global-set-key (kbd "<f5>")    (lambda ()                ;; switch light/dark theme easily.
-                                  (interactive)
-                                  (modus-themes-toggle)
-                                  (if (display-graphic-p)
-                                      (my-gui-change))))
-(global-set-key (kbd "M-g f")   'avy-goto-line)           ;; line number replacement.
+(defun prev-window ()
+  "Switch to previous window."
+  (interactive)
+  (other-window -1))
+
+(defun toggle-theme ()
+  "Toggle light/dark theme with a shortcut."
+  (interactive)
+  (modus-themes-toggle)
+  (if (display-graphic-p)
+      (my-gui-change)))
+
+(global-set-key (kbd "C-c SPC") 'comment-line)                      ;; comment/uncomment line.
+(global-set-key (kbd "TAB")     'company-indent-or-complete-common)
+(global-set-key (kbd "<f5>")    'toggle-theme)
+(global-set-key (kbd "M-g f")   'avy-goto-line)                     ;; line number replacement.
 (global-set-key (kbd "M-g g")   'avy-goto-char-2)
-(global-set-key (kbd "C-x C-b") 'ibuffer)                 ;; default buffer replacement.
+(global-set-key (kbd "C-x C-b") 'ibuffer)                           ;; default buffer replacement.
+(global-set-key (kbd "C-x C-d") 'ffip)
+(global-set-key (kbd "C-c l f") 'origami-toggle-node)
+(global-set-key (kbd "C-c w")   'er/expand-region)
+(global-set-key (kbd "C-c q")   'unfill-paragraph)
+(global-set-key (kbd "C-x O")   'prev-window)
+
+;; HOOKS
+(defun lsp-for-python ()
+  "Activate pyright in Python files."
+  (require 'lsp-pyright)
+  (lsp))
+
+(add-hook 'before-save-hook          'delete-trailing-whitespace)
+(add-hook 'c-mode-hook               'lsp-deferred)
+(add-hook 'c++-mode-hook             'lsp-deferred)
+(add-hook 'clojure-mode-hook         'lsp-deferred)
+(add-hook 'gdscript-mode-hook        'lsp-deferred)
+(add-hook 'go-mode-hook              'lsp-deferred)
+(add-hook 'ibuffer-hook              'ibuffer-vc-set-filter-groups-by-vc-root)
+(add-hook 'javascript-mode-hook      'lsp-deferred)
+(add-hook 'json-mode-hook            'lsp-deferred)
+(add-hook 'lsp-mode-hook             'lsp-enable-which-key-integration)
+(add-hook 'magit-pre-refresh-hook    'diff-hl-magit-pre-refresh)
+(add-hook 'magit-post-refresh-hook   'diff-hl-magit-post-refresh)
+(add-hook 'prog-mode-hook            'rainbow-delimiters-mode)
+(add-hook 'python-mode-hook          'lsp-for-python)
+(add-hook 'rust-mode-hook            'lsp-deferred)
+(add-hook 'sh-mode-hook              'lsp-deferred)
+(add-hook 'text-mode-hook            'visual-line-mode)
+(add-hook 'tree-sitter-after-on-hook 'tree-sitter-hl-mode)
+(add-hook 'yaml-mode-hook            'lsp-deferred)
+
+(with-eval-after-load 'lsp-mode
+  (add-hook 'lsp-after-open-hook     'lsp-origami-try-enable))
 
 ;; INIT GUI OR TUI
 (if (display-graphic-p)
@@ -144,11 +183,8 @@
 
 (modus-themes-load-vivendi)
 
-
 ;; NAVIGATION
 (avy-setup-default)
-
-(add-hook 'ibuffer-hook 'ibuffer-vc-set-filter-groups-by-vc-root)
 
 ;; mode-line
 (setq sml/shorten-modes t)
@@ -175,8 +211,6 @@
 
 (global-company-mode)
 
-(global-set-key (kbd "TAB") 'company-indent-or-complete-common)
-
 (add-to-list 'company-backends #'(company-capf
                                   company-jedi
                                   company-lua))
@@ -195,9 +229,6 @@
 (prescient-persist-mode +1)
 
 (setq ffip-use-rust-fd t)
-
-(global-set-key (kbd "C-x C-d") 'ffip)
-(global-set-key (kbd "C-c l f") 'origami-toggle-node)
 
 ;; lsp
 (setq lsp-completion-provider :capf)
@@ -234,29 +265,11 @@
   (add-to-list 'lsp-enabled-clients 'rust-analyzer)
   (add-to-list 'lsp-enabled-clients 'yamlls)
 
-  (lsp-treemacs-sync-mode 1)
-
-  (add-hook 'lsp-after-open-hook #'lsp-origami-try-enable))
-
-(add-hook 'lsp-mode-hook        #'lsp-enable-which-key-integration)
-(add-hook 'c-mode-hook          #'lsp-deferred)
-(add-hook 'c++-mode-hook        #'lsp-deferred)
-(add-hook 'clojure-mode-hook    #'lsp-deferred)
-(add-hook 'gdscript-mode-hook   #'lsp-deferred)
-(add-hook 'go-mode-hook         #'lsp-deferred)
-(add-hook 'javascript-mode-hook #'lsp-deferred)
-(add-hook 'json-mode-hook       #'lsp-deferred)
-(add-hook 'python-mode-hook     (lambda () (require 'lsp-pyright) (lsp)))
-(add-hook 'rust-mode-hook       #'lsp-deferred)
-(add-hook 'sh-mode-hook         #'lsp-deferred)
-(add-hook 'yaml-mode-hook       #'lsp-deferred)
+  (lsp-treemacs-sync-mode 1))
 
 ;; git
 (global-diff-hl-mode)
 (diff-hl-margin-mode)
-
-(add-hook 'magit-pre-refresh-hook  'diff-hl-magit-pre-refresh)
-(add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
 ;; org-mode customizations
 (setq org-todo-keywords '((sequence "TODO" "INPROGRESS" "|" "DONE")))
@@ -274,26 +287,12 @@
 (sp-local-pair 'web-mode "{" "}" :actions nil)
 
 (global-tree-sitter-mode)
-
-(add-hook 'prog-mode-hook            #'rainbow-delimiters-mode)
-(add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
-
-(global-set-key (kbd "C-c w") 'er/expand-region)
-(global-set-key (kbd "C-c q") 'unfill-paragraph)
-
 (global-hl-todo-mode)
 
 ;; window management
 (golden-ratio-mode 1)
 
 (setq golden-ratio-auto-scale t)
-
-(defun prev-window ()
-  "Switch to previous window."
-  (interactive)
-  (other-window -1))
-
-(global-set-key (kbd "C-x O")     'prev-window)
 
 ;; FILE MODES
 
