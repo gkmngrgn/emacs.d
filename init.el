@@ -11,23 +11,25 @@
 
 ;;; Code:
 
+;; GLOBAL SETTINGS
 (menu-bar-mode 0)
 (global-hl-line-mode)
 (global-auto-revert-mode)
 (delete-selection-mode 1)
 (temp-buffer-resize-mode t)
 
-;; UTF-8
+;; unicode
 (prefer-coding-system       'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-language-environment   'utf-8)
 
-;; KEYMAPS
-(global-set-key (kbd "C-c SPC") 'comment-line)
-
+;; aliases
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; HOOKS
+;; keymaps
+(global-set-key (kbd "C-c SPC") 'comment-line)
+
+;; hooks
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'text-mode-hook   'visual-line-mode)
 
@@ -46,16 +48,62 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
+;; packages
+(straight-use-package 'avy)
+(straight-use-package 'bazel)
+(straight-use-package 'cider)
+(straight-use-package 'clojure-mode)
+(straight-use-package 'cmake-mode)
+(straight-use-package 'conda)
+(straight-use-package 'company)
+(straight-use-package 'company-jedi)
+(straight-use-package 'company-lua)
+(straight-use-package 'csv-mode)
+(straight-use-package 'ctrlf)
+(straight-use-package 'dap-mode)
+(straight-use-package 'diff-hl)
+(straight-use-package 'dockerfile-mode)
+(straight-use-package 'exec-path-from-shell)
+(straight-use-package 'expand-region)
+(straight-use-package 'find-file-in-project)
+(straight-use-package 'flycheck)
+(straight-use-package 'gdscript-mode)
+(straight-use-package 'go-mode)
+(straight-use-package 'golden-ratio)
+(straight-use-package 'hl-todo)
+(straight-use-package 'ibuffer-vc)
+(straight-use-package 'json-mode)
+(straight-use-package 'lsp-mode)
+(straight-use-package 'lsp-origami)
+(straight-use-package 'lsp-pyright)
+(straight-use-package 'lsp-treemacs)
+(straight-use-package 'lsp-ui)
+(straight-use-package 'lua-mode)
+(straight-use-package 'magit)
+(straight-use-package 'markdown-mode)
+(straight-use-package 'modus-themes)
+(straight-use-package 'origami)
+(straight-use-package 'poetry)
+(straight-use-package 'rainbow-delimiters)
+(straight-use-package 'rg)
+(straight-use-package 'rust-mode)
+(straight-use-package 'selectrum)
+(straight-use-package 'selectrum-prescient)
+(straight-use-package 'smart-mode-line)
+(straight-use-package 'smartparens)
+(straight-use-package 'tree-sitter)
+(straight-use-package 'tree-sitter-langs)
+(straight-use-package 'unfill)
+(straight-use-package 'web-mode)
+(straight-use-package 'which-key)
+(straight-use-package 'yaml-mode)
 
-;; INIT
+;; INIT GUI OR TUI
 (if (display-graphic-p)
     (require 'init-gui)
   (require 'init-tui))
 
-
 ;; THEME
-(straight-use-package 'modus-themes)
-
 (setq modus-themes-italic-constructs   t
       modus-themes-bold-constructs     t
       modus-themes-mixed-fonts         t
@@ -97,9 +145,6 @@
 
 
 ;; NAVIGATION
-(straight-use-package 'avy)
-(straight-use-package 'ibuffer-vc)
-
 (avy-setup-default)
 (global-set-key (kbd "M-g g")   'avy-goto-char-2)
 (global-set-key (kbd "M-g f")   'avy-goto-line)
@@ -108,8 +153,6 @@
 (add-hook 'ibuffer-hook 'ibuffer-vc-set-filter-groups-by-vc-root)
 
 ;; mode-line
-(straight-use-package 'smart-mode-line)
-
 (setq sml/shorten-modes t)
 (setq sml/name-width 20)
 
@@ -122,10 +165,6 @@
 (add-to-list 'sml/replacer-regexp-list '("^~/Workspace/" ":WS:") t)
 
 ;; code auto-complete
-(straight-use-package 'company)
-(straight-use-package 'company-jedi)
-(straight-use-package 'company-lua)
-
 (setq company-dabbrev-ignore-case       t)
 (setq company-dabbrev-code-ignore-case  t)
 (setq company-idle-delay                0.5)
@@ -145,19 +184,9 @@
                                   company-lua))
 
 ;; flycheck
-(straight-use-package 'flycheck)
-
 (global-flycheck-mode)
 
 ;; search & find
-(straight-use-package 'ctrlf)
-(straight-use-package 'find-file-in-project)
-(straight-use-package 'origami)
-(straight-use-package 'rg)
-(straight-use-package 'selectrum)
-(straight-use-package 'selectrum-prescient)
-(straight-use-package 'which-key)
-
 (which-key-mode)
 (ctrlf-mode +1)
 (global-origami-mode)
@@ -173,13 +202,6 @@
 (global-set-key (kbd "C-c l f") 'origami-toggle-node)
 
 ;; lsp
-(straight-use-package 'lsp-mode)
-(straight-use-package 'lsp-ui)
-(straight-use-package 'lsp-origami)
-(straight-use-package 'lsp-pyright)
-(straight-use-package 'lsp-treemacs)
-(straight-use-package 'dap-mode)
-
 (setq lsp-completion-provider :capf)
 (setq lsp-enable-snippet nil)  ; company is better
 (setq lsp-headerline-breadcrumb-icons-enable nil)
@@ -232,9 +254,6 @@
 (add-hook 'yaml-mode-hook       #'lsp-deferred)
 
 ;; git
-(straight-use-package 'diff-hl)
-(straight-use-package 'magit)
-
 (global-diff-hl-mode)
 (diff-hl-margin-mode)
 
@@ -250,14 +269,6 @@
  '((python . t)))
 
 ;; editing
-(straight-use-package 'tree-sitter)
-(straight-use-package 'tree-sitter-langs)
-(straight-use-package 'expand-region)
-(straight-use-package 'rainbow-delimiters)
-(straight-use-package 'smartparens)
-(straight-use-package 'unfill)
-(straight-use-package 'hl-todo)
-
 (with-eval-after-load (require 'smartparens-config))
 
 (smartparens-global-mode t)
@@ -275,8 +286,6 @@
 (global-hl-todo-mode)
 
 ;; window management
-(straight-use-package 'golden-ratio)
-
 (golden-ratio-mode 1)
 
 (setq golden-ratio-auto-scale t)
@@ -288,27 +297,7 @@
 
 (global-set-key (kbd "C-x O")     'prev-window)
 
-;; clojure
-(straight-use-package 'cider)
-
-;; python
-(straight-use-package 'poetry)
-(straight-use-package 'conda)
-
 ;; FILE MODES
-(straight-use-package 'bazel)
-(straight-use-package 'clojure-mode)
-(straight-use-package 'cmake-mode)
-(straight-use-package 'csv-mode)
-(straight-use-package 'dockerfile-mode)
-(straight-use-package 'gdscript-mode)
-(straight-use-package 'go-mode)
-(straight-use-package 'json-mode)
-(straight-use-package 'lua-mode)
-(straight-use-package 'markdown-mode)
-(straight-use-package 'rust-mode)
-(straight-use-package 'web-mode)
-(straight-use-package 'yaml-mode)
 
 ;; markdown
 (setq markdown-command "multimarkdown")
