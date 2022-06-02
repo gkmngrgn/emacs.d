@@ -287,8 +287,6 @@
   (other-window -1))
 
 (global-set-key (kbd "C-x O")     'prev-window)
-(global-set-key (kbd "C-<left>")  'tab-bar-switch-to-prev-tab)
-(global-set-key (kbd "C-<right>") 'tab-bar-switch-to-next-tab)
 
 ;; clojure
 (straight-use-package 'cider)
