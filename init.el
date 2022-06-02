@@ -115,6 +115,7 @@
 (global-set-key (kbd "C-c w")   'er/expand-region)
 (global-set-key (kbd "C-c q")   'unfill-paragraph)
 (global-set-key (kbd "C-x O")   'prev-window)
+(global-set-key (kbd "C-z")     'undo-only)
 
 ;; HOOKS
 (defun lsp-for-python ()
