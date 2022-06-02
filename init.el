@@ -26,9 +26,6 @@
 ;; aliases
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; keymaps
-(global-set-key (kbd "C-c SPC") 'comment-line)
-
 ;; hooks
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'text-mode-hook   'visual-line-mode)
@@ -98,6 +95,17 @@
 (straight-use-package 'which-key)
 (straight-use-package 'yaml-mode)
 
+;; KEYMAPS
+(global-set-key (kbd "C-c SPC") 'comment-line)            ;; comment/uncomment line.
+(global-set-key (kbd "<f5>")    (lambda ()                ;; switch light/dark theme easily.
+                                  (interactive)
+                                  (modus-themes-toggle)
+                                  (if (display-graphic-p)
+                                      (my-gui-change))))
+(global-set-key (kbd "M-g f")   'avy-goto-line)           ;; line number replacement.
+(global-set-key (kbd "M-g g")   'avy-goto-char-2)
+(global-set-key (kbd "C-x C-b") 'ibuffer)                 ;; default buffer replacement.
+
 ;; INIT GUI OR TUI
 (if (display-graphic-p)
     (require 'init-gui)
@@ -136,19 +144,9 @@
 
 (modus-themes-load-vivendi)
 
-;; switch theme easily.
-(global-set-key (kbd "<f5>")
-                (lambda ()
-                  (interactive)
-                  (modus-themes-toggle)
-                  (if (display-graphic-p) (my-gui-change))))
-
 
 ;; NAVIGATION
 (avy-setup-default)
-(global-set-key (kbd "M-g g")   'avy-goto-char-2)
-(global-set-key (kbd "M-g f")   'avy-goto-line)
-(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (add-hook 'ibuffer-hook 'ibuffer-vc-set-filter-groups-by-vc-root)
 
