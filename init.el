@@ -123,6 +123,7 @@
   (require 'lsp-pyright)
   (lsp))
 
+(add-hook 'after-init-hook           'global-company-mode)
 (add-hook 'before-save-hook          'delete-trailing-whitespace)
 (add-hook 'c-mode-hook               'lsp-deferred)
 (add-hook 'c++-mode-hook             'lsp-deferred)
@@ -184,9 +185,6 @@
 
 (modus-themes-load-vivendi)
 
-;; NAVIGATION
-(avy-setup-default)
-
 ;; MODE-LINE
 (setq sml/shorten-modes t)
 (setq sml/name-width 20)
@@ -199,6 +197,9 @@
 (add-to-list 'sml/hidden-modes         " tree-sitter")
 (add-to-list 'sml/replacer-regexp-list '("^~/Workspace/" ":WS:") t)
 
+;; NAVIGATION
+(avy-setup-default)
+
 ;; AUTO-COMPLETE
 (setq company-dabbrev-ignore-case       t)
 (setq company-dabbrev-code-ignore-case  t)
@@ -210,11 +211,21 @@
 (setq company-tooltip-flip-when-above   nil)
 (setq company-tooltip-limit             10)
 
-(global-company-mode)
+(define-abbrev-table 'global-abbrev-table
+  '(
+    ("afaik" "as far as I know")
+    ("asap"  "as soon as possible")
+    ("btw"   "by the way")))
 
-(add-to-list 'company-backends #'(company-capf
-                                  company-jedi
-                                  company-lua))
+(setq company-backends '((company-capf          ;; sort backends by priority.
+                          company-keywords
+                          company-files
+                          company-elisp
+                          company-jedi
+                          company-lua
+                          company-abbrev
+                          company-dabbrev
+                          company-dabbrev-code)))
 
 ;; EDITOR EXTENSIONS
 (setq ffip-use-rust-fd t)
@@ -246,6 +257,8 @@
 (selectrum-mode +1)
 (selectrum-prescient-mode +1)
 (prescient-persist-mode +1)
+
+(conda-env-autoactivate-mode t)
 
 ;; LSP
 (setq lsp-completion-provider :capf)
