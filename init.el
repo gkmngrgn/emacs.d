@@ -236,6 +236,7 @@
 (golden-ratio-mode 1)
 (ctrlf-mode +1)
 (rg-enable-default-bindings)
+(electric-pair-mode 1)
 
 (menu-bar-mode 0)
 
