@@ -72,13 +72,13 @@
 (straight-use-package 'modus-themes)
 (straight-use-package 'origami)
 (straight-use-package 'poetry)
+(straight-use-package 'puni)
 (straight-use-package 'rainbow-delimiters)
 (straight-use-package 'rg)
 (straight-use-package 'rust-mode)
 (straight-use-package 'selectrum)
 (straight-use-package 'selectrum-prescient)
 (straight-use-package 'smart-mode-line)
-(straight-use-package 'smartparens)
 (straight-use-package 'tree-sitter)
 (straight-use-package 'tree-sitter-langs)
 (straight-use-package 'unfill)
@@ -140,6 +140,7 @@
 (add-hook 'python-mode-hook          'lsp-for-python)
 (add-hook 'rust-mode-hook            'lsp-deferred)
 (add-hook 'sh-mode-hook              'lsp-deferred)
+(add-hook 'term-mode-hook            'puni-disable-puni-mode)
 (add-hook 'text-mode-hook            'visual-line-mode)
 (add-hook 'tree-sitter-after-on-hook 'tree-sitter-hl-mode)
 (add-hook 'yaml-mode-hook            'lsp-deferred)
@@ -231,8 +232,6 @@
 (setq ffip-use-rust-fd t)
 (setq golden-ratio-auto-scale t)
 
-(with-eval-after-load (require 'smartparens-config))
-
 (which-key-mode)
 (golden-ratio-mode 1)
 (ctrlf-mode +1)
@@ -249,10 +248,7 @@
 (global-hl-todo-mode)
 (global-origami-mode)
 (global-tree-sitter-mode)
-
-(smartparens-global-mode t)
-(show-smartparens-global-mode t)
-(sp-local-pair 'web-mode "{" "}" :actions nil)
+(puni-global-mode)
 
 (selectrum-mode +1)
 (selectrum-prescient-mode +1)
