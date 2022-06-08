@@ -107,6 +107,8 @@
 (global-set-key (kbd "M-g g")   'avy-goto-char-2)
 (global-set-key (kbd "C-x C-b") 'ibuffer)                           ;; default buffer replacement.
 (global-set-key (kbd "C-x C-d") 'ffip)
+(global-set-key (kbd "C-c o a") 'org-agenda)
+(global-set-key (kbd "C-c o l") 'org-store-link)
 (global-set-key (kbd "C-c l f") 'origami-toggle-node)
 (global-set-key (kbd "C-c w")   'er/expand-region)
 (global-set-key (kbd "C-c q")   'unfill-paragraph)
@@ -297,6 +299,9 @@
 ;; ORG-MODE
 (setq org-todo-keywords '((sequence "TODO" "INPROGRESS" "|" "DONE")))
 (setq org-log-done t)
+(setq org-agenda-files '("~/Documents/ORG/home.org"
+                         "~/Documents/ORG/open.org"
+                         "~/Documents/ORG/mimi.org"))
 
 (org-babel-do-load-languages
  'org-babel-load-languages
