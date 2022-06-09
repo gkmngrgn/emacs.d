@@ -199,10 +199,10 @@
 (add-to-list 'sml/hidden-modes         " Golden")
 (add-to-list 'sml/hidden-modes         " company")
 (add-to-list 'sml/hidden-modes         " tree-sitter")
-(add-to-list 'sml/replacer-regexp-list '("^~/Workspace/" ":WS:") t)
 
-;; NAVIGATION
-(avy-setup-default)
+(add-to-list 'sml/replacer-regexp-list '("^~/Workspace/" ":WS:" ) t)
+(add-to-list 'sml/replacer-regexp-list '("^:WS:mimi/"    ":MM:" ) t)
+(add-to-list 'sml/replacer-regexp-list '("^:Doc:ORG/"    ":ORG:") t)
 
 ;; AUTO-COMPLETE
 (setq company-dabbrev-ignore-case       t)
@@ -235,6 +235,7 @@
 (setq ffip-use-rust-fd t)
 (setq golden-ratio-auto-scale t)
 
+(avy-setup-default)
 (which-key-mode)
 (golden-ratio-mode 1)
 (ctrlf-mode +1)
