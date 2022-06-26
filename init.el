@@ -70,6 +70,7 @@
 (straight-use-package 'magit)
 (straight-use-package 'markdown-mode)
 (straight-use-package 'modus-themes)
+(straight-use-package 'multiple-cursors)
 (straight-use-package 'origami)
 (straight-use-package 'password-store)
 (straight-use-package 'poetry)
@@ -107,6 +108,10 @@
 (global-set-key (kbd "M-g g")   'avy-goto-char-2)
 (global-set-key (kbd "C-x C-b") 'ibuffer)                           ;; default buffer replacement.
 (global-set-key (kbd "C-x C-d") 'ffip)
+(global-set-key (kbd "C-c m")   'mc/edit-lines)
+(global-set-key (kbd "C->")     'mc/mark-next-like-this)
+(global-set-key (kbd "C-<")     'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 (global-set-key (kbd "C-c o a") 'org-agenda)
 (global-set-key (kbd "C-c o l") 'org-store-link)
 (global-set-key (kbd "C-c l f") 'origami-toggle-node)
