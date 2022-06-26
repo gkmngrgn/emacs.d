@@ -49,6 +49,7 @@
 (straight-use-package 'csv-mode)
 (straight-use-package 'ctrlf)
 (straight-use-package 'dap-mode)
+(straight-use-package 'deadgrep)
 (straight-use-package 'diff-hl)
 (straight-use-package 'dockerfile-mode)
 (straight-use-package 'exec-path-from-shell)
@@ -76,7 +77,6 @@
 (straight-use-package 'poetry)
 (straight-use-package 'puni)
 (straight-use-package 'rainbow-delimiters)
-(straight-use-package 'rg)
 (straight-use-package 'rust-mode)
 (straight-use-package 'selectrum)
 (straight-use-package 'selectrum-prescient)
@@ -106,6 +106,7 @@
 (global-set-key (kbd "<f5>")    'toggle-theme)
 (global-set-key (kbd "M-g f")   'avy-goto-line)                     ;; line number replacement.
 (global-set-key (kbd "M-g g")   'avy-goto-char-2)
+(global-set-key (kbd "C-c s")   'deadgrep)
 (global-set-key (kbd "C-x C-b") 'ibuffer)                           ;; default buffer replacement.
 (global-set-key (kbd "C-x C-d") 'ffip)
 (global-set-key (kbd "C-c m")   'mc/edit-lines)
@@ -244,7 +245,6 @@
 (which-key-mode)
 (golden-ratio-mode 1)
 (ctrlf-mode +1)
-(rg-enable-default-bindings)
 (electric-pair-mode 1)
 
 (menu-bar-mode 0)
