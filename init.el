@@ -140,7 +140,7 @@
 (add-hook 'gdscript-mode-hook        'lsp-deferred)
 (add-hook 'go-mode-hook              'lsp-deferred)
 (add-hook 'ibuffer-hook              'ibuffer-vc-set-filter-groups-by-vc-root)
-(add-hook 'javascript-mode-hook      'lsp-deferred)
+(add-hook 'js-mode-hook              'lsp-deferred)
 (add-hook 'json-mode-hook            'lsp-deferred)
 (add-hook 'lsp-mode-hook             'lsp-enable-which-key-integration)
 (add-hook 'magit-pre-refresh-hook    'diff-hl-magit-pre-refresh)
@@ -283,6 +283,7 @@
   (add-to-list 'lsp-disabled-clients 'pyls)
   (add-to-list 'lsp-disabled-clients 'pylsp)
   (add-to-list 'lsp-disabled-clients 'jedi)
+  (add-to-list 'lsp-disabled-clients 'jsts-ls)
   (add-to-list 'lsp-disabled-clients 'rls)
 
   (add-to-list 'lsp-enabled-clients 'bash-ls)
@@ -294,6 +295,7 @@
   (add-to-list 'lsp-enabled-clients 'json-ls)
   (add-to-list 'lsp-enabled-clients 'pyright)
   (add-to-list 'lsp-enabled-clients 'rust-analyzer)
+  (add-to-list 'lsp-enabled-clients 'ts-ls)
   (add-to-list 'lsp-enabled-clients 'yamlls)
 
   (lsp-treemacs-sync-mode 1))
