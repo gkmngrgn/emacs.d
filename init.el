@@ -110,9 +110,9 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)                           ;; default buffer replacement.
 (global-set-key (kbd "C-x C-d") 'ffip)
 (global-set-key (kbd "C-c m")   'mc/edit-lines)
-(global-set-key (kbd "C->")     'mc/mark-next-like-this)
-(global-set-key (kbd "C-<")     'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-c j")   'mc/mark-next-like-this)
+(global-set-key (kbd "C-c k")   'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c n")   'mc/mark-all-like-this)
 (global-set-key (kbd "C-c o a") 'org-agenda)
 (global-set-key (kbd "C-c o l") 'org-store-link)
 (global-set-key (kbd "C-c l f") 'origami-toggle-node)
