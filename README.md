@@ -6,8 +6,8 @@ My accessibility-first Emacs configuration.
 
 Please **do not open** a pull-request for this repository. You can
 configure your editor from scratch, or give a try for Emacs
-distributions like [Spacemacs][https://www.spacemacs.org/], [Doom
-Emacs][https://github.com/hlissner/doom-emacs].
+distributions like [Spacemacs](https://www.spacemacs.org/), [Doom
+Emacs](https://github.com/hlissner/doom-emacs).
 
 
 ## INSTALLATION
