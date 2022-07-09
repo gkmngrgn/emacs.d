@@ -163,12 +163,12 @@
   (require 'init-tui))
 
 ;; THEME
-(setq modus-themes-italic-constructs   t
+(setq modus-themes-italic-constructs   nil
       modus-themes-bold-constructs     t
       modus-themes-mixed-fonts         t
       modus-themes-subtle-line-numbers nil
       modus-themes-intense-mouseovers  nil
-      modus-themes-deuteranopia        t
+      modus-themes-deuteranopia        nil
       modus-themes-tabs-accented       t
       modus-themes-variable-pitch-ui   nil
       modus-themes-inhibit-reload      t
