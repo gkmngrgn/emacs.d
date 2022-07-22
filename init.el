@@ -51,6 +51,7 @@
 (straight-use-package 'dap-mode)
 (straight-use-package 'deadgrep)
 (straight-use-package 'diff-hl)
+(straight-use-package 'dirvish)
 (straight-use-package 'dockerfile-mode)
 (straight-use-package 'exec-path-from-shell)
 (straight-use-package 'expand-region)
@@ -246,6 +247,7 @@
 (golden-ratio-mode 1)
 (ctrlf-mode +1)
 (electric-pair-mode 1)
+(dirvish-override-dired-mode)
 
 (menu-bar-mode 0)
 
