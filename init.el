@@ -74,7 +74,6 @@
 (straight-use-package 'modus-themes)
 (straight-use-package 'multiple-cursors)
 (straight-use-package 'origami)
-(straight-use-package 'password-store)
 (straight-use-package 'poetry)
 (straight-use-package 'puni)
 (straight-use-package 'rainbow-delimiters)
