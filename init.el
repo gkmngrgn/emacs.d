@@ -157,6 +157,12 @@
 (with-eval-after-load 'lsp-mode
   (add-hook 'lsp-after-open-hook     'lsp-origami-try-enable))
 
+;; FILE MODES
+(add-to-list 'auto-mode-alist '("\\.html?\\'"    . web-mode))
+(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'"       . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.star\\'"     . bazel-starlark-mode))
+
 ;; INIT GUI OR TUI
 (if (display-graphic-p)
     (require 'init-gui)
@@ -319,9 +325,6 @@
 ;; MARKDOWN
 (setq markdown-command "multimarkdown")
 
-(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
-(add-to-list 'auto-mode-alist '("\\.md\\'"       . markdown-mode))
-
 ;; WEB
 (setq web-mode-markup-indent-offset 2)
 (setq web-mode-code-indent-offset   2)
@@ -329,8 +332,6 @@
 (setq web-mode-script-padding       0)
 (setq mmm-submode-decoration-level  0)
 (setq js-indent-level               2)
-
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
 ;;; init.el ends here
 
