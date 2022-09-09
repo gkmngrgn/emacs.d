@@ -38,9 +38,7 @@
 
 ;; packages
 (straight-use-package 'avy)
-(straight-use-package 'bazel)
-(straight-use-package 'cider)
-(straight-use-package 'clojure-mode)
+(straight-use-package 'clipetty)
 (straight-use-package 'cmake-mode)
 (straight-use-package 'conda)
 (straight-use-package 'company)
@@ -136,7 +134,6 @@
 (add-hook 'before-save-hook          'delete-trailing-whitespace)
 (add-hook 'c-mode-hook               'lsp-deferred)
 (add-hook 'c++-mode-hook             'lsp-deferred)
-(add-hook 'clojure-mode-hook         'lsp-deferred)
 (add-hook 'gdscript-mode-hook        'lsp-deferred)
 (add-hook 'go-mode-hook              'lsp-deferred)
 (add-hook 'ibuffer-hook              'ibuffer-vc-set-filter-groups-by-vc-root)
@@ -161,7 +158,6 @@
 (add-to-list 'auto-mode-alist '("\\.html?\\'"    . web-mode))
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'"       . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.star\\'"     . bazel-starlark-mode))
 
 ;; INIT GUI OR TUI
 (if (display-graphic-p)
@@ -263,6 +259,7 @@
 (global-flycheck-mode)
 (global-hl-line-mode)
 (global-hl-todo-mode)
+(global-clipetty-mode)
 (global-origami-mode)
 (global-tree-sitter-mode)
 (puni-global-mode)
@@ -295,7 +292,6 @@
 
   (add-to-list 'lsp-enabled-clients 'bash-ls)
   (add-to-list 'lsp-enabled-clients 'clangd)
-  (add-to-list 'lsp-enabled-clients 'clojure-lsp)
   (add-to-list 'lsp-enabled-clients 'css-ls)
   (add-to-list 'lsp-enabled-clients 'dockerfile-ls)
   (add-to-list 'lsp-enabled-clients 'html-ls)
