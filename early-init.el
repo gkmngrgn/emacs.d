@@ -44,8 +44,7 @@
 
 ;; EDIT MODE
 (set-default 'abbrev-mode t)
-
-(setq fill-column 88)
+(setq-default fill-column 88)
 
 ;; PERFORMANCE
 (setq gc-cons-threshold 100000000)
