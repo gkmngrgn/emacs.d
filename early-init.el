@@ -42,8 +42,10 @@
 (setq scroll-preserve-screen-position 1)
 (setq auto-window-vscroll nil)
 
-;; AUTO-COMPLETION
+;; EDIT MODE
 (set-default 'abbrev-mode t)
+
+(setq fill-column 88)
 
 ;; PERFORMANCE
 (setq gc-cons-threshold 100000000)
