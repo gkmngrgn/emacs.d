@@ -268,6 +268,20 @@
 
 (conda-env-autoactivate-mode t)
 
+;; BUFFERS
+(setq ibuffer-saved-filter-groups
+      (quote (("default"
+               ("Magit" (or (mode . magit-mode)
+                            (mode . magit-status-mode)
+                            (mode . magit-log-mode)
+                            (mode . magit-process-mode)
+                            (mode . magit-revision-mode)))
+               ("Files"  (filename . ".*\.*$"))))))
+
+(add-hook 'ibuffer-mode-hook
+          (lambda ()
+            (ibuffer-switch-to-saved-filter-groups "default")))
+
 ;; LSP
 (setq lsp-completion-provider :capf)
 (setq lsp-enable-snippet nil)                     ; company is better
