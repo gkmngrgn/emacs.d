@@ -271,11 +271,12 @@
 ;; BUFFERS
 (setq ibuffer-saved-filter-groups
       (quote (("default"
-               ("Magit" (or (mode . magit-mode)
-                            (mode . magit-status-mode)
-                            (mode . magit-log-mode)
-                            (mode . magit-process-mode)
-                            (mode . magit-revision-mode)))
+               ("VCS" (or (mode . magit-mode)
+                          (mode . magit-status-mode)
+                          (mode . magit-log-mode)
+                          (mode . magit-process-mode)
+                          (mode . magit-revision-mode)
+                          (mode . magit-diff-mode)))
                ("Files"  (filename . ".*\.*$"))))))
 
 (add-hook 'ibuffer-mode-hook
