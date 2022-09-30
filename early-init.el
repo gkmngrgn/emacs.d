@@ -33,8 +33,8 @@
 (setq select-enable-clipboard t)
 
 (setq tab-bar-close-button-show nil)
-(setq tab-bar-mode t)
-(setq tab-bar-show t)
+(setq tab-bar-mode nil)
+(setq tab-bar-show nil)
 
 ;; SCROLLING
 (setq scroll-margin 0)
