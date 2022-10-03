@@ -38,7 +38,6 @@
 
 ;; packages
 (straight-use-package 'avy)
-(straight-use-package 'clipetty)
 (straight-use-package 'cmake-mode)
 (straight-use-package 'conda)
 (straight-use-package 'company)
@@ -257,7 +256,6 @@
 (global-flycheck-mode)
 (global-hl-line-mode)
 (global-hl-todo-mode)
-(global-clipetty-mode)
 (global-origami-mode)
 (global-tree-sitter-mode)
 (puni-global-mode)
