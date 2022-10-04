@@ -301,17 +301,6 @@
   (add-to-list 'lsp-disabled-clients 'jsts-ls)
   (add-to-list 'lsp-disabled-clients 'rls)
 
-  (add-to-list 'lsp-enabled-clients 'bash-ls)
-  (add-to-list 'lsp-enabled-clients 'clangd)
-  (add-to-list 'lsp-enabled-clients 'css-ls)
-  (add-to-list 'lsp-enabled-clients 'dockerfile-ls)
-  (add-to-list 'lsp-enabled-clients 'html-ls)
-  (add-to-list 'lsp-enabled-clients 'json-ls)
-  (add-to-list 'lsp-enabled-clients 'pyright)
-  (add-to-list 'lsp-enabled-clients 'rust-analyzer)
-  (add-to-list 'lsp-enabled-clients 'ts-ls)
-  (add-to-list 'lsp-enabled-clients 'yamlls)
-
   (lsp-treemacs-sync-mode 1))
 
 ;; GIT
