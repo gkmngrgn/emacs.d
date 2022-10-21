@@ -80,6 +80,7 @@
 (straight-use-package 'tree-sitter)
 (straight-use-package 'tree-sitter-langs)
 (straight-use-package 'unfill)
+(straight-use-package 'vterm)
 (straight-use-package 'web-mode)
 (straight-use-package 'which-key)
 (straight-use-package 'yaml-mode)
