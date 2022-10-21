@@ -33,6 +33,9 @@
 
 ;; add missing paths before starting the emacs.
 (when (memq window-system '(mac ns x))
+  (setq
+   exec-path-from-shell-variables '("PATH" "MANPATH" "GOPATH" "LSP_USE_PLISTS")
+   exec-path-from-shell-check-startup-files nil)
   (exec-path-from-shell-initialize))
 
 (provide 'init-gui)
