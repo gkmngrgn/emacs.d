@@ -15,8 +15,8 @@ Emacs](https://github.com/hlissner/doom-emacs).
 Consider installing the minimum version 28.1 of Emacs. Native
 compilation is significant in increasing performance. For MacOS:
 
-    brew install --cask emacs
-
+    brew tap d12frosted/emacs-plus
+    brew install emacs-plus --with-native-comp --with-no-titlebar-and-round-corners --with-EmacsIcon1-icon
 
 Clone the repository to your home folder:
 
@@ -65,11 +65,7 @@ I install all my CLI dependencies using my do.sh script [here](https://git.gokme
 
     brew install gopls         \
                  llvm          \
-                 rust-analyzer \
                  fd            \
-                 ripgrep
-
-    mamba create -n lsp python=3.10.4
-    mamba install -n lsp cmake-language-server \
-                         python-lsp-server     \
-                         virtualenv
+                 pyright       \
+                 ripgrep       \
+                 rust-analyzer

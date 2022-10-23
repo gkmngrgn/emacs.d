@@ -45,11 +45,11 @@
 (straight-use-package 'company-lua)
 (straight-use-package 'csv-mode)
 (straight-use-package 'ctrlf)
-(straight-use-package 'dap-mode)
 (straight-use-package 'deadgrep)
 (straight-use-package 'diff-hl)
 (straight-use-package 'dirvish)
 (straight-use-package 'dockerfile-mode)
+(straight-use-package 'eglot)
 (straight-use-package 'exec-path-from-shell)
 (straight-use-package 'expand-region)
 (straight-use-package 'find-file-in-project)
@@ -59,11 +59,6 @@
 (straight-use-package 'golden-ratio)
 (straight-use-package 'hl-todo)
 (straight-use-package 'json-mode)
-(straight-use-package 'lsp-mode)
-(straight-use-package 'lsp-origami)
-(straight-use-package 'lsp-pyright)
-(straight-use-package 'lsp-treemacs)
-(straight-use-package 'lsp-ui)
 (straight-use-package 'lua-mode)
 (straight-use-package 'magit)
 (straight-use-package 'markdown-mode)
@@ -118,39 +113,15 @@
 (global-set-key (kbd "C-x O")   'prev-window)
 (global-set-key (kbd "C-z")     'undo-only)
 
-(with-eval-after-load 'lsp-ui
-  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
-  (define-key lsp-ui-mode-map [remap xref-find-references]  #'lsp-ui-peek-find-references)
-  (define-key lsp-ui-mode-map (kbd "C-c u")                 #'lsp-ui-imenu))
-
 ;; HOOKS
-(defun lsp-for-python ()
-  "Activate pyright in Python files."
-  (require 'lsp-pyright)
-  (lsp))
-
 (add-hook 'after-init-hook           'global-company-mode)
 (add-hook 'before-save-hook          'delete-trailing-whitespace)
-(add-hook 'c-mode-hook               'lsp-deferred)
-(add-hook 'c++-mode-hook             'lsp-deferred)
-(add-hook 'gdscript-mode-hook        'lsp-deferred)
-(add-hook 'go-mode-hook              'lsp-deferred)
-(add-hook 'js-mode-hook              'lsp-deferred)
-(add-hook 'json-mode-hook            'lsp-deferred)
-(add-hook 'lsp-mode-hook             'lsp-enable-which-key-integration)
 (add-hook 'magit-pre-refresh-hook    'diff-hl-magit-pre-refresh)
 (add-hook 'magit-post-refresh-hook   'diff-hl-magit-post-refresh)
 (add-hook 'prog-mode-hook            'rainbow-delimiters-mode)
-(add-hook 'python-mode-hook          'lsp-for-python)
-(add-hook 'rust-mode-hook            'lsp-deferred)
-(add-hook 'sh-mode-hook              'lsp-deferred)
 (add-hook 'term-mode-hook            'puni-disable-puni-mode)
 (add-hook 'text-mode-hook            'visual-line-mode)
 (add-hook 'tree-sitter-after-on-hook 'tree-sitter-hl-mode)
-(add-hook 'yaml-mode-hook            'lsp-deferred)
-
-(with-eval-after-load 'lsp-mode
-  (add-hook 'lsp-after-open-hook     'lsp-origami-try-enable))
 
 ;; FILE MODES
 (add-to-list 'auto-mode-alist '("\\.html?\\'"    . web-mode))
@@ -283,26 +254,14 @@
             (ibuffer-switch-to-saved-filter-groups "default")))
 
 ;; LSP
-(setq lsp-completion-provider :capf)
-(setq lsp-enable-snippet nil)                     ; company is better
-(setq lsp-headerline-breadcrumb-icons-enable nil)
-(setq lsp-idle-delay 0.500)
-(setq lsp-keymap-prefix "C-c l")
-(setq lsp-log-io nil)                             ; if set to true can cause a performance hit
-(setq lsp-modeline-code-actions-segments '(name))
-(setq lsp-prefer-flymake nil)                     ; flycheck is better
-(setq lsp-rust-server 'rust-analyzer)
-(setq lsp-signature-doc-lines 10)
-(setq lsp-signature-auto-activate nil)
+(when (executable-find "gopls")
+  (add-hook 'go-mode-hook #'eglot-ensure))
 
-(with-eval-after-load 'lsp-mode
-  (add-to-list 'lsp-disabled-clients 'pyls)
-  (add-to-list 'lsp-disabled-clients 'pylsp)
-  (add-to-list 'lsp-disabled-clients 'jedi)
-  (add-to-list 'lsp-disabled-clients 'jsts-ls)
-  (add-to-list 'lsp-disabled-clients 'rls)
+(when (executable-find "pyright")
+  (add-hook 'python-mode-hook #'eglot-ensure))
 
-  (lsp-treemacs-sync-mode 1))
+(when (executable-find "rust-analyzer")
+  (add-hook 'rust-mode-hook #'eglot-ensure))
 
 ;; GIT
 (global-diff-hl-mode)
