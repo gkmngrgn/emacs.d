@@ -42,6 +42,7 @@
 (straight-use-package 'company)
 (straight-use-package 'company-jedi)
 (straight-use-package 'company-lua)
+(straight-use-package 'company-tabnine)
 (straight-use-package 'csv-mode)
 (straight-use-package 'ctrlf)
 (straight-use-package 'deadgrep)
@@ -216,14 +217,14 @@
                           company-lua
                           company-abbrev
                           company-dabbrev
-                          company-dabbrev-code)))
+                          company-dabbrev-code
+                          company-tabnine)))
 
 ;; EDITOR EXTENSIONS
 (setq ffip-use-rust-fd t)
 (setq golden-ratio-auto-scale t)
 
 (avy-setup-default)
-(which-key-mode)
 (golden-ratio-mode 1)
 (ctrlf-mode +1)
 (electric-pair-mode 1)
@@ -243,8 +244,6 @@
 (selectrum-mode +1)
 (selectrum-prescient-mode +1)
 (prescient-persist-mode +1)
-
-(conda-env-autoactivate-mode t)
 
 ;; BUFFERS
 (setq ibuffer-saved-filter-groups
