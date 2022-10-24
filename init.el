@@ -40,9 +40,6 @@
 (straight-use-package 'avy)
 (straight-use-package 'cmake-mode)
 (straight-use-package 'company)
-(straight-use-package 'company-jedi)
-(straight-use-package 'company-lua)
-(straight-use-package 'company-tabnine)
 (straight-use-package 'csv-mode)
 (straight-use-package 'ctrlf)
 (straight-use-package 'deadgrep)
@@ -193,6 +190,12 @@
 (add-to-list 'sml/replacer-regexp-list '("^:Doc:ORG/"    ":ORG:") t)
 
 ;; AUTO-COMPLETE
+(define-abbrev-table 'global-abbrev-table
+  '(
+    ("afaik" "as far as I know")
+    ("asap"  "as soon as possible")
+    ("btw"   "by the way")))
+
 (setq company-dabbrev-ignore-case       t)
 (setq company-dabbrev-code-ignore-case  t)
 (setq company-idle-delay                0.5)
@@ -202,23 +205,12 @@
 (setq company-tooltip-align-annotations t)
 (setq company-tooltip-flip-when-above   nil)
 (setq company-tooltip-limit             10)
-
-(define-abbrev-table 'global-abbrev-table
-  '(
-    ("afaik" "as far as I know")
-    ("asap"  "as soon as possible")
-    ("btw"   "by the way")))
-
-(setq company-backends '((company-capf          ;; sort backends by priority.
-                          company-keywords
-                          company-files
-                          company-elisp
-                          company-jedi
-                          company-lua
+(setq company-backends '((company-capf
                           company-abbrev
-                          company-dabbrev
-                          company-dabbrev-code
-                          company-tabnine)))
+                          company-files
+                          company-keywords)
+                         (company-dabbrev
+                          company-dabbrev-code)))
 
 ;; EDITOR EXTENSIONS
 (setq ffip-use-rust-fd t)
