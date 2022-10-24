@@ -267,9 +267,6 @@
 ;; ORG-MODE
 (setq org-todo-keywords '((sequence "TODO" "INPROGRESS" "|" "DONE")))
 (setq org-log-done t)
-(setq org-agenda-files '("~/Documents/ORG/home.org"
-                         "~/Documents/ORG/open.org"
-                         "~/Documents/ORG/mimi.org"))
 
 (org-babel-do-load-languages
  'org-babel-load-languages
