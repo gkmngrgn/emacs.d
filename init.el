@@ -53,7 +53,6 @@
 (straight-use-package 'exec-path-from-shell)
 (straight-use-package 'expand-region)
 (straight-use-package 'find-file-in-project)
-(straight-use-package 'flycheck)
 (straight-use-package 'gdscript-mode)
 (straight-use-package 'go-mode)
 (straight-use-package 'golden-ratio)
@@ -75,7 +74,6 @@
 (straight-use-package 'tree-sitter)
 (straight-use-package 'tree-sitter-langs)
 (straight-use-package 'unfill)
-(straight-use-package 'vterm)
 (straight-use-package 'web-mode)
 (straight-use-package 'which-key)
 (straight-use-package 'yaml-mode)
@@ -225,7 +223,6 @@
 (temp-buffer-resize-mode t)
 
 (global-auto-revert-mode)
-(global-flycheck-mode)
 (global-hl-line-mode)
 (global-hl-todo-mode)
 (global-origami-mode)
