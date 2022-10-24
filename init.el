@@ -39,7 +39,6 @@
 ;; packages
 (straight-use-package 'avy)
 (straight-use-package 'cmake-mode)
-(straight-use-package 'conda)
 (straight-use-package 'company)
 (straight-use-package 'company-jedi)
 (straight-use-package 'company-lua)
@@ -63,7 +62,6 @@
 (straight-use-package 'markdown-mode)
 (straight-use-package 'modus-themes)
 (straight-use-package 'multiple-cursors)
-(straight-use-package 'origami)
 (straight-use-package 'poetry)
 (straight-use-package 'puni)
 (straight-use-package 'rainbow-delimiters)
@@ -75,7 +73,6 @@
 (straight-use-package 'tree-sitter-langs)
 (straight-use-package 'unfill)
 (straight-use-package 'web-mode)
-(straight-use-package 'which-key)
 (straight-use-package 'yaml-mode)
 
 ;; KEYMAPS
@@ -105,7 +102,6 @@
 (global-set-key (kbd "C-c n")   'mc/mark-all-like-this)
 (global-set-key (kbd "C-c o a") 'org-agenda)
 (global-set-key (kbd "C-c o l") 'org-store-link)
-(global-set-key (kbd "C-c l f") 'origami-toggle-node)
 (global-set-key (kbd "C-c w")   'er/expand-region)
 (global-set-key (kbd "C-c q")   'unfill-paragraph)
 (global-set-key (kbd "C-x O")   'prev-window)
@@ -241,7 +237,6 @@
 (global-auto-revert-mode)
 (global-hl-line-mode)
 (global-hl-todo-mode)
-(global-origami-mode)
 (global-tree-sitter-mode)
 (puni-global-mode)
 
