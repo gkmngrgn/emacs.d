@@ -112,14 +112,30 @@
 (global-set-key (kbd "C-z")     'undo-only)
 
 ;; HOOKS
-(add-hook 'after-init-hook           'global-company-mode)
-(add-hook 'before-save-hook          'delete-trailing-whitespace)
-(add-hook 'magit-pre-refresh-hook    'diff-hl-magit-pre-refresh)
-(add-hook 'magit-post-refresh-hook   'diff-hl-magit-post-refresh)
-(add-hook 'prog-mode-hook            'rainbow-delimiters-mode)
-(add-hook 'term-mode-hook            'puni-disable-puni-mode)
-(add-hook 'text-mode-hook            'visual-line-mode)
-(add-hook 'tree-sitter-after-on-hook 'tree-sitter-hl-mode)
+(add-hook   'after-init-hook           'global-company-mode)
+(add-hook   'before-save-hook          'delete-trailing-whitespace)
+(add-hook   'magit-pre-refresh-hook    'diff-hl-magit-pre-refresh)
+(add-hook   'magit-post-refresh-hook   'diff-hl-magit-post-refresh)
+(add-hook   'prog-mode-hook            'rainbow-delimiters-mode)
+(add-hook   'term-mode-hook            'puni-disable-puni-mode)
+(add-hook   'text-mode-hook            'visual-line-mode)
+(add-hook   'tree-sitter-after-on-hook 'tree-sitter-hl-mode)
+
+(when (executable-find "gopls")
+  (add-hook 'go-mode-hook              'eglot-ensure))
+
+(when (executable-find "lua-language-server")
+  (add-hook 'lua-mode-hook             'eglot-ensure))
+
+(when (executable-find "pyright")
+  (add-hook 'python-mode-hook          'eglot-ensure))
+
+(when (executable-find "rust-analyzer")
+  (add-hook 'rust-mode-hook            'eglot-ensure))
+
+(when (executable-find "typescript-language-server")
+  (add-hook 'js-mode-hook              'eglot-ensure)
+  (add-hook 'json-mode-hook            'eglot-ensure))
 
 ;; FILE MODES
 (add-to-list 'auto-mode-alist '("\\.html?\\'"    . web-mode))
@@ -249,16 +265,6 @@
 (add-hook 'ibuffer-mode-hook
           (lambda ()
             (ibuffer-switch-to-saved-filter-groups "default")))
-
-;; LSP
-(when (executable-find "gopls")
-  (add-hook 'go-mode-hook #'eglot-ensure))
-
-(when (executable-find "pyright")
-  (add-hook 'python-mode-hook #'eglot-ensure))
-
-(when (executable-find "rust-analyzer")
-  (add-hook 'rust-mode-hook #'eglot-ensure))
 
 ;; GIT
 (global-diff-hl-mode)

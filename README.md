@@ -63,9 +63,13 @@ look at all the lines starting with `straight-use-package `.
 
 I install all my CLI dependencies using my do.sh script [here](https://git.gokmengorgen.net/goedev/config/src/branch/main/do.sh).
 
-    brew install gopls         \
-                 llvm          \
-                 fd            \
-                 pyright       \
-                 ripgrep       \
+    brew install gopls               \
+                 fd                  \
+                 llvm                \
+                 lua-language-server \
+                 pyright             \
+                 ripgrep             \
                  rust-analyzer
+
+    npm i -g typescript                 \
+             typescript-language-server
