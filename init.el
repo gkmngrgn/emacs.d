@@ -114,6 +114,8 @@
 (add-hook   'term-mode-hook            'puni-disable-puni-mode)
 (add-hook   'text-mode-hook            'visual-line-mode)
 (add-hook   'tree-sitter-after-on-hook 'tree-sitter-hl-mode)
+(add-hook   'ibuffer-mode-hook         (lambda ()
+                                         (ibuffer-switch-to-saved-filter-groups "default")))
 
 (when (executable-find "gopls")
   (add-hook 'go-mode-hook              'eglot-ensure))
@@ -130,6 +132,9 @@
 (when (executable-find "typescript-language-server")
   (add-hook 'js-mode-hook              'eglot-ensure)
   (add-hook 'json-mode-hook            'eglot-ensure))
+
+(with-eval-after-load 'magit-mode
+  (add-hook 'after-save-hook           'magit-after-save-refresh-status t))
 
 ;; FILE MODES
 (add-to-list 'auto-mode-alist '("\\.html?\\'"    . web-mode))
@@ -247,10 +252,6 @@
                           (mode . magit-revision-mode)
                           (mode . magit-diff-mode)))
                ("Files"  (filename . ".*\.*$"))))))
-
-(add-hook 'ibuffer-mode-hook
-          (lambda ()
-            (ibuffer-switch-to-saved-filter-groups "default")))
 
 ;; GIT
 (global-diff-hl-mode)
