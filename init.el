@@ -147,41 +147,11 @@
   (require 'init-tui))
 
 ;; THEME
-(setq modus-themes-italic-constructs   nil
-      modus-themes-bold-constructs     t
-      modus-themes-mixed-fonts         t
-      modus-themes-subtle-line-numbers nil
-      modus-themes-intense-mouseovers  nil
-      modus-themes-deuteranopia        nil
-      modus-themes-tabs-accented       t
-      modus-themes-variable-pitch-ui   nil
-      modus-themes-inhibit-reload      t
-      modus-themes-fringes             nil
-      modus-themes-lang-checkers       '(straight-underline intense)
-      modus-themes-mode-line           '(accented borderless)
-      modus-themes-markup              '(background italic)
-      modus-themes-syntax              '(faint yellow-comments green-strings alt-syntax)
-      modus-themes-hl-line             '(accented)
-      modus-themes-paren-match         '(bold intense)
-      modus-themes-links               '(neutral-underline background)
-      modus-themes-box-buttons         '(variable-pitch flat faint 0.9)
-      modus-themes-prompts             '(intense bold)
-      modus-themes-completions         '((matches   . (extrabold))
-                                         (selection . (semibold accented))
-                                         (popup     . (accented intense)))
-      modus-themes-mail-citations      nil
-      modus-themes-region              '(bg-only no-extend)
-      modus-themes-diffs               'desaturated
-      modus-themes-org-blocks          'gray-background
-      modus-themes-headings            '((1 . (overline background variable-pitch 1.3))
-                                         (2 . (rainbow overline 1.1))
-                                         (t . (semibold))))
-
 (modus-themes-load-vivendi)
 
 ;; MODE-LINE
-(setq sml/shorten-modes t)
-(setq sml/name-width 20)
+(setq sml/shorten-modes t
+      sml/name-width    20)
 
 (sml/setup)
 
@@ -201,21 +171,21 @@
     ("asap"  "as soon as possible")
     ("btw"   "by the way")))
 
-(setq company-dabbrev-ignore-case       t)
-(setq company-dabbrev-code-ignore-case  t)
-(setq company-idle-delay                0.5)
-(setq company-minimum-prefix-length     2)
-(setq company-require-match             'never)
-(setq company-show-numbers              t)
-(setq company-tooltip-align-annotations t)
-(setq company-tooltip-flip-when-above   nil)
-(setq company-tooltip-limit             10)
-(setq company-backends '((company-capf
-                          company-abbrev
-                          company-files
-                          company-keywords)
-                         (company-dabbrev
-                          company-dabbrev-code)))
+(setq company-dabbrev-ignore-case       t
+      company-dabbrev-code-ignore-case  t
+      company-idle-delay                0.5
+      company-minimum-prefix-length     2
+      company-require-match             'never
+      company-show-numbers              t
+      company-tooltip-align-annotations t
+      company-tooltip-flip-when-above   nil
+      company-tooltip-limit             10
+      company-backends                  '((company-capf
+                                           company-abbrev
+                                           company-files
+                                           company-keywords)
+                                          (company-dabbrev
+                                           company-dabbrev-code)))
 
 ;; EDITOR EXTENSIONS
 (setq ffip-use-rust-fd                t
@@ -246,23 +216,22 @@
 (prescient-persist-mode +1)
 
 ;; BUFFERS
-(setq ibuffer-saved-filter-groups
-      (quote (("default"
-               ("VCS" (or (mode . magit-mode)
-                          (mode . magit-status-mode)
-                          (mode . magit-log-mode)
-                          (mode . magit-process-mode)
-                          (mode . magit-revision-mode)
-                          (mode . magit-diff-mode)))
-               ("Files"  (filename . ".*\.*$"))))))
+(setq ibuffer-saved-filter-groups (quote (("default"
+                                           ("VCS" (or (mode . magit-mode)
+                                                      (mode . magit-status-mode)
+                                                      (mode . magit-log-mode)
+                                                      (mode . magit-process-mode)
+                                                      (mode . magit-revision-mode)
+                                                      (mode . magit-diff-mode)))
+                                           ("Files"  (filename . ".*\.*$"))))))
 
 ;; GIT
 (global-diff-hl-mode)
 (diff-hl-margin-mode)
 
 ;; ORG-MODE
-(setq org-todo-keywords '((sequence "TODO" "INPROGRESS" "|" "DONE")))
-(setq org-log-done t)
+(setq org-todo-keywords '((sequence "TODO" "INPROGRESS" "|" "DONE"))
+      org-log-done      t)
 
 (org-babel-do-load-languages
  'org-babel-load-languages
@@ -272,12 +241,12 @@
 (setq markdown-command "multimarkdown")
 
 ;; WEB
-(setq web-mode-markup-indent-offset 2)
-(setq web-mode-code-indent-offset   2)
-(setq web-mode-css-indent-offset    2)
-(setq web-mode-script-padding       0)
-(setq mmm-submode-decoration-level  0)
-(setq js-indent-level               2)
+(setq web-mode-markup-indent-offset 2
+      web-mode-code-indent-offset   2
+      web-mode-css-indent-offset    2
+      web-mode-script-padding       0
+      mmm-submode-decoration-level  0
+      js-indent-level               2)
 
 ;;; init.el ends here
 

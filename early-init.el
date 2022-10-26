@@ -3,7 +3,7 @@
 ;; Copyright (c) 2010-2022 Gökmen Görgen
 ;;
 ;; Author: Gökmen Görgen <gkmngrgn@gmail.com>
-;; URL: https://github.com/gkmngrgn/emacs.d/
+;; URL: https://git.gokmengorgen.net/goedev/emacs.d/
 
 ;;; Commentary:
 
@@ -12,55 +12,55 @@
 ;;; Code:
 
 ;; PACKAGE MANAGER
-(setq comp-deferred-compilation-deny-list ())
-(setq package-enable-at-startup nil)
-(setq straight-use-package-by-default t)
-(setq use-package-always-ensure t)
+(setq comp-deferred-compilation-deny-list ()
+      package-enable-at-startup           nil
+      straight-use-package-by-default     t
+      use-package-always-ensure           t)
 
 ;; INTERFACE
-(setq-default truncate-lines t)
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 2)
+(setq-default truncate-lines   t
+              indent-tabs-mode nil
+              tab-width        2)
 
-(setq ring-bell-function 'ignore)
-(setq require-final-newline t)
-(setq line-number-mode t)
-(setq column-number-mode t)
-(setq inhibit-splash-screen t)
-(setq initial-scratch-message nil)
-
-(setq select-enable-primary t)
-(setq select-enable-clipboard t)
-
-(setq tab-bar-close-button-show nil)
-(setq tab-bar-mode nil)
-(setq tab-bar-show nil)
+(setq ring-bell-function        'ignore
+      inhibit-splash-screen     t
+      initial-scratch-message   nil
+      select-enable-primary     t
+      select-enable-clipboard   t
+      ;; mode line
+      line-number-mode          t
+      column-number-mode        t
+      ;; disable tab bar
+      tab-bar-close-button-show nil
+      tab-bar-mode              nil
+      tab-bar-show              nil)
 
 ;; SCROLLING
-(setq scroll-margin 0)
-(setq scroll-conservatively 100000)
-(setq scroll-preserve-screen-position 1)
-(setq auto-window-vscroll nil)
+(setq scroll-margin                   0
+      scroll-conservatively           100000
+      scroll-preserve-screen-position 1
+      auto-window-vscroll             nil)
 
 ;; EDIT MODE
 (set-default 'abbrev-mode t)
 (setq-default fill-column 88)
+(setq require-final-newline t)
 
 ;; PERFORMANCE
-(setq gc-cons-threshold 100000000)
-(setq read-process-output-max (* 1024 1024)) ;; 1mb
+(setq gc-cons-threshold       100000000
+      read-process-output-max (* 1024 1024))  ;; 1mb
 
 ;; MODULES
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 ;; BACKUP
-(setq backup-directory-alist         `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
-(setq default-directory              "~/")
-(setq create-lockfiles               nil)
-
 (defvar custom-file-path "~/.emacs.d/custom.el")
-(setq custom-file custom-file-path)
+(setq backup-directory-alist         `((".*" . ,temporary-file-directory))
+      auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
+      default-directory              "~/"
+      create-lockfiles               nil
+      custom-file                    custom-file-path)
+
 (when (file-exists-p custom-file-path)
   (load custom-file))
 
