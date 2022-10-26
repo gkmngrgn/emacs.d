@@ -218,8 +218,11 @@
                           company-dabbrev-code)))
 
 ;; EDITOR EXTENSIONS
-(setq ffip-use-rust-fd t)
-(setq golden-ratio-auto-scale t)
+(setq ffip-use-rust-fd                t
+      golden-ratio-auto-scale         t
+      golden-ratio-max-width          100
+      golden-ratio-adjust-factor      .8
+      golden-ratio-wide-adjust-factor .8)
 
 (avy-setup-default)
 (golden-ratio-mode 1)
