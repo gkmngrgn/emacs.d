@@ -16,7 +16,10 @@ Consider installing the minimum version 28.1 of Emacs. Native
 compilation is significant in increasing performance. For MacOS:
 
     brew tap d12frosted/emacs-plus
-    brew install emacs-plus --with-native-comp --with-no-titlebar-and-round-corners --with-EmacsIcon1-icon
+    brew install emacs-plus                  \
+        --with-native-comp                   \
+        --with-no-titlebar-and-round-corners \
+        --with-EmacsIcon1-icon
 
 Clone the repository to your home folder:
 
@@ -67,6 +70,7 @@ I install all my CLI dependencies using my do.sh script [here](https://git.gokme
                  fd                  \
                  llvm                \
                  lua-language-server \
+                 multimarkdown       \
                  pyright             \
                  ripgrep             \
                  rust-analyzer
