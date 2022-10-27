@@ -18,6 +18,13 @@
       use-package-always-ensure           t)
 
 ;; INTERFACE
+(menu-bar-mode 0)
+(electric-pair-mode 1)
+(delete-selection-mode 1)
+(temp-buffer-resize-mode t)
+(global-auto-revert-mode)
+(global-hl-line-mode)
+
 (setq-default truncate-lines   t
               indent-tabs-mode nil
               tab-width        2)
