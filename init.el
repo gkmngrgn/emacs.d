@@ -39,6 +39,7 @@
 ;; PACKAGES
 (straight-use-package 'avy)
 (straight-use-package 'company)
+(straight-use-package 'company-prescient)
 (straight-use-package 'ctrlf)
 (straight-use-package 'deadgrep)
 (straight-use-package 'diff-hl)
@@ -207,6 +208,7 @@
 (puni-global-mode)
 (selectrum-mode +1)
 (selectrum-prescient-mode +1)
+(company-prescient-mode +1)
 (prescient-persist-mode +1)
 
 ;; BUFFERS
