@@ -72,6 +72,7 @@
 (straight-use-package 'lua-mode)
 (straight-use-package 'markdown-mode)
 (straight-use-package 'rust-mode)
+(straight-use-package 'typescript-mode)
 (straight-use-package 'web-mode)
 (straight-use-package 'yaml-mode)
 
@@ -137,7 +138,8 @@
 
 (when (executable-find "typescript-language-server")
   (add-hook 'js-mode-hook              'eglot-ensure)
-  (add-hook 'json-mode-hook            'eglot-ensure))
+  (add-hook 'json-mode-hook            'eglot-ensure)
+  (add-hook 'typescript-mode-hook      'eglot-ensure))
 
 (with-eval-after-load 'magit-mode
   (add-hook 'after-save-hook           'magit-after-save-refresh-status t))
