@@ -118,6 +118,10 @@
 (add-hook   'ibuffer-mode-hook         (lambda ()
                                          (ibuffer-switch-to-saved-filter-groups "default")))
 
+(when (executable-find "clangd")
+  (add-hook 'c-mode-hook               'eglot-ensure)
+  (add-hook 'c++-mode-hook             'eglot-ensure))
+
 (when (executable-find "gopls")
   (add-hook 'go-mode-hook              'eglot-ensure))
 
