@@ -76,6 +76,15 @@
 (straight-use-package 'web-mode)
 (straight-use-package 'yaml-mode)
 
+;; THEME
+(setq modus-themes-mode-line '(borderless))
+
+(if (display-graphic-p)
+    (require 'init-gui)
+  (require 'init-tui))
+
+(modus-themes-load-vivendi)
+
 ;; KEYMAPS
 (defun prev-window ()
   "Switch to previous window."
@@ -148,16 +157,6 @@
 (add-to-list 'auto-mode-alist '("\\.html?\\'"    . web-mode))
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'"       . markdown-mode))
-
-;; INIT GUI OR TUI
-(if (display-graphic-p)
-    (require 'init-gui)
-  (require 'init-tui))
-
-;; THEME
-(setq modus-themes-mode-line '(borderless))
-
-(modus-themes-load-vivendi)
 
 ;; MODE-LINE
 (setq sml/shorten-modes t
