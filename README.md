@@ -16,10 +16,7 @@ Consider installing the minimum version 28.1 of Emacs. Native
 compilation is significant in increasing performance. For MacOS:
 
     brew tap d12frosted/emacs-plus
-    brew install emacs-plus                  \
-        --with-native-comp                   \
-        --with-no-titlebar-and-round-corners \
-        --with-EmacsIcon1-icon
+    brew install emacs-plus --with-native-comp
 
 Clone the repository to your home folder:
 
