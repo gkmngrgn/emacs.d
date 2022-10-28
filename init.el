@@ -155,6 +155,8 @@
   (require 'init-tui))
 
 ;; THEME
+(setq modus-themes-mode-line '(borderless))
+
 (modus-themes-load-vivendi)
 
 ;; MODE-LINE
