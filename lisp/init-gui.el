@@ -14,19 +14,15 @@
 (defvar my-font      "IBM Plex Mono")
 (defvar my-font-size 160)
 
-(defun my-gui-change ()
-  "Load my gui change."
-  (set-frame-font my-font)
-  (set-face-attribute 'default nil
-                      :height my-font-size
-                      :font my-font))
-
 (setq initial-frame-alist    '((top    . 60) (left  . 15)
                                (height . 42) (width . 120))
       mouse-drag-copy-region nil
       select-enable-primary  nil)
 
-(my-gui-change)
+(set-frame-font my-font)
+(set-face-attribute 'default nil
+                    :height my-font-size
+                    :font my-font)
 (fringe-mode 0)
 (scroll-bar-mode 0)
 (tool-bar-mode 0)

@@ -91,16 +91,9 @@
   (interactive)
   (other-window -1))
 
-(defun toggle-theme ()
-  "Toggle light/dark theme with a shortcut."
-  (interactive)
-  (modus-themes-toggle)
-  (if (display-graphic-p)
-      (my-gui-change)))
-
 (global-set-key (kbd "C-c SPC") 'comment-line)                      ;; comment/uncomment line.
 (global-set-key (kbd "TAB")     'company-indent-or-complete-common)
-(global-set-key (kbd "<f5>")    'toggle-theme)
+(global-set-key (kbd "<f5>")    'modus-themes-toggle)
 (global-set-key (kbd "M-g f")   'avy-goto-line)                     ;; line number replacement.
 (global-set-key (kbd "M-g g")   'avy-goto-char-2)
 (global-set-key (kbd "C-c s")   'deadgrep)
