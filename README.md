@@ -73,4 +73,5 @@ I install all my CLI dependencies using my do.sh script [here](https://git.gokme
                  rust-analyzer
 
     npm i -g typescript                 \
-             typescript-language-server
+             typescript-language-server \
+             yaml-language-server
