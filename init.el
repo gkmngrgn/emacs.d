@@ -175,6 +175,7 @@
 
 (setq company-dabbrev-ignore-case       t
       company-dabbrev-code-ignore-case  t
+      company-format-margin-function    nil
       company-idle-delay                0.5
       company-minimum-prefix-length     2
       company-require-match             'never
