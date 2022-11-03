@@ -80,8 +80,35 @@
 (setq modus-themes-mode-line '(borderless))
 
 (if (display-graphic-p)
-    (require 'init-gui)
-  (require 'init-tui))
+    ;; GUI SETTINGS
+    (progn
+      (defvar my-font      "IBM Plex Mono")
+      (defvar my-font-size 160)
+
+      (setq initial-frame-alist '((top    . 60) (left  . 15)
+                                  (height . 42) (width . 120))
+            mouse-drag-copy-region nil
+            select-enable-primary  nil)
+
+      (set-frame-font my-font)
+      (set-face-attribute 'default nil
+                          :height my-font-size
+                          :font my-font)
+      (fringe-mode 0)
+      (scroll-bar-mode 0)
+      (tool-bar-mode 0)
+
+      ;; add missing paths before starting the emacs.
+      (when (memq window-system '(mac ns x))
+        (setq exec-path-from-shell-variables '("PATH" "MANPATH" "GOPATH" "LSP_USE_PLISTS")
+              exec-path-from-shell-check-startup-files nil)
+        (exec-path-from-shell-initialize)))
+
+  ;; TUI SETTINGS
+  (progn
+    (xterm-mouse-mode 1)
+    (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
+    (global-set-key (kbd "<mouse-5>") 'scroll-up-line)))
 
 (modus-themes-load-vivendi)
 
