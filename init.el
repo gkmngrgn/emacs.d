@@ -45,7 +45,6 @@
 (straight-use-package 'diff-hl)
 (straight-use-package 'dirvish)
 (straight-use-package 'eglot)
-(straight-use-package 'exec-path-from-shell)
 (straight-use-package 'expand-region)
 (straight-use-package 'find-file-in-project)
 (straight-use-package 'golden-ratio)
@@ -57,7 +56,6 @@
 (straight-use-package 'rainbow-delimiters)
 (straight-use-package 'selectrum)
 (straight-use-package 'selectrum-prescient)
-(straight-use-package 'smart-mode-line)
 (straight-use-package 'tree-sitter)
 (straight-use-package 'tree-sitter-langs)
 (straight-use-package 'unfill)
@@ -179,21 +177,6 @@
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'"       . markdown-mode))
 
-;; MODE-LINE
-(setq sml/shorten-modes t
-      sml/name-width    20)
-
-(sml/setup)
-
-(add-to-list 'sml/hidden-modes         " ElDoc")
-(add-to-list 'sml/hidden-modes         " Golden")
-(add-to-list 'sml/hidden-modes         " company")
-(add-to-list 'sml/hidden-modes         " tree-sitter")
-
-(add-to-list 'sml/replacer-regexp-list '("^~/Workspace/" ":WS:" ) t)
-(add-to-list 'sml/replacer-regexp-list '("^:WS:mimi/"    ":MM:" ) t)
-(add-to-list 'sml/replacer-regexp-list '("^:Doc:ORG/"    ":ORG:") t)
-
 ;; AUTO-COMPLETE
 (define-abbrev-table 'global-abbrev-table
   '(
@@ -211,12 +194,8 @@
       company-tooltip-align-annotations t
       company-tooltip-flip-when-above   nil
       company-tooltip-limit             10
-      company-backends                  '((company-capf
-                                           company-abbrev
-                                           company-files
-                                           company-keywords)
-                                          (company-dabbrev
-                                           company-dabbrev-code)))
+      company-backends                  '((company-capf company-abbrev company-files company-keywords)
+                                          (company-dabbrev company-dabbrev-code)))
 
 ;; EDITOR EXTENSIONS
 (setq ffip-use-rust-fd                t
