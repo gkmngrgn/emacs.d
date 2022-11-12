@@ -184,19 +184,6 @@
     ("asap"  "as soon as possible")
     ("btw"   "by the way")))
 
-(setq company-dabbrev-ignore-case       t
-      company-dabbrev-code-ignore-case  t
-      company-format-margin-function    nil
-      company-idle-delay                0.5
-      company-minimum-prefix-length     2
-      company-require-match             'never
-      company-show-numbers              t
-      company-tooltip-align-annotations t
-      company-tooltip-flip-when-above   nil
-      company-tooltip-limit             10
-      company-backends                  '((company-capf company-abbrev company-files company-keywords)
-                                          (company-dabbrev company-dabbrev-code)))
-
 ;; EDITOR EXTENSIONS
 (setq ffip-use-rust-fd                t
       golden-ratio-auto-scale         t
