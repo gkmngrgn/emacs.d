@@ -74,13 +74,6 @@
 (straight-use-package 'web-mode)
 (straight-use-package 'yaml-mode)
 
-;; ENVIRONMENT VARIABLES
-(setq exec-path-from-shell-variables           '("GOPATH" "LANG")
-      exec-path-from-shell-check-startup-files nil)
-
-(when (daemonp)
-  (exec-path-from-shell-initialize))
-
 ;; THEME
 (setq modus-themes-mode-line '(borderless))
 
