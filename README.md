@@ -21,7 +21,7 @@ compilation is significant in increasing performance. For MacOS:
 Clone the repository to your home folder:
 
     cd ~
-    git clone https://git.gokmengorgen.net/goedev/emacs.d.git .emacs.d
+    git clone https://git.goe.dev/goedev/emacs.d.git .emacs.d
 
 
 If you are on Windows, don't forget to add a new environment variable
@@ -61,7 +61,7 @@ look at all the lines starting with `straight-use-package `.
 
 ## SYSTEM DEPENDENCIES
 
-I install all my CLI dependencies using my do.sh script [here](https://git.gokmengorgen.net/goedev/config/src/branch/main/do.sh).
+I install all my CLI dependencies using my do.sh script [here](https://git.goe.dev/goedev/config/src/branch/main/do.sh).
 
     brew install gopls               \
                  fd                  \

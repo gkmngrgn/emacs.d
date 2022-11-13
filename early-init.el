@@ -34,6 +34,7 @@
       initial-scratch-message   nil
       select-enable-primary     t
       select-enable-clipboard   t
+      max-mini-window-height    3
       ;; mode line
       line-number-mode          t
       column-number-mode        t
