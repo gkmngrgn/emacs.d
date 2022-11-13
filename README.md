@@ -68,7 +68,6 @@ I install all my CLI dependencies using my do.sh script [here](https://git.gokme
                  llvm                \
                  lua-language-server \
                  multimarkdown       \
-                 pyright             \
                  ripgrep             \
                  rust-analyzer
 

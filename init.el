@@ -158,7 +158,7 @@
 (when (executable-find "lua-language-server")
   (add-hook 'lua-mode-hook             'eglot-ensure))
 
-(when (executable-find "pyright")
+(when (executable-find "pylsp")
   (add-hook 'python-mode-hook          'eglot-ensure))
 
 (when (executable-find "rust-analyzer")
