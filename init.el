@@ -3,7 +3,7 @@
 ;; Copyright (c) 2010-2022 Gökmen Görgen
 ;;
 ;; Author: Gökmen Görgen <gkmngrgn@gmail.com>
-;; URL: https://git.gokmengorgen.net/goedev/emacs.d/
+;; URL: https://git.goe.dev/goedev/emacs.d/
 
 ;;; Commentary:
 
@@ -113,7 +113,7 @@
 (global-set-key (kbd "C-c SPC") 'comment-line)                      ;; comment/uncomment line.
 (global-set-key (kbd "TAB")     'company-indent-or-complete-common)
 (global-set-key (kbd "<f5>")    'modus-themes-toggle)
-(global-set-key (kbd "M-g f")   'avy-goto-line)                     ;; line number replacement.
+(global-set-key (kbd "M-g M-g") 'avy-goto-line)                     ;; line number replacement.
 (global-set-key (kbd "M-g g")   'avy-goto-char-2)
 (global-set-key (kbd "C-c s")   'deadgrep)
 (global-set-key (kbd "C-x C-b") 'ibuffer)                           ;; default buffer replacement.
@@ -122,12 +122,15 @@
 (global-set-key (kbd "C-c j")   'mc/mark-next-like-this)
 (global-set-key (kbd "C-c k")   'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c n")   'mc/mark-all-like-this)
-(global-set-key (kbd "C-c o a") 'org-agenda)
-(global-set-key (kbd "C-c o l") 'org-store-link)
 (global-set-key (kbd "C-c w")   'er/expand-region)
 (global-set-key (kbd "C-c q")   'unfill-paragraph)
 (global-set-key (kbd "C-x O")   'prev-window)
 (global-set-key (kbd "C-z")     'undo-only)
+(global-set-key (kbd "C-c l l") 'eglot)
+(global-set-key (kbd "C-c l r") 'eglot-rename)
+(global-set-key (kbd "C-c l f") 'eglot-format)
+(global-set-key (kbd "C-c l n") 'flymake-goto-next-error)
+(global-set-key (kbd "C-c l p") 'flymake-goto-prev-error)
 
 ;; HOOKS
 (add-hook   'after-init-hook           'global-company-mode)
@@ -140,27 +143,6 @@
 (add-hook   'tree-sitter-after-on-hook 'tree-sitter-hl-mode)
 (add-hook   'ibuffer-mode-hook         (lambda ()
                                          (ibuffer-switch-to-saved-filter-groups "default")))
-
-(when (executable-find "clangd")
-  (add-hook 'c-mode-hook               'eglot-ensure)
-  (add-hook 'c++-mode-hook             'eglot-ensure))
-
-(when (executable-find "gopls")
-  (add-hook 'go-mode-hook              'eglot-ensure))
-
-(when (executable-find "lua-language-server")
-  (add-hook 'lua-mode-hook             'eglot-ensure))
-
-(when (executable-find "pylsp")
-  (add-hook 'python-mode-hook          'eglot-ensure))
-
-(when (executable-find "rust-analyzer")
-  (add-hook 'rust-mode-hook            'eglot-ensure))
-
-(when (executable-find "typescript-language-server")
-  (add-hook 'js-mode-hook              'eglot-ensure)
-  (add-hook 'json-mode-hook            'eglot-ensure)
-  (add-hook 'typescript-mode-hook      'eglot-ensure))
 
 (with-eval-after-load 'magit-mode
   (add-hook 'after-save-hook           'magit-after-save-refresh-status t))

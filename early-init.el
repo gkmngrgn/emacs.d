@@ -3,7 +3,7 @@
 ;; Copyright (c) 2010-2022 Gökmen Görgen
 ;;
 ;; Author: Gökmen Görgen <gkmngrgn@gmail.com>
-;; URL: https://git.gokmengorgen.net/goedev/emacs.d/
+;; URL: https://git.goe.dev/goedev/emacs.d/
 
 ;;; Commentary:
 
