@@ -170,13 +170,6 @@
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'"       . markdown-mode))
 
-;; AUTO-COMPLETE
-(define-abbrev-table 'global-abbrev-table
-  '(
-    ("afaik" "as far as I know")
-    ("asap"  "as soon as possible")
-    ("btw"   "by the way")))
-
 ;; EDITOR EXTENSIONS
 (setq ffip-use-rust-fd                t
       golden-ratio-auto-scale         t
@@ -190,10 +183,14 @@
 (dirvish-override-dired-mode)
 (global-tree-sitter-mode)
 (puni-global-mode)
+
 (selectrum-mode +1)
 (selectrum-prescient-mode +1)
 (company-prescient-mode +1)
 (prescient-persist-mode +1)
+
+(global-diff-hl-mode)
+(diff-hl-margin-mode)
 
 ;; BUFFERS
 (setq ibuffer-saved-filter-groups (quote (("default"
@@ -204,18 +201,6 @@
                                                       (mode . magit-revision-mode)
                                                       (mode . magit-diff-mode)))
                                            ("Files"  (filename . ".*\.*$"))))))
-
-;; GIT
-(global-diff-hl-mode)
-(diff-hl-margin-mode)
-
-;; ORG-MODE
-(setq org-todo-keywords '((sequence "TODO" "INPROGRESS" "|" "DONE"))
-      org-log-done      t)
-
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((python . t)))
 
 ;; MARKDOWN
 (setq markdown-command "multimarkdown")
