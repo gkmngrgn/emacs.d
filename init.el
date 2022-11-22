@@ -79,18 +79,10 @@
 (if (display-graphic-p)
     ;; GUI SETTINGS
     (progn
-      (defvar my-font      "IBM Plex Mono")
-      (defvar my-font-size 160)
-
-      (setq initial-frame-alist    '((top    . 60) (left  . 15)
-                                     (height . 42) (width . 120))
-            mouse-drag-copy-region nil
-            select-enable-primary  nil)
-
-      (set-frame-font my-font)
+      (set-frame-font "IBM Plex Mono")
       (set-face-attribute 'default nil
-                          :height  my-font-size
-                          :font    my-font)
+                          :height  160
+                          :font    "IBM Plex Mono")
       (fringe-mode     0)
       (scroll-bar-mode 0)
       (tool-bar-mode   0))
@@ -149,14 +141,20 @@
 ;; FILE MODES
 (add-to-list 'auto-mode-alist '("\\.html?\\'"    . web-mode))
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
-(add-to-list 'auto-mode-alist '("\\.md\\'"       . markdown-mode))
 
 ;; EDITOR EXTENSIONS
 (setq ffip-use-rust-fd                t
       golden-ratio-auto-scale         t
       golden-ratio-max-width          100
       golden-ratio-adjust-factor      .8
-      golden-ratio-wide-adjust-factor .8)
+      golden-ratio-wide-adjust-factor .8
+      web-mode-markup-indent-offset   2
+      web-mode-code-indent-offset     2
+      web-mode-css-indent-offset      2
+      web-mode-script-padding         0
+      mmm-submode-decoration-level    0
+      js-indent-level                 2
+      markdown-command                "multimarkdown")
 
 (avy-setup-default)
 (golden-ratio-mode 1)
@@ -182,17 +180,6 @@
                                                       (mode . magit-revision-mode)
                                                       (mode . magit-diff-mode)))
                                            ("Files"  (filename . ".*\.*$"))))))
-
-;; MARKDOWN
-(setq markdown-command "multimarkdown")
-
-;; WEB
-(setq web-mode-markup-indent-offset 2
-      web-mode-code-indent-offset   2
-      web-mode-css-indent-offset    2
-      web-mode-script-padding       0
-      mmm-submode-decoration-level  0
-      js-indent-level               2)
 
 ;;; init.el ends here
 
