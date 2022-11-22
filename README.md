@@ -2,7 +2,7 @@
 
 My accessibility-first Emacs configuration.
 
-![](data/interface.png)
+![](interface.png)
 
 Please **do not open** a pull-request for this repository. You can
 configure your editor from scratch, or give a try for Emacs
