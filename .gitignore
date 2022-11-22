@@ -1,16 +1,1 @@
-# ignore all
-/*
-
-# exclude data folder
-!.github/
-!data/
-!lisp/
-!emacs.service
-!do.sh
-
-# exclude files
-!.gitignore
-!LICENSE
-!README.md
-!init.el
-!early-init.el
+.DS_Store

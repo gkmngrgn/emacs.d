@@ -16,13 +16,18 @@ Consider installing the minimum version 28.1 of Emacs. Native
 compilation is significant in increasing performance. For MacOS:
 
     brew tap d12frosted/emacs-plus
-    brew install emacs-plus --with-native-comp
+    brew install emacs-plus --with-native-comp --without-cocoa
 
 Clone the repository to your home folder:
 
     cd ~
     git clone https://git.goe.dev/goedev/emacs.d.git .emacs.d
 
+Or if you use [dosh](https://github.com/gkmngrgn/dosh/):
+
+    git clone https://git.goe.dev/goedev/emacs.d.git
+    cd emacs.d
+    dosh install
 
 If you are on Windows, don't forget to add a new environment variable
 named "HOME":
