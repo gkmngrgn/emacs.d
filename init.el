@@ -11,16 +11,6 @@
 
 ;;; Code:
 
-;; GLOBAL SETTINGS
-
-;; unicode
-(prefer-coding-system       'utf-8)
-(set-default-coding-systems 'utf-8)
-(set-language-environment   'utf-8)
-
-;; aliases
-(defalias 'yes-or-no-p 'y-or-n-p)
-
 ;; PACKAGE MANAGER
 (defvar bootstrap-version)
 (let ((bootstrap-file
@@ -74,8 +64,6 @@
 (straight-use-package 'yaml-mode)
 
 ;; THEME
-(setq modus-themes-mode-line '(borderless))
-
 (if (display-graphic-p)
     ;; GUI SETTINGS
     (progn
@@ -93,6 +81,7 @@
     (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
     (global-set-key (kbd "<mouse-5>") 'scroll-up-line)))
 
+(modus-themes-load-themes)
 (modus-themes-load-vivendi)
 
 ;; KEYMAPS
@@ -143,19 +132,6 @@
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
 ;; EDITOR EXTENSIONS
-(setq ffip-use-rust-fd                t
-      golden-ratio-auto-scale         t
-      golden-ratio-max-width          100
-      golden-ratio-adjust-factor      .8
-      golden-ratio-wide-adjust-factor .8
-      web-mode-markup-indent-offset   2
-      web-mode-code-indent-offset     2
-      web-mode-css-indent-offset      2
-      web-mode-script-padding         0
-      mmm-submode-decoration-level    0
-      js-indent-level                 2
-      markdown-command                "multimarkdown")
-
 (avy-setup-default)
 (golden-ratio-mode 1)
 (ctrlf-mode +1)
@@ -170,16 +146,6 @@
 
 (global-diff-hl-mode)
 (diff-hl-margin-mode)
-
-;; BUFFERS
-(setq ibuffer-saved-filter-groups (quote (("default"
-                                           ("VCS" (or (mode . magit-mode)
-                                                      (mode . magit-status-mode)
-                                                      (mode . magit-log-mode)
-                                                      (mode . magit-process-mode)
-                                                      (mode . magit-revision-mode)
-                                                      (mode . magit-diff-mode)))
-                                           ("Files"  (filename . ".*\.*$"))))))
 
 ;;; init.el ends here
 

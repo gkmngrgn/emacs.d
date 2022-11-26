@@ -11,6 +11,14 @@
 
 ;;; Code:
 
+;; UNICODE
+(prefer-coding-system       'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-language-environment   'utf-8)
+
+;; ALIASES
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 ;; PACKAGE MANAGER
 (setq comp-deferred-compilation-deny-list ()
       package-enable-at-startup           nil
@@ -35,6 +43,7 @@
       select-enable-primary     t
       select-enable-clipboard   t
       max-mini-window-height    3
+      warning-minimum-level     :error
       ;; mode line
       line-number-mode          t
       column-number-mode        t
@@ -58,19 +67,38 @@
 (setq gc-cons-threshold       100000000
       read-process-output-max (* 1024 1024))  ;; 1mb
 
-;; MODULES
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+;; EXTENSION VARIABLES
+(setq ffip-use-rust-fd                t
+      golden-ratio-auto-scale         t
+      golden-ratio-max-width          100
+      golden-ratio-adjust-factor      .8
+      golden-ratio-wide-adjust-factor .8
+      web-mode-markup-indent-offset   2
+      web-mode-code-indent-offset     2
+      web-mode-css-indent-offset      2
+      web-mode-script-padding         0
+      mmm-submode-decoration-level    0
+      js-indent-level                 2
+      markdown-command                "multimarkdown")
+
+;; THEME VARIABLES
+(setq modus-themes-mode-line '(borderless))
+
+;; BUFFERS
+(setq ibuffer-saved-filter-groups (quote (("default"
+                                           ("VCS" (or (mode . magit-mode)
+                                                      (mode . magit-status-mode)
+                                                      (mode . magit-log-mode)
+                                                      (mode . magit-process-mode)
+                                                      (mode . magit-revision-mode)
+                                                      (mode . magit-diff-mode)))
+                                           ("Files"  (filename . ".*\.*$"))))))
 
 ;; BACKUP
-(defvar custom-file-path "~/.emacs.d/custom.el")
 (setq backup-directory-alist         `((".*" . ,temporary-file-directory))
       auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
       default-directory              "~/"
-      create-lockfiles               nil
-      custom-file                    custom-file-path)
-
-(when (file-exists-p custom-file-path)
-  (load custom-file))
+      create-lockfiles               nil)
 
 ;;; early-init.el ends here
 
