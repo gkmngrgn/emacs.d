@@ -76,6 +76,7 @@ I install all my CLI dependencies using my do.sh script [here](https://git.goe.d
                  ripgrep             \
                  rust-analyzer
 
-    npm i -g typescript                 \
-             typescript-language-server \
+    npm i -g typescript                   \
+             typescript-language-server   \
+             vscode-langservers-extracted \
              yaml-language-server
