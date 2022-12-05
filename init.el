@@ -36,7 +36,6 @@
 (straight-use-package 'eglot)
 (straight-use-package 'expand-region)
 (straight-use-package 'find-file-in-project)
-(straight-use-package 'golden-ratio)
 (straight-use-package 'magit)
 (straight-use-package 'modus-themes)
 (straight-use-package 'multiple-cursors)
@@ -133,7 +132,6 @@
 
 ;; EDITOR EXTENSIONS
 (avy-setup-default)
-(golden-ratio-mode 1)
 (ctrlf-mode +1)
 (dirvish-override-dired-mode)
 (global-tree-sitter-mode)

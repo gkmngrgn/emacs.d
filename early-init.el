@@ -69,10 +69,6 @@
 
 ;; EXTENSION VARIABLES
 (setq ffip-use-rust-fd                t
-      golden-ratio-auto-scale         t
-      golden-ratio-max-width          100
-      golden-ratio-adjust-factor      .8
-      golden-ratio-wide-adjust-factor .8
       web-mode-markup-indent-offset   2
       web-mode-code-indent-offset     2
       web-mode-css-indent-offset      2
