@@ -37,6 +37,7 @@
 (straight-use-package 'expand-region)
 (straight-use-package 'find-file-in-project)
 (straight-use-package 'magit)
+(straight-use-package 'minions)
 (straight-use-package 'modus-themes)
 (straight-use-package 'multiple-cursors)
 (straight-use-package 'poetry)
@@ -131,6 +132,7 @@
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
 ;; EDITOR EXTENSIONS
+(minions-mode)
 (avy-setup-default)
 (ctrlf-mode +1)
 (dirvish-override-dired-mode)
