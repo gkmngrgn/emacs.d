@@ -139,6 +139,12 @@
 (global-diff-hl-mode)
 (diff-hl-margin-mode)
 
+;; TRAMP SETTINGS
+(require 'tramp)
+
+(add-to-list 'tramp-remote-path "/opt/homebrew/bin/")
+(add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+
 ;;; init.el ends here
 
 ;; Local Variables:
