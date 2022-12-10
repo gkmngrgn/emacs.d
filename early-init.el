@@ -21,9 +21,7 @@
 
 ;; PACKAGE MANAGER
 (setq comp-deferred-compilation-deny-list ()
-      package-enable-at-startup           nil
-      straight-use-package-by-default     t
-      use-package-always-ensure           t)
+      package-enable-at-startup           nil)
 
 ;; INTERFACE
 (menu-bar-mode 0)

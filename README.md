@@ -58,10 +58,8 @@ To restart it:
 
 ## PACKAGES
 
-My preferred package manager is
-[straight](https://github.com/raxod502/straight.el). If you want to
-see the list of packages that I use, just open **init.el** file and
-look at all the lines starting with `straight-use-package `.
+I use builtin package manager, if you want to see the list of packages I
+installed. search `package-install` text in `init.el` file.
 
 
 ## SYSTEM DEPENDENCIES
