@@ -73,8 +73,7 @@
     (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
     (global-set-key (kbd "<mouse-5>") 'scroll-up-line)))
 
-(modus-themes-load-themes)
-(modus-themes-load-vivendi)
+(load-theme 'modus-vivendi :no-confim)
 
 ;; KEYMAPS
 (defun prev-window ()
