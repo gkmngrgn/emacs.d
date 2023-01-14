@@ -57,7 +57,6 @@
 
 ;; THEME
 (if (display-graphic-p)
-    ;; GUI SETTINGS
     (progn
       (set-frame-font "IBM Plex Mono")
       (set-face-attribute 'default nil
@@ -66,8 +65,6 @@
       (fringe-mode     0)
       (scroll-bar-mode 0)
       (tool-bar-mode   0))
-
-  ;; TUI SETTINGS
   (progn
     (xterm-mouse-mode 1)
     (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
@@ -104,16 +101,16 @@
 (global-set-key (kbd "C-c l p") 'flymake-goto-prev-error)
 
 ;; HOOKS
-(add-hook   'after-init-hook           'global-company-mode)
-(add-hook   'before-save-hook          'delete-trailing-whitespace)
-(add-hook   'magit-pre-refresh-hook    'diff-hl-magit-pre-refresh)
-(add-hook   'magit-post-refresh-hook   'diff-hl-magit-post-refresh)
-(add-hook   'prog-mode-hook            'rainbow-delimiters-mode)
-(add-hook   'term-mode-hook            'puni-disable-puni-mode)
-(add-hook   'text-mode-hook            'visual-line-mode)
-(add-hook   'tree-sitter-after-on-hook 'tree-sitter-hl-mode)
-(add-hook   'ibuffer-mode-hook         (lambda ()
-                                         (ibuffer-switch-to-saved-filter-groups "default")))
+(add-hook 'after-init-hook           'global-company-mode)
+(add-hook 'before-save-hook          'delete-trailing-whitespace)
+(add-hook 'magit-pre-refresh-hook    'diff-hl-magit-pre-refresh)
+(add-hook 'magit-post-refresh-hook   'diff-hl-magit-post-refresh)
+(add-hook 'prog-mode-hook            'rainbow-delimiters-mode)
+(add-hook 'term-mode-hook            'puni-disable-puni-mode)
+(add-hook 'text-mode-hook            'visual-line-mode)
+(add-hook 'tree-sitter-after-on-hook 'tree-sitter-hl-mode)
+(add-hook 'ibuffer-mode-hook         (lambda ()
+                                       (ibuffer-switch-to-saved-filter-groups "default")))
 
 (with-eval-after-load 'magit-mode
   (add-hook 'after-save-hook           'magit-after-save-refresh-status t))
@@ -137,12 +134,6 @@
 
 (global-diff-hl-mode)
 (diff-hl-margin-mode)
-
-;; TRAMP SETTINGS
-(require 'tramp)
-
-(add-to-list 'tramp-remote-path "/opt/homebrew/bin/")
-(add-to-list 'tramp-remote-path 'tramp-own-remote-path)
 
 ;;; init.el ends here
 
