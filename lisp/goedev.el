@@ -20,6 +20,10 @@
   (interactive)
   (other-window -1))
 
+(defun goedev/switch-to-default-buffer-group ()
+  "Switch to default buffer group."
+  (ibuffer-switch-to-saved-filter-groups "default"))
+
 (defun goedev/install-packages (packages)
   "Initialize package manager and install packages."
   (unless is-package-initialized

@@ -83,11 +83,10 @@
 (add-hook 'term-mode-hook            'puni-disable-puni-mode)
 (add-hook 'text-mode-hook            'visual-line-mode)
 (add-hook 'tree-sitter-after-on-hook 'tree-sitter-hl-mode)
-(add-hook 'ibuffer-mode-hook         (lambda ()
-                                       (ibuffer-switch-to-saved-filter-groups "default")))
+(add-hook 'ibuffer-mode-hook         'goedev/switch-to-default-buffer-group)
 
 (with-eval-after-load 'magit-mode
-  (add-hook 'after-save-hook           'magit-after-save-refresh-status t))
+  (add-hook 'after-save-hook         'magit-after-save-refresh-status t))
 
 ;; FILE MODES
 (add-to-list 'auto-mode-alist '("\\.html?\\'"    . web-mode))
