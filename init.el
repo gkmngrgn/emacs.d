@@ -3,7 +3,7 @@
 ;; Copyright (c) 2010-2023 Gökmen Görgen
 ;;
 ;; Author: Gökmen Görgen <gkmngrgn@gmail.com>
-;; URL: https://git.goe.dev/goedev/emacs.d/
+;; URL: https://github.com/gkmngrgn/emacs.d/
 
 ;;; Commentary:
 
@@ -11,49 +11,41 @@
 
 ;;; Code:
 
-;; PACKAGE MANAGER
-(require 'package)
+(require 'goedev)
 
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(package-initialize)
-
-;; PACKAGES
-(package-install 'avy)
-(package-install 'company)
-(package-install 'company-prescient)
-(package-install 'ctrlf)
-(package-install 'deadgrep)
-(package-install 'diff-hl)
-(package-install 'dirvish)
-(package-install 'eglot)
-(package-install 'expand-region)
-(package-install 'find-file-in-project)
-(package-install 'magit)
-(package-install 'minions)
-(package-install 'modus-themes)
-(package-install 'multiple-cursors)
-(package-install 'poetry)
-(package-install 'puni)
-(package-install 'rainbow-delimiters)
-(package-install 'selectrum)
-(package-install 'selectrum-prescient)
-(package-install 'tree-sitter)
-(package-install 'tree-sitter-langs)
-(package-install 'unfill)
-
-;; FILE MODES
-(package-install 'cmake-mode)
-(package-install 'csv-mode)
-(package-install 'dockerfile-mode)
-(package-install 'gdscript-mode)
-(package-install 'go-mode)
-(package-install 'json-mode)
-(package-install 'lua-mode)
-(package-install 'markdown-mode)
-(package-install 'rust-mode)
-(package-install 'typescript-mode)
-(package-install 'web-mode)
-(package-install 'yaml-mode)
+(goedev/install-packages '(;; dependencies
+                           avy
+                           company company-prescient
+                           ctrlf
+                           deadgrep
+                           diff-hl
+                           dirvish
+                           eglot
+                           expand-region
+                           find-file-in-project
+                           magit
+                           minions
+                           modus-themes
+                           multiple-cursors
+                           poetry
+                           puni
+                           rainbow-delimiters
+                           selectrum selectrum-prescient
+                           tree-sitter tree-sitter-langs
+                           unfill
+                           ;; file-modes
+                           cmake-mode
+                           csv-mode
+                           dockerfile-mode
+                           gdscript-mode
+                           go-mode
+                           json-mode
+                           lua-mode
+                           markdown-mode
+                           rust-mode
+                           typescript-mode
+                           web-mode
+                           yaml-mode))
 
 ;; THEME
 (if (display-graphic-p)
@@ -73,11 +65,6 @@
 (load-theme 'modus-vivendi :no-confim)
 
 ;; KEYMAPS
-(defun prev-window ()
-  "Switch to previous window."
-  (interactive)
-  (other-window -1))
-
 (global-set-key (kbd "C-c SPC") 'comment-line)                      ;; comment/uncomment line.
 (global-set-key (kbd "TAB")     'company-indent-or-complete-common)
 (global-set-key (kbd "<f5>")    'modus-themes-toggle)
@@ -92,7 +79,7 @@
 (global-set-key (kbd "C-c n")   'mc/mark-all-like-this)
 (global-set-key (kbd "C-c w")   'er/expand-region)
 (global-set-key (kbd "C-c q")   'unfill-paragraph)
-(global-set-key (kbd "C-x O")   'prev-window)
+(global-set-key (kbd "C-x O")   'goedev/switch-to-previous-window)
 (global-set-key (kbd "C-z")     'undo-only)
 (global-set-key (kbd "C-c l l") 'eglot)
 (global-set-key (kbd "C-c l r") 'eglot-rename)

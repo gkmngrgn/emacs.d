@@ -3,7 +3,7 @@
 ;; Copyright (c) 2010-2023 Gökmen Görgen
 ;;
 ;; Author: Gökmen Görgen <gkmngrgn@gmail.com>
-;; URL: https://git.goe.dev/goedev/emacs.d/
+;; URL: https://github.com/gkmngrgn/emacs.d/
 
 ;;; Commentary:
 
@@ -93,6 +93,9 @@
       auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
       default-directory              "~/"
       create-lockfiles               nil)
+
+;; LISP MODULE
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 ;;; early-init.el ends here
 
