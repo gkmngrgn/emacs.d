@@ -13,9 +13,10 @@
 
 (require 'goedev)
 
-(goedev/install-packages '(;; dependencies
-                           avy
-                           company company-prescient
+;; DEPENDENCIES
+(goedev/install-packages '(avy
+                           company
+                           company-prescient
                            ctrlf
                            deadgrep
                            diff-hl
@@ -30,11 +31,14 @@
                            poetry
                            puni
                            rainbow-delimiters
-                           selectrum selectrum-prescient
-                           tree-sitter tree-sitter-langs
-                           unfill
-                           ;; file-modes
-                           cmake-mode
+                           selectrum
+                           selectrum-prescient
+                           tree-sitter
+                           tree-sitter-langs
+                           unfill))
+
+;; FILE MODES
+(goedev/install-packages '(cmake-mode
                            csv-mode
                            dockerfile-mode
                            gdscript-mode
