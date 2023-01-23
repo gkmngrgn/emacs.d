@@ -92,8 +92,7 @@
       web-mode-script-padding         0
       mmm-submode-decoration-level    0
       js-indent-level                 2
-      markdown-command                "multimarkdown"
-      modus-themes-mode-line          '(borderless))
+      markdown-command                "multimarkdown")
 
 ;;; early-init.el ends here
 

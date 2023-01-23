@@ -26,7 +26,6 @@
                            find-file-in-project
                            magit
                            minions
-                           modus-themes
                            multiple-cursors
                            poetry
                            puni
@@ -56,7 +55,6 @@
 (global-set-key (kbd "<mouse-5>") 'scroll-up-line)
 (global-set-key (kbd "C-c SPC") 'comment-line)                      ;; comment/uncomment line.
 (global-set-key (kbd "TAB")     'company-indent-or-complete-common)
-(global-set-key (kbd "<f5>")    'modus-themes-toggle)
 (global-set-key (kbd "M-g M-g") 'avy-goto-line)                     ;; line number replacement.
 (global-set-key (kbd "M-g g")   'avy-goto-char-2)
 (global-set-key (kbd "C-c s")   'deadgrep)
@@ -96,8 +94,6 @@
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
 ;; EDITOR EXTENSIONS
-(load-theme 'modus-vivendi :no-confim)
-
 (minions-mode)
 (avy-setup-default)
 (ctrlf-mode +1)
