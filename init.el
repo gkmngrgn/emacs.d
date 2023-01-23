@@ -47,24 +47,9 @@
                            web-mode
                            yaml-mode))
 
-;; THEME
-(if (display-graphic-p)
-    (progn
-      (set-frame-font "IBM Plex Mono")
-      (set-face-attribute 'default nil
-                          :height  160
-                          :font    "IBM Plex Mono")
-      (fringe-mode     0)
-      (scroll-bar-mode 0)
-      (tool-bar-mode   0))
-  (progn
-    (xterm-mouse-mode 1)
-    (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
-    (global-set-key (kbd "<mouse-5>") 'scroll-up-line)))
-
-(load-theme 'modus-vivendi :no-confim)
-
 ;; KEYMAPS
+(global-set-key (kbd "<mouse-4>") 'scroll-down-line)
+(global-set-key (kbd "<mouse-5>") 'scroll-up-line)
 (global-set-key (kbd "C-c SPC") 'comment-line)                      ;; comment/uncomment line.
 (global-set-key (kbd "TAB")     'company-indent-or-complete-common)
 (global-set-key (kbd "<f5>")    'modus-themes-toggle)
@@ -107,6 +92,8 @@
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
 ;; EDITOR EXTENSIONS
+(load-theme 'modus-vivendi :no-confim)
+
 (minions-mode)
 (avy-setup-default)
 (ctrlf-mode +1)

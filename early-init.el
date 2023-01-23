@@ -30,6 +30,7 @@
 (temp-buffer-resize-mode t)
 (global-auto-revert-mode)
 (global-hl-line-mode)
+(xterm-mouse-mode 1)
 
 (setq-default truncate-lines   t
               indent-tabs-mode nil
@@ -65,19 +66,6 @@
 (setq gc-cons-threshold       100000000
       read-process-output-max (* 1024 1024))  ;; 1mb
 
-;; EXTENSION VARIABLES
-(setq ffip-use-rust-fd                t
-      web-mode-markup-indent-offset   2
-      web-mode-code-indent-offset     2
-      web-mode-css-indent-offset      2
-      web-mode-script-padding         0
-      mmm-submode-decoration-level    0
-      js-indent-level                 2
-      markdown-command                "multimarkdown")
-
-;; THEME VARIABLES
-(setq modus-themes-mode-line '(borderless))
-
 ;; BUFFERS
 (setq ibuffer-saved-filter-groups (quote (("default"
                                            ("VCS" (or (mode . magit-mode)
@@ -94,8 +82,18 @@
       default-directory              "~/"
       create-lockfiles               nil)
 
-;; LISP MODULE
+;; EXTENSION VARIABLES
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+
+(setq ffip-use-rust-fd                t
+      web-mode-markup-indent-offset   2
+      web-mode-code-indent-offset     2
+      web-mode-css-indent-offset      2
+      web-mode-script-padding         0
+      mmm-submode-decoration-level    0
+      js-indent-level                 2
+      markdown-command                "multimarkdown"
+      modus-themes-mode-line          '(borderless))
 
 ;;; early-init.el ends here
 
