@@ -1,68 +1,51 @@
 # GOEDEV's EMACS CONFIG
 
-My accessibility-first Emacs configuration.
+My accessibility-first, terminal-focused vanilla Emacs configuration.
 
-Please **do not open** a pull-request for this repository. You can
-configure your editor from scratch, or give a try for Emacs
-distributions like [Spacemacs](https://www.spacemacs.org/), [Doom
-Emacs](https://github.com/hlissner/doom-emacs).
+Please **do not open** a pull-request for this repository. You can configure your editor
+from scratch like me, or start with pre-configured Emacs if you're new:
+
+- [Spacemacs](https://www.spacemacs.org/)
+- [Doom Emacs](https://github.com/hlissner/doom-emacs)
 
 
 ## INSTALLATION
 
-Consider installing the minimum version 28.1 of Emacs. Native
-compilation is significant in increasing performance. For MacOS:
+Consider installing the minimum version 28+ of Emacs. Native compilation is significant
+for lsp performance. For MacOS:
 
     brew tap d12frosted/emacs-plus
     brew install emacs-plus --with-native-comp --without-cocoa
 
-Clone the repository to your home folder:
+Use [dosh](https://github.com/gkmngrgn/dosh/) for the quick installation:
 
-    cd ~
-    git clone https://git.goe.dev/goedev/emacs.d.git .emacs.d
-
-Or if you use [dosh](https://github.com/gkmngrgn/dosh/):
-
-    git clone https://git.goe.dev/goedev/emacs.d.git
+    git clone https://github.com/gkmngrgn/emacs.d.git
     cd emacs.d
     dosh install
 
-If you are on Windows, don't forget to add a new environment variable
-named "HOME":
+If you are on Windows, check if the environment variable `HOME` is defined:
 
     HOME="%USERPROFILE%"
 
 
 ## COPY & PASTE PROBLEM
 
-For Linux and WSL2, install `xsel` and after you select your text,
-type `M-|`, then run the command `xsel -bi`.
+For Linux and WSL2, install `xsel` and after you select your text, type `M-|`, then run
+the command `xsel -bi`.
 
 For MacOS, you can use `pbcopy`.
 
 
-## EMACS AS A DAEMON
-
-If you want to run Emacs as a Daemon on system startup:
-
-    mkdir -p ~/.config/systemd/user/
-    cp ~/.emacs.d/emacs.service ~/.config/systemd/user/emacs.service
-    systemctl --user enable --now emacs
-
-To restart it:
-
-    systemctl --user restart emacs
-
-
 ## PACKAGES
 
-I use builtin package manager, if you want to see the list of packages I
-installed. search `package-install` text in `init.el` file.
+I use built-in package manager, if you want to see the list of packages I installed,
+search `goedev/install-packages` text in `init.el` file.
 
 
 ## SYSTEM DEPENDENCIES
 
-I install all my CLI dependencies using my do.sh script [here](https://git.goe.dev/goedev/config/src/branch/main/do.sh).
+I install all my CLI dependencies using my do.sh script
+[here](https://git.goe.dev/goedev/config/src/branch/main/do.sh).
 
     brew install gopls               \
                  fd                  \
