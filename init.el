@@ -26,6 +26,7 @@
                            find-file-in-project
                            magit
                            minions
+                           modus-themes
                            multiple-cursors
                            poetry
                            puni
@@ -93,6 +94,8 @@
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
 ;; EDITOR EXTENSIONS
+(load-theme 'modus-vivendi :no-confirm)
+
 (minions-mode)
 (avy-setup-default)
 (ctrlf-mode +1)
