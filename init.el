@@ -29,7 +29,6 @@
                            multiple-cursors
                            poetry
                            puni
-                           rainbow-delimiters
                            selectrum
                            selectrum-prescient
                            stimmung-themes
@@ -79,7 +78,6 @@
 (add-hook 'before-save-hook          'delete-trailing-whitespace)
 (add-hook 'magit-pre-refresh-hook    'diff-hl-magit-pre-refresh)
 (add-hook 'magit-post-refresh-hook   'diff-hl-magit-post-refresh)
-(add-hook 'prog-mode-hook            'rainbow-delimiters-mode)
 (add-hook 'term-mode-hook            'puni-disable-puni-mode)
 (add-hook 'text-mode-hook            'visual-line-mode)
 (add-hook 'tree-sitter-after-on-hook 'tree-sitter-hl-mode)
