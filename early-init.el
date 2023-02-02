@@ -29,7 +29,6 @@
 (delete-selection-mode 1)
 (temp-buffer-resize-mode t)
 (global-auto-revert-mode)
-(global-hl-line-mode)
 (xterm-mouse-mode 1)
 
 (setq-default truncate-lines   t
