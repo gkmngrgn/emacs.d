@@ -48,7 +48,6 @@
                            markdown-mode
                            rust-mode
                            typescript-mode
-                           web-mode
                            yaml-mode))
 
 ;; KEYMAPS
@@ -90,7 +89,6 @@
   (add-hook 'after-save-hook         'magit-after-save-refresh-status t))
 
 ;; FILE MODES
-(add-to-list 'auto-mode-alist '("\\.html?\\'"    . web-mode))
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
 ;; EDITOR EXTENSIONS
