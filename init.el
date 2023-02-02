@@ -26,13 +26,13 @@
                            find-file-in-project
                            magit
                            minions
-                           modus-themes
                            multiple-cursors
                            poetry
                            puni
                            rainbow-delimiters
                            selectrum
                            selectrum-prescient
+                           stimmung-themes
                            tree-sitter
                            tree-sitter-langs
                            unfill))
@@ -92,7 +92,7 @@
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
 ;; EDITOR EXTENSIONS
-(load-theme 'modus-vivendi :no-confirm)
+(stimmung-themes-load-dark)
 
 (minions-mode)
 (avy-setup-default)
