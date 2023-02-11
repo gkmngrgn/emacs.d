@@ -26,7 +26,7 @@
                            find-file-in-project
                            magit
                            minions
-                           monchrome-theme
+                           monochrome-theme
                            multiple-cursors
                            poetry
                            puni
