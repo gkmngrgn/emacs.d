@@ -26,7 +26,6 @@
                            find-file-in-project
                            magit
                            minions
-                           monochrome-theme
                            multiple-cursors
                            poetry
                            puni
@@ -90,8 +89,6 @@
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
 ;; EDITOR EXTENSIONS
-(load-theme 'monochrome)
-
 (minions-mode)
 (avy-setup-default)
 (ctrlf-mode +1)
