@@ -17,6 +17,7 @@
 (goedev/install-packages '(avy
                            company
                            company-prescient
+                           conda
                            ctrlf
                            deadgrep
                            diff-hl
