@@ -21,7 +21,6 @@
                            ctrlf
                            deadgrep
                            diff-hl
-                           dirvish
                            eglot
                            expand-region
                            find-file-in-project
@@ -96,7 +95,6 @@
 (minions-mode)
 (avy-setup-default)
 (ctrlf-mode +1)
-(dirvish-override-dired-mode)
 (global-tree-sitter-mode)
 (puni-global-mode)
 
