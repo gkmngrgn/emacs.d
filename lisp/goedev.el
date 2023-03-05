@@ -39,6 +39,30 @@
         (package-install package)))
     (goedev/install-packages (cdr packages))))
 
+(defun goedev/configure-gui ()
+  "Configure gui when you need to run Emacs with GUI."
+
+  (defvar my-font "IBM Plex Mono")
+  (defvar my-font-size 130)
+
+  (set-frame-font my-font)
+
+  (set-face-attribute 'default nil
+                      :height my-font-size
+                      :font my-font)
+  (set-face-attribute 'fixed-pitch nil
+                      :height my-font-size
+                      :font my-font)
+
+  (set-face-attribute 'mode-line nil
+                      :box nil)
+  (set-face-attribute 'mode-line-inactive nil
+                      :box nil)
+
+  (fringe-mode 0)
+  (scroll-bar-mode 0)
+  (tool-bar-mode 0))
+
 (provide 'goedev)
 
 ;;; goedev.el ends here

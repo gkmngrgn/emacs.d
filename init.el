@@ -49,6 +49,8 @@
                            typescript-mode
                            yaml-mode))
 
+(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+
 ;; KEYMAPS
 (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
 (global-set-key (kbd "<mouse-5>") 'scroll-up-line)
@@ -86,10 +88,13 @@
 (with-eval-after-load 'magit-mode
   (add-hook 'after-save-hook         'magit-after-save-refresh-status t))
 
-;; FILE MODES
-(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+(if (display-graphic-p)
+    (goedev/configure-gui))
 
 ;; EDITOR EXTENSIONS
+(setq modus-themes-common-palette-overrides
+      '((border-mode-line-active unspecified)
+        (border-mode-line-inactive unspecified)))
 (load-theme 'modus-vivendi :no-confirm)
 
 (minions-mode)
