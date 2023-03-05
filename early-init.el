@@ -82,6 +82,7 @@
       create-lockfiles               nil)
 
 (defvar custom-file-path (expand-file-name "custom.el" user-emacs-directory))
+(setq custom-file custom-file-path)
 
 ;; EXTENSION VARIABLES
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
