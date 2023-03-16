@@ -43,7 +43,7 @@
   "Configure gui when you need to run Emacs with GUI."
 
   (defvar my-font "IBM Plex Mono")
-  (defvar my-font-size 130)
+  (defvar my-font-size 150)
 
   (set-frame-font my-font)
 
