@@ -30,11 +30,11 @@
                            poetry
                            puni
                            pyenv-mode
-                           selectrum
-                           selectrum-prescient
                            tree-sitter
                            tree-sitter-langs
-                           unfill))
+                           unfill
+                           vertico
+                           vertico-prescient))
 
 (add-to-list 'load-path (expand-file-name "copilot.el" user-emacs-directory))
 (goedev/install-packages '(dash editorconfig s))
@@ -106,9 +106,9 @@
 (ctrlf-mode +1)
 (global-tree-sitter-mode)
 (puni-global-mode)
+(vertico-mode)
 
-(selectrum-mode +1)
-(selectrum-prescient-mode +1)
+(vertico-prescient-mode +1)
 (company-prescient-mode +1)
 (prescient-persist-mode +1)
 
