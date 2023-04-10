@@ -14,8 +14,7 @@
 (require 'goedev)
 
 ;; DEPENDENCIES
-(goedev/install-packages '(avy
-                           company
+(goedev/install-packages '(company
                            company-prescient
                            ctrlf
                            deadgrep
@@ -60,8 +59,6 @@
 (global-set-key (kbd "<mouse-5>") 'scroll-up-line)
 (global-set-key (kbd "C-c SPC") 'comment-line)                      ;; comment/uncomment line.
 (global-set-key (kbd "TAB")     'company-indent-or-complete-common)
-(global-set-key (kbd "M-g M-g") 'avy-goto-line)                     ;; line number replacement.
-(global-set-key (kbd "M-g g")   'avy-goto-char-2)
 (global-set-key (kbd "C-c s")   'deadgrep)
 (global-set-key (kbd "C-x C-b") 'ibuffer)                           ;; default buffer replacement.
 (global-set-key (kbd "C-x C-d") 'ffip)
@@ -102,7 +99,6 @@
 (load-theme 'modus-vivendi :no-confirm)
 
 (minions-mode)
-(avy-setup-default)
 (ctrlf-mode +1)
 (global-tree-sitter-mode)
 (puni-global-mode)
