@@ -17,8 +17,6 @@
 (goedev/install-packages '(avy
                            company
                            company-prescient
-                           company-tabnine
-                           conda
                            ctrlf
                            deadgrep
                            diff-hl
@@ -31,6 +29,7 @@
                            multiple-cursors
                            poetry
                            puni
+                           pyenv-mode
                            selectrum
                            selectrum-prescient
                            tree-sitter
@@ -112,7 +111,6 @@
 (global-diff-hl-mode)
 (diff-hl-margin-mode)
 
-(add-to-list 'company-backends #'company-tabnine)
 (setq company-idle-delay 0)
 (setq company-show-numbers t)
 
