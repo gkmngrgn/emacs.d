@@ -19,7 +19,7 @@ for lsp performance. For MacOS:
 
 Use [dosh](https://github.com/gkmngrgn/dosh/) for the quick installation:
 
-    git clone https://github.com/gkmngrgn/emacs.d.git
+    git clone --recurse-submodules https://github.com/gkmngrgn/emacs.d.git
     cd emacs.d
     dosh install
 

@@ -36,6 +36,10 @@
                            tree-sitter-langs
                            unfill))
 
+(add-to-list 'load-path (expand-file-name "copilot.el" user-emacs-directory))
+(goedev/install-packages '(dash editorconfig s))
+(require 'copilot)
+
 ;; FILE MODES
 (goedev/install-packages '(cmake-mode
                            csv-mode
