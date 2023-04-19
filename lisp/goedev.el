@@ -42,7 +42,7 @@
 (defun goedev/configure-gui ()
   "Configure gui when you need to run Emacs with GUI."
 
-  (defvar my-font "IBM Plex Mono")
+  (defvar my-font "Jetbrains Mono")
   (defvar my-font-size 150)
 
   (set-frame-font my-font)

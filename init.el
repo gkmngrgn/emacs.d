@@ -13,106 +13,103 @@
 
 (require 'goedev)
 
-;; DEPENDENCIES
-(goedev/install-packages '(company
-                           company-prescient
-                           ctrlf
-                           deadgrep
-                           diff-hl
-                           eglot
-                           expand-region
-                           find-file-in-project
-                           magit
-                           minions
-                           modus-themes
-                           multiple-cursors
-                           poetry
-                           puni
-                           pyenv-mode
-                           tree-sitter
-                           tree-sitter-langs
-                           unfill
-                           vertico
-                           vertico-prescient))
+;; ;; DEPENDENCIES
+;; (goedev/install-packages '(company
+;;                            company-prescient
+;;                            ctrlf
+;;                            deadgrep
+;;                            diff-hl
+;;                            expand-region
+;;                            find-file-in-project
+;;                            magit
+;;                            minions
+;;                            modus-themes
+;;                            multiple-cursors
+;;                            poetry
+;;                            puni
+;;                            pyenv-mode
+;;                            unfill
+;;                            vertico
+;;                            vertico-prescient))
 
-(add-to-list 'load-path (expand-file-name "copilot.el" user-emacs-directory))
-(goedev/install-packages '(dash editorconfig s))
-(require 'copilot)
+;; (add-to-list 'load-path (expand-file-name "copilot.el" user-emacs-directory))
+;; (goedev/install-packages '(dash editorconfig s))
+;; (require 'copilot)
 
-;; FILE MODES
-(goedev/install-packages '(cmake-mode
-                           csv-mode
-                           dockerfile-mode
-                           gdscript-mode
-                           go-mode
-                           json-mode
-                           lua-mode
-                           markdown-mode
-                           rust-mode
-                           typescript-mode
-                           yaml-mode))
+;; ;; FILE MODES
+;; (goedev/install-packages '(cmake-mode
+;;                            csv-mode
+;;                            dockerfile-mode
+;;                            gdscript-mode
+;;                            go-mode
+;;                            json-mode
+;;                            lua-mode
+;;                            markdown-mode
+;;                            rust-mode
+;;                            typescript-mode
+;;                            yaml-mode))
 
-(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+;; (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
 ;; KEYMAPS
 (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
 (global-set-key (kbd "<mouse-5>") 'scroll-up-line)
-(global-set-key (kbd "C-c SPC") 'comment-line)                      ;; comment/uncomment line.
-(global-set-key (kbd "TAB")     'company-indent-or-complete-common)
-(global-set-key (kbd "C-c s")   'deadgrep)
-(global-set-key (kbd "C-x C-b") 'ibuffer)                           ;; default buffer replacement.
-(global-set-key (kbd "C-x C-d") 'ffip)
-(global-set-key (kbd "C-c m")   'mc/edit-lines)
-(global-set-key (kbd "C-c j")   'mc/mark-next-like-this)
-(global-set-key (kbd "C-c k")   'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c n")   'mc/mark-all-like-this)
-(global-set-key (kbd "C-c w")   'er/expand-region)
-(global-set-key (kbd "C-c q")   'unfill-paragraph)
-(global-set-key (kbd "C-x O")   'goedev/switch-to-previous-window)
-(global-set-key (kbd "C-z")     'undo-only)
+(global-set-key (kbd "C-c SPC")   'comment-line)                      ;; comment/uncomment line.
+;; (global-set-key (kbd "TAB")     'company-indent-or-complete-common)
+;; (global-set-key (kbd "C-c s")   'deadgrep)
+(global-set-key (kbd "C-x C-b")   'ibuffer)                           ;; default buffer replacement.
+;; (global-set-key (kbd "C-x C-d") 'ffip)
+;; (global-set-key (kbd "C-c m")   'mc/edit-lines)
+;; (global-set-key (kbd "C-c j")   'mc/mark-next-like-this)
+;; (global-set-key (kbd "C-c k")   'mc/mark-previous-like-this)
+;; (global-set-key (kbd "C-c n")   'mc/mark-all-like-this)
+;; (global-set-key (kbd "C-c w")   'er/expand-region)
+;; (global-set-key (kbd "C-c q")   'unfill-paragraph)
+;; (global-set-key (kbd "C-x O")   'goedev/switch-to-previous-window)
+;; (global-set-key (kbd "C-z")     'undo-only)
 (global-set-key (kbd "C-c l l") 'eglot)
 (global-set-key (kbd "C-c l r") 'eglot-rename)
 (global-set-key (kbd "C-c l f") 'eglot-format)
 (global-set-key (kbd "C-c l n") 'flymake-goto-next-error)
 (global-set-key (kbd "C-c l p") 'flymake-goto-prev-error)
 
-;; HOOKS
-(add-hook 'after-init-hook           'global-company-mode)
-(add-hook 'before-save-hook          'delete-trailing-whitespace)
-(add-hook 'magit-pre-refresh-hook    'diff-hl-magit-pre-refresh)
-(add-hook 'magit-post-refresh-hook   'diff-hl-magit-post-refresh)
-(add-hook 'term-mode-hook            'puni-disable-puni-mode)
-(add-hook 'text-mode-hook            'visual-line-mode)
-(add-hook 'tree-sitter-after-on-hook 'tree-sitter-hl-mode)
-(add-hook 'ibuffer-mode-hook         'goedev/switch-to-default-buffer-group)
+;; ;; HOOKS
+;; (add-hook 'after-init-hook           'global-company-mode)
+;; (add-hook 'before-save-hook          'delete-trailing-whitespace)
+;; (add-hook 'magit-pre-refresh-hook    'diff-hl-magit-pre-refresh)
+;; (add-hook 'magit-post-refresh-hook   'diff-hl-magit-post-refresh)
+;; (add-hook 'term-mode-hook            'puni-disable-puni-mode)
+;; (add-hook 'text-mode-hook            'visual-line-mode)
+;; (add-hook 'tree-sitter-after-on-hook 'tree-sitter-hl-mode)
+;; (add-hook 'ibuffer-mode-hook         'goedev/switch-to-default-buffer-group)
 
-(with-eval-after-load 'magit-mode
-  (add-hook 'after-save-hook         'magit-after-save-refresh-status t))
+;; (with-eval-after-load 'magit-mode
+;;   (add-hook 'after-save-hook         'magit-after-save-refresh-status t))
 
-(if (display-graphic-p)
-    (goedev/configure-gui))
+;; (if (display-graphic-p)
+;;     (goedev/configure-gui))
 
-;; EDITOR EXTENSIONS
-(setq modus-themes-common-palette-overrides
-      '((border-mode-line-active unspecified)
-        (border-mode-line-inactive unspecified)))
-(load-theme 'modus-vivendi :no-confirm)
+;; ;; EDITOR EXTENSIONS
+;; (setq modus-themes-common-palette-overrides
+;;       '((border-mode-line-active unspecified)
+;;         (border-mode-line-inactive unspecified)))
+;; (load-theme 'modus-vivendi :no-confirm)
 
-(minions-mode)
-(ctrlf-mode +1)
-(global-tree-sitter-mode)
-(puni-global-mode)
-(vertico-mode)
+;; (minions-mode)
+;; (ctrlf-mode +1)
+;; (global-tree-sitter-mode)
+;; (puni-global-mode)
+;; (vertico-mode)
 
-(vertico-prescient-mode +1)
-(company-prescient-mode +1)
-(prescient-persist-mode +1)
+;; (vertico-prescient-mode +1)
+;; (company-prescient-mode +1)
+;; (prescient-persist-mode +1)
 
-(global-diff-hl-mode)
-(diff-hl-margin-mode)
+;; (global-diff-hl-mode)
+;; (diff-hl-margin-mode)
 
-(setq company-idle-delay 0)
-(setq company-show-numbers t)
+;; (setq company-idle-delay 0)
+;; (setq company-show-numbers t)
 
 ;;; init.el ends here
 
