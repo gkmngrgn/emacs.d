@@ -25,6 +25,21 @@
 (temp-buffer-resize-mode t)
 (xterm-mouse-mode 1)
 
+(if (display-graphic-p)
+    (progn
+      (defvar my-font "Jetbrains Mono")
+      (defvar my-font-size 150)
+
+      (set-frame-font my-font)
+
+      (set-face-attribute 'default nil :height my-font-size :font my-font)
+      (set-face-attribute 'fixed-pitch nil :height my-font-size :font my-font)
+      (set-face-attribute 'mode-line nil :box nil)
+      (set-face-attribute 'mode-line-inactive nil :box nil)
+
+      (fringe-mode 0)
+      (tool-bar-mode 0)))
+
 (setq-default truncate-lines t
               indent-tabs-mode nil
               tab-width 2)
@@ -45,6 +60,8 @@
       tab-bar-show nil)
 
 ;; SCROLLING
+(scroll-bar-mode 0)
+
 (setq scroll-margin 0
       scroll-conservatively 100000
       scroll-preserve-screen-position 1

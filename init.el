@@ -15,7 +15,15 @@
 (require 'package)
 
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '( "jcs-elpa" . "https://jcs-emacs.github.io/jcs-elpa/packages/") t)
+
+(setq package-archive-priorities '(("melpa" . 5) ("jcs-elpa" . 0)))
+
 (package-initialize)
+
+(use-package chatgpt :ensure t)
+
+(use-package codegpt :ensure t)
 
 (use-package expand-region
   :ensure t
@@ -50,6 +58,10 @@
          ("C-c j" . mc/mark-next-like-this)
          ("C-c k" . mc/mark-previous-like-this)
          ("C-c n" . mc/mark-all-like-this)))
+
+(use-package openai
+  :ensure t
+  :custom (openai-key (getenv "OPENAI_KEY")))
 
 (use-package poetry
   :ensure t)
@@ -98,32 +110,11 @@
   "Switch to default buffer group."
   (ibuffer-switch-to-saved-filter-groups "default"))
 
-(defun goedev/configure-gui ()
-  "Configure gui when you need to run Emacs with GUI."
-
-  (defvar my-font "Jetbrains Mono")
-  (defvar my-font-size 150)
-
-  (set-frame-font my-font)
-
-  (set-face-attribute 'default nil :height my-font-size :font my-font)
-  (set-face-attribute 'fixed-pitch nil :height my-font-size :font my-font)
-  (set-face-attribute 'mode-line nil :box nil)
-  (set-face-attribute 'mode-line-inactive nil :box nil)
-
-  (menu-bar-mode 0)
-  (fringe-mode 0)
-  (scroll-bar-mode 0)
-  (tool-bar-mode 0))
-
 ;; THEME
 (setq modus-themes-common-palette-overrides
       '((border-mode-line-active unspecified)
         (border-mode-line-inactive unspecified)))
 (load-theme 'modus-vivendi :no-confirm)
-
-(if (display-graphic-p)
-    (goedev/configure-gui))
 
 ;; KEYMAPS
 (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
