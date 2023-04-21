@@ -110,11 +110,29 @@
   "Switch to default buffer group."
   (ibuffer-switch-to-saved-filter-groups "default"))
 
+(defun goedev/configure-gui ()
+  "Configure gui when you need to run Emacs with GUI."
+
+  (defvar my-font "Jetbrains Mono")
+  (defvar my-font-size 150)
+
+  (set-frame-font my-font)
+
+  (set-face-attribute 'default nil :height my-font-size :font my-font)
+  (set-face-attribute 'fixed-pitch nil :height my-font-size :font my-font)
+  (set-face-attribute 'mode-line nil :box nil)
+  (set-face-attribute 'mode-line-inactive nil :box nil)
+
+  (fringe-mode 0)
+  (tool-bar-mode 0)
+
+  (setq modus-themes-common-palette-overrides '((border-mode-line-active unspecified)
+                                                (border-mode-line-inactive unspecified))))
+
 ;; THEME
-(setq modus-themes-common-palette-overrides
-      '((border-mode-line-active unspecified)
-        (border-mode-line-inactive unspecified)))
 (load-theme 'modus-vivendi :no-confirm)
+
+(if (display-graphic-p) (goedev/configure-gui))
 
 ;; KEYMAPS
 (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
