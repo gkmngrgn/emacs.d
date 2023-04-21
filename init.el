@@ -91,15 +91,6 @@
   :mode ("README\\.md\\'" . gfm-mode)
   :custom (markdown-command "multimarkdown"))
 
-(if (treesit-ready-p 'rust)
-    (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode)))
-
-(if (treesit-ready-p 'typescript)
-    (add-to-list 'auto-mode-alist '("\\.tsx?\\'" . typescript-ts-mode)))
-
-(if (treesit-ready-p 'yaml)
-    (add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . yaml-ts-mode)))
-
 ;; FUNCTIONS
 (defun goedev/switch-to-previous-window ()
   "Switch to previous window."
