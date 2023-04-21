@@ -6,6 +6,5 @@ cmd.add_task{
    command=function()
       cmd.run("mkdir -p " .. config_dir)
       cmd.copy("*init.el", config_dir)
-      cmd.copy("copilot.el/", config_dir)
    end
 }
