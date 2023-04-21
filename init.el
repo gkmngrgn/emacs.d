@@ -121,8 +121,8 @@
 (global-set-key (kbd "<mouse-5>") 'scroll-up-line)
 (global-set-key (kbd "C-c SPC") 'comment-line)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-(global-set-key (kbd "C-x O") 'goedev/switch-to-previous-window)
 (global-set-key (kbd "C-z") 'undo-only)
+(global-set-key (kbd "C-x O") 'goedev/switch-to-previous-window)
 
 ;; HOOKS
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
