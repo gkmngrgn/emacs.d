@@ -25,7 +25,9 @@
 
 (use-package codegpt :ensure t)
 
-(use-package copilot :ensure t)
+(use-package copilot
+  :ensure t
+  :bind ("C-c g i" . copilot-accept-completion))
 
 (use-package expand-region
   :ensure t
