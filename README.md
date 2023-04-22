@@ -1,61 +1,31 @@
 # GOEDEV's EMACS CONFIG
 
-My accessibility-first, terminal-focused vanilla Emacs configuration.
+My accessibility-first, terminal-focused vanilla Emacs configuration. The minimum supported Emacs version is **29**.
 
-Please **do not open** a pull-request for this repository. You can configure your editor
-from scratch like me, or start with pre-configured Emacs if you're new:
+Please **do not open** a pull-request for this repository. You can configure your editor from scratch like me, or start with a pre-configured Emacs distro if you're new:
 
 - [Spacemacs](https://www.spacemacs.org/)
 - [Doom Emacs](https://github.com/hlissner/doom-emacs)
-
+- [Centaur Emacs](https://github.com/seagle0128/.emacs.d)
+- [JCS Emacs](https://github.com/jcs-emacs/jcs-emacs)
 
 ## INSTALLATION
 
-Consider installing the minimum version 28+ of Emacs. Native compilation is significant
-for lsp performance. For MacOS:
+You can choose any installation method you want for Emacs, but if you are on Windows, I suggest you to define `HOME` environment variable first.
 
-    brew tap d12frosted/emacs-plus
-    brew install emacs-plus --with-native-comp --without-cocoa
+```shell
+HOME="%USERPROFILE%"
+```
 
-Use [dosh](https://github.com/gkmngrgn/dosh/) for the quick installation:
+I use [dosh](https://github.com/gkmngrgn/dosh-cli) to configure my Emacs with a one-line command:
 
-    git clone --recurse-submodules https://github.com/gkmngrgn/emacs.d.git
-    cd emacs.d
-    dosh install
-
-If you are on Windows, check if the environment variable `HOME` is defined:
-
-    HOME="%USERPROFILE%"
-
+```shell
+dosh setup   # replace config files.
+dosh install # install packages.
+```
 
 ## COPY & PASTE PROBLEM
 
-For Linux and WSL2, install `xsel` and after you select your text, type `M-|`, then run
-the command `xsel -bi`.
+With [wezterm](https://wezfurlong.org/wezterm/), I don't have any problem with copy & paste. But if you are using other terminal emulator, you may have some problem with copy & paste. For Linux and WSL2, install `xsel` and after you select your text, type `M-|`, then run the command `xsel -bi`.
 
 For MacOS, you can use `pbcopy`.
-
-
-## PACKAGES
-
-I use built-in package manager, if you want to see the list of packages I installed,
-search `goedev/install-packages` text in `init.el` file.
-
-
-## SYSTEM DEPENDENCIES
-
-I install all my CLI dependencies using my do.sh script
-[here](https://git.goe.dev/goedev/config/src/branch/main/do.sh).
-
-    brew install gopls               \
-                 fd                  \
-                 llvm                \
-                 lua-language-server \
-                 multimarkdown       \
-                 ripgrep             \
-                 rust-analyzer
-
-    npm i -g typescript                   \
-             typescript-language-server   \
-             vscode-langservers-extracted \
-             yaml-language-server
