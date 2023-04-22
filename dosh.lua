@@ -16,17 +16,19 @@ cmd.add_task {
   required_commands = { "npm" },
   command = function()
     cmd.brew_install({
+      "fd",
       "font-jetbrains-mono",
       "lua-language-server",
       "multimarkdown",
       "pyenv",
+      "ripgrep",
       "rust-analyzer"
     })
     local npm_packages = {
-       "typescript",
-       "typescript-language-server",
-       "vscode-langservers-extracted",
-       "yaml-language-server"
+      "typescript",
+      "typescript-language-server",
+      "vscode-langservers-extracted",
+      "yaml-language-server"
     }
     for _, package in ipairs(npm_packages) do
       cmd.run("npm i -g " .. package)

@@ -38,6 +38,11 @@
          ("C-c l r" . eglot-rename)
          ("C-c l f" . eglot-format)))
 
+(use-package find-file-in-project
+  :ensure t
+  :custom ((ffip-prefer-ido-mode t)
+           (ffip-use-rust-fd t)))
+
 (use-package flymake
   :bind (("C-c l n" . flymake-goto-next-error)
          ("C-c l p" . flymake-goto-prev-error)))
@@ -78,6 +83,10 @@
 (use-package pyenv-mode
   :ensure t
   :config (pyenv-mode))
+
+(use-package rg
+  :ensure t
+  :config (rg-enable-default-bindings))
 
 (use-package treesit-auto
   :ensure t
