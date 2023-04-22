@@ -119,15 +119,13 @@
   (set-face-attribute 'mode-line-inactive nil :box nil)
 
   (fringe-mode 0)
-  (tool-bar-mode 0)
-
-  (setq modus-themes-common-palette-overrides '((border-mode-line-active unspecified)
-                                                (border-mode-line-inactive unspecified))))
+  (tool-bar-mode 0))
 
 ;; THEME
+(if (display-graphic-p)
+    (goedev/configure-gui))
+(setq modus-themes-mode-line '(borderless accented))
 (load-theme 'modus-vivendi :no-confirm)
-
-(if (display-graphic-p) (goedev/configure-gui))
 
 ;; KEYMAPS
 (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
