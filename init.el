@@ -11,7 +11,7 @@
 
 ;;; Code:
 
-;; DEPENDENCIES
+;; INITIALIZE
 (require 'package)
 
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -21,6 +21,42 @@
 
 (package-initialize)
 
+;; EMACS
+(defun goedev/switch-to-previous-window ()
+  "Switch to previous window."
+  (interactive)
+  (other-window -1))
+
+(defun goedev/switch-to-default-buffer-group ()
+  "Switch to default buffer group."
+  (ibuffer-switch-to-saved-filter-groups "default"))
+
+(use-package emacs
+  :init
+  (if (display-graphic-p)
+      (progn
+        (defvar my-font "Jetbrains Mono")
+        (defvar my-font-size 150)
+        (set-frame-font my-font)
+        (set-face-attribute 'default nil :height my-font-size :font my-font)
+        (set-face-attribute 'fixed-pitch nil :height my-font-size :font my-font)
+        (fringe-mode 0)
+        (tool-bar-mode 0)))
+  (load-theme 'modus-vivendi :no-confirm)
+  :hook ((before-save . delete-trailing-whitespace)
+         (text-mode . visual-line-mode)
+         (ibuffer-mode . goedev/switch-to-default-buffer-group))
+  :custom ((completion-cycle-threshold 3)
+           (tab-always-indent 'complete)
+           (modus-themes-mode-line '(borderless accented)))
+  :bind (("<mouse-4>" . scroll-down-line)
+         ("<mouse-5>" . scroll-up-line)
+         ("C-c SPC" . comment-line)
+         ("C-x C-b" . ibuffer)
+         ("C-z" . undo-only)
+         ("C-x O" . goedev/switch-to-previous-window)))
+
+;; PACKAGES
 (use-package chatgpt :ensure t)
 
 (use-package codegpt :ensure t)
@@ -28,6 +64,16 @@
 (use-package copilot
   :ensure t
   :bind ("C-c g i" . copilot-accept-completion))
+
+(use-package corfu
+  :ensure t
+  :init (global-corfu-mode))
+
+(use-package corfu-terminal
+  :ensure t
+  :init
+  (unless (display-graphic-p)
+    (corfu-terminal-mode +1)))
 
 (use-package expand-region
   :ensure t
@@ -76,11 +122,6 @@
 (use-package poetry
   :ensure t)
 
-(use-package prescient
-  :ensure t
-  :custom (completion-styles '(basic partial-completion prescient))
-  :config (prescient-persist-mode +1))
-
 (use-package pyenv-mode
   :ensure t
   :config (pyenv-mode))
@@ -104,51 +145,6 @@
   :ensure t
   :mode ("README\\.md\\'" . gfm-mode)
   :custom (markdown-command "multimarkdown"))
-
-;; FUNCTIONS
-(defun goedev/switch-to-previous-window ()
-  "Switch to previous window."
-  (interactive)
-  (other-window -1))
-
-(defun goedev/switch-to-default-buffer-group ()
-  "Switch to default buffer group."
-  (ibuffer-switch-to-saved-filter-groups "default"))
-
-(defun goedev/configure-gui ()
-  "Configure gui when you need to run Emacs with GUI."
-
-  (defvar my-font "Jetbrains Mono")
-  (defvar my-font-size 150)
-
-  (set-frame-font my-font)
-
-  (set-face-attribute 'default nil :height my-font-size :font my-font)
-  (set-face-attribute 'fixed-pitch nil :height my-font-size :font my-font)
-  (set-face-attribute 'mode-line nil :box nil)
-  (set-face-attribute 'mode-line-inactive nil :box nil)
-
-  (fringe-mode 0)
-  (tool-bar-mode 0))
-
-;; THEME
-(if (display-graphic-p)
-    (goedev/configure-gui))
-(setq modus-themes-mode-line '(borderless accented))
-(load-theme 'modus-vivendi :no-confirm)
-
-;; KEYMAPS
-(global-set-key (kbd "<mouse-4>") 'scroll-down-line)
-(global-set-key (kbd "<mouse-5>") 'scroll-up-line)
-(global-set-key (kbd "C-c SPC") 'comment-line)
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-(global-set-key (kbd "C-z") 'undo-only)
-(global-set-key (kbd "C-x O") 'goedev/switch-to-previous-window)
-
-;; HOOKS
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-(add-hook 'text-mode-hook 'visual-line-mode)
-(add-hook 'ibuffer-mode-hook 'goedev/switch-to-default-buffer-group)
 
 ;;; init.el ends here
 
