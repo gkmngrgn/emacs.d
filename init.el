@@ -41,7 +41,8 @@
 (use-package find-file-in-project
   :ensure t
   :custom ((ffip-prefer-ido-mode t)
-           (ffip-use-rust-fd t)))
+           (ffip-use-rust-fd t))
+  :bind ("C-c f" . ffip))
 
 (use-package flymake
   :bind (("C-c l n" . flymake-goto-next-error)
