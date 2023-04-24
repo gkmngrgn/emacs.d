@@ -16,6 +16,9 @@
 (set-default-coding-systems 'utf-8)
 (set-language-environment 'utf-8)
 
+;; ALIASES
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 ;; INTERFACE
 (global-auto-revert-mode)
 
