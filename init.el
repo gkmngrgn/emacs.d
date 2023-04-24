@@ -27,14 +27,20 @@
   (load-theme 'modus-vivendi :no-confirm)
   :hook ((before-save . delete-trailing-whitespace)
          (text-mode . visual-line-mode))
-  :custom ((completion-cycle-threshold 3)
-           (tab-always-indent 'complete)
-           (modus-themes-mode-line '(borderless accented)))
+  :custom (modus-themes-mode-line '(borderless accented))
   :bind (("<mouse-4>" . scroll-down-line)
          ("<mouse-5>" . scroll-up-line)
          ("C-c SPC" . comment-line)
          ("C-x C-b" . ibuffer)
          ("C-z" . undo-only)))
+
+(use-package completion
+  :custom ((completion-auto-help t)
+           (completion-auto-select 'second-tab)
+           (completion-cycle-threshold 3)
+           (completions-max-height 10)
+           (completions-header-format nil)
+           (tab-always-indent 'complete)))
 
 ;; PACKAGES
 (use-package chatgpt :ensure t)
@@ -44,16 +50,6 @@
 (use-package copilot
   :ensure t
   :bind ("C-c g i" . copilot-accept-completion))
-
-(use-package corfu
-  :ensure t
-  :init (global-corfu-mode))
-
-(use-package corfu-terminal
-  :ensure t
-  :init
-  (unless (display-graphic-p)
-    (corfu-terminal-mode +1)))
 
 (use-package expand-region
   :ensure t
@@ -79,10 +75,6 @@
   :config
   (with-eval-after-load 'magit-mode
     (add-hook 'after-save-hook 'magit-after-save-refresh-status t)))
-
-(use-package ido
-  :custom (ido-everywhere t)
-  :config (ido-mode t))
 
 (use-package minions
   :ensure t
