@@ -22,11 +22,6 @@
 (package-initialize)
 
 ;; EMACS
-(defun goedev/switch-to-previous-window ()
-  "Switch to previous window."
-  (interactive)
-  (other-window -1))
-
 (defun goedev/switch-to-default-buffer-group ()
   "Switch to default buffer group."
   (ibuffer-switch-to-saved-filter-groups "default"))
@@ -52,7 +47,6 @@
   :bind (("<mouse-4>" . scroll-down-line)
          ("<mouse-5>" . scroll-up-line)
          ("C-c SPC" . comment-line)
-         ("C-c o" . goedev/switch-to-previous-window)
          ("C-x C-b" . ibuffer)
          ("C-z" . undo-only)))
 
