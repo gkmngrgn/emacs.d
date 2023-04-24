@@ -22,10 +22,6 @@
 (package-initialize)
 
 ;; EMACS
-(defun goedev/switch-to-default-buffer-group ()
-  "Switch to default buffer group."
-  (ibuffer-switch-to-saved-filter-groups "default"))
-
 (use-package emacs
   :init
   (if (display-graphic-p)
@@ -39,8 +35,7 @@
         (tool-bar-mode 0)))
   (load-theme 'modus-vivendi :no-confirm)
   :hook ((before-save . delete-trailing-whitespace)
-         (text-mode . visual-line-mode)
-         (ibuffer-mode . goedev/switch-to-default-buffer-group))
+         (text-mode . visual-line-mode))
   :custom ((completion-cycle-threshold 3)
            (tab-always-indent 'complete)
            (modus-themes-mode-line '(borderless accented)))

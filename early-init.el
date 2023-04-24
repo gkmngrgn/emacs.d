@@ -64,16 +64,6 @@
 (setq gc-cons-threshold 100000000
       read-process-output-max (* 1024 1024))  ;; 1mb
 
-;; BUFFERS
-(setq ibuffer-saved-filter-groups (quote (("default"
-                                           ("VCS" (or (mode . magit-mode)
-                                                      (mode . magit-status-mode)
-                                                      (mode . magit-log-mode)
-                                                      (mode . magit-process-mode)
-                                                      (mode . magit-revision-mode)
-                                                      (mode . magit-diff-mode)))
-                                           ("Files"  (filename . ".*\.*$"))))))
-
 ;; BACKUP
 (setq backup-directory-alist `((".*" . ,temporary-file-directory))
       auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
