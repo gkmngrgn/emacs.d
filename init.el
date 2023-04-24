@@ -24,15 +24,6 @@
 ;; EMACS
 (use-package emacs
   :init
-  (if (display-graphic-p)
-      (progn
-        (defvar my-font "Jetbrains Mono")
-        (defvar my-font-size 150)
-        (set-frame-font my-font)
-        (set-face-attribute 'default nil :height my-font-size :font my-font)
-        (set-face-attribute 'fixed-pitch nil :height my-font-size :font my-font)
-        (fringe-mode 0)
-        (tool-bar-mode 0)))
   (load-theme 'modus-vivendi :no-confirm)
   :hook ((before-save . delete-trailing-whitespace)
          (text-mode . visual-line-mode))

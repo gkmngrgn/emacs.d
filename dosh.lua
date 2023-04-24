@@ -17,7 +17,6 @@ cmd.add_task {
   command = function()
     cmd.brew_install({
       "fd",
-      "font-jetbrains-mono",
       "lua-language-server",
       "multimarkdown",
       "pyenv",
