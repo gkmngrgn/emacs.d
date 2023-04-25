@@ -21,7 +21,7 @@
 
 (package-initialize)
 
-;; EMACS
+;; INTERNAL PACKAGES
 (use-package emacs
   :init
   (load-theme 'modus-vivendi :no-confirm)
@@ -43,7 +43,21 @@
            (completions-header-format nil)
            (tab-always-indent 'complete)))
 
-;; PACKAGES
+(use-package eglot
+  :bind (("C-c l l" . eglot)
+         ("C-c l r" . eglot-rename)
+         ("C-c l f" . eglot-format)))
+
+(use-package flymake
+  :bind (("C-c l n" . flymake-goto-next-error)
+         ("C-c l p" . flymake-goto-prev-error)))
+
+(use-package ido
+  :custom ((ido-enable-flex-matching t)
+           (ido-everywhere t))
+  :config (ido-mode 1))
+
+;; EXTERNAL PACKAGES
 (use-package chatgpt :ensure t)
 
 (use-package codegpt :ensure t)
@@ -56,20 +70,11 @@
   :ensure t
   :bind ("C-c w" . er/expand-region))
 
-(use-package eglot
-  :bind (("C-c l l" . eglot)
-         ("C-c l r" . eglot-rename)
-         ("C-c l f" . eglot-format)))
-
 (use-package find-file-in-project
   :ensure t
   :custom ((ffip-prefer-ido-mode t)
            (ffip-use-rust-fd t))
   :bind ("C-c f" . ffip))
-
-(use-package flymake
-  :bind (("C-c l n" . flymake-goto-next-error)
-         ("C-c l p" . flymake-goto-prev-error)))
 
 (use-package magit
   :ensure t
