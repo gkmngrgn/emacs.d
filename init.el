@@ -28,22 +28,22 @@
   :init
   (load-theme 'modus-vivendi :no-confirm)
   :hook ((before-save . delete-trailing-whitespace)
-         (text-mode . visual-line-mode))
+         (text-mode   . visual-line-mode))
   :custom (modus-themes-mode-line '(borderless accented))
   :bind (("<mouse-4>" . scroll-down-line)
          ("<mouse-5>" . scroll-up-line)
-         ("C-c SPC" . comment-line)
-         ("C-c o" . previous-window-any-frame)
-         ("C-x C-b" . ibuffer)
-         ("C-z" . undo-only)))
+         ("C-c SPC"   . comment-line)
+         ("C-c o"     . previous-window-any-frame)
+         ("C-x C-b"   . ibuffer)
+         ("C-z"       . undo-only)))
 
 (use-package completion
-  :custom ((completion-auto-help t)
-           (completion-auto-select 'second-tab)
+  :custom ((completion-auto-help       t)
+           (completion-auto-select     'second-tab)
            (completion-cycle-threshold 3)
-           (completions-max-height 10)
-           (completions-header-format nil)
-           (tab-always-indent 'complete)))
+           (completions-max-height     10)
+           (completions-header-format  nil)
+           (tab-always-indent          'complete)))
 
 (use-package eglot
   :bind (("C-c l l" . eglot)
@@ -56,13 +56,15 @@
 
 (use-package ido
   :custom ((ido-enable-flex-matching t)
-           (ido-everywhere t))
+           (ido-everywhere           t))
   :config (ido-mode 1))
 
 ;; EXTERNAL PACKAGES
-(use-package chatgpt :ensure t)
+(use-package chatgpt
+  :ensure t)
 
-(use-package codegpt :ensure t)
+(use-package codegpt
+  :ensure t)
 
 (use-package copilot
   :ensure t
@@ -75,14 +77,12 @@
 (use-package find-file-in-project
   :ensure t
   :custom ((ffip-prefer-ido-mode t)
-           (ffip-use-rust-fd t))
+           (ffip-use-rust-fd     t))
   :bind ("C-c f" . ffip))
 
 (use-package magit
   :ensure t
-  :config
-  (with-eval-after-load 'magit-mode
-    (add-hook 'after-save-hook 'magit-after-save-refresh-status t)))
+  :hook (after-save . magit-after-save-refresh-status))
 
 (use-package minions
   :ensure t
