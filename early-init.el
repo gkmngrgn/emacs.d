@@ -19,6 +19,14 @@
 ;; ALIASES
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+;; PACKAGE ARCHIVES
+(setq package-archives '(("gnu-elpa" . "https://elpa.gnu.org/packages/")
+                         ("jcs-elpa" . "https://jcs-emacs.github.io/jcs-elpa/packages/")
+                         ("melpa"    . "https://melpa.org/packages/"))
+      package-archive-priorities '(("gnu-elpa" . 0)
+                                   ("jcs-elpa" . 5)
+                                   ("melpa"    . 10)))
+
 ;; INTERFACE
 (global-auto-revert-mode)
 
@@ -32,20 +40,27 @@
               indent-tabs-mode nil
               tab-width        2)
 
-(setq ring-bell-function        'ignore
-      inhibit-splash-screen     t
-      initial-scratch-message   nil
-      select-enable-primary     t
-      select-enable-clipboard   t
-      max-mini-window-height    3
-      warning-minimum-level     :error
+(setq ring-bell-function         'ignore
+      inhibit-splash-screen      t
+      initial-scratch-message    nil
+      select-enable-primary      t
+      select-enable-clipboard    t
+      max-mini-window-height     3
+      warning-minimum-level      :error
       ;; mode line
-      line-number-mode          t
-      column-number-mode        t
+      line-number-mode           t
+      column-number-mode         t
       ;; disable tab bar
-      tab-bar-close-button-show nil
-      tab-bar-mode              nil
-      tab-bar-show              nil)
+      tab-bar-close-button-show  nil
+      tab-bar-mode               nil
+      tab-bar-show               nil
+      ;; completion
+      completion-auto-help       t
+      completion-auto-select     'second-tab
+      completion-cycle-threshold 3
+      completions-max-height     10
+      completions-header-format  nil
+      tab-always-indent          'complete)
 
 ;; SCROLLING
 (setq scroll-margin                   0

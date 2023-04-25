@@ -11,18 +11,6 @@
 
 ;;; Code:
 
-;; INITIALIZE
-(require 'package)
-
-(setq package-archives '(("gnu-elpa" . "https://elpa.gnu.org/packages/")
-                         ("jcs-elpa" . "https://jcs-emacs.github.io/jcs-elpa/packages/")
-                         ("melpa"    . "https://melpa.org/packages/"))
-      package-archive-priorities '(("gnu-elpa" . 0)
-                                   ("jcs-elpa" . 5)
-                                   ("melpa"    . 10)))
-
-(package-initialize)
-
 ;; INTERNAL PACKAGES
 (use-package emacs
   :init
@@ -36,14 +24,6 @@
          ("C-c o"     . previous-window-any-frame)
          ("C-x C-b"   . ibuffer)
          ("C-z"       . undo-only)))
-
-(use-package completion
-  :custom ((completion-auto-help       t)
-           (completion-auto-select     'second-tab)
-           (completion-cycle-threshold 3)
-           (completions-max-height     10)
-           (completions-header-format  nil)
-           (tab-always-indent          'complete)))
 
 (use-package eglot
   :bind (("C-c l l" . eglot)
