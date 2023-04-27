@@ -82,10 +82,6 @@
 (use-package poetry
   :ensure t)
 
-(use-package pyenv-mode
-  :ensure t
-  :config (pyenv-mode))
-
 (use-package rg
   :ensure t
   :config (rg-enable-default-bindings))
