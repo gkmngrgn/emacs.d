@@ -50,9 +50,6 @@
       ;; mode line
       line-number-mode                      t
       column-number-mode                    t
-      mode-line-compact                     t
-      mode-line-percent-position            nil
-      mode-line-position-column-line-format '("%l:%c")
       ;; disable tab bar
       tab-bar-close-button-show             nil
       tab-bar-mode                          nil

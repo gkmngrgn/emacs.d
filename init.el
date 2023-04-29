@@ -17,7 +17,6 @@
   (load-theme 'modus-vivendi :no-confirm)
   :hook ((before-save . delete-trailing-whitespace)
          (text-mode   . visual-line-mode))
-  :custom (modus-themes-mode-line '(borderless accented))
   :bind (("<mouse-4>" . scroll-down-line)
          ("<mouse-5>" . scroll-up-line)
          ("C-c SPC"   . comment-line)
@@ -50,6 +49,10 @@
   :ensure t
   :bind ("C-c g i" . copilot-accept-completion))
 
+(use-package doom-modeline
+  :ensure t
+  :hook (after-init . doom-modeline-mode))
+
 (use-package expand-region
   :ensure t
   :bind ("C-c w" . er/expand-region))
@@ -63,10 +66,6 @@
 (use-package magit
   :ensure t
   :hook (after-save . magit-after-save-refresh-status))
-
-(use-package minions
-  :ensure t
-  :config (minions-mode))
 
 (use-package multiple-cursors
   :ensure t
