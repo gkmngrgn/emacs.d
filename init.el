@@ -32,11 +32,6 @@
   :bind (("C-c l n" . flymake-goto-next-error)
          ("C-c l p" . flymake-goto-prev-error)))
 
-(use-package ido
-  :custom ((ido-enable-flex-matching t)
-           (ido-everywhere           t))
-  :config (ido-mode 1))
-
 ;; AI TOOLS
 (use-package chatgpt
   :ensure t)
