@@ -13,8 +13,7 @@
 
 ;; INTERNAL PACKAGES
 (use-package emacs
-  :init
-  (load-theme 'modus-vivendi :no-confirm)
+  :init (load-theme 'modus-vivendi :no-confirm)
   :hook ((before-save . delete-trailing-whitespace)
          (text-mode   . visual-line-mode))
   :bind (("<mouse-4>" . scroll-down-line)
@@ -38,7 +37,7 @@
            (ido-everywhere           t))
   :config (ido-mode 1))
 
-;; EXTERNAL PACKAGES
+;; AI TOOLS
 (use-package chatgpt
   :ensure t)
 
@@ -49,6 +48,38 @@
   :ensure t
   :bind ("C-c g i" . copilot-accept-completion))
 
+(use-package openai
+  :ensure t
+  :custom (openai-key (getenv "OPENAI_KEY")))
+
+;; FILE MODES
+(use-package lua-mode
+  :ensure t
+  :mode ("\\.lua$" . lua-mode)
+  :interpreter ("lua" . lua-mode))
+
+(use-package markdown-mode
+  :ensure t
+  :mode ("README\\.md\\'" . gfm-mode)
+  :custom (markdown-command "multimarkdown"))
+
+;; EXTERNAL PACKAGES
+(use-package consult
+  :ensure t
+  :bind (("C-x M-:" . consult-complex-command)
+         ("C-x b"   . consult-buffer)
+         ("C-x 4 b" . consult-buffer-other-window)
+         ("C-x 5 b" . consult-buffer-other-frame)
+         ("C-x r b" . consult-bookmark)
+         ("C-x p b" . consult-project-buffer)
+         ("M-g g"   . consult-goto-line)
+         ("M-g M-g" . consult-goto-line)
+         ("M-y"     . consult-yank-pop)
+         ("M-s d"   . consult-find)
+         ("M-s r"   . consult-ripgrep))
+  :hook (completion-list-mode . consult-preview-at-point-mode)
+  :custom (consult-find-args "find . -not ( -wholename */.* -prune -o -name node_modules -prune )"))
+
 (use-package doom-modeline
   :ensure t
   :hook (after-init . doom-modeline-mode))
@@ -56,12 +87,6 @@
 (use-package expand-region
   :ensure t
   :bind ("C-c w" . er/expand-region))
-
-(use-package find-file-in-project
-  :ensure t
-  :custom ((ffip-prefer-ido-mode t)
-           (ffip-use-rust-fd     t))
-  :bind ("C-c f" . ffip))
 
 (use-package magit
   :ensure t
@@ -74,32 +99,21 @@
          ("C-c k" . mc/mark-previous-like-this)
          ("C-c n" . mc/mark-all-like-this)))
 
-(use-package openai
-  :ensure t
-  :custom (openai-key (getenv "OPENAI_KEY")))
-
 (use-package poetry
   :ensure t)
 
-(use-package rg
+(use-package savehist
   :ensure t
-  :config (rg-enable-default-bindings))
+  :init (savehist-mode))
 
 (use-package treesit-auto
   :ensure t
   :custom (treesit-auto-install 'prompt)
   :config (global-treesit-auto-mode))
 
-;; FILE MODES
-(use-package lua-mode
+(use-package vertico
   :ensure t
-  :mode ("\\.lua$" . lua-mode)
-  :interpreter ("lua" . lua-mode))
-
-(use-package markdown-mode
-  :ensure t
-  :mode ("README\\.md\\'" . gfm-mode)
-  :custom (markdown-command "multimarkdown"))
+  :init (vertico-mode))
 
 ;;; init.el ends here
 
