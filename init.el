@@ -75,6 +75,11 @@
   :hook (completion-list-mode . consult-preview-at-point-mode)
   :custom (consult-find-args "find . -not ( -wholename */.* -prune -o -name node_modules -prune )"))
 
+(use-package orderless
+  :ensure t
+  :custom ((completion-styles             '(orderless basic))
+           (completion-category-overrides '((file (styles basic partial-completion))))))
+
 (use-package doom-modeline
   :ensure t
   :hook (after-init . doom-modeline-mode))
