@@ -25,6 +25,7 @@
 
 (use-package eglot
   :bind (("C-c l l" . eglot)
+         ("C-c l a" . eglot-code-actions)
          ("C-c l r" . eglot-rename)
          ("C-c l f" . eglot-format)))
 
