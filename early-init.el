@@ -16,17 +16,6 @@
 (set-default-coding-systems 'utf-8)
 (set-language-environment   'utf-8)
 
-;; ALIASES
-(defalias 'yes-or-no-p 'y-or-n-p)
-
-;; PACKAGE ARCHIVES
-(setq package-archives '(("gnu-elpa" . "https://elpa.gnu.org/packages/")
-                         ("jcs-elpa" . "https://jcs-emacs.github.io/jcs-elpa/packages/")
-                         ("melpa"    . "https://melpa.org/packages/"))
-      package-archive-priorities '(("gnu-elpa" . 0)
-                                   ("jcs-elpa" . 5)
-                                   ("melpa"    . 10)))
-
 ;; INTERFACE
 (global-auto-revert-mode)
 
@@ -36,56 +25,69 @@
 (temp-buffer-resize-mode t)
 (xterm-mouse-mode        1)
 
+;; ALIASES & VARIABLES
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+(defvar custom-file-path (expand-file-name "custom.el" user-emacs-directory))
+
+;; CUSTOMISATIONS
 (setq-default truncate-lines   t
               indent-tabs-mode nil
               tab-width        2)
 
-(setq ring-bell-function         'ignore
-      inhibit-splash-screen      t
-      initial-scratch-message    nil
-      select-enable-primary      t
-      select-enable-clipboard    t
-      max-mini-window-height     3
-      warning-minimum-level      :error
-      ;; mode line
-      line-number-mode           t
-      column-number-mode         t
-      ;; disable tab bar
-      tab-bar-close-button-show  nil
-      tab-bar-mode               nil
-      tab-bar-show               nil
-      ;; completion
-      completion-auto-help       t
-      completion-auto-select     'second-tab
-      completion-cycle-threshold 3
-      completions-max-height     10
-      completions-header-format  nil
-      completion-show-help       nil
-      tab-always-indent          'complete)
+(setq ring-bell-function              'ignore
+      inhibit-splash-screen           t
+      initial-scratch-message         nil
+      select-enable-primary           t
+      select-enable-clipboard         t
+      max-mini-window-height          3
+      warning-minimum-level           :error
 
-;; SCROLLING
-(setq scroll-margin                   0
+      ;; MODE LINE
+      line-number-mode                t
+      column-number-mode              t
+
+      ;; DISABLE TAB BAR
+      tab-bar-close-button-show       nil
+      tab-bar-mode                    nil
+      tab-bar-show                    nil
+
+      ;; COMPLETION
+      completion-auto-help            t
+      completion-auto-select          'second-tab
+      completion-cycle-threshold      3
+      completions-max-height          10
+      completions-header-format       nil
+      completion-show-help            nil
+      tab-always-indent               'complete
+
+      ;; SCROLLING
+      scroll-margin                   0
       scroll-conservatively           100000
       scroll-preserve-screen-position 1
-      auto-window-vscroll             nil)
+      auto-window-vscroll             nil
 
-;; EDIT MODE
-(set-default 'abbrev-mode t)
-(setq-default fill-column 88)
-(setq require-final-newline t)
+      ;; EDIT MODE
+      require-final-newline           t
 
-;; PERFORMANCE
-(setq gc-cons-threshold       100000000
-      read-process-output-max (* 1024 1024))  ;; 1mb
+      ;; PERFORMANCE
+      gc-cons-threshold               100000000
+      read-process-output-max         (* 1024 1024)  ;; 1mb
 
-;; BACKUP
-(defvar custom-file-path (expand-file-name "custom.el" user-emacs-directory))
-
-(setq backup-directory-alist         `((".*" . ,temporary-file-directory))
+      ;; BACKUP
+      backup-directory-alist         `((".*" . ,temporary-file-directory))
       auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
       default-directory              "~/"
       create-lockfiles               nil
-      custom-file                    custom-file-path)
+      custom-file                    custom-file-path
+
+      ;; PACKAGE ARCHIVES
+      package-archives               '(("gnu-elpa" . "https://elpa.gnu.org/packages/")
+                                       ("jcs-elpa" . "https://jcs-emacs.github.io/jcs-elpa/packages/")
+                                       ("melpa"    . "https://melpa.org/packages/"))
+      package-archive-priorities     '(("gnu-elpa" . 0)
+                                       ("jcs-elpa" . 5)
+                                       ("melpa"    . 10)))
 
 ;;; early-init.el ends here
 
