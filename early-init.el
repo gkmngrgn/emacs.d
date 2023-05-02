@@ -52,15 +52,6 @@
       tab-bar-mode                    nil
       tab-bar-show                    nil
 
-      ;; COMPLETION
-      completion-auto-help            t
-      completion-auto-select          'second-tab
-      completion-cycle-threshold      3
-      completions-max-height          10
-      completions-header-format       nil
-      completion-show-help            nil
-      tab-always-indent               'complete
-
       ;; SCROLLING
       scroll-margin                   0
       scroll-conservatively           100000

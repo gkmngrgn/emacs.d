@@ -74,7 +74,8 @@
          ("M-s d"   . consult-find)
          ("M-s r"   . consult-ripgrep))
   :hook (completion-list-mode . consult-preview-at-point-mode)
-  :custom (consult-find-args "find . -not ( -wholename */.* -prune -o -name node_modules -prune )"))
+  :custom ((consult-find-args "find . -not ( -wholename */.* -prune -o -name node_modules -prune )")
+           (completion-in-region-function 'consult-completion-in-region)))
 
 (use-package marginalia
   :ensure t
