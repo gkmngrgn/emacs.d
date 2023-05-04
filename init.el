@@ -13,7 +13,9 @@
 
 ;; INTERNAL PACKAGES
 (use-package emacs
-  :init (load-theme 'modus-vivendi :no-confirm)
+  :init ((load-theme 'modus-vivendi :no-confirm)
+         (add-to-list 'major-mode-remap-alist '(typescript-mode . typescript-ts-mode))
+         (add-to-list 'major-mode-remap-alist '(yaml-mode . yaml-ts-mode)))
   :hook ((before-save . delete-trailing-whitespace)
          (text-mode   . visual-line-mode))
   :bind (("<mouse-4>" . scroll-down-line)
