@@ -108,7 +108,8 @@
 
 (use-package doom-modeline
   :ensure t
-  :hook (after-init . doom-modeline-mode))
+  :hook (after-init . doom-modeline-mode)
+  :custom (doom-modeline-icon nil))
 
 (use-package expand-region
   :ensure t
