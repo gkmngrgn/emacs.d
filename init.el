@@ -13,10 +13,7 @@
 
 ;; INTERNAL PACKAGES
 (use-package emacs
-  :init
-  (load-theme 'modus-vivendi :no-confirm)
-  (add-to-list 'major-mode-remap-alist '(typescript-mode . typescript-ts-mode))
-  (add-to-list 'major-mode-remap-alist '(yaml-mode . yaml-ts-mode))
+  :init (load-theme 'modus-vivendi :no-confirm)
   :hook ((before-save . delete-trailing-whitespace)
          (text-mode   . visual-line-mode))
   :bind (("<mouse-4>" . scroll-down-line)
@@ -24,7 +21,9 @@
          ("C-c SPC"   . comment-line)
          ("C-c o"     . previous-window-any-frame)
          ("C-x C-b"   . ibuffer)
-         ("C-z"       . undo-only)))
+         ("C-z"       . undo-only))
+  :mode (("\\.tsx?$"  . typescript-ts-mode)
+         ("\\.ya?ml$" . yaml-ts-mode)))
 
 (use-package eglot
   :bind (("C-c l l" . eglot)
