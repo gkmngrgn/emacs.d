@@ -19,7 +19,7 @@
   :bind (("<mouse-4>" . scroll-down-line)
          ("<mouse-5>" . scroll-up-line)
          ("C-c SPC"   . comment-line)
-         ("C-c o"     . previous-window-any-frame)
+         ("C-x O"     . previous-window-any-frame)
          ("C-x C-b"   . ibuffer)
          ("C-z"       . undo-only))
   :mode (("\\.tsx?$"  . typescript-ts-mode)
