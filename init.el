@@ -118,8 +118,7 @@
 
 (use-package multiple-cursors
   :ensure t
-  :bind (("C-c m" . mc/edit-lines)
-         ("C-c j" . mc/mark-next-like-this)
+  :bind (("C-c j" . mc/mark-next-like-this)
          ("C-c k" . mc/mark-previous-like-this)
          ("C-c n" . mc/mark-all-like-this)))
 
