@@ -31,10 +31,6 @@
          ("C-c l r" . eglot-rename)
          ("C-c l f" . eglot-format)))
 
-(use-package flymake
-  :bind (("C-c l n" . flymake-goto-next-error)
-         ("C-c l p" . flymake-goto-prev-error)))
-
 ;; AI TOOLS
 (use-package chatgpt
   :ensure t)
@@ -70,6 +66,7 @@
          ("C-x 5 b" . consult-buffer-other-frame)
          ("C-x r b" . consult-bookmark)
          ("C-x p b" . consult-project-buffer)
+         ("M-g f"   . consult-flymake)
          ("M-g g"   . consult-goto-line)
          ("M-g M-g" . consult-goto-line)
          ("M-y"     . consult-yank-pop)
