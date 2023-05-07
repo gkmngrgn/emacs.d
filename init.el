@@ -32,7 +32,6 @@
          ("C-c l f" . eglot-format)))
 
 (use-package savehist
-  :ensure t
   :init (savehist-mode))
 
 ;; AI TOOLS
