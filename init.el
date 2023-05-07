@@ -31,6 +31,10 @@
          ("C-c l r" . eglot-rename)
          ("C-c l f" . eglot-format)))
 
+(use-package savehist
+  :ensure t
+  :init (savehist-mode))
+
 ;; AI TOOLS
 (use-package chatgpt
   :ensure t)
@@ -124,10 +128,6 @@
 
 (use-package poetry
   :ensure t)
-
-(use-package savehist
-  :ensure t
-  :init (savehist-mode))
 
 (use-package treesit-auto
   :ensure t
