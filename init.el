@@ -50,11 +50,6 @@
   :custom (openai-key (getenv "OPENAI_KEY")))
 
 ;; FILE MODES
-(use-package lua-mode
-  :ensure t
-  :mode ("\\.lua$" . lua-mode)
-  :interpreter ("lua" . lua-mode))
-
 (use-package markdown-mode
   :ensure t
   :mode ("README\\.md\\'" . gfm-mode)
@@ -124,9 +119,6 @@
   :bind (("C-c j" . mc/mark-next-like-this)
          ("C-c k" . mc/mark-previous-like-this)
          ("C-c n" . mc/mark-all-like-this)))
-
-(use-package poetry
-  :ensure t)
 
 (use-package treesit-auto
   :ensure t
