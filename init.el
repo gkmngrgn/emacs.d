@@ -58,18 +58,16 @@
 ;; EXTERNAL PACKAGES
 (use-package consult
   :ensure t
-  :bind (("C-x M-:" . consult-complex-command)
-         ("C-x b"   . consult-buffer)
-         ("C-x 4 b" . consult-buffer-other-window)
-         ("C-x 5 b" . consult-buffer-other-frame)
-         ("C-x r b" . consult-bookmark)
+  :bind (("C-x b"   . consult-buffer)
          ("C-x p b" . consult-project-buffer)
          ("M-g f"   . consult-flymake)
          ("M-g g"   . consult-goto-line)
          ("M-g M-g" . consult-goto-line)
-         ("M-y"     . consult-yank-pop)
          ("M-s d"   . consult-find)
-         ("M-s r"   . consult-ripgrep))
+         ("M-s l"   . consult-line)
+         ("M-s L"   . consult-line-multi)
+         ("M-s r"   . consult-ripgrep)
+         ("M-y"     . consult-yank-pop))
   :hook (completion-list-mode . consult-preview-at-point-mode)
   :custom ((consult-find-args "find . -not ( -wholename */.* -prune -o -name node_modules -prune )")
            (completion-in-region-function 'consult-completion-in-region)))
