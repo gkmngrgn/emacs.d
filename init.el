@@ -49,6 +49,8 @@
          ("M-g g"   . consult-goto-line)
          ("M-g M-g" . consult-goto-line)
          ("M-s d"   . consult-find)
+         ("M-g i"   . consult-imenu)
+         ("M-g I"   . consult-imenu-multi)
          ("M-s l"   . consult-line)
          ("M-s L"   . consult-line-multi)
          ("M-s r"   . consult-ripgrep)
