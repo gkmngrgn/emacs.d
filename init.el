@@ -34,21 +34,6 @@
 (use-package savehist
   :init (savehist-mode))
 
-;; AI TOOLS
-(use-package chatgpt
-  :ensure t)
-
-(use-package codegpt
-  :ensure t)
-
-(use-package copilot
-  :ensure t
-  :bind ("C-c g i" . copilot-accept-completion))
-
-(use-package openai
-  :ensure t
-  :custom (openai-key (getenv "OPENAI_KEY")))
-
 ;; FILE MODES
 (use-package markdown-mode
   :ensure t
@@ -126,6 +111,11 @@
 (use-package vertico
   :ensure t
   :init (vertico-mode))
+
+(use-package copilot
+  :ensure t
+  :bind ("C-c g i" . copilot-accept-completion)
+  :config (global-copilot-mode))
 
 ;;; init.el ends here
 
