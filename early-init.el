@@ -24,6 +24,9 @@
 (delete-selection-mode   1)
 (temp-buffer-resize-mode t)
 (xterm-mouse-mode        1)
+(scroll-bar-mode         0)
+(fringe-mode             0)
+(tool-bar-mode           0)
 
 ;; ALIASES & VARIABLES
 (defalias 'yes-or-no-p 'y-or-n-p)
