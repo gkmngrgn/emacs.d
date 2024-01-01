@@ -17,7 +17,7 @@
   ;; GUI FONTS
   (if (display-graphic-p)
       (progn
-        (defvar my-font "Jetbrains Mono")
+        (defvar my-font "Iosevka Term")
         (defvar my-font-size 150)
         (set-frame-font my-font)
         (set-frame-font my-font)
