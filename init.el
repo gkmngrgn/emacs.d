@@ -134,6 +134,9 @@
   :bind ("C-c g i" . copilot-accept-completion)
   :config (global-copilot-mode))
 
+;; mojo-hl is not available in any index.
+(load "~/.config/emacs/mojo.el")
+
 ;;; init.el ends here
 
 ;; Local Variables:

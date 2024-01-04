@@ -5,7 +5,7 @@ cmd.add_task {
   description = "setup my emacs",
   command = function()
     cmd.run("mkdir -p " .. config_dir)
-    cmd.copy("*init.el", config_dir)
+    cmd.copy("*.el", config_dir)
   end
 }
 
