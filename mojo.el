@@ -1,10 +1,17 @@
 ;; ---
-;; @goedev: "I copied this file from: https://github.com/andcarnivorous/mojo-hl"
+;; @goedev: "I copied this file from: https://github.com/gkmngrgn/mojo-hl"
 ;; ---
 
 ;; Define the keywords, types, and built-in functions of Mojo
 (defvar mojo-keywords
-  '("fn" "struct" "let" "var" "inout" "owned" ""))
+  '("alias"
+    "fn"
+    "inout"
+    "let"
+    "owned"
+    "struct"
+    "trait"
+    "var"))
 
 (defvar mojo-types
   '("str" "Int" "Float" "Int8" "UInt8" "Int16" "Uint16" "Int32" "UInt32" "Int64" "UInt64" "Float16" "Float32" "Float64" "Bool"))
@@ -36,6 +43,17 @@
   :doc "Keymap for `mojo-mode'."
   "C-c C-c" #'mojo-compile)
 
+(defun mojo-indent-line ()
+  "Indent current line by 4 spaces."
+  (interactive)
+  (let ((prev-indent (save-excursion
+                       (forward-line -1)
+                       (back-to-indentation)
+                       (current-column))))
+    (beginning-of-line)
+    (indent-line-to prev-indent)
+    prev-indent))
+
 ;Define the major mode.
 (define-derived-mode mojo-mode python-mode "Mojo"
   "Major mode for editing Mojo language code." "mojo mode"
@@ -43,7 +61,8 @@
 
   ;; Set up the indent function.
   (setq-local tab-width 4
-              indent-line-function 'insert-tab))
+              tab-always-indent t
+              indent-line-function 'mojo-indent-line))
   ;; Not yet sure how this should work
   ;; (with-eval-after-load "eglot"
   ;;   (add-to-list 'eglot-stay-out-of 'flymake)))
