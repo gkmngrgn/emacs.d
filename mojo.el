@@ -42,7 +42,8 @@
   (font-lock-add-keywords nil mojo-font-lock-keywords 'APPEND)
 
   ;; Set up the indent function.
-  (setq-local indent-line-function 'python-indent-line-function))
+  (setq-local tab-width 4
+              indent-line-function 'insert-tab))
   ;; Not yet sure how this should work
   ;; (with-eval-after-load "eglot"
   ;;   (add-to-list 'eglot-stay-out-of 'flymake)))
