@@ -131,11 +131,12 @@
 
 (use-package copilot
   :ensure t
-  :bind ("C-c g i" . copilot-accept-completion)
-  :config (global-copilot-mode))
-
-;; mojo-hl is not available in any index.
-(load "~/.config/emacs/mojo.el")
+  :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("<tab>" . 'copilot-accept-completion)
+              ("TAB" . 'copilot-accept-completion)
+              ("C-TAB" . 'copilot-accept-completion-by-word)
+              ("C-<tab>" . 'copilot-accept-completion-by-word)))
 
 ;;; init.el ends here
 
