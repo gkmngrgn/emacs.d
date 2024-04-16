@@ -31,9 +31,7 @@
   :custom (modus-themes-mode-line '(borderless))
   :hook ((before-save . delete-trailing-whitespace)
          (text-mode   . visual-line-mode))
-  :bind (("<mouse-4>" . scroll-down-line)
-         ("<mouse-5>" . scroll-up-line)
-         ("C-c SPC"   . comment-line)
+  :bind (("C-c SPC"   . comment-line)
          ("C-x O"     . previous-window-any-frame)
          ("C-x C-b"   . ibuffer)
          ("C-z"       . undo-only))
@@ -87,6 +85,12 @@
   :ensure t
   :hook (after-init . doom-modeline-mode)
   :custom (doom-modeline-icon nil))
+
+(use-package centered-cursor-mode
+  :ensure t
+  :demand
+  :config
+  (global-centered-cursor-mode))
 
 (use-package expand-region
   :ensure t

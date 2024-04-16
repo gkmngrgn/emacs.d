@@ -23,7 +23,7 @@
 (electric-pair-mode      1)
 (delete-selection-mode   1)
 (temp-buffer-resize-mode t)
-(xterm-mouse-mode        1)
+(mouse-wheel-mode        0)
 
 
 ;; ALIASES & VARIABLES
