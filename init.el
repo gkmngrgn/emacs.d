@@ -124,6 +124,10 @@
               ("C-TAB"   . 'copilot-accept-completion-by-word)
               ("C-<tab>" . 'copilot-accept-completion-by-word)))
 
+(use-package simpleclip
+  :ensure t
+  :config (simpleclip-mode))
+
 ;;; init.el ends here
 
 ;; Local Variables:
