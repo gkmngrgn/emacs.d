@@ -17,9 +17,8 @@
   ;; GUI FONTS
   (if (display-graphic-p)
       (progn
-        (defvar my-font "Iosevka Term")
-        (defvar my-font-size 150)
-        (set-frame-font my-font)
+        (setq my-font "Iosevka Term")
+        (setq my-font-size 150)
         (set-frame-font my-font)
         (set-face-attribute 'default nil :height my-font-size :font my-font)
         (set-face-attribute 'fixed-pitch nil :height my-font-size :font my-font)
@@ -39,12 +38,14 @@
          ("\\.ya?ml$" . yaml-ts-mode)))
 
 (use-package eglot
+  :ensure t
   :bind (("C-c l l" . eglot)
          ("C-c l a" . eglot-code-actions)
          ("C-c l r" . eglot-rename)
          ("C-c l f" . eglot-format)))
 
 (use-package savehist
+  :ensure t
   :init (savehist-mode))
 
 ;; FILE MODES
@@ -123,6 +124,9 @@
               ("TAB"     . 'copilot-accept-completion)
               ("C-TAB"   . 'copilot-accept-completion-by-word)
               ("C-<tab>" . 'copilot-accept-completion-by-word)))
+
+(use-package copilot-chat
+  :ensure t)
 
 (use-package simpleclip
   :ensure t
