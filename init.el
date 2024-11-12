@@ -14,7 +14,6 @@
 ;; INTERNAL PACKAGES
 (use-package emacs
   :init
-  ;; THEME
   (load-theme 'modus-vivendi :no-confirm)
   :custom (modus-themes-mode-line '(borderless))
   :hook ((before-save . delete-trailing-whitespace)
@@ -22,9 +21,7 @@
   :bind (("C-c SPC"   . comment-line)
          ("C-x O"     . previous-window-any-frame)
          ("C-x C-b"   . ibuffer)
-         ("C-z"       . undo-only))
-  :mode (("\\.tsx?$"  . typescript-ts-mode)
-         ("\\.ya?ml$" . yaml-ts-mode)))
+         ("C-z"       . undo-only)))
 
 (use-package eglot
   :ensure t
