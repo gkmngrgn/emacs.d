@@ -34,12 +34,6 @@
   :ensure t
   :init (savehist-mode))
 
-;; FILE MODES
-(use-package markdown-mode
-  :ensure t
-  :mode ("README\\.md\\'" . gfm-mode)
-  :custom (markdown-command "multimarkdown"))
-
 ;; EXTERNAL PACKAGES
 (use-package consult
   :ensure t
