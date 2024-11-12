@@ -27,8 +27,6 @@
 
 
 ;; ALIASES & VARIABLES
-(defalias 'yes-or-no-p 'y-or-n-p)
-
 (defvar custom-file-path (expand-file-name "custom.el" user-emacs-directory))
 
 ;; CUSTOMISATIONS
