@@ -121,6 +121,10 @@
   :ensure t
   :config (simpleclip-mode))
 
+(use-package golden-ratio
+  :ensure t
+  :config (golden-ratio-mode))
+
 ;;; init.el ends here
 
 ;; Local Variables:
