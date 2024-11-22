@@ -14,7 +14,6 @@
 ;; INTERNAL PACKAGES
 (use-package emacs
   :init
-  ;; THEME
   (load-theme 'modus-vivendi :no-confirm)
   :custom (modus-themes-mode-line '(borderless))
   :hook ((before-save . delete-trailing-whitespace)
@@ -22,9 +21,7 @@
   :bind (("C-c SPC"   . comment-line)
          ("C-x O"     . previous-window-any-frame)
          ("C-x C-b"   . ibuffer)
-         ("C-z"       . undo-only))
-  :mode (("\\.tsx?$"  . typescript-ts-mode)
-         ("\\.ya?ml$" . yaml-ts-mode)))
+         ("C-z"       . undo-only)))
 
 (use-package eglot
   :ensure t
@@ -37,12 +34,6 @@
   :ensure t
   :init (savehist-mode))
 
-;; FILE MODES
-(use-package markdown-mode
-  :ensure t
-  :mode ("README\\.md\\'" . gfm-mode)
-  :custom (markdown-command "multimarkdown"))
-
 ;; EXTERNAL PACKAGES
 (use-package consult
   :ensure t
@@ -50,12 +41,11 @@
          ("C-x p b" . consult-project-buffer)
          ("M-g f"   . consult-flymake)
          ("M-g g"   . consult-goto-line)
-         ("M-g M-g" . consult-goto-line)
          ("M-s d"   . consult-find)
          ("M-g i"   . consult-imenu)
          ("M-g I"   . consult-imenu-multi)
-         ("M-s l"   . consult-line)
-         ("M-s L"   . consult-line-multi)
+         ("M-s s"   . consult-line)
+         ("M-s S"   . consult-line-multi)
          ("M-s r"   . consult-ripgrep)
          ("M-y"     . consult-yank-pop))
   :hook (completion-list-mode . consult-preview-at-point-mode)
