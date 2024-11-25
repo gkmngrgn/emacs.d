@@ -31,8 +31,7 @@
 
 ;; CUSTOMISATIONS
 (setq-default truncate-lines   t
-              indent-tabs-mode nil
-              tab-width        2)
+              indent-tabs-mode nil)
 
 (setq ring-bell-function              'ignore
       inhibit-splash-screen           t
