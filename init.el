@@ -34,6 +34,9 @@
   :ensure t
   :init (savehist-mode))
 
+(use-package org
+  :hook (org-mode . org-indent-mode))
+
 ;; EXTERNAL PACKAGES
 (use-package consult
   :ensure t
