@@ -115,6 +115,20 @@
   :ensure t
   :bind ("C-c o" . golden-ratio))
 
+(use-package sideline
+  :ensure t)
+
+(use-package sideline-flymake
+  :ensure t
+  :hook (flymake-mode . sideline-mode)
+  :init (setq sideline-flymake-display-mode 'point
+              sideline-backends-right       '(sideline-flymake)))
+
+(use-package sideline-blame
+  :ensure t
+  :init
+  (setq sideline-backends-left '((sideline-blame . down))))
+
 ;;; init.el ends here
 
 ;; Local Variables:
