@@ -113,7 +113,7 @@
 
 (use-package golden-ratio
   :ensure t
-  :config (golden-ratio-mode))
+  :bind ("C-c o" . golden-ratio))
 
 ;;; init.el ends here
 
