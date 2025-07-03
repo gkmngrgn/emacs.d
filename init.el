@@ -98,39 +98,9 @@
   :ensure t
   :init (vertico-mode))
 
-(use-package copilot
-  :ensure t
-  :hook (prog-mode . copilot-mode)
-  :bind (:map copilot-completion-map
-              ("<tab>"   . 'copilot-accept-completion)
-              ("TAB"     . 'copilot-accept-completion)
-              ("C-TAB"   . 'copilot-accept-completion-by-word)
-              ("C-<tab>" . 'copilot-accept-completion-by-word)))
-
-(use-package copilot-chat
-  :ensure t)
-
-(use-package simpleclip
-  :ensure t
-  :config (simpleclip-mode))
-
 (use-package golden-ratio
   :ensure t
   :bind ("C-c o" . golden-ratio))
-
-(use-package sideline
-  :ensure t)
-
-(use-package sideline-flymake
-  :ensure t
-  :hook (flymake-mode . sideline-mode)
-  :init (setq sideline-flymake-display-mode 'point
-              sideline-backends-right       '(sideline-flymake)))
-
-(use-package sideline-blame
-  :ensure t
-  :init
-  (setq sideline-backends-left '((sideline-blame . down))))
 
 ;;; init.el ends here
 
