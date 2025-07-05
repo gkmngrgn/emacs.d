@@ -102,6 +102,27 @@
   :ensure t
   :bind ("C-c o" . golden-ratio))
 
+(use-package minuet
+  :ensure t
+  :bind (("C-c m" . minuet-configure-provider)
+         :map minuet-active-mode-map
+         ("M-p"   . minuet-previous-suggestion)
+         ("M-n"   . minuet-next-suggestion)
+         ("M-A"   . minuet-accept-suggestion)
+         ("M-a"   . minuet-accept-suggestion-line)
+         ("M-e"   . minuet-dismiss-suggestion))
+
+  :init
+  (add-hook 'prog-mode-hook #'minuet-auto-suggestion-mode)
+
+  :config
+  (setq minuet-provider 'claude)
+
+  (minuet-set-optional-options minuet-claude-options :model "claude-3-5-haiku-20241022")
+  (minuet-set-optional-options minuet-claude-options :max_tokens 512)
+  (minuet-set-optional-options minuet-claude-options :api_key (getenv "ANTHROPIC_API_KEY")))
+
+
 ;;; init.el ends here
 
 ;; Local Variables:
