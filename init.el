@@ -118,9 +118,9 @@
   :config
   (setq minuet-provider 'claude)
 
-  (minuet-set-optional-options minuet-claude-options :model "claude-3-5-haiku-20241022")
-  (minuet-set-optional-options minuet-claude-options :max_tokens 512)
-  (minuet-set-optional-options minuet-claude-options :api_key (getenv "ANTHROPIC_API_KEY")))
+  (plist-put minuet-claude-options :max_tokens 256)
+  (plist-put minuet-claude-options :api_key (getenv "ANTHROPIC_API_KEY"))
+  (plist-put minuet-gemini-options :api_key (getenv "GEMINI_API_KEY")))
 
 
 ;;; init.el ends here
