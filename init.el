@@ -111,10 +111,6 @@
          ("M-A"   . minuet-accept-suggestion)
          ("M-a"   . minuet-accept-suggestion-line)
          ("M-e"   . minuet-dismiss-suggestion))
-
-  :init
-  (add-hook 'prog-mode-hook #'minuet-auto-suggestion-mode)
-
   :config
   (setq minuet-provider 'claude)
 
