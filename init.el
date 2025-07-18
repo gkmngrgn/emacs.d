@@ -13,8 +13,7 @@
 
 ;; INTERNAL PACKAGES
 (use-package emacs
-  :init
-  (load-theme 'modus-vivendi :no-confirm)
+  :init (load-theme 'modus-vivendi :no-confirm)
   :custom (modus-themes-mode-line '(borderless))
   :hook ((before-save . delete-trailing-whitespace)
          (text-mode   . visual-line-mode))
@@ -72,8 +71,7 @@
 (use-package centered-cursor-mode
   :ensure t
   :demand
-  :config
-  (global-centered-cursor-mode))
+  :config (global-centered-cursor-mode))
 
 (use-package expand-region
   :ensure t
@@ -101,6 +99,10 @@
 (use-package golden-ratio
   :ensure t
   :bind ("C-c o" . golden-ratio))
+
+(use-package breadcrumb
+  :ensure t
+  :config (breadcrumb-mode))
 
 (use-package minuet
   :ensure t
