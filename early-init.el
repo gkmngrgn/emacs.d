@@ -72,10 +72,8 @@
 
       ;; PACKAGE ARCHIVES
       package-archives               '(("gnu-elpa" . "https://elpa.gnu.org/packages/")
-                                       ("jcs-elpa" . "https://jcs-emacs.github.io/jcs-elpa/packages/")
                                        ("melpa"    . "https://melpa.org/packages/"))
       package-archive-priorities     '(("gnu-elpa" . 0)
-                                       ("jcs-elpa" . 5)
                                        ("melpa"    . 10)))
 
 ;;; early-init.el ends here
