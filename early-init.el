@@ -20,6 +20,8 @@
 (global-auto-revert-mode)
 
 (menu-bar-mode           0)
+(scroll-bar-mode         0)
+(tool-bar-mode           0)
 (electric-pair-mode      1)
 (delete-selection-mode   1)
 (temp-buffer-resize-mode t)

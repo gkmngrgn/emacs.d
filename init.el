@@ -13,8 +13,18 @@
 
 ;; INTERNAL PACKAGES
 (use-package emacs
-  :init (load-theme 'modus-vivendi :no-confirm)
-  :custom (modus-themes-mode-line '(borderless))
+  :init
+  ;; GUI FONTS
+  (if (display-graphic-p)
+      (progn
+        (defvar my-font      "Jetbrains Mono")
+        (defvar my-font-size 150)
+        (set-frame-font my-font)
+        (set-frame-font my-font)
+        (set-face-attribute 'default nil :height my-font-size :font my-font)
+        (set-face-attribute 'fixed-pitch nil :height my-font-size :font my-font)))
+  ;; THEME
+  (load-theme 'modus-vivendi :no-confirm)
   :hook ((before-save . delete-trailing-whitespace)
          (text-mode   . visual-line-mode)
          (prog-mode   . hs-minor-mode))
