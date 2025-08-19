@@ -11,20 +11,26 @@
 
 ;;; Code:
 
+;; INIT
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+
+;; THEME
+(load-theme 'modus-vivendi :no-confirm)
+
+(if (display-graphic-p)
+    (progn
+      (defvar my-font      "Jetbrains Mono")
+      (defvar my-font-size 150)
+      (tool-bar-mode   0)
+      (scroll-bar-mode 0)
+      (set-frame-font my-font)
+      (set-face-attribute 'default nil :height my-font-size :font my-font)
+      (set-face-attribute 'fixed-pitch nil :height my-font-size :font my-font)))
+
 ;; INTERNAL PACKAGES
 (use-package emacs
-  :init
-  ;; GUI FONTS
-  (if (display-graphic-p)
-      (progn
-        (defvar my-font      "Jetbrains Mono")
-        (defvar my-font-size 150)
-        (set-frame-font my-font)
-        (set-frame-font my-font)
-        (set-face-attribute 'default nil :height my-font-size :font my-font)
-        (set-face-attribute 'fixed-pitch nil :height my-font-size :font my-font)))
-  ;; THEME
-  (load-theme 'modus-vivendi :no-confirm)
   :hook ((before-save . delete-trailing-whitespace)
          (text-mode   . visual-line-mode)
          (prog-mode   . hs-minor-mode))

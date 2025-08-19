@@ -20,8 +20,6 @@
 (global-auto-revert-mode)
 
 (menu-bar-mode           0)
-(scroll-bar-mode         0)
-(tool-bar-mode           0)
 (electric-pair-mode      1)
 (delete-selection-mode   1)
 (temp-buffer-resize-mode t)
@@ -70,13 +68,7 @@
       auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
       default-directory              "~/"
       create-lockfiles               nil
-      custom-file                    custom-file-path
-
-      ;; PACKAGE ARCHIVES
-      package-archives               '(("gnu-elpa" . "https://elpa.gnu.org/packages/")
-                                       ("melpa"    . "https://melpa.org/packages/"))
-      package-archive-priorities     '(("gnu-elpa" . 0)
-                                       ("melpa"    . 10)))
+      custom-file                    custom-file-path)
 
 ;;; early-init.el ends here
 
