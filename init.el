@@ -121,22 +121,6 @@
   :ensure t
   :config (breadcrumb-mode))
 
-(use-package minuet
-  :ensure t
-  :bind (("C-c m" . minuet-configure-provider)
-         :map minuet-active-mode-map
-         ("M-p"   . minuet-previous-suggestion)
-         ("M-n"   . minuet-next-suggestion)
-         ("M-A"   . minuet-accept-suggestion)
-         ("M-a"   . minuet-accept-suggestion-line)
-         ("M-e"   . minuet-dismiss-suggestion))
-  :config
-  (setq minuet-provider 'claude)
-
-  (plist-put minuet-claude-options :max_tokens 256)
-  (plist-put minuet-claude-options :api_key (getenv "ANTHROPIC_API_KEY"))
-  (plist-put minuet-gemini-options :api_key (getenv "GEMINI_API_KEY")))
-
 
 ;;; init.el ends here
 
