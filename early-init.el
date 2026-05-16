@@ -38,6 +38,10 @@
       initial-scratch-message         nil
       select-enable-primary           t
       select-enable-clipboard         t
+      tty-select-active-regions       t
+      xterm-extra-capabilities        '(setSelection getSelection)
+      xterm-tmux-extra-capabilities   '(setSelection getSelection)
+      xterm-screen-extra-capabilities '(setSelection getSelection)
       max-mini-window-height          3
       warning-minimum-level           :error
 
@@ -69,6 +73,18 @@
       default-directory              "~/"
       create-lockfiles               nil
       custom-file                    custom-file-path)
+
+(when (and (not (display-graphic-p))
+           (eq system-type 'gnu/linux)
+           (file-exists-p "/proc/version")
+           (string-match "Microsoft"
+                         (with-temp-buffer
+                           (insert-file-contents "/proc/version")
+                           (buffer-string))))
+  (setq interprogram-paste-function
+        (lambda ()
+          (shell-command-to-string
+           "powershell.exe -NoProfile -Command 'Get-Clipboard'"))))
 
 ;;; early-init.el ends here
 
