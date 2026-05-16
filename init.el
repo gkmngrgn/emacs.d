@@ -16,6 +16,10 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (setq gc-cons-threshold (* 2 1024 1024)))) ; 2mb
+
 ;; THEME
 (load-theme 'modus-vivendi :no-confirm)
 
@@ -113,6 +117,15 @@
   :ensure t
   :init (vertico-mode))
 
+(use-package corfu
+  :ensure t
+  :init (global-corfu-mode))
+
+(use-package corfu-terminal
+  :ensure t
+  :if (not (display-graphic-p))
+  :config (corfu-terminal-mode +1))
+
 (use-package golden-ratio
   :ensure t
   :bind ("C-c o" . golden-ratio))
@@ -120,6 +133,10 @@
 (use-package breadcrumb
   :ensure t
   :config (breadcrumb-mode))
+
+(use-package which-key
+  :ensure t
+  :config (which-key-mode))
 
 
 ;;; init.el ends here
