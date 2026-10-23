@@ -12,6 +12,7 @@
 ;;; Code:
 
 ;; INIT
+(require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
 (add-hook 'emacs-startup-hook
@@ -19,6 +20,9 @@
             (setq gc-cons-threshold (* 2 1024 1024)))) ; 2mb
 
 ;; THEME
+(setq modus-themes-common-palette-overrides
+      '((border-mode-line-active   unspecified)
+        (border-mode-line-inactive unspecified)))
 (load-theme 'modus-vivendi :no-confirm)
 
 (when (display-graphic-p)
