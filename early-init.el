@@ -11,23 +11,15 @@
 
 ;;; Code:
 
-;; UNICODE
-(prefer-coding-system       'utf-8)
-(set-default-coding-systems 'utf-8)
-(set-language-environment   'utf-8)
+(set-language-environment "UTF-8")
 
 ;; INTERFACE
 (global-auto-revert-mode)
-
 (menu-bar-mode           0)
 (electric-pair-mode      1)
 (delete-selection-mode   1)
 (temp-buffer-resize-mode t)
 (mouse-wheel-mode        0)
-
-
-;; ALIASES & VARIABLES
-(defvar custom-file-path (expand-file-name "custom.el" user-emacs-directory))
 
 ;; CUSTOMISATIONS
 (setq-default truncate-lines   t
@@ -37,7 +29,6 @@
       inhibit-splash-screen           t
       initial-scratch-message         nil
       select-enable-primary           t
-      select-enable-clipboard         t
       tty-select-active-regions       t
       xterm-extra-capabilities        '(setSelection getSelection)
       xterm-tmux-extra-capabilities   '(setSelection getSelection)
@@ -48,11 +39,6 @@
       ;; MODE LINE
       line-number-mode                t
       column-number-mode              t
-
-      ;; DISABLE TAB BAR
-      tab-bar-close-button-show       nil
-      tab-bar-mode                    nil
-      tab-bar-show                    nil
 
       ;; SCROLLING
       scroll-margin                   0
@@ -72,8 +58,9 @@
       auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
       default-directory              "~/"
       create-lockfiles               nil
-      custom-file                    custom-file-path)
+      custom-file                    (expand-file-name "custom.el" user-emacs-directory))
 
+;; WSL has no OSC 52 paste, read the Windows clipboard directly.
 (when (and (not (display-graphic-p))
            (eq system-type 'gnu/linux)
            (file-exists-p "/proc/version")
@@ -87,8 +74,3 @@
            "powershell.exe -NoProfile -Command 'Get-Clipboard'"))))
 
 ;;; early-init.el ends here
-
-;; Local Variables:
-;; coding: utf-8
-;; byte-compile-warnings: (not free-vars unresolved)
-;; End:

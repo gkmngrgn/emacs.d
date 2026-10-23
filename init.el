@@ -12,9 +12,7 @@
 ;;; Code:
 
 ;; INIT
-(require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(package-initialize)
 
 (add-hook 'emacs-startup-hook
           (lambda ()
@@ -23,15 +21,11 @@
 ;; THEME
 (load-theme 'modus-vivendi :no-confirm)
 
-(if (display-graphic-p)
-    (progn
-      (defvar my-font      "Jetbrains Mono")
-      (defvar my-font-size 150)
-      (tool-bar-mode   0)
-      (scroll-bar-mode 0)
-      (set-frame-font my-font)
-      (set-face-attribute 'default nil :height my-font-size :font my-font)
-      (set-face-attribute 'fixed-pitch nil :height my-font-size :font my-font)))
+(when (display-graphic-p)
+  (tool-bar-mode   0)
+  (scroll-bar-mode 0)
+  (set-face-attribute 'default     nil :family "JetBrains Mono" :height 150)
+  (set-face-attribute 'fixed-pitch nil :family "JetBrains Mono" :height 150))
 
 ;; INTERNAL PACKAGES
 (use-package emacs
@@ -51,7 +45,6 @@
          ("C-c l f" . eglot-format)))
 
 (use-package savehist
-  :ensure t
   :init (savehist-mode))
 
 (use-package org
@@ -72,8 +65,7 @@
          ("M-s r"   . consult-ripgrep)
          ("M-y"     . consult-yank-pop))
   :hook (completion-list-mode . consult-preview-at-point-mode)
-  :custom ((consult-find-args "find . -not ( -wholename */.* -prune -o -name node_modules -prune )")
-           (completion-in-region-function 'consult-completion-in-region)))
+  :custom (consult-find-args "find . -not ( -wholename */.* -prune -o -name node_modules -prune )"))
 
 (use-package marginalia
   :ensure t
@@ -91,7 +83,6 @@
 
 (use-package centered-cursor-mode
   :ensure t
-  :demand
   :config (global-centered-cursor-mode))
 
 (use-package expand-region
@@ -121,9 +112,10 @@
   :ensure t
   :init (global-corfu-mode))
 
+;; Emacs 31 draws corfu popups in the TTY itself.
 (use-package corfu-terminal
   :ensure t
-  :if (not (display-graphic-p))
+  :unless (or (display-graphic-p) (featurep 'tty-child-frames))
   :config (corfu-terminal-mode +1))
 
 (use-package golden-ratio
@@ -138,10 +130,4 @@
   :ensure t
   :config (which-key-mode))
 
-
 ;;; init.el ends here
-
-;; Local Variables:
-;; coding: utf-8
-;; byte-compile-warnings: (not free-vars unresolved)
-;; End:
