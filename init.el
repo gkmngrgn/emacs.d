@@ -85,10 +85,6 @@
   :hook (after-init . doom-modeline-mode)
   :custom (doom-modeline-icon nil))
 
-(use-package centered-cursor-mode
-  :ensure t
-  :config (global-centered-cursor-mode))
-
 (use-package expand-region
   :ensure t
   :bind ("C-c w" . er/expand-region))

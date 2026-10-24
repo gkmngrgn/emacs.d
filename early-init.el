@@ -19,7 +19,8 @@
 (electric-pair-mode      1)
 (delete-selection-mode   1)
 (temp-buffer-resize-mode t)
-(mouse-wheel-mode        0)
+(mouse-wheel-mode        1)
+(xterm-mouse-mode        1)
 
 ;; CUSTOMISATIONS
 (setq-default truncate-lines   t
